@@ -8,6 +8,7 @@ import './css/slick.css';
 import './css/animate.css';
 import './css/bootstrap.min.css';
 import './css/temp.css';
+import './css/style.css';
 
 import { Spin, Icon } from 'antd';
 const antIcon = <Icon type="loading" style={{ fontSize: 24 }} spin />;
