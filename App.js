@@ -20,6 +20,7 @@ import SignUp from './CommonPages/Containers/SignUp';
 import OrderBundle from './CommonPages/Containers/OrderBundle';
 
 import Dashboard from './Client/Containers/Dashboard';
+import Header from './Client/Components/Header';
 
 class App extends Component{
 	constructor(props){
@@ -40,6 +41,7 @@ class App extends Component{
    		
    			route=(
               <div>
+                 <Header/>
            			 <Route exact path="/" component={Dashboard} />
               </div>
    				)
