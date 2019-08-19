@@ -21,9 +21,12 @@ class Home extends Component{
       return(
         <div className="full-page">
            <HomeHeader/>
-           <div style={{backgroundColor: 'white',display: 'flex',textAlign:'center'}}> 
-              <h1>Home</h1>
-           </div>
+            <section class="home-banner">
+              <div class="container">
+                <h1>The Power of Immersive Technology</h1>
+              </div>
+            </section>
+
         </div>
       );
    }

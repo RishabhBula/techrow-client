@@ -1,0 +1,110 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+$blue: #262161;
+$green: #B1F543;
+$textgreay :#707070;
+$grey: #F3F3F3;
+$w : #fff;
+$b: #000;
+$qfont: 'Quicksand', sans-serif;
+$opensan: 'Open Sans', sans-serif;
+
+
+.blue-btn{background-color: $blue!important; color: $w!important; padding: 10px 20px; border-radius: 20px; font-weight: 700; border:1px solid $blue;}
+.green-btn{background-color: $green!important; color: $b!important; padding: 10px 40px; border-radius: 5px; font-weight: 700; border:1px solid $green;}
+.blue-btn:hover{color: $blue!important; background-color: $w!important;}
+.green-btn:hover{color: $green!important; background-color: $w!important;}
+
+
+html{font-size: 16px;}
+body{font-family: $qfont; font-weight: 400}
+header{ height: 85px; background-color: $w; padding: 0!important;
+	.logo{float: left; margin-right: 20px;margin-top: 5px;
+		img{max-width: 200px;}
+	}
+	ul{
+		li{float: left;padding: 34px 10px;
+			a{color: $textgreay; padding: 5px 10px; font-size: 0.9375rem;
+				&:hover{color: $blue; text-decoration: none;}
+			}
+		}
+	}
+	ul:last-child{float: right;
+		li{ 
+			a{color: $blue; font-weight: 700;}
+				&.login{background: linear-gradient(180deg, #F3F3F3 0%, #FFFFFF 100%);}}
+		.blue-btn{margin-left: 20px}
+	}
+}
+.home-banner{height: 100vh; background-image: url(/images/Capture.png); background-size: cover; background-position: center;}
+
+.inner-wrap{padding-top: 85px; min-height: 100vh;background-color: $grey;
+	.inner-blue-menu{background-color: $blue; width: 300px;height:100%; position: fixed;left: 0; bottom: 0; top:85px; text-align: center; display: flex;    justify-content: space-around; flex-direction: column; align-items: center;
+		h1{color: $green; font-size: 2rem; font-weight: 500; line-height: 40px;}
+		h3{color: $w; font-size: 1.4rem; font-weight: 500;margin-bottom: 20px;}
+		a{color: $w; font-size: 1.125rem; font-weight: 500;   padding: 10px 20px; border:4px solid $green; border-radius: 8px;display: inline-block;}
+
+	}
+	.inner-right-wrap{margin-left: 300px;
+		h4{color: $blue; font-size: 2rem; font-weight: 500; line-height: 40px; text-align: center; margin-top: 100px; margin-bottom: 20px;}
+		.form-wrap{background-color: $w; width: 80%; padding: 30px; margin: auto; border-radius: 20px;
+			form{width: 390px; margin:80px auto;
+				.form-group{
+					label{color: #6D6D6D; font-size: .75rem;font-family: $opensan; font-weight: 700;margin-bottom: 10px; text-transform: capitalize;}
+					.form-control{background-color: $grey; border:1px solid #707070; border-radius: 5px;
+					}
+					button{float: right;}
+				}
+			}
+		}
+	}
+}
+
+
+
+
+
+
+

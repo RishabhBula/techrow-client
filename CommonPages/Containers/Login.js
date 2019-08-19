@@ -21,27 +21,36 @@ class Login extends Component{
       return(
         <div className="full-page">
            <LoginHeader/>
-           <div style={{height: '800px'}} className="row"> 
-              <div className="col-3" style={{backgroundColor: 'Blue'}}>
-                  <span>Login your account</span><br/>
-                  <span>Questions?</span><br/>
-                  <span>Contact Us</span><br/>
-              </div>
-              <div className="col-9" style={{backgroundColor: '#f1f8ff'}}>
-                  <div>
-                        <h4>User Login</h4>
-                        <div style={{backgroundColor: '#fff'}}>
-                          <label>username</label><br/>
-                          <input id="username" type="username" className="" placeholder="username" value={this.state.username} onChange={(e) =>this.setState({username:e.target.value})}/><br/>
-                          <label>password</label><br/>
-                          <input id="password" type="password" className="" placeholder="password" value={this.state.password} onChange={(e) =>this.setState({password:e.target.value})}/><br/>
-                          <a>forgot password</a>
-                          <button>Login</button><br/>
-                          <span>Don't have an account? <a href="#/signup">Sign up here</a></span>
-                        </div>
-                  </div>
-              </div>
-           </div>
+           <div className="inner-wrap"> 
+                <div className="inner-blue-menu">
+                    <h1>Login your<br/> account</h1>
+                    <div>
+                      <h3>Questions?</h3>
+                      <a>Contact Us</a>
+                    </div>
+                </div>
+                <div className="inner-right-wrap">
+                    
+                          <h4>User Login</h4>
+                          <div className="form-wrap">
+                            <form>
+                            <div className="form-group">
+                              <label>username</label>
+                              <input id="username" type="username" className="form-control" placeholder="username" value={this.state.username} onChange={(e) =>this.setState({username:e.target.value})}/><br/>
+                            </div>
+                            <div className="form-group">
+                              <label>password</label>
+                              <input id="password" type="password" className="form-control" placeholder="password" value={this.state.password} onChange={(e) =>this.setState({password:e.target.value})}/><br/>
+                            </div>
+                            <div className="form-group">
+                              <a>forgot password</a>
+                              <button className="green-btn">Login</button>
+                            </div>
+                            </form>
+                            <span>Don't have an account? <a href="#/signup">Sign up here</a></span>
+                          </div>
+                </div>
+             </div>
         </div>
       );
    }

@@ -17,20 +17,22 @@ class HomeHeader extends Component{
 
   render(){
       return(
-         <div className="row" style={{backgroundColor: 'white',display: 'flex',textAlign:'center'}}> 
-            <div className="col-6" style={{textAlign: 'left' }}>
-              <img style={{width:'100px',height: '30px'}} src="../images/techrow-logo.png"/>
-              <a>About</a>
-              <a>Features</a>
-              <a>blog</a>
-              <a>Contact</a>
-              <a>Publishers</a>
-            </div>
-            <div className="col-6" style={{textAlign: 'right' }}>
-              <a href="#/login">Login</a>
-              <a href="#/signup">Sign Up</a>
-            </div>
-         </div>
+              <header className="navbar fixed-top">
+                <div className="container-fluid">
+                  <a href="#" className="logo"><img src="../images/techrow-logo.png"/> </a>
+                  <ul>
+                    <li><a  href="#">About</a></li>
+                    <li><a  href="#">Features</a></li>
+                    <li><a  href="#">Blog</a></li>
+                    <li><a  href="#">Contact</a></li>
+                    <li><a  href="#">Publishers</a></li>
+                  </ul>
+                  <ul>
+                    <li className="login"> <a href="#/login">Login</a></li>
+                    <li><a href="#/signup" className="blue-btn">Sign Up</a></li>
+                  </ul>
+                </div>
+             </header>
       );
    }
 }
