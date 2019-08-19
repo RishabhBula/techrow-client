@@ -1,0 +1,22 @@
+.loginform{
+	background-color: white;
+    border-radius: 20px;
+    text-align: center;
+}
+.pointer{
+	cursor: pointer;
+}
+.stepper_item{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.stepper_item_circle{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 50px;
+	width: 50px;
+	border-radius: 25px;
+	background-color: white;
+}
