@@ -90,7 +90,7 @@ header{ height: 85px; background-color: $w; padding: 0!important;
 	.inner-right-wrap{margin-left: 300px;
 		h4{color: $blue; font-size: 2rem; font-weight: 500; line-height: 40px; text-align: center; margin-top: 100px; margin-bottom: 20px;}
 		.form-wrap{background-color: $w; width: 80%; padding: 30px; margin: auto; border-radius: 20px;
-			form{width: 390px; margin:80px auto;
+			.form{width: 390px; margin:80px auto;
 				.form-group{
 					label{color: #6D6D6D; font-size: .75rem;font-family: $opensan; font-weight: 700;margin-bottom: 10px; text-transform: capitalize;}
 					.form-control{background-color: $grey; border:1px solid #707070; border-radius: 5px;

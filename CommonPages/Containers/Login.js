@@ -47,20 +47,20 @@ class Login extends Component{
                     
                           <h4>User Login</h4>
                           <div className="form-wrap">
-                            <form>
-                            <div className="form-group">
-                              <label>email</label>
-                              <input id="email" type="email" className="form-control" placeholder="email" value={this.state.email} onChange={(e) =>this.setState({email:e.target.value})}/><br/>
+                            <div className="form">
+                              <div className="form-group">
+                                <label>email</label>
+                                <input id="email" type="email" className="form-control" placeholder="email" value={this.state.email} onChange={(e) =>this.setState({email:e.target.value})}/><br/>
+                              </div>
+                              <div className="form-group">
+                                <label>password</label>
+                                <input id="password" type="password" className="form-control" placeholder="password" value={this.state.password} onChange={(e) =>this.setState({password:e.target.value})}/><br/>
+                              </div>
+                              <div className="form-group">
+                                <a>forgot password</a>
+                                <button className="green-btn">Login</button>
+                              </div>
                             </div>
-                            <div className="form-group">
-                              <label>password</label>
-                              <input id="password" type="password" className="form-control" placeholder="password" value={this.state.password} onChange={(e) =>this.setState({password:e.target.value})}/><br/>
-                            </div>
-                            <div className="form-group">
-                              <a>forgot password</a>
-                              <button className="green-btn">Login</button>
-                            </div>
-                            </form>
                             <span>Don't have an account? <a href="#/signup">Sign up here</a></span>
                           </div>
                 </div>
