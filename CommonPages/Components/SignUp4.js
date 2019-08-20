@@ -5,6 +5,8 @@ import axios from 'axios';
 import {Steps} from 'antd';
 import Stepper from 'react-stepper-horizontal';
 
+import {setSignupDetails} from '../../actions/setSignupDetails';
+
 const { Step } = Steps;
 
 class SignUp4 extends Component{
@@ -42,12 +44,12 @@ class SignUp4 extends Component{
                     lineMarginOffset={0} />
 
                 </div>
-                <span>You're almost done</span>
-                <div style={{backgroundColor: '#fff'}}>
+                <h4>You're almost done</h4>
+                <div className="form-wrap">
                    <div>
-                   <span>Would you like to order a VR bundle?</span><br/>
-                   <button className="pointer" onClick={() =>{ window.location.href="#/orderbundle" }}>Order Bundle</button><br/>
-                   <a href="#/">skip for now</a><br/>
+                     <span>Would you like to order a VR bundle?</span><br/>
+                     <button className="pointer" onClick={() =>{ window.location.href="#/orderbundle" }}>Order Bundle</button><br/>
+                     <a href="#/">skip for now</a><br/>
                    </div>
                 </div>
             </div>
@@ -59,10 +61,10 @@ class SignUp4 extends Component{
 
 function mapStateToProps(state){
   return{
-    
+      signupdetails:state.signupdetails
   };
 }
 function matchDispatchToProps(dispatch){
-  return bindActionCreators({ }, dispatch);
+  return bindActionCreators({ setSignupDetails:setSignupDetails }, dispatch);
 }
 export default connect(mapStateToProps, matchDispatchToProps)(SignUp4);

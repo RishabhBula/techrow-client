@@ -5,6 +5,8 @@ import axios from 'axios';
 import {Steps} from 'antd';
 import Stepper from 'react-stepper-horizontal';
 
+import {setSignupDetails} from '../../actions/setSignupDetails';
+
 const { Step } = Steps;
 
 class SignUp2 extends Component{
@@ -14,7 +16,7 @@ class SignUp2 extends Component{
       firstname:"",
       lastname:"",
       email:"",
-      phone:"",
+      phonenumber:"",
       username:"",
       password:"",
       error:false,
@@ -27,7 +29,7 @@ class SignUp2 extends Component{
   }
 
   next(){
-    if(this.state.firstname=="" || this.state.lastname=="" || this.state.email=="" || this.state.phone=="" || this.state.username=="" || this.state.password==""){
+    if(this.state.firstname=="" || this.state.lastname=="" || this.state.email=="" || this.state.phoneNumber=="" || this.state.username=="" || this.state.password==""){
       this.setState({error:true,errortext:"please fill all fields to continue."})
     }else if(this.state.password.length<10){
       this.setState({error:true,errortext:"password strength not good."})
@@ -59,21 +61,33 @@ class SignUp2 extends Component{
                     lineMarginOffset={0} />
 
                 </div>
-                <span>Tell Us About Yourself</span>
-                <div style={{backgroundColor: '#fff'}}>
-                   <div>
-                      <label>Firstname</label><br/>
-                          <input id="firstname" type="firstname" className="" placeholder="Your firstname" value={this.state.firstname} onChange={(e) =>this.setState({firstname:e.target.value,error:false,errortext:""})}/><br/>
-                      <label>Lastname</label><br/>
-                          <input id="lastname" type="lastname" className="" placeholder="Your lastname" value={this.state.lastname} onChange={(e) =>this.setState({lastname:e.target.value,error:false,errortext:""})}/><br/>
-                      <label>Email</label><br/>
-                          <input id="email" type="email" className="" placeholder="Your email" value={this.state.email} onChange={(e) =>this.setState({email:e.target.value,error:false,errortext:""})}/><br/>
-                      <label>Phone</label><br/>
-                          <input id="phone" type="phone" className="" placeholder="Your phone" value={this.state.phone} onChange={(e) =>this.setState({phone:e.target.value,error:false,errortext:""})}/><br/>
-                      <label>Username</label><br/>
-                          <input id="username" type="username" className="" placeholder="Set username" value={this.state.username} onChange={(e) =>this.setState({username:e.target.value,error:false,errortext:""})}/><br/>
-                      <label>password</label><br/>
-                          <input id="password" type="password" className="" placeholder="Create a strong password" value={this.state.password} onChange={(e) =>this.setState({password:e.target.value,error:false,errortext:""})}/><br/>
+                <h4>Tell Us About Yourself</h4>
+                <div className="form-wrap">
+                   <form>
+                      <div className="form-group">
+                          <label>Firstname</label>
+                          <input id="firstname" type="firstname" className="form-control" placeholder="Your firstname" value={this.state.firstname} onChange={(e) => {this.setState({firstname:e.target.value,error:false,errortext:""}); this.props.signupdetails.firstName=e.target.value }}/>
+                      </div>
+                      <div className="form-group">
+                          <label>Lastname</label>
+                          <input id="lastname" type="lastname" className="form-control" placeholder="Your lastname" value={this.state.lastname} onChange={(e) => {this.setState({lastname:e.target.value,error:false,errortext:""}); this.props.signupdetails.lastName=e.target.value }}/>
+                      </div>
+                      <div className="form-group">
+                          <label>Email</label>
+                          <input id="email" type="email" className="form-control" placeholder="Your email" value={this.state.email} onChange={(e) => {this.setState({email:e.target.value,error:false,errortext:""}); this.props.signupdetails.email=e.target.value }}/>
+                      </div>
+                      <div className="form-group">
+                          <label>Phone</label>
+                          <input id="phonenumber" type="phonenumber" className="form-control" placeholder="Your phonenumber" value={this.state.phonenumber} onChange={(e) => {this.setState({phonenumber:e.target.value,error:false,errortext:""}); this.props.signupdetails.phoneNumber=e.target.value }}/>
+                      </div>
+                      <div className="form-group">
+                          <label>Username</label>
+                          <input id="username" type="username" className="form-control" placeholder="Set username" value={this.state.username} onChange={(e) => {this.setState({username:e.target.value,error:false,errortext:""}); this.props.signupdetails.username=e.target.value }}/>
+                      </div>
+                      <div className="form-group">
+                          <label>password</label>
+                          <input id="password" type="password" className="form-control" placeholder="Create a strong password" value={this.state.password} onChange={(e) => {this.setState({password:e.target.value,error:false,errortext:""}); this.props.signupdetails.password=e.target.value }}/>
+                      </div>
                       {this.state.password!="" && (
                         <div className="row">
                           <div style={{backgroundColor: 'red',height: '10px',width: '20px'}}></div>
@@ -84,7 +98,7 @@ class SignUp2 extends Component{
                           {this.state.password.length>=10 && (<div>Strong</div>)}
                         </div>
                         )}
-                   </div>
+                   </form>
                    {this.state.error==true && (<div><span style={{color: 'red'}}>*{this.state.errortext}</span></div>)}
                    <span className="pointer" onClick={() =>{ this.next() }}>next</span>
                 </div>
@@ -97,10 +111,10 @@ class SignUp2 extends Component{
 
 function mapStateToProps(state){
   return{
-    
+    signupdetails:state.signupdetails
   };
 }
 function matchDispatchToProps(dispatch){
-  return bindActionCreators({ }, dispatch);
+  return bindActionCreators({ setSignupDetails:setSignupDetails }, dispatch);
 }
 export default connect(mapStateToProps, matchDispatchToProps)(SignUp2);

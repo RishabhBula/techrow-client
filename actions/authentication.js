@@ -1,10 +1,11 @@
 import * as env from '../env'
 import axios from 'axios'
 
-// import firebase from 'firebase/app';
-// import 'firebase/app';
-// import 'firebase/firestore';
-// import 'firebase/database';
+import firebase from 'firebase/app';
+import 'firebase/auth';
+import 'firebase/app';
+import 'firebase/firestore';
+import 'firebase/database';
 
 // var config = {
 // apiKey: "AIzaSyDjk41ocT0Em1YG_C-6nXEcgCBHpjUsxMk",
@@ -20,28 +21,46 @@ import axios from 'axios'
 export function getAuthentication(){	
 
 	return dispatch => {
-    
-    axios.get(env.apiURL+'users/isLogedIn?access_token='+localStorage.token)
-    .then((response) => {
-      
-          if(response.data.logged){
-             axios.defaults.headers.common['Authorization'] = localStorage.token;
-              dispatch({
+
+    firebase.auth().onAuthStateChanged((user) =>{
+      if (user) {
+        // User is signed in.
+          dispatch({
                    type: 'GET_AUTH',
-                   payload:{loaded:true,auth:true,authData:response.data}
-          	})
-          }else{
-          	dispatch({
-                   type: 'GET_AUTH',
-                   payload:{loaded:true,auth:false,authData:{}}
-          	})
-          }     
-    }).catch(function (error) {
-      console.log(error)
-      dispatch({
+                   payload:{loaded:true,auth:true,authData:{}}
+           })
+        // ...
+      } else {
+        // User is signed out.
+          dispatch({
                    type: 'GET_AUTH',
                    payload:{loaded:true,auth:false,authData:{}}
-            })
+           })
+        // ...
+      }
     });
+    
+    // axios.get(env.apiURL+'users/isLogedIn?access_token='+localStorage.token)
+    // .then((response) => {
+      
+    //       if(response.data.logged){
+    //          axios.defaults.headers.common['Authorization'] = localStorage.token;
+    //           dispatch({
+    //                type: 'GET_AUTH',
+    //                payload:{loaded:true,auth:true,authData:response.data}
+    //       	})
+    //       }else{
+    //       	dispatch({
+    //                type: 'GET_AUTH',
+    //                payload:{loaded:true,auth:false,authData:{}}
+    //       	})
+    //       }     
+    // }).catch(function (error) {
+    //   console.log(error)
+    //   dispatch({
+    //                type: 'GET_AUTH',
+    //                payload:{loaded:true,auth:false,authData:{}}
+    //         })
+    // });
   }
 }

@@ -3,17 +3,31 @@ import {bindActionCreators} from 'redux';
 import { connect } from 'react-redux';
 import axios from 'axios';
 
+import firebase from 'firebase/app';
+import 'firebase/auth';
+import 'firebase/app';
+import 'firebase/firestore';
+import 'firebase/database';
+
+import {getAuthentication} from '../../actions/authentication'
+
 import LoginHeader from '../Components/LoginHeader';
 
 class Login extends Component{
 	constructor(props){
 		super(props);
     this.state = {
-      
+      email:"",
+      password:""
     }
 	}
   
   componentDidMount(){
+      
+  }
+
+  login(email,password){
+      console.log("====login",email,password)
       
   }
 
@@ -35,8 +49,8 @@ class Login extends Component{
                           <div className="form-wrap">
                             <form>
                             <div className="form-group">
-                              <label>username</label>
-                              <input id="username" type="username" className="form-control" placeholder="username" value={this.state.username} onChange={(e) =>this.setState({username:e.target.value})}/><br/>
+                              <label>email</label>
+                              <input id="email" type="email" className="form-control" placeholder="email" value={this.state.email} onChange={(e) =>this.setState({email:e.target.value})}/><br/>
                             </div>
                             <div className="form-group">
                               <label>password</label>
@@ -63,6 +77,6 @@ function mapStateToProps(state){
   };
 }
 function matchDispatchToProps(dispatch){
-  return bindActionCreators({ }, dispatch);
+  return bindActionCreators({ getAuthentication:getAuthentication }, dispatch);
 }
 export default connect(mapStateToProps, matchDispatchToProps)(Login);

@@ -3,6 +3,14 @@ import {bindActionCreators} from 'redux';
 import { connect } from 'react-redux';
 import axios from 'axios';
 
+import {getAuthentication} from '../../actions/authentication'
+
+import firebase from 'firebase/app';
+import 'firebase/auth';
+import 'firebase/app';
+import 'firebase/firestore';
+import 'firebase/database';
+
 class Header extends Component{
 	constructor(props){
 		super(props);
@@ -15,13 +23,25 @@ class Header extends Component{
       
   }
 
+  signout(){
+    firebase.auth().signOut()
+    .then(() =>{
+      window.location.href="#/";
+      this.props.getAuthentication()
+    })
+    .catch((error) =>{
+      // An error happened.
+    })
+  }
+
   render(){
       return(
-         <div className="row" style={{backgroundColor: 'white',display: 'flex',textAlign:'center'}}> 
-            <div className="col-12" style={{textAlign: 'left' }}>
-              <img style={{width:'100px',height: '30px'}} src="../images/techrow-logo.png" onClick={() =>{ window.location.href="#/" }}/>
+         <header className="navbar fixed-top">
+            <div className="container-fluid">
+              <a onClick={() =>{ window.location.href="#/" }} className="logo"><img src="../images/techrow-logo.png"/> </a>
+              <a onClick={() =>{ this.signout() }} className="logo">Sign Out</a>
             </div>
-         </div>
+        </header>
       );
    }
 }
@@ -33,6 +53,6 @@ function mapStateToProps(state){
   };
 }
 function matchDispatchToProps(dispatch){
-  return bindActionCreators({ }, dispatch);
+  return bindActionCreators({ getAuthentication:getAuthentication }, dispatch);
 }
 export default connect(mapStateToProps, matchDispatchToProps)(Header);

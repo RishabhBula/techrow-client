@@ -27,17 +27,18 @@ class SignUp extends Component{
 
   render(){
       return(
-        <div>
+        <div className="full-page">
            <SignupHeader/>
-           <div style={{height: '800px'}} className="row"> 
-              <div className="col-3" style={{backgroundColor: 'Blue'}}>
-                  <span>Signup your account</span><br/>
-                  <span>Questions?</span><br/>
-                  <span>Contact Us</span><br/>
-              </div>
-              <div className="col-9" style={{backgroundColor: '#f1f8ff'}}>
+           <div className="inner-wrap"> 
+              <div className="inner-blue-menu">
+                    <h1>Sign up your<br/> account</h1>
+                    <div>
+                      <h3>Questions?</h3>
+                      <a>Contact Us</a>
+                    </div>
+                </div>
+              <div className="inner-right-wrap">
                   <div>
-                        <h4>Sign Up</h4>
                         {this.state.page==1 && (<SignUp1 pageRender={this.pageRender.bind(this)} />)}
                         {this.state.page==2 && (<SignUp2 pageRender={this.pageRender.bind(this)} />)}
                         {this.state.page==3 && (<SignUp3 pageRender={this.pageRender.bind(this)} />)}

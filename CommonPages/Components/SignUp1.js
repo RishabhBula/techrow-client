@@ -3,6 +3,8 @@ import {bindActionCreators} from 'redux';
 import { connect } from 'react-redux';
 import axios from 'axios';
 
+import {setSignupDetails} from '../../actions/setSignupDetails';
+
 class SignUp1 extends Component{
 	constructor(props){
 		super(props);
@@ -31,13 +33,13 @@ class SignUp1 extends Component{
       return(
         <div>
            <div>
-                <div style={{backgroundColor: '#fff'}}>
+                <div className="form-wrap">
                    <span>i am a/an</span>
                    <div className="row">
-                      <div className="col-6 pointer" onClick={() =>{ this.setState({state1:"blue",state2:"white",type:"teacher/educator",error:false,errortext:""}) }}>
+                      <div className="col-6 pointer" onClick={() =>{ this.setState({state1:"blue",state2:"white",type:"teacher/educator",error:false,errortext:""}); this.props.signupdetails.type="teacher/educator" }}>
                         <button style={{backgroundColor:this.state.state1}}>Teacher/Educator</button>
                       </div>
-                      <div className="col-6 pointer" onClick={() =>{ this.setState({state1:"white",state2:"blue",type:"publisher",error:false,errortext:""}) }}>
+                      <div className="col-6 pointer" onClick={() =>{ this.setState({state1:"white",state2:"blue",type:"publisher",error:false,errortext:""}); this.props.signupdetails.type="publisher" }}>
                         <button style={{backgroundColor:this.state.state2}}>Publisher</button>
                       </div>
                    </div>
@@ -53,10 +55,10 @@ class SignUp1 extends Component{
 
 function mapStateToProps(state){
   return{
-    
+    signupdetails:state.signupdetails
   };
 }
 function matchDispatchToProps(dispatch){
-  return bindActionCreators({ }, dispatch);
+  return bindActionCreators({ setSignupDetails:setSignupDetails }, dispatch);
 }
 export default connect(mapStateToProps, matchDispatchToProps)(SignUp1);
