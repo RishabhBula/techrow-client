@@ -18,7 +18,8 @@ class Login extends Component{
 		super(props);
     this.state = {
       email:"",
-      password:""
+      password:"",
+      forgotstate:false,
     }
 	}
   
@@ -43,13 +44,28 @@ class Login extends Component{
       })
   }
 
+  forgot(email){
+
+      firebase.auth().sendPasswordResetEmail(email)
+      .then((res) =>{
+        console.log("forgot success response",res)
+        this.setState({forgotstate:false,email:"",password:""})
+        // Email sent.
+      })
+      .catch((error) =>{
+        console.log("forgot error response",error)
+        // An error happened.
+      })
+  }
+
   render(){
       return(
         <div className="full-page">
            <LoginHeader/>
            <div className="inner-wrap"> 
                 <div className="inner-blue-menu">
-                    <h1>Login your<br/> account</h1>
+                    {this.state.forgotstate==false && (<h1>Login your<br/> account</h1>)}
+                    {this.state.forgotstate==true && (<h1>Forgot password</h1>)}
                     <div>
                       <h3>Questions?</h3>
                       <a>Contact Us</a>
@@ -57,7 +73,8 @@ class Login extends Component{
                 </div>
                 <div className="inner-right-wrap">
                     
-                          <h4>User Login</h4>
+                {this.state.forgotstate==false && (<div>
+                        <h4>User Login</h4>
                           <div className="form-wrap">
                             <div className="form">
                               <div className="form-group">
@@ -69,12 +86,28 @@ class Login extends Component{
                                 <input id="password" type="password" className="form-control" placeholder="password" value={this.state.password} onChange={(e) =>this.setState({password:e.target.value})}/><br/>
                               </div>
                               <div className="form-group">
-                                <a>forgot password</a>
+                                <a onClick={() =>{ this.setState({ forgotstate:true, email:"", password:"" }) }}>forgot password</a>
                                 <button className="green-btn" onClick={() =>{ this.login(this.state.email,this.state.password) }}>Login</button>
                               </div>
                             </div>
                             <span>Don't have an account? <a href="#/signup">Sign up here</a></span>
                           </div>
+                       </div>)}
+                 {this.state.forgotstate==true && (<div>
+                        <h4>Forgot Password</h4>
+                          <div className="form-wrap">
+                            <div className="form">
+                              <div className="form-group">
+                                <label>email</label>
+                                <input id="email" type="email" className="form-control" placeholder="email" value={this.state.email} onChange={(e) =>this.setState({email:e.target.value})}/><br/>
+                              </div>
+                              <div className="form-group">
+                                <button className="green-btn" onClick={() =>{ this.forgot(this.state.email) }}>Send</button>
+                              </div>
+                            </div>
+                            <span>Don't have an account? <a href="#/signup">Sign up here</a></span>
+                          </div>
+                       </div>)}
                 </div>
              </div>
         </div>
