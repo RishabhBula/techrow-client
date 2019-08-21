@@ -70,7 +70,7 @@ class Login extends Component{
                               </div>
                               <div className="form-group">
                                 <a>forgot password</a>
-                                <button className="green-btn">Login</button>
+                                <button className="green-btn" onClick={() =>{ this.login(this.state.email,this.state.password) }}>Login</button>
                               </div>
                             </div>
                             <span>Don't have an account? <a href="#/signup">Sign up here</a></span>
