@@ -64,6 +64,7 @@ class App extends Component{
               <div>
                  <Header/>
            			 <Route exact path="/" component={Dashboard} />
+                 <Route exact path="/orderbundle" component={OrderBundle} />
               </div>
    				)
    	}else if(this.props.auth.loaded==true && this.props.auth.auth==false){
@@ -72,7 +73,6 @@ class App extends Component{
    					<Route exact path="/" component={Home} />
             <Route exact path="/login" component={Login} />
             <Route exact path="/signup" component={SignUp} />
-            <Route exact path="/orderbundle" component={OrderBundle} />
    				</div>
 
    			)

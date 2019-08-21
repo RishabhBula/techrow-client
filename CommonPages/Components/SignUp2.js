@@ -29,7 +29,7 @@ class SignUp2 extends Component{
   }
 
   next(){
-    if(this.state.firstname=="" || this.state.lastname=="" || this.state.email=="" || this.state.phoneNumber=="" || this.state.username=="" || this.state.password==""){
+    if(this.state.firstname=="" || this.state.lastname=="" || this.state.email=="" || this.state.phonenumber=="" || this.state.username=="" || this.state.password==""){
       this.setState({error:true,errortext:"please fill all fields to continue."})
     }else if(this.state.password.length<10){
       this.setState({error:true,errortext:"password strength not good."})
@@ -66,11 +66,11 @@ class SignUp2 extends Component{
                    <div className="form">
                       <div className="form-group">
                           <label>Firstname</label>
-                          <input id="firstname" type="firstname" className="form-control" placeholder="Your firstname" value={this.state.firstname} onChange={(e) => {this.setState({firstname:e.target.value,error:false,errortext:""}); this.props.signupdetails.firstName=e.target.value }}/>
+                          <input id="firstname" type="firstname" className="form-control" placeholder="Your firstname" value={this.state.firstname} onChange={(e) => {this.setState({firstname:e.target.value,error:false,errortext:""}); this.props.signupdetails.firstname=e.target.value }}/>
                       </div>
                       <div className="form-group">
                           <label>Lastname</label>
-                          <input id="lastname" type="lastname" className="form-control" placeholder="Your lastname" value={this.state.lastname} onChange={(e) => {this.setState({lastname:e.target.value,error:false,errortext:""}); this.props.signupdetails.lastName=e.target.value }}/>
+                          <input id="lastname" type="lastname" className="form-control" placeholder="Your lastname" value={this.state.lastname} onChange={(e) => {this.setState({lastname:e.target.value,error:false,errortext:""}); this.props.signupdetails.lastname=e.target.value }}/>
                       </div>
                       <div className="form-group">
                           <label>Email</label>
@@ -78,7 +78,7 @@ class SignUp2 extends Component{
                       </div>
                       <div className="form-group">
                           <label>Phone</label>
-                          <input id="phonenumber" type="phonenumber" className="form-control" placeholder="Your phonenumber" value={this.state.phonenumber} onChange={(e) => {this.setState({phonenumber:e.target.value,error:false,errortext:""}); this.props.signupdetails.phoneNumber=e.target.value }}/>
+                          <input id="phonenumber" type="phonenumber" className="form-control" placeholder="Your phonenumber" value={this.state.phonenumber} onChange={(e) => {this.setState({phonenumber:e.target.value,error:false,errortext:""}); this.props.signupdetails.phonenumber=e.target.value }}/>
                       </div>
                       <div className="form-group">
                           <label>Username</label>

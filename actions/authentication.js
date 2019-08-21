@@ -22,13 +22,14 @@ export function getAuthentication(){
 
 	return dispatch => {
 
-    firebase.auth().onAuthStateChanged((user) =>{
+    var unsubscribe = firebase.auth().onAuthStateChanged((user) =>{
       if (user) {
         // User is signed in.
           dispatch({
                    type: 'GET_AUTH',
                    payload:{loaded:true,auth:true,authData:{}}
            })
+          unsubscribe();
         // ...
       } else {
         // User is signed out.
@@ -36,6 +37,7 @@ export function getAuthentication(){
                    type: 'GET_AUTH',
                    payload:{loaded:true,auth:false,authData:{}}
            })
+          unsubscribe();
         // ...
       }
     });

@@ -18,9 +18,15 @@ class Dashboard extends Component{
   render(){
       return(
         <div className="full-page">
-           <div style={{backgroundColor: 'white',display: 'flex',textAlign:'center'}}> 
-              <h1>Dashboard</h1>
-           </div>
+          <div className="inner-wrap"> 
+                <div className="inner-blue-menu">
+                    <h1>DASHBOARD</h1>
+                </div>
+                <div className="inner-right-wrap">
+                    <h4>DASHBOARD</h4>
+                          
+                </div>
+             </div>
         </div>
       );
    }

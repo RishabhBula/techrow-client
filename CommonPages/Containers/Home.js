@@ -21,8 +21,8 @@ class Home extends Component{
       return(
         <div className="full-page">
            <HomeHeader/>
-            <section class="home-banner">
-              <div class="container">
+            <section className="home-banner">
+              <div className="container">
                 <h1>The Power of Immersive Technology</h1>
               </div>
             </section>

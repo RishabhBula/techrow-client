@@ -28,8 +28,8 @@ class OrderBundle1 extends Component{
   render(){
       return(
         <div>
-           <div>
-                <span>Order Bundles</span>
+           <div className="form-wrap">
+                <h4>Order Bundles</h4>
                 <div style={{backgroundColor: '#fff'}}>
                    <label>Please tell us how many headsets you need:</label><br/>
                    <input id="count" type="count" className="" placeholder="000" value={this.state.count} onChange={(e) =>this.setState({count:e.target.value,error:false,errortext:""})}/><br/>

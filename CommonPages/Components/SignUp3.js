@@ -46,9 +46,9 @@ class SignUp3 extends Component{
             lastName:this.props.signupdetails.lastname,
             email:this.props.signupdetails.email,
             username:this.props.signupdetails.username,
-            phoneNumber:this.props.signupdetails.phoneNumber,
+            phoneNumber:this.props.signupdetails.phonenumber,
             school:{
-              name:this.props.signupdetails.phoneNumber,
+              name:this.props.signupdetails.schoolname,
               address:this.props.signupdetails.address,
               city:this.props.signupdetails.city,
               state:this.props.signupdetails.state,

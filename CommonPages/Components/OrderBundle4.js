@@ -21,7 +21,7 @@ class OrderBundle4 extends Component{
       return(
         <div>
            <div>
-                <div style={{backgroundColor: '#fff'}}>
+                <div className="form-wrap">
                     <span>Your Order has been Placed</span><br/>
                     <button className="pointer" onClick={() =>{ window.location.href="#/" }}>Go to Dashboard</button><br/>
                 </div>

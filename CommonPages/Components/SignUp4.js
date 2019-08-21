@@ -6,6 +6,7 @@ import {Steps} from 'antd';
 import Stepper from 'react-stepper-horizontal';
 
 import {setSignupDetails} from '../../actions/setSignupDetails';
+import {getAuthentication} from '../../actions/authentication'
 
 const { Step } = Steps;
 
@@ -19,6 +20,16 @@ class SignUp4 extends Component{
   
   componentDidMount(){
       
+  }
+
+  skip(){
+      this.props.getAuthentication();
+      window.location.href="#/";
+  }
+
+  orderbundle(){
+      this.props.getAuthentication();
+      window.location.href="#/orderbundle";
   }
 
   render(){
@@ -48,8 +59,8 @@ class SignUp4 extends Component{
                 <div className="form-wrap">
                    <div>
                      <span>Would you like to order a VR bundle?</span><br/>
-                     <button className="pointer" onClick={() =>{ window.location.href="#/orderbundle" }}>Order Bundle</button><br/>
-                     <a href="#/">skip for now</a><br/>
+                     <button className="pointer" onClick={() =>{ this.orderbundle() }}>Order Bundle</button><br/>
+                     <a onClick={() =>{ this.skip() }}>skip for now</a><br/>
                    </div>
                 </div>
             </div>
@@ -65,6 +76,6 @@ function mapStateToProps(state){
   };
 }
 function matchDispatchToProps(dispatch){
-  return bindActionCreators({ setSignupDetails:setSignupDetails }, dispatch);
+  return bindActionCreators({ setSignupDetails:setSignupDetails, getAuthentication:getAuthentication }, dispatch);
 }
 export default connect(mapStateToProps, matchDispatchToProps)(SignUp4);
