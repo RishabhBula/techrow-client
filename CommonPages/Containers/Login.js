@@ -28,7 +28,19 @@ class Login extends Component{
 
   login(email,password){
       console.log("====login",email,password)
-      
+      firebase.auth().signInWithEmailAndPassword(email, password)
+      .then((res) =>{
+        console.log("====login",res)
+        this.props.getAuthentication();
+        window.location.href="#/";
+      })
+      .catch((error) =>{
+        // Handle Errors here.
+        console.log("====error",error)
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        // ...
+      })
   }
 
   render(){
@@ -58,7 +70,7 @@ class Login extends Component{
                             </div>
                             <div className="form-group">
                               <a>forgot password</a>
-                              <button className="green-btn">Login</button>
+                              <button className="green-btn" onClick={() =>{ this.login(this.state.email,this.state.password) }}>Login</button>
                             </div>
                             </form>
                             <span>Don't have an account? <a href="#/signup">Sign up here</a></span>
