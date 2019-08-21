@@ -63,7 +63,7 @@ class SignUp2 extends Component{
                 </div>
                 <h4>Tell Us About Yourself</h4>
                 <div className="form-wrap">
-                   <form>
+                   <div className="form">
                       <div className="form-group">
                           <label>Firstname</label>
                           <input id="firstname" type="firstname" className="form-control" placeholder="Your firstname" value={this.state.firstname} onChange={(e) => {this.setState({firstname:e.target.value,error:false,errortext:""}); this.props.signupdetails.firstName=e.target.value }}/>
@@ -98,7 +98,7 @@ class SignUp2 extends Component{
                           {this.state.password.length>=10 && (<div>Strong</div>)}
                         </div>
                         )}
-                   </form>
+                   </div>
                    {this.state.error==true && (<div><span style={{color: 'red'}}>*{this.state.errortext}</span></div>)}
                    <span className="pointer" onClick={() =>{ this.next() }}>next</span>
                 </div>

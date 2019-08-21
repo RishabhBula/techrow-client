@@ -98,7 +98,7 @@ class SignUp3 extends Component{
                 </div>
                 <h4>Tell Us About Your School</h4>
                 <div className="form-wrap">
-                   <form>
+                   <div className="form">
                       <div className="form-group">
                           <label>schoolName</label>
                           <input id="schoolname" type="schoolname" className="form-control" placeholder="Your schoolname" value={this.state.schoolname} onChange={(e) => {this.setState({schoolname:e.target.value,error:false,errortext:""}); this.props.signupdetails.schoolname=e.target.value }}/>
@@ -135,7 +135,7 @@ class SignUp3 extends Component{
                             <Option value="C+">C+</Option>
                           </Select>
                       </div>
-                   </form>
+                   </div>
                    {this.state.error==true && (<div><span style={{color: 'red'}}>*{this.state.errortext}</span></div>)}
                    <span className="pointer" onClick={() =>{ this.next() }}>Create Account</span>
                 </div>
