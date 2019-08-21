@@ -170,19 +170,19 @@ header {
       padding: 30px;
       margin: auto;
       border-radius: 20px; }
-      .inner-wrap .inner-right-wrap .form-wrap form {
+      .inner-wrap .inner-right-wrap .form-wrap .form {
         width: 390px;
         margin: 80px auto; }
-        .inner-wrap .inner-right-wrap .form-wrap form .form-group label {
+        .inner-wrap .inner-right-wrap .form-wrap .form .form-group label {
           color: #6D6D6D;
           font-size: .75rem;
           font-family: "Open Sans", sans-serif;
           font-weight: 700;
           margin-bottom: 10px;
           text-transform: capitalize; }
-        .inner-wrap .inner-right-wrap .form-wrap form .form-group .form-control {
+        .inner-wrap .inner-right-wrap .form-wrap .form .form-group .form-control {
           background-color: #F3F3F3;
           border: 1px solid #707070;
           border-radius: 5px; }
-        .inner-wrap .inner-right-wrap .form-wrap form .form-group button {
+        .inner-wrap .inner-right-wrap .form-wrap .form .form-group button {
           float: right; }
