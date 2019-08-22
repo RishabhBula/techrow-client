@@ -8,8 +8,8 @@ const initialState = {
 	cardholdername:"",
 	postalcode:"",
 	cardnumber:"",
-	startdate:"",
-	enddate:"",
+	expmonth:"",
+	expyear:"",
 	cvv:""
 }
 export default function(state=initialState, action){

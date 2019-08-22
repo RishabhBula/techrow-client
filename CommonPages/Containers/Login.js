@@ -79,7 +79,7 @@ class Login extends Component{
                             <div className="form">
                               <div className="form-group">
                                 <label>email</label>
-                                <input id="email" type="email" className="form-control" placeholder="email" value={this.state.email} onChange={(e) =>this.setState({email:e.target.value})}/><br/>
+                                <input id="email" className="form-control" placeholder="email" value={this.state.email} onChange={(e) =>this.setState({email:e.target.value})}/><br/>
                               </div>
                               <div className="form-group">
                                 <label>password</label>

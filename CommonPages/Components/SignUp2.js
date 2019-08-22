@@ -66,23 +66,23 @@ class SignUp2 extends Component{
                    <div className="form">
                       <div className="form-group">
                           <label>Firstname</label>
-                          <input id="firstname" type="firstname" className="form-control" placeholder="Your firstname" value={this.state.firstname} onChange={(e) => {this.setState({firstname:e.target.value,error:false,errortext:""}); this.props.signupdetails.firstname=e.target.value }}/>
+                          <input id="firstname" className="form-control" placeholder="Your firstname" value={this.state.firstname} onChange={(e) => {this.setState({firstname:e.target.value,error:false,errortext:""}); this.props.signupdetails.firstname=e.target.value }}/>
                       </div>
                       <div className="form-group">
                           <label>Lastname</label>
-                          <input id="lastname" type="lastname" className="form-control" placeholder="Your lastname" value={this.state.lastname} onChange={(e) => {this.setState({lastname:e.target.value,error:false,errortext:""}); this.props.signupdetails.lastname=e.target.value }}/>
+                          <input id="lastname" className="form-control" placeholder="Your lastname" value={this.state.lastname} onChange={(e) => {this.setState({lastname:e.target.value,error:false,errortext:""}); this.props.signupdetails.lastname=e.target.value }}/>
                       </div>
                       <div className="form-group">
                           <label>Email</label>
-                          <input id="email" type="email" className="form-control" placeholder="Your email" value={this.state.email} onChange={(e) => {this.setState({email:e.target.value,error:false,errortext:""}); this.props.signupdetails.email=e.target.value }}/>
+                          <input id="email" className="form-control" placeholder="Your email" value={this.state.email} onChange={(e) => {this.setState({email:e.target.value,error:false,errortext:""}); this.props.signupdetails.email=e.target.value }}/>
                       </div>
                       <div className="form-group">
                           <label>Phone</label>
-                          <input id="phonenumber" type="phonenumber" className="form-control" placeholder="Your phonenumber" value={this.state.phonenumber} onChange={(e) => {this.setState({phonenumber:e.target.value,error:false,errortext:""}); this.props.signupdetails.phonenumber=e.target.value }}/>
+                          <input id="phonenumber" className="form-control" placeholder="Your phonenumber" value={this.state.phonenumber} onChange={(e) => {this.setState({phonenumber:e.target.value,error:false,errortext:""}); this.props.signupdetails.phonenumber=e.target.value }}/>
                       </div>
                       <div className="form-group">
                           <label>Username</label>
-                          <input disabled id="username" type="username" className="form-control" placeholder="Set username" value={this.state.email} onChange={(e) => {this.setState({email:e.target.value,error:false,errortext:""}); this.props.signupdetails.email=e.target.value }}/>
+                          <input disabled id="username" className="form-control" placeholder="Set username" value={this.state.email} onChange={(e) => {this.setState({email:e.target.value,error:false,errortext:""}); this.props.signupdetails.email=e.target.value }}/>
                       </div>
                       <div className="form-group">
                           <label>password</label>
