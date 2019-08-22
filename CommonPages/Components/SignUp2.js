@@ -2,12 +2,14 @@ import React, { Component } from 'react';
 import {bindActionCreators} from 'redux';
 import { connect } from 'react-redux';
 import axios from 'axios';
-import {Steps} from 'antd';
+import {Steps, Input, Select} from 'antd';
 import Stepper from 'react-stepper-horizontal';
 
 import {setSignupDetails} from '../../actions/setSignupDetails';
 
 const { Step } = Steps;
+const InputGroup = Input.Group;
+const Option = Select.Option;
 
 class SignUp2 extends Component{
 	constructor(props){
@@ -16,6 +18,7 @@ class SignUp2 extends Component{
       firstname:"",
       lastname:"",
       email:"",
+      countrycode:"",
       phonenumber:"",
       username:"",
       password:"",
@@ -29,7 +32,7 @@ class SignUp2 extends Component{
   }
 
   next(){
-    if(this.state.firstname=="" || this.state.lastname=="" || this.state.email=="" || this.state.phonenumber=="" || this.state.username=="" || this.state.password==""){
+    if(this.state.firstname=="" || this.state.lastname=="" || this.state.email=="" || this.state.phonenumber=="" || this.state.password==""){
       this.setState({error:true,errortext:"please fill all fields to continue."})
     }else if(this.state.password.length<10){
       this.setState({error:true,errortext:"password strength not good."})
@@ -78,7 +81,17 @@ class SignUp2 extends Component{
                       </div>
                       <div className="form-group">
                           <label>Phone</label>
-                          <input id="phonenumber" className="form-control" placeholder="Your phonenumber" value={this.state.phonenumber} onChange={(e) => {this.setState({phonenumber:e.target.value,error:false,errortext:""}); this.props.signupdetails.phonenumber=e.target.value }}/>
+                          <InputGroup>
+                             <Select
+                                value={this.state.countrycode}
+                                onChange={(e) =>{this.setState({countrycode:e}); this.props.signupdetails.countrycode=e }}
+                                >
+                                  <Option value="+1">+1</Option>
+                                  <Option value="+2">+2</Option>
+                                  <Option value="+3">+3</Option>
+                             </Select>
+                             <input id="phonenumber" className="form-control" placeholder="Your phonenumber" value={this.state.phonenumber} onChange={(e) => {this.setState({phonenumber:e.target.value,error:false,errortext:""}); this.props.signupdetails.phonenumber=e.target.value }}/>
+                          </InputGroup>
                       </div>
                       <div className="form-group">
                           <label>Username</label>
