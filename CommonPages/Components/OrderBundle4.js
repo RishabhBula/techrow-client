@@ -3,6 +3,8 @@ import {bindActionCreators} from 'redux';
 import { connect } from 'react-redux';
 import axios from 'axios';
 
+import {setOrderDetails} from '../../actions/setOrderDetails';
+
 class OrderBundle4 extends Component{
 	constructor(props){
 		super(props);
@@ -14,7 +16,7 @@ class OrderBundle4 extends Component{
 	}
   
   componentDidMount(){
-      
+      console.log("order details",this.props.orderdetails)
   }
 
   render(){
@@ -34,10 +36,10 @@ class OrderBundle4 extends Component{
 
 function mapStateToProps(state){
   return{
-    
+      orderdetails:state.orderdetails,
   };
 }
 function matchDispatchToProps(dispatch){
-  return bindActionCreators({ }, dispatch);
+  return bindActionCreators({ setOrderDetails:setOrderDetails }, dispatch);
 }
 export default connect(mapStateToProps, matchDispatchToProps)(OrderBundle4);

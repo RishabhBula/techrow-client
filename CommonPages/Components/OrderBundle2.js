@@ -3,6 +3,8 @@ import {bindActionCreators} from 'redux';
 import { connect } from 'react-redux';
 import axios from 'axios';
 
+import {setOrderDetails} from '../../actions/setOrderDetails';
+
 class OrderBundle2 extends Component{
 	constructor(props){
 		super(props);
@@ -38,23 +40,23 @@ class OrderBundle2 extends Component{
                    <div className="form">
                       <div className="form-group">
                           <label>Name</label>
-                          <input id="name" type="name" className="form-control" placeholder="Your name" value={this.state.name} onChange={(e) =>this.setState({name:e.target.value,error:false,errortext:""})}/>
+                          <input id="name" type="name" className="form-control" placeholder="Your name" value={this.state.name} onChange={(e) =>{ this.setState({name:e.target.value,error:false,errortext:""}); this.props.orderdetails.name=e.target.value; }}/>
                       </div>
                       <div className="form-group">
                           <label>Address</label>
-                          <input id="address" type="address" className="form-control" placeholder="Your address" value={this.state.address} onChange={(e) =>this.setState({address:e.target.value,error:false,errortext:""})}/>
+                          <input id="address" type="address" className="form-control" placeholder="Your address" value={this.state.address} onChange={(e) =>{ this.setState({address:e.target.value,error:false,errortext:""}); this.props.orderdetails.address=e.target.value; }}/>
                       </div>
                       <div className="form-group">
                           <label>City</label>
-                          <input id="city" type="city" className="form-control" placeholder="Your city" value={this.state.city} onChange={(e) =>this.setState({city:e.target.value,error:false,errortext:""})}/>
+                          <input id="city" type="city" className="form-control" placeholder="Your city" value={this.state.city} onChange={(e) =>{ this.setState({city:e.target.value,error:false,errortext:""}); this.props.orderdetails.city=e.target.value; }}/>
                       </div>
                       <div className="form-group">
                           <label>State</label>
-                          <input id="state" type="state" className="form-control" placeholder="Your state" value={this.state.state} onChange={(e) =>this.setState({state:e.target.value,error:false,errortext:""})}/>
+                          <input id="state" type="state" className="form-control" placeholder="Your state" value={this.state.state} onChange={(e) =>{ this.setState({state:e.target.value,error:false,errortext:""}); this.props.orderdetails.state=e.target.value; }}/>
                       </div>
                       <div className="form-group">
                           <label>Zip Code</label>
-                          <input id="zipcode" type="zipcode" className="form-control" placeholder="Set zipcode" value={this.state.zipcode} onChange={(e) =>this.setState({zipcode:e.target.value,error:false,errortext:""})}/>
+                          <input id="zipcode" type="zipcode" className="form-control" placeholder="Set zipcode" value={this.state.zipcode} onChange={(e) =>{ this.setState({zipcode:e.target.value,error:false,errortext:""}); this.props.orderdetails.zipcode=e.target.value; }}/>
                       </div>
                    </div>
                    {this.state.error==true && (<div><span style={{color: 'red'}}>*{this.state.errortext}</span></div>)}
@@ -69,10 +71,10 @@ class OrderBundle2 extends Component{
 
 function mapStateToProps(state){
   return{
-    
+      orderdetails:state.orderdetails,
   };
 }
 function matchDispatchToProps(dispatch){
-  return bindActionCreators({ }, dispatch);
+  return bindActionCreators({ setOrderDetails:setOrderDetails }, dispatch);
 }
 export default connect(mapStateToProps, matchDispatchToProps)(OrderBundle2);
