@@ -67,15 +67,21 @@ class SignUp2 extends Component{
                 </div>
                 <h4>Tell Us About Yourself</h4>
                 <div className="form-wrap">
-                   <div className="form">
-                      <div className="form-group">
-                          <label>Firstname</label>
-                          <input id="firstname" className="form-control" placeholder="Your firstname" value={this.state.firstname} onChange={(e) => {this.setState({firstname:e.target.value,error:false,errortext:""}); this.props.signupdetails.firstname=e.target.value }}/>
-                      </div>
-                      <div className="form-group">
-                          <label>Lastname</label>
-                          <input id="lastname" className="form-control" placeholder="Your lastname" value={this.state.lastname} onChange={(e) => {this.setState({lastname:e.target.value,error:false,errortext:""}); this.props.signupdetails.lastname=e.target.value }}/>
-                      </div>
+                    <div className="form">
+                      <div className="row">
+                          <div className="col-sm-6">
+                            <div className="form-group">
+                                <label>Firstname</label>
+                                <input id="firstname" className="form-control" placeholder="Your firstname" value={this.state.firstname} onChange={(e) => {this.setState({firstname:e.target.value,error:false,errortext:""}); this.props.signupdetails.firstname=e.target.value }}/>
+                            </div>
+                          </div>
+                          <div className="col-sm-6">
+                            <div className="form-group">
+                                <label>Lastname</label>
+                                <input id="lastname" className="form-control" placeholder="Your lastname" value={this.state.lastname} onChange={(e) => {this.setState({lastname:e.target.value,error:false,errortext:""}); this.props.signupdetails.lastname=e.target.value }}/>
+                            </div>
+                          </div>
+                        </div>
                       <div className="form-group">
                           <label>Email</label>
                           <input id="email" className="form-control" placeholder="Your email" value={this.state.email} onChange={(e) => {this.setState({email:e.target.value,error:false,errortext:""}); this.props.signupdetails.email=e.target.value }}/>
@@ -104,13 +110,14 @@ class SignUp2 extends Component{
                           <input id="password" type="password" className="form-control" placeholder="Create a strong password" value={this.state.password} onChange={(e) => {this.setState({password:e.target.value,error:false,errortext:""}); this.props.signupdetails.password=e.target.value }}/>
                       </div>
                       {this.state.password!="" && (
-                        <div className="row">
-                          <div style={{backgroundColor: 'red',height: '10px',width: '20px'}}></div>
-                          {this.state.password.length>=5 && (<div style={{backgroundColor: 'orange',height: '10px',width: '20px'}}></div>)}
-                          {this.state.password.length>=10 && (<div style={{backgroundColor: 'green',height: '10px',width: '20px'}}></div>)}
-                          {this.state.password.length<5 && (<div>Weak</div>)}
-                          {this.state.password.length>=5 && this.state.password.length<10 && (<div>Medium</div>)}
-                          {this.state.password.length>=10 && (<div>Strong</div>)}
+                        <div className="pass-strength">
+                          <div className="pass-strength-tile" style={{backgroundColor: 'red'}}></div>
+                          {this.state.password.length>=5 && (<div  className="pass-strength-tile" style={{backgroundColor: 'orange'}}></div>)}
+                          {this.state.password.length>=10 && (<div  className="pass-strength-tile" style={{backgroundColor: 'green'}}></div>)}
+                          {this.state.password.length<5 && (<b>Weak</b>)}
+                          {this.state.password.length>=5 && this.state.password.length<10 && (<b>Medium</b>)}
+                          {this.state.password.length>=10 && (<b>Strong</b>)}
+                          <br/><span className="about-password">At least 6 characters including uppercase, lowercase, number and symbol</span>
                         </div>
                         )}
                    </div>

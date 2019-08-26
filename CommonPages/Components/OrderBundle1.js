@@ -30,15 +30,24 @@ class OrderBundle1 extends Component{
   render(){
       return(
         <div>
-           <div className="form-wrap">
-                <h4>Order Bundles</h4>
+          <div className="">
+          <h4>Order Bundles</h4>
+             <div className="form-wrap signup-wrap order-bundle">
                 <div style={{backgroundColor: '#fff'}}>
-                   <label>Please tell us how many headsets you need:</label><br/>
-                   <input id="count" className="" placeholder="000" value={this.state.count} onChange={(e) =>{ this.setState({count:e.target.value,error:false,errortext:""}); this.props.orderdetails.ordercount=e.target.value; }}/><br/>
+                   <div className="form">
+                   <h2>Please tell us how many headsets you need:</h2>
+                    <div className="form-group">
+                      <input id="count" className="form-control order-num" placeholder="000" value={this.state.count} onChange={(e) =>{ this.setState({count:e.target.value,error:false,errortext:""}); this.props.orderdetails.ordercount=e.target.value; }}/>
+                    </div>
+                   </div>
+                   
                    {this.state.error==true && (<div><span style={{color: 'red'}}>*{this.state.errortext}</span></div>)}
-                   <span className="pointer" onClick={() =>{ this.next() }}>next</span>
+                  
+                   <button className="pointer"  onClick={() =>{ this.next() }}>Next<img src="./images/arrow-right.png" className="img-fluid"/></button>
+                  <div className="clearfix"></div>
                 </div>
-            </div>
+              </div>
+          </div>
         </div>
       );
    }

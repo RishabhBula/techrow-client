@@ -41,6 +41,9 @@ table {
   border-collapse: collapse;
   border-spacing: 0; }
 
+b {
+  font-weight: 600; }
+
 .blue-btn {
   background-color: #262161 !important;
   color: #fff !important;
@@ -237,6 +240,28 @@ header {
           display: inline-block; }
         .inner-wrap .inner-right-wrap .confirm-order .form-wrap h5 {
           margin-bottom: 40px; }
+    .inner-wrap .inner-right-wrap .pass-strength .pass-strength-tile {
+      width: 40px;
+      height: 10px;
+      display: inline-block;
+      margin-right: 10px; }
+    .inner-wrap .inner-right-wrap .pass-strength .about-password {
+      display: inline-block;
+      margin-top: 10px;
+      color: #888888; }
+    .inner-wrap .inner-right-wrap .order-bundle h2 {
+      font-size: 1.5rem;
+      font-family: "Quicksand", sans-serif;
+      line-height: 24px;
+      font-weight: 600;
+      color: #262161;
+      margin-bottom: 30px; }
+    .inner-wrap .inner-right-wrap .order-bundle .form {
+      width: 600px !important; }
+    .inner-wrap .inner-right-wrap .order-bundle .order-num {
+      width: 100px !important;
+      margin: auto !important;
+      border: none !important; }
 
 .signup-wrap {
   text-align: center; }
@@ -259,7 +284,7 @@ header {
       line-height: 25px;
       font-weight: 300;
       color: #919191; }
-  .signup-wrap .row {
+  .signup-wrap .user-type-select {
     width: 800px;
     margin: auto; }
   .signup-wrap button {

@@ -36,6 +36,7 @@ class SignUp1 extends Component{
                 <h4></h4>
                 <div className="form-wrap signup-wrap">
                    <h5>I am a/an</h5>
+                   <div className="user-type-select">
                    <div className="row">
                       <div className="col-6">
                         <div className="signin-opt" onClick={() =>{ this.setState({state1:"#B1F543",state2:"#fff",type:"teacher/educator",error:false,errortext:""}); this.props.signupdetails.type="teacher/educator" }}
@@ -55,6 +56,7 @@ class SignUp1 extends Component{
                         </div>
                       </div>
                    </div>
+                  </div>
                    {this.state.error==true && (<div><span style={{color: 'red'}}>*{this.state.errortext}</span></div>)}
                    <button onClick={() =>{ this.next() }}>Next <img src="./images/arrow-right.png" className="img-fluid"/></button>
                    <div className="clearfix"></div>

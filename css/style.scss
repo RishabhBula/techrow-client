@@ -41,6 +41,7 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
+b{font-weight: 600}
 
 $blue: #262161;
 $green: #B1F543;
@@ -120,6 +121,16 @@ header{ height: 85px; background-color: $w; padding: 0!important;
 
 			}
 		}
+		.pass-strength{
+			.pass-strength-tile{width: 40px; height: 10px; display: inline-block;margin-right: 10px}
+			.about-password{display: inline-block;margin-top: 10px; color: #888888}
+
+		}
+		.order-bundle{
+			h2{font-size: 1.5rem; font-family: $qfont; line-height: 24px; font-weight: 600; color: #262161; margin-bottom: 30px;}
+			.form{width: 600px!important}
+			.order-num{width: 100px!important; margin: auto!important; border:none!important}
+		}
 	}
 }
 .signup-wrap{text-align: center;
@@ -130,7 +141,7 @@ header{ height: 85px; background-color: $w; padding: 0!important;
 		p{font-family: $opensan; font-size: 1.125rem;line-height: 25px; font-weight: 300; color: #919191}
 
 	}
-	.row{width: 800px; margin: auto;}
+	.user-type-select{width: 800px; margin: auto;}
 	button{float: right; background:none; border:none; cursor: pointer;vertical-align: middle; display: flex; align-items:center; color: #C8C8C8;padding: 5px 10px; border:2px solid $w!important;border-radius: 5px; margin-top: 20px;
 		img{border-radius: 50%; padding: 10px; background-color: $green; width: 50px; margin-left: 10px;}
 		&:focus{outline: none; box-shadow: none; border:none}	
