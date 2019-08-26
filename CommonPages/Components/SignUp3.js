@@ -87,7 +87,7 @@ class SignUp3 extends Component{
   render(){
       return(
         <div>
-           <div>
+           <div className="signin-second signup-wrap">>
                 <div>
 
                   {/*<Steps current={1}>
@@ -134,7 +134,6 @@ class SignUp3 extends Component{
                           <label>Grades</label>
                           <Select
                           showSearch
-                          style={{ width: 200 }}
                           placeholder="Select Grade"
                           optionFilterProp="children"
                           value={this.state.grade}
@@ -148,7 +147,9 @@ class SignUp3 extends Component{
                       </div>
                    </div>
                    {this.state.error==true && (<div><span style={{color: 'red'}}>*{this.state.errortext}</span></div>)}
-                   <span className="pointer" onClick={() =>{ this.next() }}>Create Account</span>
+                  
+                  <button className="pointer"onClick={() =>{ this.next() }}>Create Account<img src="./images/arrow-right.png" className="img-fluid"/></button>
+                   <div className="clearfix"></div>
                 </div>
             </div>
         </div>

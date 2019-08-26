@@ -9,8 +9,8 @@ class SignUp1 extends Component{
 	constructor(props){
 		super(props);
     this.state = {
-      state1:"white",
-      state2:"white",
+      state1:"#fff",
+      state2:"#fff",
       type:"",
       error:false,
       errortext:""
@@ -33,18 +33,31 @@ class SignUp1 extends Component{
       return(
         <div>
            <div>
-                <div className="form-wrap">
-                   <span>i am a/an</span>
+                <h4></h4>
+                <div className="form-wrap signup-wrap">
+                   <h5>I am a/an</h5>
                    <div className="row">
-                      <div className="col-6 pointer" onClick={() =>{ this.setState({state1:"blue",state2:"white",type:"teacher/educator",error:false,errortext:""}); this.props.signupdetails.type="teacher/educator" }}>
-                        <button style={{backgroundColor:this.state.state1}}>Teacher/Educator</button>
+                      <div className="col-6">
+                        <div className="signin-opt" onClick={() =>{ this.setState({state1:"#B1F543",state2:"#fff",type:"teacher/educator",error:false,errortext:""}); this.props.signupdetails.type="teacher/educator" }}
+                          style={{borderColor:this.state.state1}}
+                        >
+                          
+                          <img src="./images/man-and-tie.png" className="img-fluid" alt="study"/>
+                          <h5 >Teacher/Educator</h5>
+                          <p>I want to bring Virtual Reality into my classroom/school. I want access to hours of learning contents and well-structured, standards-aligned lesson plan</p>
+                        </div>
                       </div>
-                      <div className="col-6 pointer" onClick={() =>{ this.setState({state1:"white",state2:"blue",type:"publisher",error:false,errortext:""}); this.props.signupdetails.type="publisher" }}>
-                        <button style={{backgroundColor:this.state.state2}}>Publisher</button>
+                      <div className="col-6 ">
+                        <div className="signin-opt" onClick={() =>{ this.setState({state1:"#fff",state2:" #B1F543",type:"publisher",error:false,errortext:""}); this.props.signupdetails.type="publisher" }} style={{borderColor:this.state.state2}}>
+                          <img src="./images/study.png" className="img-fluid" alt="study"/>
+                          <h5 >Publisher</h5 >
+                          <p>I have great educational content and standards-aligned lesson plans. I want access to classrooms in need</p>
+                        </div>
                       </div>
                    </div>
                    {this.state.error==true && (<div><span style={{color: 'red'}}>*{this.state.errortext}</span></div>)}
-                   <span className="pointer" onClick={() =>{ this.next() }}>next</span>
+                   <button onClick={() =>{ this.next() }}>Next <img src="./images/arrow-right.png" className="img-fluid"/></button>
+                   <div className="clearfix"></div>
                 </div>
             </div>
         </div>

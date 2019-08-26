@@ -44,8 +44,8 @@ class SignUp2 extends Component{
   render(){
       return(
         <div>
-           <div>
-                <div>
+           <div className="signin-second signup-wrap">
+                <div className="step-iden">
 
                   {/*<Steps current={0}>
                     <Step style={{backgroundColor: 'red'}} status="wait"/>
@@ -58,6 +58,7 @@ class SignUp2 extends Component{
                     activeStep={ 0 }
                     activeColor="white"
                     completeColor="white"
+                    className="step"
                     defaultColor="white"
                     circleFontColor="black"
                     completeBarColor="#a9ff69"
@@ -114,7 +115,8 @@ class SignUp2 extends Component{
                         )}
                    </div>
                    {this.state.error==true && (<div><span style={{color: 'red'}}>*{this.state.errortext}</span></div>)}
-                   <span className="pointer" onClick={() =>{ this.next() }}>next</span>
+                   <button className="pointer" onClick={() =>{ this.next() }}>Next<img src="./images/arrow-right.png" className="img-fluid"/></button>
+                   <div className="clearfix"></div>
                 </div>
             </div>
         </div>

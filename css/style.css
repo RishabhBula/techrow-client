@@ -155,7 +155,8 @@ header {
       border-radius: 8px;
       display: inline-block; }
   .inner-wrap .inner-right-wrap {
-    margin-left: 300px; }
+    margin-left: 300px;
+    padding-bottom: 30px; }
     .inner-wrap .inner-right-wrap h4 {
       color: #262161;
       font-size: 2rem;
@@ -164,6 +165,14 @@ header {
       text-align: center;
       margin-top: 100px;
       margin-bottom: 20px; }
+    .inner-wrap .inner-right-wrap h5 {
+      color: #000;
+      font-size: 2rem;
+      font-weight: 500;
+      line-height: 40px;
+      text-align: center;
+      margin-top: 30px;
+      margin-bottom: 80px; }
     .inner-wrap .inner-right-wrap .form-wrap {
       background-color: #fff;
       width: 80%;
@@ -184,5 +193,115 @@ header {
           background-color: #F3F3F3;
           border: 1px solid #707070;
           border-radius: 5px; }
+          .inner-wrap .inner-right-wrap .form-wrap .form .form-group .form-control:focus {
+            outline: none;
+            -webkit-box-shadow: none;
+            box-shadow: none;
+            border-color: #B1F543; }
+        .inner-wrap .inner-right-wrap .form-wrap .form .form-group .ant-select {
+          border: 1px solid #707070;
+          border-radius: 5px;
+          height: 38px;
+          display: block;
+          width: 100%; }
+          .inner-wrap .inner-right-wrap .form-wrap .form .form-group .ant-select .ant-select-selection--single {
+            height: 36px;
+            background-color: #F3F3F3; }
+          .inner-wrap .inner-right-wrap .form-wrap .form .form-group .ant-select:hover {
+            border-color: #B1F543; }
+        .inner-wrap .inner-right-wrap .form-wrap .form .form-group .ant-input-group {
+          display: block; }
+          .inner-wrap .inner-right-wrap .form-wrap .form .form-group .ant-input-group .ant-select {
+            display: inline-block;
+            width: 20%;
+            background-color: #F3F3F3;
+            border: 1px solid #707070;
+            border-radius: 5px 0 0 5px;
+            float: left;
+            border-right: 0; }
+            .inner-wrap .inner-right-wrap .form-wrap .form .form-group .ant-input-group .ant-select .ant-select-selection--single {
+              height: 36px;
+              background-color: #F3F3F3; }
+          .inner-wrap .inner-right-wrap .form-wrap .form .form-group .ant-input-group .form-control {
+            width: 84%;
+            display: inline-block;
+            border-radius: 0 5px 5px 0; }
         .inner-wrap .inner-right-wrap .form-wrap .form .form-group button {
           float: right; }
+    .inner-wrap .inner-right-wrap .confirm-order {
+      text-align: center; }
+      .inner-wrap .inner-right-wrap .confirm-order .form-wrap {
+        padding: 100px; }
+        .inner-wrap .inner-right-wrap .confirm-order .form-wrap a {
+          margin-top: 10px;
+          display: inline-block; }
+        .inner-wrap .inner-right-wrap .confirm-order .form-wrap h5 {
+          margin-bottom: 40px; }
+
+.signup-wrap {
+  text-align: center; }
+  .signup-wrap .signin-opt {
+    border-radius: 10px;
+    padding: 30px;
+    border-width: 2px;
+    border-style: solid;
+    height: 100%;
+    cursor: pointer; }
+    .signup-wrap .signin-opt:hover {
+      background-color: rgba(200, 200, 200, 0.1); }
+    .signup-wrap .signin-opt img {
+      height: 100px; }
+    .signup-wrap .signin-opt h5 {
+      margin-bottom: 15px; }
+    .signup-wrap .signin-opt p {
+      font-family: "Open Sans", sans-serif;
+      font-size: 1.125rem;
+      line-height: 25px;
+      font-weight: 300;
+      color: #919191; }
+  .signup-wrap .row {
+    width: 800px;
+    margin: auto; }
+  .signup-wrap button {
+    float: right;
+    background: none;
+    border: none;
+    cursor: pointer;
+    vertical-align: middle;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    color: #C8C8C8;
+    padding: 5px 10px;
+    border: 2px solid #fff !important;
+    border-radius: 5px;
+    margin-top: 20px; }
+    .signup-wrap button img {
+      border-radius: 50%;
+      padding: 10px;
+      background-color: #B1F543;
+      width: 50px;
+      margin-left: 10px; }
+    .signup-wrap button:focus {
+      outline: none;
+      -webkit-box-shadow: none;
+      box-shadow: none;
+      border: none; }
+    .signup-wrap button:hover {
+      color: #B1F543;
+      border-color: #B1F543 !important; }
+
+.signin-second {
+  text-align: left; }
+  .signin-second .step-iden {
+    max-width: 800px;
+    margin: 30px auto 20px; }
+    .signin-second .step-iden span {
+      font-size: 1rem; }
+  .signin-second h4 {
+    margin-top: 70px !important; }
+  .signin-second .form-wrap .form {
+    margin: 50px !important; }

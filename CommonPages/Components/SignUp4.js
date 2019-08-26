@@ -35,7 +35,7 @@ class SignUp4 extends Component{
   render(){
       return(
         <div>
-           <div>
+           <div className="confirm-order">
                 <div>
 
                   {/*<Steps current={2}>
@@ -58,9 +58,9 @@ class SignUp4 extends Component{
                 <h4>You're almost done</h4>
                 <div className="form-wrap">
                    <div>
-                     <span>Would you like to order a VR bundle?</span><br/>
-                     <button className="pointer" onClick={() =>{ this.orderbundle() }}>Order Bundle</button><br/>
-                     <a onClick={() =>{ this.skip() }}>skip for now</a><br/>
+                     <h5>Would you like to order a VR bundle?</h5>
+                     <button className="green-btn" onClick={() =>{ this.orderbundle() }}>Order Bundle</button><br/>
+                     <a  onClick={() =>{ this.skip() }}><u>skip for now</u></a><br/>
                    </div>
                 </div>
             </div>

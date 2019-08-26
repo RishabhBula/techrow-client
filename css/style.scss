@@ -87,24 +87,68 @@ header{ height: 85px; background-color: $w; padding: 0!important;
 		a{color: $w; font-size: 1.125rem; font-weight: 500;   padding: 10px 20px; border:4px solid $green; border-radius: 8px;display: inline-block;}
 
 	}
-	.inner-right-wrap{margin-left: 300px;
+	.inner-right-wrap{margin-left: 300px;padding-bottom: 30px;
 		h4{color: $blue; font-size: 2rem; font-weight: 500; line-height: 40px; text-align: center; margin-top: 100px; margin-bottom: 20px;}
+		h5{color: $b; font-size: 2rem; font-weight: 500; line-height: 40px; text-align: center; margin-top: 30px; margin-bottom: 80px;}
 		.form-wrap{background-color: $w; width: 80%; padding: 30px; margin: auto; border-radius: 20px;
 			.form{width: 390px; margin:80px auto;
 				.form-group{
 					label{color: #6D6D6D; font-size: .75rem;font-family: $opensan; font-weight: 700;margin-bottom: 10px; text-transform: capitalize;}
 					.form-control{background-color: $grey; border:1px solid #707070; border-radius: 5px;
+						&:focus{outline: none; box-shadow: none; border-color: $green}
 					}
-					button{float: right;}
+					.ant-select{border:1px solid #707070; border-radius: 5px; height: 38px;display: block;width: 100%;
+						.ant-select-selection--single{height: 36px;background-color: $grey; }
+						&:hover{border-color: $green}
+					}
+					.ant-input-group{display: block;
+						.ant-select{display: inline-block;width: 20%;background-color: $grey; border:1px solid #707070; border-radius:5px 0 0 5px;float: left; border-right: 0;
+							.ant-select-selection--single{height: 36px; background-color: $grey; }
+						}
+						.form-control{width: 84%;display: inline-block;border-radius: 0 5px 5px 0}
+
+					}
+					button{float: right;
+					}
 				}
+			}
+		}
+		.confirm-order{text-align: center;
+			.form-wrap{padding: 100px;
+				a{margin-top: 10px; display: inline-block;}
+				h5{margin-bottom: 40px;}
+
 			}
 		}
 	}
 }
+.signup-wrap{text-align: center;
+	.signin-opt{border-radius: 10px;padding: 30px; border-width: 2px; border-style: solid;height: 100%; cursor: pointer;
+		&:hover{background-color: rgba(200,200,200,.1);}
+		img{height: 100px;}
+		h5{margin-bottom: 15px;}
+		p{font-family: $opensan; font-size: 1.125rem;line-height: 25px; font-weight: 300; color: #919191}
 
+	}
+	.row{width: 800px; margin: auto;}
+	button{float: right; background:none; border:none; cursor: pointer;vertical-align: middle; display: flex; align-items:center; color: #C8C8C8;padding: 5px 10px; border:2px solid $w!important;border-radius: 5px; margin-top: 20px;
+		img{border-radius: 50%; padding: 10px; background-color: $green; width: 50px; margin-left: 10px;}
+		&:focus{outline: none; box-shadow: none; border:none}	
+		&:hover{color: $green; border-color: $green!important;
+	
+		}		
 
-
-
+	}
+}
+.signin-second{ text-align: left;
+	.step-iden{max-width: 800px; margin:30px auto 20px;
+		span{font-size: 1rem;}
+	}
+	h4{margin-top: 70px!important;}
+	.form-wrap{
+		.form{margin:50px!important}
+	}
+}
 
 
 
