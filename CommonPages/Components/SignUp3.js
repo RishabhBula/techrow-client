@@ -54,12 +54,23 @@ class SignUp3 extends Component{
               state:this.props.signupdetails.state,
               zipCode:this.props.signupdetails.zipcode,
               grade:this.props.signupdetails.grade
-            }
+            },
+            headJackCredentials:{
+              authId:"",
+              appId:""
+            },
+            myOrders:[],
+            myRecentViews:[]
           }
       console.log("prooooopspspspsppspspsps======",this.props.signupdetails)
       firebase.auth().createUserWithEmailAndPassword(this.props.signupdetails.email, this.props.signupdetails.password)
       .then((res) =>{
             userObj.id=res.user.uid
+            userObj.status=true
+            userObj.emailVerified=true
+            userObj.createdDate=firebase.firestore.FieldValue.serverTimestamp()
+            userObj.updatedDate=firebase.firestore.FieldValue.serverTimestamp()
+
             db.collection("users").doc(res.user.uid).set(userObj)
             this.props.pageRender(4)
       })

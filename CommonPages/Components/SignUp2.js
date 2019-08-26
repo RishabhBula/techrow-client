@@ -83,6 +83,7 @@ class SignUp2 extends Component{
                           <label>Phone</label>
                           <InputGroup>
                              <Select
+                                style={{ width:60 }}
                                 value={this.state.countrycode}
                                 onChange={(e) =>{this.setState({countrycode:e}); this.props.signupdetails.countrycode=e }}
                                 >
