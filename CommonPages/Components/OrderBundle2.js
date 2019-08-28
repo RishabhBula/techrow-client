@@ -34,7 +34,7 @@ class OrderBundle2 extends Component{
   render(){
       return(
         <div>
-           <div>
+           <div className="signin-second signup-wrap">
                 <h4>Please enter shipping information:</h4>
                 <div className="form-wrap">
                    <div className="form">
@@ -60,7 +60,8 @@ class OrderBundle2 extends Component{
                       </div>
                    </div>
                    {this.state.error==true && (<div><span style={{color: 'red'}}>*{this.state.errortext}</span></div>)}
-                   <span className="pointer" onClick={() =>{ this.next() }}>next</span>
+                   <button className="pointer" onClick={() =>{ this.next() }}>Next<img src="./images/arrow-right.png" className="img-fluid"/></button>
+                   <div className="clearfix"></div>
                 </div>
             </div>
         </div>

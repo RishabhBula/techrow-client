@@ -22,10 +22,10 @@ class OrderBundle4 extends Component{
   render(){
       return(
         <div>
-           <div>
+           <div className="confirm-order">
                 <div className="form-wrap">
-                    <span>Your Order has been Placed</span><br/>
-                    <button className="pointer" onClick={() =>{ window.location.href="#/" }}>Go to Dashboard</button><br/>
+                    <h5>Your Order has been Placed</h5><br/>
+                    <button className="green-btn pointer" onClick={() =>{ window.location.href="#/" }}>Go to Dashboard</button><br/>
                 </div>
             </div>
         </div>
