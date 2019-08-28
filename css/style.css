@@ -261,7 +261,9 @@ header {
     .inner-wrap .inner-right-wrap .order-bundle .order-num {
       width: 100px !important;
       margin: auto !important;
-      border: none !important; }
+      border: none !important;
+      text-align: center;
+      font-size: 2.25rem; }
 
 .signup-wrap {
   text-align: center; }
