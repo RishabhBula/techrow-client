@@ -8,6 +8,7 @@ import OrderBundle1 from '../Components/OrderBundle1';
 import OrderBundle2 from '../Components/OrderBundle2';
 import OrderBundle3 from '../Components/OrderBundle3';
 import OrderBundle4 from '../Components/OrderBundle4';
+import OrderBundle5 from '../Components/OrderBundle5';
 
 class OrderBundle extends Component{
 	constructor(props){
@@ -43,6 +44,7 @@ class OrderBundle extends Component{
                         {this.state.page==2 && (<OrderBundle2 pageRender={this.pageRender.bind(this)} />)}
                         {this.state.page==3 && (<OrderBundle3 pageRender={this.pageRender.bind(this)} />)}
                         {this.state.page==4 && (<OrderBundle4 pageRender={this.pageRender.bind(this)} />)}
+                        {this.state.page==5 && (<OrderBundle5 pageRender={this.pageRender.bind(this)} />)}
                   </div>
               </div>
            </div>

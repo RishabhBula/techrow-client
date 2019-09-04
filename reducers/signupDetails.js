@@ -13,6 +13,9 @@ const initialState = {
 	state:"",
 	zipcode:"",
 	grade:"",
+	schooldistrict:"",
+	po:"",
+	taxexid:"",
 }
 export default function(state=initialState, action){
 	switch(action.type){

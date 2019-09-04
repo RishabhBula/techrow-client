@@ -26,6 +26,9 @@ class SignUp3 extends Component{
       state:"",
       zipcode:"",
       grade:"",
+      schooldistrict:"",
+      po:"",
+      taxexid:"",
       error:false,
       errortext:""
     }
@@ -53,7 +56,11 @@ class SignUp3 extends Component{
               city:this.props.signupdetails.city,
               state:this.props.signupdetails.state,
               zipCode:this.props.signupdetails.zipcode,
-              grade:this.props.signupdetails.grade
+              grade:this.props.signupdetails.grade,
+              schooldistrict:this.props.signupdetails.schooldistrict,
+              po:this.props.signupdetails.po,
+              taxexid:this.props.signupdetails.taxexid,
+
             },
             headJackCredentials:{
               authId:"",
@@ -109,43 +116,59 @@ class SignUp3 extends Component{
                 </div>
                 <h4>Tell Us About Your School</h4>
                 <div className="form-wrap">
-                   <div className="form">
-                      <div className="form-group">
-                          <label>schoolName</label>
-                          <input id="schoolname" className="form-control" placeholder="Your schoolname" value={this.state.schoolname} onChange={(e) => {this.setState({schoolname:e.target.value,error:false,errortext:""}); this.props.signupdetails.schoolname=e.target.value }}/>
+                    <div className="row">
+                       <div className="form col">
+                          <div className="form-group">
+                              <label>schoolName</label>
+                              <input id="schoolname" className="form-control" placeholder="Your schoolname" value={this.state.schoolname} onChange={(e) => {this.setState({schoolname:e.target.value,error:false,errortext:""}); this.props.signupdetails.schoolname=e.target.value }}/>
+                          </div>
+                          <div className="form-group">
+                              <label>Address</label>
+                              <input id="address" className="form-control" placeholder="Your address" value={this.state.address} onChange={(e) => {this.setState({address:e.target.value,error:false,errortext:""}); this.props.signupdetails.address=e.target.value }}/>
+                          </div>
+                          <div className="form-group">
+                              <label>City</label>
+                              <input id="city" className="form-control" placeholder="Your city" value={this.state.city} onChange={(e) => {this.setState({city:e.target.value,error:false,errortext:""}); this.props.signupdetails.city=e.target.value }}/>
+                          </div>
+                          <div className="form-group">
+                              <label>State</label>
+                              <input id="state" className="form-control" placeholder="Your state" value={this.state.state} onChange={(e) => {this.setState({state:e.target.value,error:false,errortext:""}); this.props.signupdetails.state=e.target.value }}/>
+                          </div>
+                          <div className="form-group">
+                              <label>Zip Code</label>
+                              <input id="zipcode" className="form-control" placeholder="Set zipcode" value={this.state.zipcode} onChange={(e) => {this.setState({zipcode:e.target.value,error:false,errortext:""}); this.props.signupdetails.zipcode=e.target.value }}/>
+                          </div>
+                          <div className="form-group">
+                              <label>Grades</label>
+                              <Select
+                              showSearch
+                              placeholder="Select Grade"
+                              optionFilterProp="children"
+                              value={this.state.grade}
+                              onChange={(e) =>{this.setState({grade:e}); this.props.signupdetails.grade=e }}
+                              filterOption={(input, option) => option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0}
+                              >
+                                <Option value="A+">A+</Option>
+                                <Option value="B+">B+</Option>
+                                <Option value="C+">C+</Option>
+                              </Select>
+                          </div>
+                       </div>
+                       <div className="form col">
+                          <div className="form-group">
+                              <label>school District</label>
+                              <input id="schooldistrict" className="form-control" placeholder="Your schooldistrict" value={this.state.schooldistrict} onChange={(e) => {this.setState({schooldistrict:e.target.value,error:false,errortext:""}); this.props.signupdetails.schooldistrict=e.target.value }}/>
+                          </div>
+                          <div className="form-group">
+                              <label>PO#</label>
+                              <input id="po" className="form-control" placeholder="Your po" value={this.state.po} onChange={(e) => {this.setState({po:e.target.value,error:false,errortext:""}); this.props.signupdetails.po=e.target.value }}/>
+                          </div>
+                          <div className="form-group">
+                              <label>Tax Exemption ID</label>
+                              <input id="taxexid" className="form-control" placeholder="Your taxexid" value={this.state.taxexid} onChange={(e) => {this.setState({taxexid:e.target.value,error:false,errortext:""}); this.props.signupdetails.taxexid=e.target.value }}/>
+                          </div>
+                        </div>
                       </div>
-                      <div className="form-group">
-                          <label>Address</label>
-                          <input id="address" className="form-control" placeholder="Your address" value={this.state.address} onChange={(e) => {this.setState({address:e.target.value,error:false,errortext:""}); this.props.signupdetails.address=e.target.value }}/>
-                      </div>
-                      <div className="form-group">
-                          <label>City</label>
-                          <input id="city" className="form-control" placeholder="Your city" value={this.state.city} onChange={(e) => {this.setState({city:e.target.value,error:false,errortext:""}); this.props.signupdetails.city=e.target.value }}/>
-                      </div>
-                      <div className="form-group">
-                          <label>State</label>
-                          <input id="state" className="form-control" placeholder="Your state" value={this.state.state} onChange={(e) => {this.setState({state:e.target.value,error:false,errortext:""}); this.props.signupdetails.state=e.target.value }}/>
-                      </div>
-                      <div className="form-group">
-                          <label>Zip Code</label>
-                          <input id="zipcode" className="form-control" placeholder="Set zipcode" value={this.state.zipcode} onChange={(e) => {this.setState({zipcode:e.target.value,error:false,errortext:""}); this.props.signupdetails.zipcode=e.target.value }}/>
-                      </div>
-                      <div className="form-group">
-                          <label>Grades</label>
-                          <Select
-                          showSearch
-                          placeholder="Select Grade"
-                          optionFilterProp="children"
-                          value={this.state.grade}
-                          onChange={(e) =>{this.setState({grade:e}); this.props.signupdetails.grade=e }}
-                          filterOption={(input, option) => option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0}
-                          >
-                            <Option value="A+">A+</Option>
-                            <Option value="B+">B+</Option>
-                            <Option value="C+">C+</Option>
-                          </Select>
-                      </div>
-                   </div>
                    {this.state.error==true && (<div><span style={{color: 'red'}}>*{this.state.errortext}</span></div>)}
                   
                   <button className="pointer"onClick={() =>{ this.next() }}>Create Account<img src="./images/arrow-right.png" className="img-fluid"/></button>
