@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import {bindActionCreators} from 'redux';
 import { connect } from 'react-redux';
 import axios from 'axios';
-
+import HeadjackAction from '../../actions/HeadjackAction'
 class Dashboard extends Component{
 	constructor(props){
 		super(props);
@@ -15,39 +15,21 @@ class Dashboard extends Component{
       var socket = io('https://cinema.headjack.io/', {transports: ['polling'], upgrade: false});
       socket.on('connect', () => {
         console.log("socket connection established....socket id",socket.id); // 'G5p5...'
-        setTimeout(() => { 
           if(socket.id){
-            var auth = socket.emit('appAuth', '99de5d81f4ae87fed360f0bdccff7526', '1a459a172e2b3dd58bb60c78b6d68d7d7f91e1be5236dade');
-            console.log("auth==auth==auth=authauth",auth)
+            var auth = socket.emit('appAuth', 'd372c8c2095e877ba7b348b3238e9713', 'e45218888bdcfa98009f46372f367d2a7050b1dac0babbe6');
+            console.log("auth======================auth",auth)
           }
-        }, 3000);
-
-        
       });
       
-      socket.on('exception', (exception) => {
-        // handle message of type 'message_type' here
-        console.log("'exception'==",'exception')
-      });
+      socket.on('appList', this.props.applist);
 
-      socket.on('unauthorized', (unauthorized) => {
-        // handle message of type 'message_type' here
-        console.log("unauthorized==",unauthorized)
-      });
 
-      socket.on('appList', (appList) => {
-        // handle message of type 'message_type' here
-        console.log("appList==",appList)
-      });
-
-      socket.on('deviceStateList', (deviceStateList) => {
-        // handle message of type 'message_type' here
-        console.log("deviceStateList==",deviceStateList)
-      });
+      
 
   }
 
   render(){
+      console.log("this.state.headjackreducerheadjackreducerheadjackreducer",this.props.headjackreducer)
       return(
         <div className="full-page">
           <div className="inner-wrap"> 
@@ -67,10 +49,10 @@ class Dashboard extends Component{
 
 function mapStateToProps(state){
   return{
-    
+    headjackreducer:state.headjackreducer
   };
 }
 function matchDispatchToProps(dispatch){
-  return bindActionCreators({ }, dispatch);
+  return bindActionCreators({applist:HeadjackAction.appList }, dispatch);
 }
 export default connect(mapStateToProps, matchDispatchToProps)(Dashboard);
