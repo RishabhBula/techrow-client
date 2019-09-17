@@ -50,7 +50,8 @@ b {
   padding: 10px 20px;
   border-radius: 20px;
   font-weight: 700;
-  border: 1px solid #262161; }
+  border: 1px solid #262161;
+  cursor: pointer; }
 
 .green-btn {
   background-color: #B1F543 !important;
@@ -58,7 +59,8 @@ b {
   padding: 10px 40px;
   border-radius: 5px;
   font-weight: 700;
-  border: 1px solid #B1F543; }
+  border: 1px solid #B1F543;
+  cursor: pointer; }
 
 .blue-btn:hover {
   color: #262161 !important;
@@ -78,7 +80,10 @@ body {
 header {
   height: 85px;
   background-color: #fff;
-  padding: 0 !important; }
+  padding: 0 !important;
+  -webkit-box-shadow: 0px 2px 11px -2px #bfbfbf;
+  -moz-box-shadow: 0px 2px 11px -2px #bfbfbf;
+  box-shadow: 0px 2px 11px -2px #bfbfbf; }
   header .logo {
     float: left;
     margin-right: 20px;
@@ -112,7 +117,121 @@ header {
   height: 100vh;
   background-image: url(/images/Capture.png);
   background-size: cover;
-  background-position: center; }
+  background-position: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  background-attachment: fixed; }
+  .home-banner h1 {
+    font-family: "Quicksand", sans-serif;
+    font-size: 4rem;
+    text-align: center;
+    color: #fff;
+    font-weight: 400; }
+
+.banner-bottom {
+  padding: 70px 0;
+  text-align: center; }
+  .banner-bottom h2 {
+    font-size: 2.25rem;
+    line-height: 42px;
+    font-family: "Quicksand", sans-serif;
+    color: #262161;
+    margin-bottom: 20px;
+    font-weight: 600; }
+  .banner-bottom p {
+    font-size: 1.125rem;
+    line-height: 25px;
+    font-family: "Open Sans", sans-serif;
+    max-width: 850px;
+    margin: auto;
+    color: #929292; }
+
+.about-this .cnt-area {
+  background-color: #FCFCFC; }
+  .about-this .cnt-area .cnt-area-lft {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: start;
+    -ms-flex-align: start;
+    align-items: flex-start;
+    padding-left: 70px;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center; }
+    .about-this .cnt-area .cnt-area-lft h2 {
+      color: #262161;
+      font-size: 2rem;
+      line-height: 40px; }
+      .about-this .cnt-area .cnt-area-lft h2 span {
+        color: #929292;
+        font-size: 1.5rem;
+        display: block; }
+    .about-this .cnt-area .cnt-area-lft p {
+      font-size: 1.125rem;
+      line-height: 25px;
+      font-family: "Open Sans", sans-serif;
+      color: #929292;
+      margin-bottom: 15px; }
+    .about-this .cnt-area .cnt-area-lft p {
+      font-size: 1.125rem;
+      line-height: 25px;
+      font-family: "Open Sans", sans-serif;
+      color: #929292; }
+    .about-this .cnt-area .cnt-area-lft a {
+      font-size: .75rem;
+      font-family: "Quicksand", sans-serif;
+      color: #929292; }
+
+.techrow-platform {
+  text-align: center;
+  padding: 80px 0; }
+  .techrow-platform .logo {
+    width: 200px;
+    display: block;
+    text-align: center;
+    margin: 10px auto; }
+  .techrow-platform .techrow-works {
+    padding: 50px 50px; }
+
+.howItWork {
+  text-align: center;
+  padding: 0 0 80px;
+  background-color: #262161; }
+  .howItWork h2 {
+    font-size: 2.25rem;
+    line-height: 42px;
+    font-family: "Quicksand", sans-serif;
+    color: #fff;
+    padding-top: 80px;
+    margin-bottom: 50px;
+    font-weight: 600; }
+  .howItWork .how-it-works {
+    margin-bottom: 30px; }
+  .howItWork p {
+    color: #fff;
+    max-width: 450px;
+    margin: auto;
+    line-height: 20px; }
+  .howItWork .works-types {
+    border: 1px solid #fff;
+    padding: 50px 40px;
+    border-radius: 30px; }
+    .howItWork .works-types h3 {
+      font-family: "Quicksand", sans-serif;
+      font-size: 1.5rem;
+      margin-bottom: 40px;
+      color: #fff; }
+    .howItWork .works-types p {
+      line-height: 20px; }
 
 .inner-wrap {
   padding-top: 85px;
@@ -163,7 +282,7 @@ header {
     .inner-wrap .inner-right-wrap h4 {
       color: #262161;
       font-size: 2rem;
-      font-weight: 500;
+      font-weight: 600;
       line-height: 40px;
       text-align: center;
       margin-top: 100px;
@@ -171,7 +290,7 @@ header {
     .inner-wrap .inner-right-wrap h5 {
       color: #000;
       font-size: 2rem;
-      font-weight: 500;
+      font-weight: 600;
       line-height: 40px;
       text-align: center;
       margin-top: 30px;
@@ -231,6 +350,18 @@ header {
             border-radius: 0 5px 5px 0; }
         .inner-wrap .inner-right-wrap .form-wrap .form .form-group button {
           float: right; }
+    .inner-wrap .inner-right-wrap .login-btm {
+      text-align: center;
+      border-top: .2px solid #707070;
+      max-width: 800px;
+      margin: 30px auto 10px;
+      padding-top: 40px; }
+      .inner-wrap .inner-right-wrap .login-btm span {
+        color: #262261;
+        font-family: "Open Sans", sans-serif; }
+        .inner-wrap .inner-right-wrap .login-btm span a {
+          color: #262261;
+          text-decoration: underline; }
     .inner-wrap .inner-right-wrap .confirm-order {
       text-align: center; }
       .inner-wrap .inner-right-wrap .confirm-order .form-wrap {
@@ -259,11 +390,41 @@ header {
     .inner-wrap .inner-right-wrap .order-bundle .form {
       width: 600px !important; }
     .inner-wrap .inner-right-wrap .order-bundle .order-num {
-      width: 100px !important;
+      width: 120px !important;
       margin: auto !important;
       border: none !important;
       text-align: center;
-      font-size: 2.25rem; }
+      font-size: 2.25rem;
+      color: #DADADB;
+      height: 65px !important; }
+    .inner-wrap .inner-right-wrap .order-bundle .order-num::-webkit-input-placeholder {
+      /* Edge */
+      font-size: 2.25rem;
+      color: #DADADB; }
+    .inner-wrap .inner-right-wrap .order-bundle .order-num:-ms-input-placeholder {
+      /* Internet Explorer 10-11 */
+      font-size: 2.25rem;
+      color: #DADADB; }
+    .inner-wrap .inner-right-wrap .order-bundle .order-num::-ms-input-placeholder {
+      font-size: 2.25rem;
+      color: #DADADB; }
+    .inner-wrap .inner-right-wrap .order-bundle .order-num::placeholder {
+      font-size: 2.25rem;
+      color: #DADADB; }
+    .inner-wrap .inner-right-wrap .billing-wrap .form-wrap .form {
+      width: auto; }
+    .inner-wrap .inner-right-wrap .confirm-order .order-bundle {
+      text-align: center; }
+      .inner-wrap .inner-right-wrap .confirm-order .order-bundle .tick {
+        width: 150px; }
+      .inner-wrap .inner-right-wrap .confirm-order .order-bundle .green-btn {
+        float: none;
+        margin: auto;
+        padding: 10px;
+        width: 190px;
+        height: 50px;
+        text-align: center;
+        margin-top: 10px; }
 
 .signup-wrap {
   text-align: center; }
@@ -332,3 +493,77 @@ header {
     margin-top: 70px !important; }
   .signin-second .form-wrap .form {
     margin: 50px !important; }
+
+.dashboard {
+  padding: 30px;
+  background-color: #fff;
+  padding-top: 40px; }
+  .dashboard h2 {
+    font-family: "Quicksand", sans-serif;
+    font-size: 2rem;
+    font-weight: 600;
+    color: #262161;
+    display: inline-block; }
+  .dashboard .search {
+    width: 350px;
+    float: right;
+    position: relative; }
+    .dashboard .search .form-control {
+      border-radius: 20px;
+      background-color: #E8E8E8;
+      border: none;
+      padding-right: 50px; }
+      .dashboard .search .form-control:focus {
+        -webkit-box-shadow: none;
+        box-shadow: none;
+        outline: none; }
+    .dashboard .search button {
+      position: absolute;
+      right: 10px;
+      top: 10px;
+      border: none;
+      background: none;
+      width: 30px;
+      cursor: pointer; }
+  .dashboard .classesList {
+    margin-top: 50px; }
+    .dashboard .classesList .each-class {
+      margin-bottom: 30px;
+      display: block; }
+      .dashboard .classesList .each-class .class-banne-wrap {
+        overflow: hidden; }
+        .dashboard .classesList .each-class .class-banne-wrap .class-banner {
+          width: 100%;
+          -webkit-transition: all 1s ease;
+          -moz-transition: all 1s ease;
+          -ms-transition: all 1s ease;
+          -o-transition: all 1s ease;
+          transition: all 1s ease; }
+      .dashboard .classesList .each-class h3 {
+        font-family: "Quicksand", sans-serif;
+        font-size: 1rem;
+        font-weight: 300;
+        line-height: 20px;
+        color: #2e2e2e;
+        margin: 10px 0 10px;
+        text-decoration: none; }
+      .dashboard .classesList .each-class p {
+        font-family: "Open Sans", sans-serif;
+        color: #ABABAB;
+        font-size: .75rem;
+        line-height: 16px;
+        text-decoration: none; }
+      .dashboard .classesList .each-class:hover {
+        text-decoration: none; }
+        .dashboard .classesList .each-class:hover img {
+          -webkit-transform: scale(1.1);
+          -moz-transform: scale(1.1);
+          -ms-transform: scale(1.1);
+          -o-transform: scale(1.1);
+          transform: scale(1.1); }
+        .dashboard .classesList .each-class:hover h3 {
+          color: #262161;
+          text-decoration: none; }
+        .dashboard .classesList .each-class:hover p {
+          color: #262161;
+          text-decoration: none; }
