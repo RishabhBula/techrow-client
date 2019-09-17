@@ -5,7 +5,6 @@ import axios from 'axios';
 
 import Sidemenu from '../Components/Sidemenu';
 
-import HeadjackAction from '../../actions/HeadjackAction';
 import socket from '../../socketio/socketio';
 import RecentContent from '../Components/RecentContent.js';
 import HeadjackAction from '../../actions/HeadjackAction';
