@@ -1,5 +1,7 @@
 const initialState = {
-	projects:{}
+	projects:{},
+	dalias:{},
+	dstate:{}
 }
 export default function(state=initialState, action){
 	switch(action.type){
@@ -7,7 +9,17 @@ export default function(state=initialState, action){
 			return {
 				...state,projects:action.payload
 			}
-		break;
+			break;
+		case 'DALIAS':
+			return {
+				...state,dalias:action.payload
+			}
+			break;
+		case 'DSTATE':
+			return {
+				...state,dstate:action.payload
+			}
+		    break;
 	}
 	return state
 } 
