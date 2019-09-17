@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import {bindActionCreators} from 'redux';
 import { connect } from 'react-redux';
 import axios from 'axios';
+import RecentContent from '../Components/RecentContent.js';
 
 class Dashboard extends Component{
 	constructor(props){
@@ -55,8 +56,8 @@ class Dashboard extends Component{
                     <h1>DASHBOARD</h1>
                 </div>
                 <div className="inner-right-wrap">
-                    <h4>DASHBOARD</h4>
-                          
+                    
+                    <RecentContent/>
                 </div>
              </div>
         </div>
