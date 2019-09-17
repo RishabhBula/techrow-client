@@ -3,10 +3,12 @@ import {bindActionCreators} from 'redux';
 import { connect } from 'react-redux';
 import axios from 'axios';
 
-import Sidemenu from '../Components/Sidemenu'
+import Sidemenu from '../Components/Sidemenu';
 
-import HeadjackAction from '../../actions/HeadjackAction'
-import socket from '../../socketio/socketio'
+import HeadjackAction from '../../actions/HeadjackAction';
+import socket from '../../socketio/socketio';
+import RecentContent from '../Components/RecentContent.js';
+import HeadjackAction from '../../actions/HeadjackAction';
 class Dashboard extends Component{
 	constructor(props){
 		super(props);
@@ -45,8 +47,8 @@ class Dashboard extends Component{
                     <Sidemenu/>
                 </div>
                 <div className="inner-right-wrap">
-                    <h4>DASHBOARD</h4>
-                          
+                    
+                    <RecentContent/>
                 </div>
              </div>
         </div>
