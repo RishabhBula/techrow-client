@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import {bindActionCreators} from 'redux';
 import { connect } from 'react-redux';
 import axios from 'axios';
+import { Menu, Dropdown, Icon } from 'antd';
 
 import {getAuthentication} from '../../actions/authentication'
 
@@ -34,12 +35,31 @@ class Header extends Component{
     })
   }
 
+
+
   render(){
+    const menu = (
+        <Menu>
+          <Menu.Item>
+            <a target="_blank" rel="noopener noreferrer" href="http://www.alipay.com/">
+              School Name
+            </a>
+          </Menu.Item>
+          <Menu.Item>
+            <a onClick={() =>{ this.signout() }} className="logo">Sign Out</a>
+          </Menu.Item>
+        </Menu>
+      );
       return(
          <header className="navbar fixed-top">
             <div className="container-fluid">
               <a onClick={() =>{ window.location.href="#/" }} className="logo"><img src="../images/techrow-logo.png"/> </a>
-              <a onClick={() =>{ this.signout() }} className="logo">Sign Out</a>
+              <Dropdown overlay={menu}>
+                <a className="ant-dropdown-link" href="#">
+                  <img src="../images/home-demo-photo-2c.png"/> School Name <Icon type="down" />
+                </a>
+              </Dropdown>
+              
             </div>
         </header>
       );

@@ -119,6 +119,26 @@ header {
       background: linear-gradient(180deg, #F3F3F3 0%, #FFFFFF 100%); }
     header ul:last-child .blue-btn {
       margin-left: 20px; }
+  header .ant-dropdown-link {
+    color: #707070;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    font-size: 1.25rem;
+    text-decoration: none !important;
+    font-family: "Quicksand", sans-serif;
+    margin-right: 20px; }
+    header .ant-dropdown-link img {
+      width: 40px;
+      height: 40px;
+      margin-right: 10px; }
+    header .ant-dropdown-link .anticon-down {
+      margin-left: 10px;
+      font-size: 1.4rem !important;
+      margin-top: 5px; }
 
 .home-banner {
   height: 100vh;
@@ -426,6 +446,9 @@ header {
         .inner-wrap .inner-blue-menu .sidemenu-group a:hover {
           background-color: #57547D;
           color: #fff; }
+        .inner-wrap .inner-blue-menu .sidemenu-group a.ative {
+          background-color: #57547D;
+          color: #B1F543; }
   .inner-wrap .inner-right-wrap {
     margin-left: 300px;
     padding-bottom: 30px; }
