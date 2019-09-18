@@ -21,6 +21,7 @@ import OrderBundle from './CommonPages/Containers/OrderBundle';
 
 import Dashboard from './Client/Containers/Dashboard';
 import Header from './Client/Components/Header';
+import Class from './Client/Containers/Class';
 
 //==============firebase connection==============//
 
@@ -63,7 +64,8 @@ class App extends Component{
    			route=(
               <div>
                  <Header/>
-           			 <Route exact path="/" component={Dashboard} />
+                 <Route exact path="/" component={Dashboard} />
+           			 <Route exact path="/class" component={Class} />
                  <Route exact path="/orderbundle" component={OrderBundle} />
               </div>
    				)
