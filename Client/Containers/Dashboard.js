@@ -5,7 +5,7 @@ import axios from 'axios';
 
 import Sidemenu from '../Components/Sidemenu';
 
-import socket from '../../socketio/socketio';
+// import socket from '../../socketio/socketio';
 import MyLibrary from '../Components/MyLibrary.js';
 import HeadjackAction from '../../actions/HeadjackAction';
 class Dashboard extends Component{
@@ -17,14 +17,14 @@ class Dashboard extends Component{
 	}
   
   componentDidMount(){
-      // var socket = io('https://cinema.headjack.io/', {transports: ['polling'], upgrade: false});
-      // socket.on('connect', () => {
-      //   console.log("socket connection established....socket id",socket.id); // 'G5p5...'
-      //     if(socket.id){
-      //       var auth = socket.emit('appAuth', 'd372c8c2095e877ba7b348b3238e9713', 'e45218888bdcfa98009f46372f367d2a7050b1dac0babbe6');
-      //       console.log("auth======================auth",auth)
-      //     }
-      // });
+      var socket = io('https://cinema.headjack.io/', {transports: ['polling'], upgrade: false});
+      socket.on('connect', () => {
+        console.log("socket connection established....socket id",socket.id); // 'G5p5...'
+          if(socket.id){
+            var auth = socket.emit('appAuth', 'd372c8c2095e877ba7b348b3238e9713', 'e45218888bdcfa98009f46372f367d2a7050b1dac0babbe6');
+            console.log("auth======================auth",auth)
+          }
+      });
       
       socket.on('appList', this.props.applist);
 
