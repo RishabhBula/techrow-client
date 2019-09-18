@@ -18,7 +18,7 @@ class Sidemenu extends Component{
       return(
         <div className="inner-blue-menu">
             <div className="sidemenu-group">
-              <a>My Library</a>
+              <a className="ative">My Library</a>
               <a>Marketplace</a>
             </div>
             <div className="sidemenu-group">
