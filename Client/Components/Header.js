@@ -49,7 +49,7 @@ class Header extends Component{
 
 function mapStateToProps(state){
   return{
-    
+    userData:state.userData
   };
 }
 function matchDispatchToProps(dispatch){

@@ -4,12 +4,15 @@ import authentication from './authentication';
 import signupdetails from './signupDetails';
 import orderdetails from './orderDetails';
 import headjackreducer from './HeadjackReducer';
+
+import userData from './userData';
 const allReducers = combineReducers({
 	app: app,
 	auth:authentication,
 	signupdetails:signupdetails,
 	orderdetails:orderdetails,
-	headjackreducer:headjackreducer
+	headjackreducer:headjackreducer,
+	userData:userData
 });
 
 export default allReducers
