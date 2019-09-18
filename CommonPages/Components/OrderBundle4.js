@@ -23,9 +23,11 @@ class OrderBundle4 extends Component{
       return(
         <div>
            <div className="confirm-order">
-                <div className="form-wrap">
-                    <h5>Your Order has been Placed</h5><br/>
-                    <button className="green-btn pointer" onClick={() =>{ window.location.href="#/" }}>Go to Dashboard</button><br/>
+           <h4></h4>
+             <div className="form-wrap signup-wrap order-bundle">
+                    <img src="../images/green-tick.png" className="img-fluid tick"  />
+                    <h5>Your Order has been Placed</h5>
+                    <button className="green-btn" onClick={() =>{ window.location.href="#/" }}>Go to Dashboard</button><br/>
                 </div>
             </div>
         </div>

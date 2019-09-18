@@ -70,6 +70,13 @@ b {
   color: #B1F543 !important;
   background-color: #fff !important; }
 
+a {
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -ms-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  transition: all 0.5s ease; }
+
 html {
   font-size: 16px; }
 
@@ -211,8 +218,8 @@ header {
     line-height: 42px;
     font-family: "Quicksand", sans-serif;
     color: #fff;
-    padding-top: 80px;
-    margin-bottom: 50px;
+    padding-top: 100px;
+    margin-bottom: 60px;
     font-weight: 600; }
   .howItWork .how-it-works {
     margin-bottom: 30px; }
@@ -232,6 +239,120 @@ header {
       color: #fff; }
     .howItWork .works-types p {
       line-height: 20px; }
+  .howItWork .btn-area {
+    display: block;
+    margin-top: 100px; }
+    .howItWork .btn-area .blue-btn, .howItWork .btn-area .wt-btn {
+      padding: 10px 30px;
+      min-width: 150px;
+      border-radius: 10px;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-block;
+      margin: 10px;
+      text-decoration: none; }
+  .howItWork .blue-btn {
+    background-color: #262161 !important;
+    color: #fff !important;
+    border: 1px solid #fff; }
+    .howItWork .blue-btn:hover {
+      background-color: #fff !important;
+      color: #262161 !important; }
+  .howItWork .wt-btn {
+    background-color: #fff !important;
+    color: #262161 !important;
+    border: 1px solid #fff; }
+    .howItWork .wt-btn:hover {
+      background-color: #262161 !important;
+      color: #fff !important; }
+
+.testimonials {
+  padding: 100px 0;
+  text-align: center; }
+  .testimonials h2 {
+    font-size: 2rem;
+    line-height: 40px;
+    font-family: "Quicksand", sans-serif;
+    color: #262161;
+    margin-bottom: 90px;
+    font-weight: 600; }
+  .testimonials .each-testimo {
+    margin: 0 20px; }
+    .testimonials .each-testimo h3 {
+      font-size: 1.5rem;
+      line-height: 30px;
+      font-family: "Quicksand", sans-serif;
+      color: #262161;
+      margin: 20px auto 10px; }
+    .testimonials .each-testimo p {
+      font-size: 1rem;
+      font-family: "Open Sans", sans-serif;
+      line-height: 22px; }
+
+.bottom-blue-banner {
+  padding: 250px 0;
+  background-image: url(/images/bottom-blue-banner.jpg);
+  background-size: cover;
+  background-position: center; }
+  .bottom-blue-banner .btn-area {
+    text-align: center; }
+    .bottom-blue-banner .btn-area a {
+      padding: 15px 30px;
+      min-width: 200px;
+      border-radius: 10px;
+      font-weight: 400;
+      cursor: pointer;
+      display: inline-block;
+      margin: 10px;
+      text-decoration: none;
+      font-size: 1.5rem; }
+    .bottom-blue-banner .btn-area .trns-btn {
+      border: 3px solid #fff;
+      color: #fff; }
+      .bottom-blue-banner .btn-area .trns-btn:hover {
+        background-color: #262161 !important;
+        color: #fff !important;
+        border-color: #262161; }
+    .bottom-blue-banner .btn-area .white-btn {
+      background-color: #fff !important;
+      color: #262161 !important;
+      border: 3px solid #fff; }
+      .bottom-blue-banner .btn-area .white-btn:hover {
+        background-color: #262161 !important;
+        color: #fff !important;
+        border-color: #262161; }
+
+.contact-us {
+  padding: 80px 0;
+  background-color: #F3F3F3; }
+  .contact-us h2 {
+    font-size: 1.5rem;
+    font-family: "Quicksand", sans-serif;
+    color: #262161;
+    margin-bottom: 90px;
+    font-weight: 600; }
+  .contact-us h3 {
+    font-family: "Open Sans", sans-serif;
+    font-size: 1.4rem;
+    color: #7e7e7e;
+    margin-bottom: 20px;
+    font-weight: 600; }
+  .contact-us .form {
+    max-width: 450px; }
+    .contact-us .form .form-control {
+      background-color: #fff;
+      border: none;
+      border-radius: 10px; }
+  .contact-us ul li a {
+    color: #9b9b9b;
+    padding: 10px 0;
+    font-family: "Open Sans", sans-serif;
+    font-size: 1.4rem;
+    font-weight: 300;
+    display: inline-block;
+    text-decoration: none; }
+    .contact-us ul li a:hover {
+      color: #262161; }
 
 .inner-wrap {
   padding-top: 85px;
@@ -240,17 +361,18 @@ header {
   .inner-wrap .inner-blue-menu {
     background-color: #262161;
     width: 300px;
-    height: 100%;
     position: fixed;
     left: 0;
     bottom: 0;
     top: 85px;
+    padding: 60px 0;
     text-align: center;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    -ms-flex-pack: distribute;
-    justify-content: space-around;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
     -ms-flex-direction: column;
@@ -276,6 +398,34 @@ header {
       border: 4px solid #B1F543;
       border-radius: 8px;
       display: inline-block; }
+    .inner-wrap .inner-blue-menu .sidemenu-group {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-orient: vertical;
+      -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+      flex-direction: column;
+      width: 100%; }
+      .inner-wrap .inner-blue-menu .sidemenu-group a {
+        border: none;
+        position: relative;
+        display: block;
+        padding: 15px 0;
+        cursor: pointer;
+        border-radius: 0;
+        text-align: left;
+        padding-left: 50px; }
+        .inner-wrap .inner-blue-menu .sidemenu-group a::after {
+          content: "";
+          position: absolute;
+          left: 20px;
+          right: 20px;
+          bottom: 0;
+          border: 1px solid #5F5B8D50; }
+        .inner-wrap .inner-blue-menu .sidemenu-group a:hover {
+          background-color: #57547D;
+          color: #fff; }
   .inner-wrap .inner-right-wrap {
     margin-left: 300px;
     padding-bottom: 30px; }

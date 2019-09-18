@@ -16,13 +16,12 @@ class Sidemenu extends Component{
 
   render(){
       return(
-        <div>
-            <div className="row">
-              <a>Dashboard</a>
-              <a>Classes</a>
+        <div className="inner-blue-menu">
+            <div className="sidemenu-group">
+              <a>My Library</a>
               <a>Marketplace</a>
             </div>
-            <div className="row">
+            <div className="sidemenu-group">
               <a>Contact</a>
               <a>Settings</a>
             </div>

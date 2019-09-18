@@ -35,34 +35,40 @@ class OrderBundle3 extends Component{
   render(){
       return(
         <div>
-           <div>
-                <h4>Please enter shipping information:</h4>
+           <div className="signin-second signup-wrap billing-wrap">
+                <h4>Please enter Billing information:</h4>
                 <div className="form-wrap">
-                   <div className="form">
-                      <div className="form-group">
-                          <label>Name on Card</label>
-                          <input id="cardholdername" className="form-control" placeholder="card holder name" value={this.state.cardholdername} onChange={(e) =>{ this.setState({cardholdername:e.target.value,error:false,errortext:""}); this.props.orderdetails.cardholdername=e.target.value; }}/>
+                    <div className="form">
+                      <div className="row">
+                        <div className="col-sm-6"></div>
+                        <div className="col-sm-6">
+                          <div className="form-group">
+                              <label>Name on Card</label>
+                              <input id="cardholdername" className="form-control" placeholder="card holder name" value={this.state.cardholdername} onChange={(e) =>{ this.setState({cardholdername:e.target.value,error:false,errortext:""}); this.props.orderdetails.cardholdername=e.target.value; }}/>
+                          </div>
+                          <div className="form-group">
+                              <label>Postal Code</label>
+                              <input id="postalcode" className="form-control" placeholder="postalcode" value={this.state.postalcode} onChange={(e) =>{ this.setState({postalcode:e.target.value,error:false,errortext:""}); this.props.orderdetails.postalcode=e.target.value; }}/>
+                          </div>
+                          <div className="form-group">
+                              <label>Card Number(no spaces or dashes)</label>
+                              <input id="cardnumber" className="form-control" placeholder="cardnumber" value={this.state.cardnumber} onChange={(e) =>{ this.setState({cardnumber:e.target.value,error:false,errortext:""}); this.props.orderdetails.cardnumber=e.target.value; }}/>
+                          </div>
+                          <div className="form-group">
+                              <label>Expiration</label>
+                              <input className="form-control" placeholder="MM" value={this.state.expmonth} onChange={(e) =>{ this.setState({expmonth:e.target.value,error:false,errortext:""}); this.props.orderdetails.expmonth=e.target.value; }}/>
+                              <input className="form-control" placeholder="YY" value={this.state.expyear} onChange={(e) =>{ this.setState({expyear:e.target.value,error:false,errortext:""}); this.props.orderdetails.expyear=e.target.value; }}/>
+                          </div>
+                          <div className="form-group">
+                              <label>CVV</label>
+                              <input id="cvv" className="form-control" placeholder="cvv" value={this.state.cvv} onChange={(e) =>{ this.setState({cvv:e.target.value,error:false,errortext:""}); this.props.orderdetails.cvv=e.target.value; }}/>
+                          </div>
+                        </div>
                       </div>
-                      <div className="form-group">
-                          <label>Postal Code</label>
-                          <input id="postalcode" className="form-control" placeholder="postalcode" value={this.state.postalcode} onChange={(e) =>{ this.setState({postalcode:e.target.value,error:false,errortext:""}); this.props.orderdetails.postalcode=e.target.value; }}/>
-                      </div>
-                      <div className="form-group">
-                          <label>Card Number(no spaces or dashes)</label>
-                          <input id="cardnumber" className="form-control" placeholder="cardnumber" value={this.state.cardnumber} onChange={(e) =>{ this.setState({cardnumber:e.target.value,error:false,errortext:""}); this.props.orderdetails.cardnumber=e.target.value; }}/>
-                      </div>
-                      <div className="form-group">
-                          <label>Expiration</label>
-                          <input className="form-control" placeholder="MM" value={this.state.expmonth} onChange={(e) =>{ this.setState({expmonth:e.target.value,error:false,errortext:""}); this.props.orderdetails.expmonth=e.target.value; }}/>
-                          <input className="form-control" placeholder="YY" value={this.state.expyear} onChange={(e) =>{ this.setState({expyear:e.target.value,error:false,errortext:""}); this.props.orderdetails.expyear=e.target.value; }}/>
-                      </div>
-                      <div className="form-group">
-                          <label>CVV</label>
-                          <input id="cvv" className="form-control" placeholder="cvv" value={this.state.cvv} onChange={(e) =>{ this.setState({cvv:e.target.value,error:false,errortext:""}); this.props.orderdetails.cvv=e.target.value; }}/>
-                      </div>
-                   </div>
+                    </div>
                    {this.state.error==true && (<div><span style={{color: 'red'}}>*{this.state.errortext}</span></div>)}
-                   <span className="pointer" onClick={() =>{ this.next() }}>next</span>
+                   <button className="pointer"  onClick={() =>{ this.next() }}>Next<img src="./images/arrow-right.png" className="img-fluid"/></button>
+                   <div className="clearfix"></div>
                 </div>
             </div>
         </div>

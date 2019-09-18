@@ -62,6 +62,8 @@ $opensan: 'Open Sans', sans-serif;
 .green-btn:hover{color: $green!important; background-color: $w!important;}
 
 
+a{@include transition(all 0.5s ease);}
+
 html{font-size: 16px;}
 body{font-family: $qfont; font-weight: 400}
 header{ height: 85px; background-color: $w; padding: 0!important; -webkit-box-shadow: 0px 2px 11px -2px rgba(191,191,191,1);
@@ -115,24 +117,71 @@ box-shadow: 0px 2px 11px -2px rgba(191,191,191,1);
 }
 
 .howItWork{text-align: center; padding:0 0 80px;background-color: $blue;
-	h2{font-size: 2.25rem; line-height: 42px; font-family: $qfont; color: $w;padding-top: 80px; margin-bottom: 50px; font-weight: 600}
+	h2{font-size: 2.25rem; line-height: 42px; font-family: $qfont; color: $w;padding-top: 100px; margin-bottom: 60px; font-weight: 600}
 	.how-it-works{margin-bottom: 30px;}
 	p{color: $w; max-width: 450px; margin: auto; line-height: 20px}
 	.works-types{border:1px solid $w; padding: 50px 40px; border-radius: 30px;
 		h3{font-family: $qfont; font-size:1.5rem; margin-bottom: 40px; color: $w;}
 		p{ line-height: 20px}
 
+
+	}
+	.btn-area{display: block;margin-top: 100px;
+		.blue-btn, .wt-btn{ padding: 10px 30px;min-width: 150px; border-radius: 10px; font-weight: 700;cursor: pointer; display: inline-block;margin: 10px; text-decoration: none;}
+	}
+	.blue-btn{background-color: $blue !important; color: $w !important; border: 1px solid $w; 
+		&:hover{background-color: $w !important; color: $blue !important;}
+	}
+	.wt-btn{background-color: $w !important; color: $blue !important;  border: 1px solid $w; 
+		&:hover{background-color: $blue !important; color: $w !important;}
+	}
+}
+.testimonials{padding: 100px 0; text-align: center;
+	h2{font-size: 2rem; line-height: 40px; font-family: $qfont; color: $blue; margin-bottom: 90px; font-weight: 600}
+	.each-testimo{margin: 0 20px;
+		h3{font-size: 1.5rem; line-height: 30px; font-family: $qfont; color: $blue; margin: 20px auto 10px;}
+		p{font-size: 1rem; font-family: $opensan; line-height: 22px;}
+	}
+}
+.bottom-blue-banner{padding: 250px 0; background-image: url(/images/bottom-blue-banner.jpg); background-size: cover; background-position: center;
+	.btn-area{text-align: center;
+		a{padding: 15px 30px;min-width: 200px; border-radius: 10px; font-weight: 400;cursor: pointer; display: inline-block;margin: 10px; text-decoration: none; font-size: 1.5rem;}
+		.trns-btn{border:3px solid $w; color:$w;
+			&:hover{background-color: $blue !important; color: $w !important;border-color: $blue;}
+		}
+		.white-btn{background-color: $w !important; color: $blue !important; border: 3px solid $w; 
+			&:hover{background-color: $blue !important; color: $w !important;border-color: $blue;}
+		}
+	}
+}
+.contact-us{padding: 80px 0; background-color: #F3F3F3;
+	h2{font-size: 1.5rem;  font-family: $qfont; color: $blue; margin-bottom: 90px; font-weight: 600}
+	h3{font-family: $opensan; font-size: 1.4rem; color: #7e7e7e; margin-bottom: 20px; font-weight: 600}
+	.form{max-width: 450px; 
+		.form-control{background-color: $w; border:none;border-radius: 10px;}
+	}
+	ul{
+		li{
+			a{color: #9b9b9b; padding: 10px 0; font-family: $opensan; font-size: 1.4rem; font-weight: 300;display: inline-block; text-decoration: none;
+				&:hover{color: $blue}
+			 }
+		}
 	}
 }
 // ----------------HOME----------------
 
 
 .inner-wrap{padding-top: 85px; min-height: 100vh;background-color: $grey;
-	.inner-blue-menu{background-color: $blue; width: 300px;height:100%; position: fixed;left: 0; bottom: 0; top:85px; text-align: center; display: flex;    justify-content: space-around; flex-direction: column; align-items: center;
+	.inner-blue-menu{background-color: $blue; width: 300px; position: fixed;left: 0; bottom: 0; top:85px;padding: 60px 0; text-align: center; display: flex;    justify-content: space-between; flex-direction: column; align-items: center;
 		h1{color: $green; font-size: 2rem; font-weight: 500; line-height: 40px;}
 		h3{color: $w; font-size: 1.4rem; font-weight: 500;margin-bottom: 20px;}
 		a{color: $w; font-size: 1.125rem; font-weight: 500;   padding: 10px 20px; border:4px solid $green; border-radius: 8px;display: inline-block;}
-
+		.sidemenu-group{display: flex; flex-direction:column;width: 100%;
+	    	a{border:none;position: relative; display: block;padding: 15px 0; cursor: pointer;border-radius: 0; text-align: left; padding-left: 50px;
+	    		&::after{content: ""; position: absolute; left:20px; right: 20px;bottom: 0; border:1px solid #5F5B8D50;}
+	    		&:hover{background-color: #57547D; color: $w;}
+	    	}
+	    }
 	}
 	.inner-right-wrap{margin-left: 300px;padding-bottom: 30px;
 		h4{color: $blue; font-size: 2rem; font-weight: 600; line-height: 40px; text-align: center; margin-top: 100px; margin-bottom: 20px;}
@@ -258,6 +307,9 @@ box-shadow: 0px 2px 11px -2px rgba(191,191,191,1);
 		}
 	}
 }
+
+
+    
 
 // ----------------Dashboard----------------
 

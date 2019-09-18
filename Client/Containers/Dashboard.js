@@ -6,7 +6,7 @@ import axios from 'axios';
 import Sidemenu from '../Components/Sidemenu';
 
 import socket from '../../socketio/socketio';
-import RecentContent from '../Components/RecentContent.js';
+import MyLibrary from '../Components/MyLibrary.js';
 import HeadjackAction from '../../actions/HeadjackAction';
 class Dashboard extends Component{
 	constructor(props){
@@ -42,14 +42,11 @@ class Dashboard extends Component{
       return(
         <div className="full-page">
           <div className="inner-wrap"> 
-                <div className="inner-blue-menu">
-                    <Sidemenu/>
-                </div>
-                <div className="inner-right-wrap">
-                    
-                    <RecentContent/>
-                </div>
-             </div>
+              <Sidemenu/>
+              <div className="inner-right-wrap">
+                <MyLibrary/>
+              </div>
+          </div>
         </div>
       );
    }

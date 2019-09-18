@@ -11,7 +11,7 @@ import 'firebase/app';
 import 'firebase/firestore';
 import 'firebase/database';
 
-class RecentContent extends Component{
+class MyLibrary extends Component{
 	constructor(props){
 		super(props);
     this.state = {
@@ -28,7 +28,7 @@ class RecentContent extends Component{
       return(
          <div className="dashboard">
           <div>
-            <h2>Recent</h2>
+            <h2>My Library</h2>
             <div className="search form-group">
               <input type="text" className="form-control" placeholder="Search Classes" />
               <button><img src="../images/search-icon.png" className="img-fluid"/></button>
@@ -107,25 +107,7 @@ class RecentContent extends Component{
                     <p>"Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium </p>
                   </a>
                 </div>
-                <div className="col-lg-3 col-md-4">
-                  <a href="#" className="each-class">
-                    <div className="class-banne-wrap">
-                      <img src="../images/class-image.jpg" className="img-fluid class-banner" />
-                    </div>
-                    <h3>Lorem Ipsum Sit Dolor - amet Specialization</h3>
-                    <p>"Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium </p>
-                  </a>
-                </div>
-
-                <div className="col-lg-3 col-md-4">
-                  <a href="#" className="each-class">
-                    <div className="class-banne-wrap">
-                      <img src="../images/class-image.jpg" className="img-fluid class-banner" />
-                    </div>
-                    <h3>Lorem Ipsum Sit Dolor - amet Specialization</h3>
-                    <p>"Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium </p>
-                  </a>
-                </div>
+                
 
               </div>
             </div>
@@ -144,4 +126,4 @@ function mapStateToProps(state){
 function matchDispatchToProps(dispatch){
   return bindActionCreators({ getAuthentication:getAuthentication }, dispatch);
 }
-export default connect(mapStateToProps, matchDispatchToProps)(RecentContent);
+export default connect(mapStateToProps, matchDispatchToProps)(MyLibrary);

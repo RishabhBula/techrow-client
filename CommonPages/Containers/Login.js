@@ -90,7 +90,9 @@ class Login extends Component{
                                 <button className="green-btn" onClick={() =>{ this.login(this.state.email,this.state.password) }}>Login</button>
                               </div>
                             </div>
-                            <span>Don't have an account? <a href="#/signup">Sign up here</a></span>
+                            <div className="login-btm">
+                              <span>Don't have an account? <a href="#/signup">Sign up here</a></span>
+                            </div>
                           </div>
                        </div>)}
                  {this.state.forgotstate==true && (<div>
@@ -105,7 +107,9 @@ class Login extends Component{
                                 <button className="green-btn" onClick={() =>{ this.forgot(this.state.email) }}>Send</button>
                               </div>
                             </div>
-                            <span>Don't have an account? <a href="#/signup">Sign up here</a></span>
+                            <div className="login-btm">
+                              <span>Don't have an account? <a href="#/signup">Sign up here</a></span>
+                            </div>
                           </div>
                        </div>)}
                 </div>
