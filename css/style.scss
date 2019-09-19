@@ -62,6 +62,8 @@ $opensan: 'Open Sans', sans-serif;
 .green-btn:hover{color: $green!important; background-color: $w!important;}
 
 
+.loader{height: 100vh; width: 100vw; display: flex; align-items:center; justify-content:center;}
+
 a{@include transition(all 0.5s ease);}
 
 html{font-size: 16px;}
@@ -163,12 +165,38 @@ box-shadow: 0px 2px 11px -2px rgba(191,191,191,1);
 	h3{font-family: $opensan; font-size: 1.4rem; color: #7e7e7e; margin-bottom: 20px; font-weight: 600}
 	.form{max-width: 450px; 
 		.form-control{background-color: $w; border:none;border-radius: 10px;}
+		.checkbox{margin: 25px 0;
+			label{font-size: 1.1rem; color: #9A9A9A; cursor: pointer;
+				input{margin-right: 10px;float: left;}
+			}
+		}
+		button{padding:20px 20px;width: 200px;text-align: center; border-radius: 10px; background-color: #B0F542; color: $w; border:1px solid #B0F542;font-size: 1.5rem; cursor: pointer;@include transition(all .5s ease);
+			&:hover{color: #B0F542; background-color: #fff;}
+		}
+
 	}
 	ul{
 		li{
 			a{color: #9b9b9b; padding: 10px 0; font-family: $opensan; font-size: 1.4rem; font-weight: 300;display: inline-block; text-decoration: none;
 				&:hover{color: $blue}
 			 }
+		}
+	}
+}
+footer{padding: 40px 0;
+	.footer-content{display: flex; align-items:center; justify-content:space-between;
+		.logo{width: 200px}
+		.social-links{
+			a{padding: 5px;margin-left: 10px;
+				img{height: 30px;@include transition(all 1s ease);}
+				&:hover{
+					img{-webkit-transform: rotate(360deg);
+					   -moz-transform: rotate(360deg);
+					    -ms-transform: rotate(360deg);
+					     -o-transform: rotate(360deg);
+					        transform: rotate(360deg);}
+				}
+			}
 		}
 	}
 }
@@ -278,7 +306,8 @@ box-shadow: 0px 2px 11px -2px rgba(191,191,191,1);
 	}
 	h4{margin-top: 70px!important;}
 	.form-wrap{
-		.form{margin:50px!important}
+		.form{margin:50px!important;
+		}
 	}
 }
 
@@ -318,4 +347,104 @@ box-shadow: 0px 2px 11px -2px rgba(191,191,191,1);
 
 // ----------------Dashboard----------------
 
+
+
+// Small devices (landscape phones, 576px and up)
+@media (max-width: 600px) { 
+	html, body{font-size: 12px;}
+	header{height: 50px;
+		.logo{
+			img{width: 100px;}
+		}
+		ul{display: none}
+	}
+	.home-banner{height: 50vh;
+		h1{font-size: 2.5rem;}
+	}
+	.banner-bottom{padding: 50px 0;}
+	.about-this .cnt-area .cnt-area-lft{padding-left: 15px; text-align: center;padding-top: 50px; padding-bottom: 50px;
+		a{margin: auto; text-align: center; font-size: 1.2rem;}
+	}
+	.techrow-platform{padding: 50px 0;
+		.logo{width: 120px;}
+		.techrow-works{padding: 50px 0 10px;}
+	}
+	.howItWork{padding-bottom: 50px;
+		h2{padding-top: 50px;}
+		.works-types{margin:0 10% 20px; padding: 30px;}
+		.btn-area{margin-top: 30px}
+	}
+	.testimonials{padding: 50px 0;
+		h2{margin-bottom: 50px}
+	}
+	.bottom-blue-banner{padding: 50px 0; background-attachment: fixed;}
+	.contact-us {padding: 50px 0; text-align: center;
+		h2{margin-bottom: 30px;}
+		.form{margin-bottom: 30px}
+	}
+	footer{padding: 20px 0;
+		.footer-content{flex-direction:column;
+			.logo{padding: 10px 0;width: 100px;}
+			.social-links{
+				a{
+					img{height: 20px}
+				}
+			}
+		}
+	}
+
+}
+
+// Medium devices (Ipad)
+@media only screen  and (min-device-width : 768px)  and (max-device-width : 1024px)  { 
+	html, body{font-size: 14px;}
+	header{height: 50px;
+		.logo{
+			img{width: 100px;}
+		}
+		ul{display: none}
+	}
+	.home-banner{height: 50vh;
+		h1{font-size: 2.5rem;}
+	}
+	.banner-bottom{padding: 50px 0;}
+	.about-this .cnt-area{ 
+		.cnt-area-lft{padding-left: 15px;padding-top: 50px; padding-bottom: 50px;
+			a{ font-size: 1.2rem;}
+		}
+		.about-cnt-rt{vertical-align: middle; display: flex;}
+	}
+	.techrow-platform{padding: 50px 0;
+		.logo{width: 120px;}
+		.techrow-works{padding: 50px 0 10px;}
+	}
+	.howItWork{padding-bottom: 50px;
+		h2{padding-top: 50px;}
+		.works-types{margin:0 10% 20px; padding: 30px;}
+		.btn-area{margin-top: 30px}
+	}
+	.testimonials{padding: 50px 0;
+		h2{margin-bottom: 50px}
+	}
+	.bottom-blue-banner{padding: 50px 0; background-attachment: fixed;}
+	.contact-us {padding: 50px 0; text-align: center;
+		h2{margin-bottom: 30px;}
+		.form{margin-bottom: 30px}
+	}
+	footer{padding: 20px 0;
+		.footer-content{flex-direction:column;
+			.logo{padding: 10px 0;width: 100px;}
+			.social-links{
+				a{
+					img{height: 20px}
+				}
+			}
+		}
+	}
+}
+
+// Large devices (Ipad Landscape)
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : landscape) {
+
+}
 

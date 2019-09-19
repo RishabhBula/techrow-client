@@ -26,13 +26,13 @@ class Home extends Component{
                 <h1>The Power of Immersive Technology</h1>
               </div>
             </section>
-            <section className="banner-bottom">
+            <section className="banner-bottom d-none">
               <div className="container">
                 <h2>We are a movement...</h2>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer eu efficitur est. Suspendisse eget est rutrum, venenatis velit quis, dignissim ex. Mauris elementum nibh semper elit volutpat, et</p>
               </div>
             </section>
-            <section className="about-this">
+            <section className="about-this d-none">
               <div className="container cnt-area">
                 <div className="row">
                   <div className="col-md-6 cnt-area-lft">
@@ -41,13 +41,13 @@ class Home extends Component{
                     <a href="#">View TECHROW Features →</a>
                     
                   </div>
-                  <div className="col-md-6">
+                  <div className="col-md-6 about-cnt-rt">
                     <img src="./images/vr-girl.jpg" className="img-fluid" alt="vr"/>
                   </div>
                 </div>
               </div>
             </section>
-            <section className="techrow-platform">
+            <section className="techrow-platform d-none">
               <div className="container">
                 <h4><img src="../images/logo-grey.png" className="img-fluid logo"/>Platform</h4>
                 <div className="techrow-works">
@@ -55,7 +55,7 @@ class Home extends Component{
                 </div>
               </div>
             </section>
-            <section className="howItWork">
+            <section className="howItWork  d-none">
               <div className="container">
                 <h2>How it works</h2>
                 <img src="../images/how-it-works.png" className="img-fluid how-it-works"/>
@@ -94,7 +94,7 @@ class Home extends Component{
                 </div>
               </div>
             </section>
-            <section className="testimonials">
+            <section className="testimonials d-none">
               <div className="container">
               <h2>Testimonials</h2>
                 <div className="row">
@@ -122,7 +122,7 @@ class Home extends Component{
                 </div>
               </div>
             </section>
-            <section className="bottom-blue-banner">
+            <section className="bottom-blue-banner d-none">
               <div className="container">
                 <div className="btn-area">
                   <a href="#" className="trns-btn">Learn more</a>
@@ -130,7 +130,7 @@ class Home extends Component{
                 </div>
               </div>
             </section>
-            <section className="contact-us">
+            <section className="contact-us d-none">
               <div className="container">
                 <div className="row">
                   <div className="col-md-7">
@@ -170,6 +170,19 @@ class Home extends Component{
 
               </div>
             </section>
+            <footer>
+              <div className="container">
+                <div className="footer-content">
+                  <copyright>© 2019 All Rights Reserved</copyright>
+                  <a href="#"><img src="../images/techrow-logo.png" className="img-fluid logo"  alt="techrow-logo" /></a>
+                  <div className="social-links">
+                    <a href="#"><img src="../images/instagram-icon.png" className="img-fluid"/></a>
+                    <a href="#"><img src="../images/facebook-icon.png" className="img-fluid"/></a>
+                    <a href="#"><img src="../images/twitter-icon.png" className="img-fluid"/></a>
+                  </div>
+                </div>
+              </div>
+            </footer>
         </div>
       );
    }
