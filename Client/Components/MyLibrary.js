@@ -3,8 +3,6 @@ import {bindActionCreators} from 'redux';
 import { connect } from 'react-redux';
 import axios from 'axios';
 
-import {getAuthentication} from '../../actions/authentication'
-
 import firebase from 'firebase/app';
 import 'firebase/auth';
 import 'firebase/app';
@@ -36,7 +34,7 @@ class MyLibrary extends Component{
             <div className="classesList">
               <div className="row">
                 <div className="col-lg-3 col-md-4">
-                  <a href="#" className="each-class">
+                  <a href="#/class" className="each-class">
                     <div className="class-banne-wrap">
                       <img src="../images/class-image.jpg" className="img-fluid class-banner" />
                     </div>
@@ -124,6 +122,6 @@ function mapStateToProps(state){
   };
 }
 function matchDispatchToProps(dispatch){
-  return bindActionCreators({ getAuthentication:getAuthentication }, dispatch);
+  return bindActionCreators({  }, dispatch);
 }
 export default connect(mapStateToProps, matchDispatchToProps)(MyLibrary);

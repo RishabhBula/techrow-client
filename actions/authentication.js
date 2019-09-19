@@ -1,5 +1,6 @@
 import * as env from '../env'
 import axios from 'axios'
+import {getUserdata} from './getUserdata'
 
 import firebase from 'firebase/app';
 import 'firebase/auth';
@@ -27,8 +28,9 @@ export function getAuthentication(){
         // User is signed in.
           dispatch({
                    type: 'GET_AUTH',
-                   payload:{loaded:true,auth:true,authData:{}}
+                   payload:{loaded:true,auth:true,authData:user}
            })
+          dispatch(getUserdata(user.uid))
           unsubscribe();
         // ...
       } else {

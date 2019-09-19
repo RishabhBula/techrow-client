@@ -41,12 +41,14 @@ class Header extends Component{
     const menu = (
         <Menu>
           <Menu.Item>
-            <a target="_blank" rel="noopener noreferrer" href="http://www.alipay.com/">
-              School Name
+            <a href="#/">
+              Settings
             </a>
           </Menu.Item>
           <Menu.Item>
-            <a onClick={() =>{ this.signout() }} className="logo">Sign Out</a>
+            <a onClick={() =>{ this.signout() }} className="logo">
+              Sign Out
+            </a>
           </Menu.Item>
         </Menu>
       );
@@ -56,7 +58,7 @@ class Header extends Component{
               <a onClick={() =>{ window.location.href="#/" }} className="logo"><img src="../images/techrow-logo.png"/> </a>
               <Dropdown overlay={menu}>
                 <a className="ant-dropdown-link" href="#">
-                  <img src="../images/home-demo-photo-2c.png"/> School Name <Icon type="down" />
+                  <img src="../images/home-demo-photo-2c.png"/> {this.props.userData.school.name} <Icon type="down" />
                 </a>
               </Dropdown>
               
@@ -69,7 +71,7 @@ class Header extends Component{
 
 function mapStateToProps(state){
   return{
-    
+    userData:state.userData
   };
 }
 function matchDispatchToProps(dispatch){
