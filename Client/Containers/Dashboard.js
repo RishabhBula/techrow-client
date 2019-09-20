@@ -5,6 +5,9 @@ import axios from 'axios';
 
 import Sidemenu from '../Components/Sidemenu';
 import MyLibrary from '../Components/MyLibrary.js';
+
+import {setClassMode} from '../../actions/setClassMode';
+
 class Dashboard extends Component{
 	constructor(props){
 		super(props);
@@ -14,7 +17,7 @@ class Dashboard extends Component{
 	}
   
   componentDidMount(){
-
+    this.props.setClassMode(this.props.match.url.split("/")[1],"","theater")
   }
 
   render(){
@@ -34,10 +37,12 @@ class Dashboard extends Component{
 
 function mapStateToProps(state){
   return{
-    userData:state.userData
+    userData:state.userData,
+    classMode:state.classMode
+
   };
 }
 function matchDispatchToProps(dispatch){
-  return bindActionCreators({  }, dispatch);
+  return bindActionCreators({ setClassMode:setClassMode }, dispatch);
 }
 export default connect(mapStateToProps, matchDispatchToProps)(Dashboard);

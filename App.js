@@ -65,7 +65,7 @@ class App extends Component{
               <div>
                  <Header/>
                  <Route exact path="/" component={Dashboard} />
-           			 <Route exact path="/class" component={Class} />
+           			 <Route exact path="/class/:id/:mode" component={Class} />
                  <Route exact path="/orderbundle" component={OrderBundle} />
               </div>
    				)

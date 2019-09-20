@@ -7,6 +7,7 @@ import Sidemenu from '../Components/Sidemenu';
 
 // import socket from '../../socketio/socketio';
 import HeadjackAction from '../../actions/HeadjackAction';
+import {setClassMode} from '../../actions/setClassMode';
 
 
 import ClassTheater from '../Components/ClassTheater';
@@ -21,7 +22,7 @@ class Class extends Component{
 	}
 
   componentWillMount(){
-    // console.log("this.props.params-->",this.props.match)
+    this.props.setClassMode(this.props.match.url.split("/")[1],this.props.match.params.id.split(":")[1],this.props.match.params.mode.split(":")[1])
   }
   
   componentDidMount(){
@@ -51,14 +52,14 @@ class Class extends Component{
   }
 
   render(){
-      console.log("this.props..........",this.props.headjackreducer)
+      console.log("this.props..........",this.props)
       return(
         <div className="full-page">
           <div className="inner-wrap"> 
               <Sidemenu/>
               <div className="inner-right-wrap">
-                <ClassTheater/>
-                <ClassIndividual/>
+                {this.props.classMode.mode=="theater" &&(<ClassTheater/>)}
+                {this.props.classMode.mode=="individual" &&(<ClassIndividual/>)}
               </div>
           </div>
         </div>
@@ -70,10 +71,11 @@ class Class extends Component{
 function mapStateToProps(state){
   return{
     headjackreducer:state.headjackreducer,
-    userData:state.userData
+    userData:state.userData,
+    classMode:state.classMode
   };
 }
 function matchDispatchToProps(dispatch){
-  return bindActionCreators({applist:HeadjackAction.appList, deviceStateList:HeadjackAction.deviceStateList, deviceAliasList:HeadjackAction.deviceAliasList }, dispatch);
+  return bindActionCreators({applist:HeadjackAction.appList, deviceStateList:HeadjackAction.deviceStateList, deviceAliasList:HeadjackAction.deviceAliasList, setClassMode:setClassMode }, dispatch);
 }
 export default connect(mapStateToProps, matchDispatchToProps)(Class);

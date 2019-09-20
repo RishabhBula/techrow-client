@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 import {bindActionCreators} from 'redux';
 import { connect } from 'react-redux';
+
+import {setClassMode} from '../../actions/setClassMode';
+
+
 class Sidemenu extends Component{
 	constructor(props){
 		super(props);
@@ -14,13 +18,22 @@ class Sidemenu extends Component{
 
   }
 
+  togglemenu(mode){
+    this.props.setClassMode("class",this.props.classMode.id,mode); 
+    window.location.href = '#/class/:'+this.props.classMode.id+'/:'+mode;
+  }
+
   render(){
       return(
         <div className="inner-blue-menu">
-            <div className="sidemenu-group">
+            {this.props.classMode.route=="" && (<div className="sidemenu-group">
               <a className="ative">My Library</a>
               <a>Marketplace</a>
-            </div>
+            </div>)}
+            {this.props.classMode.route=="class" && (<div className="sidemenu-group">
+              <a className={this.props.classMode.mode=="individual" ? "ative": "" } onClick={() => { this.togglemenu("individual") }}>Individual Mode</a>
+              <a className={this.props.classMode.mode=="theater" ? "ative": "" } onClick={() => { this.togglemenu("theater") }}>Theater</a>
+            </div>)}
             <div className="sidemenu-group">
               <a>Contact</a>
               <a>Settings</a>
@@ -33,10 +46,11 @@ class Sidemenu extends Component{
 
 function mapStateToProps(state){
   return{
+    classMode:state.classMode
 
   };
 }
 function matchDispatchToProps(dispatch){
-  return bindActionCreators({  }, dispatch);
+  return bindActionCreators({ setClassMode:setClassMode }, dispatch);
 }
 export default connect(mapStateToProps, matchDispatchToProps)(Sidemenu);

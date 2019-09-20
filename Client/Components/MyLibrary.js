@@ -34,7 +34,7 @@ class MyLibrary extends Component{
             <div className="classesList">
               <div className="row">
                 <div className="col-lg-3 col-md-4">
-                  <a href="#/class" className="each-class">
+                  <a href="#/class/:542321122/:theater" className="each-class">
                     <div className="class-banne-wrap">
                       <img src="../images/class-image.jpg" className="img-fluid class-banner" />
                     </div>
