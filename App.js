@@ -79,7 +79,7 @@ class App extends Component{
 
    			)
    	}else{
-   		route=<div><Spin indicator={antIcon} /></div>
+   		route=<div className="loader"><Spin indicator={antIcon} /></div>
    	} 
       return( 
          <Router>
