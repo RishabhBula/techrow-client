@@ -44,7 +44,7 @@ class SignUp2 extends Component{
   render(){
       return(
         <div>
-           <div className="signin-second signup-wrap">
+           <div className="signin-second signup-wrap animated fadeIn">
                 <div className="step-iden">
 
                   {/*<Steps current={0}>

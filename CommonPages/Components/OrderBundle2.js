@@ -67,7 +67,7 @@ class OrderBundle2 extends Component{
   render(){
       return(
         <div>
-           <div className="signin-second signup-wrap">
+           <div className="signin-second signup-wrap animated fadeIn">
                 <h4>Please enter shipping information:</h4>
                 <div className="form-wrap">
                     <div className="row">

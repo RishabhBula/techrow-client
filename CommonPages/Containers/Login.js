@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import {bindActionCreators} from 'redux';
 import { connect } from 'react-redux';
 import axios from 'axios';
+import {notification} from 'antd';
 
 import firebase from 'firebase/app';
 import 'firebase/auth';
@@ -20,6 +21,8 @@ class Login extends Component{
       email:"",
       password:"",
       forgotstate:false,
+      error:false,
+      errortext:""
     }
 	}
   
@@ -29,33 +32,51 @@ class Login extends Component{
 
   login(email,password){
       console.log("====login",email,password)
-      firebase.auth().signInWithEmailAndPassword(email, password)
-      .then((res) =>{
-        console.log("====login",res)
-        this.props.getAuthentication();
-        window.location.href="#/";
-      })
-      .catch((error) =>{
-        // Handle Errors here.
-        console.log("====error",error)
-        var errorCode = error.code;
-        var errorMessage = error.message;
-        // ...
-      })
+      if(this.state.email=="" || this.state.password==""){
+        this.setState({error:true,errortext:"Please fill in all fields to continue"})
+      }else{
+        firebase.auth().signInWithEmailAndPassword(email.trim().toLocaleLowerCase(), password.trim())
+                .then((res) =>{
+                  console.log("====login",res)
+                  this.props.getAuthentication();
+                  window.location.href="#/";
+                })
+                .catch((error) =>{
+                  // Handle Errors here.
+                  console.log("====error",error)
+                  var errorCode = error.code;
+                  var errorMessage = error.message;
+                  notification.error({
+                    message: error.code.split("/")[1],
+                    description: error.message,
+                    top: 100,
+                  });
+                  // ...
+                })
+      }
+      
   }
 
   forgot(email){
-
-      firebase.auth().sendPasswordResetEmail(email)
-      .then((res) =>{
-        console.log("forgot success response",res)
-        this.setState({forgotstate:false,email:"",password:""})
-        // Email sent.
-      })
-      .catch((error) =>{
-        console.log("forgot error response",error)
-        // An error happened.
-      })
+      if(this.state.email==""){
+        this.setState({error:true,errortext:"Please enter email to continue"})
+      }else{
+        firebase.auth().sendPasswordResetEmail(email.trim().toLocaleLowerCase())
+        .then((res) =>{
+          console.log("forgot success response",res)
+          this.setState({forgotstate:false,email:"",password:""})
+          // Email sent.
+        })
+        .catch((error) =>{
+          console.log("forgot error response",error)
+          notification.error({
+            message: error.code.split("/")[1],
+            description: error.message,
+            top: 100,
+          });
+          // An error happened.
+        })
+      }
   }
 
   render(){
@@ -73,20 +94,21 @@ class Login extends Component{
                 </div>
                 <div className="inner-right-wrap">
                     
-                {this.state.forgotstate==false && (<div>
+                {this.state.forgotstate==false && (<div className="animated fadeIn">
                         <h4>User Login</h4>
                           <div className="form-wrap">
                             <div className="form">
                               <div className="form-group">
                                 <label>email</label>
-                                <input id="email" className="form-control" placeholder="email" value={this.state.email} onChange={(e) =>this.setState({email:e.target.value})}/><br/>
+                                <input id="email" className="form-control" placeholder="email" value={this.state.email} onChange={(e) =>this.setState({email:e.target.value,error:false,errortext:""})}/><br/>
                               </div>
                               <div className="form-group">
                                 <label>password</label>
-                                <input id="password" type="password" className="form-control" placeholder="password" value={this.state.password} onChange={(e) =>this.setState({password:e.target.value})}/><br/>
+                                <input id="password" type="password" className="form-control" placeholder="password" value={this.state.password} onChange={(e) =>this.setState({password:e.target.value,error:false,errortext:""})}/><br/>
                               </div>
+                              {this.state.error==true && (<div className="form-group"><span style={{color: 'red'}}>*{this.state.errortext}</span></div>)}
                               <div className="form-group">
-                                <a onClick={() =>{ this.setState({ forgotstate:true, email:"", password:"" }) }}>forgot password</a>
+                                <a onClick={() =>{ this.setState({ forgotstate:true, email:"", password:"",error:false,errortext:"" }) }}>forgot password</a>
                                 <button className="green-btn" onClick={() =>{ this.login(this.state.email,this.state.password) }}>Login</button>
                               </div>
                             </div>
@@ -95,7 +117,7 @@ class Login extends Component{
                             </div>
                           </div>
                        </div>)}
-                 {this.state.forgotstate==true && (<div>
+                 {this.state.forgotstate==true && (<div className="animated fadeIn">
                         <h4>Forgot Password</h4>
                           <div className="form-wrap">
                             <div className="form">
@@ -103,6 +125,7 @@ class Login extends Component{
                                 <label>email</label>
                                 <input id="email" type="email" className="form-control" placeholder="email" value={this.state.email} onChange={(e) =>this.setState({email:e.target.value})}/><br/>
                               </div>
+                              {this.state.error==true && (<div className="form-group"><span style={{color: 'red'}}>*{this.state.errortext}</span></div>)}
                               <div className="form-group">
                                 <button className="green-btn" onClick={() =>{ this.forgot(this.state.email) }}>Send</button>
                               </div>
