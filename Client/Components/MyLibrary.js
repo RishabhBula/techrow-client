@@ -35,7 +35,7 @@ class MyLibrary extends Component{
 
   render(){
       return(
-         <div className="dashboard">
+         <div className="dashboard animated fadeIn">
           <div>
             <h2>My Library</h2>
             <div className="search form-group">

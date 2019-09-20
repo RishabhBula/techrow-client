@@ -28,7 +28,7 @@ class Sidemenu extends Component{
         <div className="inner-blue-menu">
             {this.props.classMode.route=="" && (<div className="sidemenu-group">
               <a className="ative">My Library</a>
-              <a>Marketplace</a>
+              <a href="#/marketplace">Marketplace</a>
             </div>)}
             {this.props.classMode.route=="class" && (<div className="sidemenu-group">
               <a className={this.props.classMode.mode=="individual" ? "ative": "" } onClick={() => { this.togglemenu("individual") }}>Individual Mode</a>
