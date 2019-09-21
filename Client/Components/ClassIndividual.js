@@ -18,7 +18,7 @@ class ClassIndividual extends Component{
 
   render(){
       return(
-         <div className="dashboard">
+         <div className="dashboard animated fadeIn">
             <h1>IndividualMode</h1>
          </div>
       );

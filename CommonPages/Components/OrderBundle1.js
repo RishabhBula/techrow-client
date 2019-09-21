@@ -32,7 +32,7 @@ class OrderBundle1 extends Component{
         <div>
           <div className="">
           <h4>Order Bundles</h4>
-             <div className="form-wrap signup-wrap order-bundle">
+             <div className="form-wrap signup-wrap order-bundle animated fadeIn">
                 <div style={{backgroundColor: '#fff'}}>
                    <div className="form">
                    <h2>Please tell us how many headsets you need:</h2>

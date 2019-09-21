@@ -3,7 +3,7 @@ import {bindActionCreators} from 'redux';
 import { connect } from 'react-redux';
 import axios from 'axios';
 
-class ClassTheater extends Component{
+class MarketContents extends Component{
 	constructor(props){
 		super(props);
     this.state = {
@@ -19,7 +19,7 @@ class ClassTheater extends Component{
   render(){
       return(
          <div className="dashboard animated fadeIn">
-            <h1>TheaterMode</h1>
+            <h1>MarketContents</h1>
          </div>
       );
    }
@@ -34,4 +34,4 @@ function mapStateToProps(state){
 function matchDispatchToProps(dispatch){
   return bindActionCreators({  }, dispatch);
 }
-export default connect(mapStateToProps, matchDispatchToProps)(ClassTheater);
+export default connect(mapStateToProps, matchDispatchToProps)(MarketContents);

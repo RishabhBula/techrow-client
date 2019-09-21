@@ -3,12 +3,12 @@ import {bindActionCreators} from 'redux';
 import { connect } from 'react-redux';
 import axios from 'axios';
 
-import Sidemenu from '../Components/Sidemenu';
-import MyLibrary from '../Components/MyLibrary.js';
+import MarketContents from '../Components/MarketContents';
+import MarketFeaturedContents from '../Components/MarketFeaturedContents';
 
 import {setClassMode} from '../../actions/setClassMode';
 
-class Dashboard extends Component{
+class Marketplace extends Component{
 	constructor(props){
 		super(props);
     this.state = {
@@ -23,12 +23,10 @@ class Dashboard extends Component{
   render(){
       return(
         <div className="full-page">
-          <div className="inner-wrap"> 
-              <Sidemenu/>
-              <div className="inner-right-wrap">
-                <MyLibrary/>
+              <div className="inner-wrap">
+                 <MarketContents/>
+                 <MarketFeaturedContents/>
               </div>
-          </div>
         </div>
       );
    }
@@ -45,4 +43,4 @@ function mapStateToProps(state){
 function matchDispatchToProps(dispatch){
   return bindActionCreators({ setClassMode:setClassMode }, dispatch);
 }
-export default connect(mapStateToProps, matchDispatchToProps)(Dashboard);
+export default connect(mapStateToProps, matchDispatchToProps)(Marketplace);

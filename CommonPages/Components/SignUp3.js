@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import {bindActionCreators} from 'redux';
 import { connect } from 'react-redux';
 import axios from 'axios';
+import {notification} from 'antd';
+
 import {Select,Steps} from 'antd';
 import Stepper from 'react-stepper-horizontal';
 
@@ -47,8 +49,8 @@ class SignUp3 extends Component{
             userType:this.props.signupdetails.type,
             firstName:this.props.signupdetails.firstname,
             lastName:this.props.signupdetails.lastname,
-            email:this.props.signupdetails.email,
-            username:this.props.signupdetails.email,
+            email:this.props.signupdetails.email.trim().toLocaleLowerCase(),
+            username:this.props.signupdetails.email.trim().toLocaleLowerCase(),
             phoneNumber:this.props.signupdetails.countrycode+this.props.signupdetails.phonenumber,
             school:{
               name:this.props.signupdetails.schoolname,
@@ -70,7 +72,7 @@ class SignUp3 extends Component{
             myRecentViews:[]
           }
       console.log("prooooopspspspsppspspsps======",this.props.signupdetails)
-      firebase.auth().createUserWithEmailAndPassword(this.props.signupdetails.email, this.props.signupdetails.password)
+      firebase.auth().createUserWithEmailAndPassword(this.props.signupdetails.email.trim().toLocaleLowerCase(), this.props.signupdetails.password.trim())
       .then((res) =>{
             userObj.id=res.user.uid
             userObj.status=true
@@ -83,8 +85,14 @@ class SignUp3 extends Component{
       })
       .catch((error) =>{
         // Handle Errors here.
+        console.log("====error",error)
         var errorCode = error.code;
         var errorMessage = error.message;
+        notification.error({
+          message: error.code.split("/")[1],
+          description: error.message,
+          top: 100,
+        });
         // ...
       })
 
@@ -94,7 +102,7 @@ class SignUp3 extends Component{
   render(){
       return(
         <div>
-           <div className="signin-second signup-wrap">>
+           <div className="signin-second signup-wrap animated fadeIn">
                 <div>
 
                   {/*<Steps current={1}>
@@ -145,7 +153,7 @@ class SignUp3 extends Component{
                               placeholder="Select Grade"
                               optionFilterProp="children"
                               value={this.state.grade}
-                              onChange={(e) =>{this.setState({grade:e}); this.props.signupdetails.grade=e }}
+                              onChange={(e) =>{this.setState({grade:e,error:false,errortext:""}); this.props.signupdetails.grade=e }}
                               filterOption={(input, option) => option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0}
                               >
                                 <Option value="A+">A+</Option>

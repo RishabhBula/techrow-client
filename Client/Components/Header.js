@@ -35,6 +35,15 @@ class Header extends Component{
     })
   }
 
+  header(){
+    if(this.props.classMode.route=="")
+      return "My Library"
+    if(this.props.classMode.route=="class")
+      return "Classes"
+    if(this.props.classMode.route=="marketplace")
+      return "Marketplace"
+  }
+
 
 
   render(){
@@ -56,6 +65,7 @@ class Header extends Component{
          <header className="navbar fixed-top">
             <div className="container-fluid">
               <a onClick={() =>{ window.location.href="#/" }} className="logo"><img src="../images/techrow-logo.png"/> </a>
+              <span> <Icon type="caret-right" />{this.header()}</span>
               <Dropdown overlay={menu}>
                 <a className="ant-dropdown-link" href="#">
                   <img src="../images/home-demo-photo-2c.png"/> {this.props.userData.school.name} <Icon type="down" />
@@ -71,7 +81,9 @@ class Header extends Component{
 
 function mapStateToProps(state){
   return{
-    userData:state.userData
+    userData:state.userData,
+    classMode:state.classMode
+
   };
 }
 function matchDispatchToProps(dispatch){

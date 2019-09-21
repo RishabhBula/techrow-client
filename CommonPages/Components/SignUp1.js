@@ -34,7 +34,7 @@ class SignUp1 extends Component{
         <div>
            <div>
                 <h4></h4>
-                <div className="form-wrap signup-wrap">
+                <div className="form-wrap signup-wrap animated fadeIn">
                    <h5>I am a/an</h5>
                    <div className="user-type-select">
                    <div className="row">
@@ -49,10 +49,10 @@ class SignUp1 extends Component{
                         </div>
                       </div>
                       <div className="col-6 ">
-                        <div className="signin-opt" onClick={() =>{ this.setState({state1:"#fff",state2:" #B1F543",type:"publisher",error:false,errortext:""}); this.props.signupdetails.type="publisher" }} style={{borderColor:this.state.state2}}>
+                        <div className="signin-opt" onClick={() =>{ {/*this.setState({state1:"#fff",state2:" #B1F543",type:"publisher",error:false,errortext:""}); this.props.signupdetails.type="publisher"*/} }} style={{borderColor:this.state.state2}}>
                           <img src="./images/study.png" className="img-fluid" alt="study"/>
-                          <h5 >Publisher</h5 >
-                          <p>I have great educational content and standards-aligned lesson plans. I want access to classrooms in need</p>
+                          <h5 >"Publisher"</h5 >
+                          <p>Coming Soon...</p>
                         </div>
                       </div>
                    </div>

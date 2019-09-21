@@ -19,7 +19,7 @@ class Home extends Component{
 
   render(){
       return(
-        <div className="full-page">
+        <div className="full-page animated fadeIn">
            <HomeHeader/>
             <section className="home-banner">
               <div className="container">
