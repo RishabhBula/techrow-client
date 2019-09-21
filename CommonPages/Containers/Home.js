@@ -26,13 +26,13 @@ class Home extends Component{
                 <h1>The Power of Immersive Technology</h1>
               </div>
             </section>
-            <section className="banner-bottom d-none">
+            <section className="banner-bottom">
               <div className="container">
                 <h2>We are a movement...</h2>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer eu efficitur est. Suspendisse eget est rutrum, venenatis velit quis, dignissim ex. Mauris elementum nibh semper elit volutpat, et</p>
               </div>
             </section>
-            <section className="about-this d-none">
+            <section className="about-this">
               <div className="container cnt-area">
                 <div className="row">
                   <div className="col-md-6 cnt-area-lft">
@@ -47,7 +47,7 @@ class Home extends Component{
                 </div>
               </div>
             </section>
-            <section className="techrow-platform d-none">
+            <section className="techrow-platform">
               <div className="container">
                 <h4><img src="../images/logo-grey.png" className="img-fluid logo"/>Platform</h4>
                 <div className="techrow-works">
@@ -55,7 +55,7 @@ class Home extends Component{
                 </div>
               </div>
             </section>
-            <section className="howItWork  d-none">
+            <section className="howItWork">
               <div className="container">
                 <h2>How it works</h2>
                 <img src="../images/how-it-works.png" className="img-fluid how-it-works"/>
@@ -69,19 +69,19 @@ class Home extends Component{
                 </div>
                 <h2>What You Get</h2>
                 <div className="row">
-                  <div className="col-sm-4">
+                  <div className="col-md-4">
                     <div className="works-types">
                       <h3 style={{color:'#F58221'}}>Marketplace</h3>
                       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim adaes aminim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat </p>
                     </div>
                   </div>
-                  <div className="col-sm-4">
+                  <div className="col-md-4">
                     <div className="works-types">
                       <h3 style={{color:'#B0F542'}}>Experiences</h3>
                       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim adaes aminim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat </p>
                     </div>
                   </div>
-                  <div className="col-sm-4">
+                  <div className="col-md-4">
                     <div className="works-types">
                       <h3 style={{color:'#FFF200'}}>Headset</h3>
                       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim adaes aminim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat </p>
@@ -94,7 +94,7 @@ class Home extends Component{
                 </div>
               </div>
             </section>
-            <section className="testimonials d-none">
+            <section className="testimonials">
               <div className="container">
               <h2>Testimonials</h2>
                 <div className="row">
@@ -122,7 +122,7 @@ class Home extends Component{
                 </div>
               </div>
             </section>
-            <section className="bottom-blue-banner d-none">
+            <section className="bottom-blue-banner">
               <div className="container">
                 <div className="btn-area">
                   <a href="#" className="trns-btn">Learn more</a>
@@ -130,7 +130,7 @@ class Home extends Component{
                 </div>
               </div>
             </section>
-            <section className="contact-us d-none">
+            <section className="contact-us">
               <div className="container">
                 <div className="row">
                   <div className="col-md-7">

@@ -110,6 +110,8 @@ header {
     margin-top: 5px; }
     header .logo img {
       max-width: 200px; }
+  header .head-right ul {
+    float: left; }
   header ul li {
     float: left;
     padding: 34px 10px; }
@@ -594,6 +596,10 @@ footer {
             border-radius: 0 5px 5px 0; }
         .inner-wrap .inner-right-wrap .form-wrap .form .form-group button {
           float: right; }
+          .inner-wrap .inner-right-wrap .form-wrap .form .form-group button:focus {
+            -webkit-box-shadow: none;
+            box-shadow: none;
+            outline: none; }
     .inner-wrap .inner-right-wrap .login-btm {
       text-align: center;
       border-top: .2px solid #707070;
@@ -816,11 +822,40 @@ footer {
   html, body {
     font-size: 12px; }
   header {
-    height: 50px; }
+    height: 50px;
+    position: relative; }
     header .logo img {
       width: 100px; }
-    header ul {
-      display: none; }
+    header menu {
+      position: absolute;
+      right: 10px;
+      top: 20px; }
+    header .head-right {
+      position: absolute;
+      background: #fff;
+      width: 300px;
+      top: 0;
+      height: 100vh;
+      padding-top: 50px;
+      right: -300px;
+      -webkit-transition: all 1s ease;
+      -moz-transition: all 1s ease;
+      -ms-transition: all 1s ease;
+      -o-transition: all 1s ease;
+      transition: all 1s ease; }
+      header .head-right ul {
+        display: block;
+        float: none;
+        float: none; }
+        header .head-right ul li {
+          display: block;
+          width: 100%;
+          padding: 20px 20px;
+          background: none; }
+          header .head-right ul li a {
+            font-size: 1.2rem; }
+      header .head-right.openMenu {
+        right: 0; }
   .home-banner {
     height: 50vh; }
     .home-banner h1 {
@@ -876,17 +911,40 @@ footer {
         padding: 10px 0;
         width: 100px; }
       footer .footer-content .social-links a img {
-        height: 20px; } }
+        height: 20px; }
+  .inner-wrap {
+    padding-top: 50px; }
+    .inner-wrap .inner-blue-menu {
+      top: 50px;
+      width: 100px; }
+      .inner-wrap .inner-blue-menu h1 {
+        font-size: 1rem;
+        line-height: 20px; }
+      .inner-wrap .inner-blue-menu h3 {
+        font-size: 1rem;
+        line-height: 20px; }
+      .inner-wrap .inner-blue-menu a {
+        font-size: 1rem;
+        padding: 10px 7px;
+        border: 1px solid #B1F543; }
+    .inner-wrap .inner-right-wrap {
+      margin-left: 100px; }
+      .inner-wrap .inner-right-wrap h4 {
+        margin-top: 50px; }
+      .inner-wrap .inner-right-wrap .form-wrap {
+        width: 90%; }
+        .inner-wrap .inner-right-wrap .form-wrap .form {
+          width: 100%; } }
 
-@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: portrait) {
   html, body {
     font-size: 14px; }
   header {
-    height: 50px; }
+    height: 70px; }
     header .logo img {
       width: 100px; }
-    header ul {
-      display: none; }
+    header ul li {
+      padding: 25px 5px; }
   .home-banner {
     height: 50vh; }
     .home-banner h1 {
@@ -915,8 +973,9 @@ footer {
     .howItWork h2 {
       padding-top: 50px; }
     .howItWork .works-types {
-      margin: 0 10% 20px;
-      padding: 30px; }
+      padding: 30px 10px; }
+      .howItWork .works-types h3 {
+        margin-bottom: 30px; }
     .howItWork .btn-area {
       margin-top: 30px; }
   .testimonials {
@@ -924,24 +983,84 @@ footer {
     .testimonials h2 {
       margin-bottom: 50px; }
   .bottom-blue-banner {
-    padding: 50px 0;
+    padding: 200px 0;
     background-attachment: fixed; }
   .contact-us {
-    padding: 50px 0;
-    text-align: center; }
+    padding: 50px 0; }
     .contact-us h2 {
       margin-bottom: 30px; }
     .contact-us .form {
       margin-bottom: 30px; }
   footer {
     padding: 20px 0; }
-    footer .footer-content {
-      -webkit-box-orient: vertical;
-      -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-      flex-direction: column; }
-      footer .footer-content .logo {
-        padding: 10px 0;
-        width: 100px; }
-      footer .footer-content .social-links a img {
-        height: 20px; } }
+    footer .footer-content .logo {
+      padding: 10px 0;
+      width: 100px; }
+    footer .footer-content .social-links a img {
+      height: 20px; }
+  .inner-wrap {
+    padding-top: 70px; }
+    .inner-wrap .inner-blue-menu {
+      top: 70px;
+      width: 200px; }
+    .inner-wrap .inner-right-wrap {
+      margin-left: 200px; } }
+
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: landscape) {
+  html, body {
+    font-size: 16px; }
+  header .logo img {
+    width: 100px; }
+  .home-banner {
+    height: 70vh; }
+    .home-banner h1 {
+      font-size: 2.5rem; }
+  .banner-bottom {
+    padding: 70px 0; }
+  .about-this .cnt-area .cnt-area-lft {
+    padding-left: 15px;
+    padding-top: 50px;
+    padding-bottom: 50px; }
+    .about-this .cnt-area .cnt-area-lft a {
+      font-size: 1.2rem; }
+  .about-this .cnt-area .about-cnt-rt {
+    vertical-align: middle;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex; }
+  .techrow-platform {
+    padding: 50px 0; }
+    .techrow-platform .logo {
+      width: 120px; }
+    .techrow-platform .techrow-works {
+      padding: 50px 0 10px; }
+  .howItWork {
+    padding-bottom: 50px; }
+    .howItWork h2 {
+      padding-top: 50px; }
+    .howItWork .works-types {
+      padding: 30px 10px; }
+      .howItWork .works-types h3 {
+        margin-bottom: 30px; }
+    .howItWork .btn-area {
+      margin-top: 30px; }
+  .testimonials {
+    padding: 50px 0; }
+    .testimonials h2 {
+      margin-bottom: 50px; }
+  .bottom-blue-banner {
+    padding: 200px 0;
+    background-attachment: fixed; }
+  .contact-us {
+    padding: 50px 0; }
+    .contact-us h2 {
+      margin-bottom: 30px; }
+    .contact-us .form {
+      margin-bottom: 30px; }
+  footer {
+    padding: 20px 0; }
+    footer .footer-content .logo {
+      padding: 10px 0;
+      width: 100px; }
+    footer .footer-content .social-links a img {
+      height: 20px; } }
