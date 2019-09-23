@@ -123,7 +123,7 @@ class Login extends Component{
                             <div className="form">
                               <div className="form-group">
                                 <label>email</label>
-                                <input id="email" type="email" className="form-control" placeholder="email" value={this.state.email} onChange={(e) =>this.setState({email:e.target.value})}/><br/>
+                                <input id="email" type="email" className="form-control" placeholder="email" value={this.state.email} onChange={(e) =>this.setState({email:e.target.value,error:false,errortext:""})}/><br/>
                               </div>
                               {this.state.error==true && (<div className="form-group"><span style={{color: 'red'}}>*{this.state.errortext}</span></div>)}
                               <div className="form-group">

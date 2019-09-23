@@ -103,23 +103,14 @@ class SignUp3 extends Component{
       return(
         <div>
            <div className="signin-second signup-wrap animated fadeIn">
-                <div>
+                <div className="step-iden">
 
                   {/*<Steps current={1}>
-                    <Step status="wait"/>
-                    <Step status="wait"/>
-                    <Step status="wait"/>
+                    <Step />
+                    <Step />
+                    <Step />
                   </Steps>*/}
-
-                  <Stepper 
-                    steps={ [{}, {}, {}] } 
-                    activeStep={ 1 }
-                    activeColor="white"
-                    completeColor="white"
-                    defaultColor="white"
-                    circleFontColor="black"
-                    completeBarColor="#a9ff69"
-                    lineMarginOffset={0} />
+                  <span>In Progress</span>
 
                 </div>
                 <h4>Tell Us About Your School</h4>

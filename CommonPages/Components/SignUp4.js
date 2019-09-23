@@ -36,23 +36,14 @@ class SignUp4 extends Component{
       return(
         <div>
            <div className="confirm-order">
-                <div>
+                <div className="step-iden">
 
                   {/*<Steps current={2}>
-                    <Step status="wait"/>
-                    <Step status="wait"/>
-                    <Step status="wait"/>
+                    <Step />
+                    <Step />
+                    <Step />
                   </Steps>*/}
-
-                  <Stepper 
-                    steps={ [{}, {}, {}] } 
-                    activeStep={ 2 }
-                    activeColor="white"
-                    completeColor="white"
-                    defaultColor="white"
-                    circleFontColor="black"
-                    completeBarColor="#a9ff69"
-                    lineMarginOffset={0} />
+                  <span>In Progress</span>
 
                 </div>
                 <h4>You're almost done</h4>

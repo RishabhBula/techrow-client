@@ -47,11 +47,7 @@ class SignUp2 extends Component{
            <div className="signin-second signup-wrap animated fadeIn">
                 <div className="step-iden">
 
-                  {/*<Steps current={0}>
-                    <Step style={{backgroundColor: 'red'}} status="wait"/>
-                    <Step status="wait"/>
-                    <Step status="wait"/>
-                  </Steps>*/}
+
 
                  
                     <ul className="step-view">
@@ -59,7 +55,6 @@ class SignUp2 extends Component{
                       <li className="active"><a>2</a></li>
                       <li><a>3</a></li>
                     </ul>
-
                 </div>
                 <h4>Tell Us About Yourself</h4>
                 <div className="form-wrap">
