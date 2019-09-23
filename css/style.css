@@ -731,6 +731,36 @@ footer {
     .signup-wrap button:hover {
       color: #B1F543;
       border-color: #B1F543 !important; }
+  .signup-wrap .step-view {
+    text-align: center;
+    margin: auto;
+    position: relative;
+    margin-top: 90px; }
+    .signup-wrap .step-view li {
+      display: inline-block;
+      margin: 0 14%; }
+      .signup-wrap .step-view li a {
+        display: inline-block;
+        background-color: #fff;
+        color: #000;
+        padding: 13px 15px;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%; }
+      .signup-wrap .step-view li:after {
+        content: "";
+        position: absolute;
+        border: 1px solid #D8D8D8;
+        width: 28%;
+        top: 19px; }
+      .signup-wrap .step-view li:last-child:after {
+        display: none; }
+      .signup-wrap .step-view li.complete a {
+        color: #B1F543; }
+      .signup-wrap .step-view li.active a {
+        color: #B1F543; }
+      .signup-wrap .step-view li.complete:after {
+        border-color: #B1F543; }
 
 .signin-second {
   text-align: left; }
