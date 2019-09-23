@@ -39,7 +39,7 @@ class SignUp extends Component{
                 </div>
               <div className="inner-right-wrap">
                   <div>
-                        {this.state.page==1 && (<SignUp4 pageRender={this.pageRender.bind(this)} />)}
+                        {this.state.page==1 && (<SignUp1 pageRender={this.pageRender.bind(this)} />)}
                         {this.state.page==2 && (<SignUp2 pageRender={this.pageRender.bind(this)} />)}
                         {this.state.page==3 && (<SignUp3 pageRender={this.pageRender.bind(this)} />)}
                         {this.state.page==4 && (<SignUp4 pageRender={this.pageRender.bind(this)} />)}

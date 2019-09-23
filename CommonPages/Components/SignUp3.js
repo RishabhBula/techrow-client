@@ -22,15 +22,15 @@ class SignUp3 extends Component{
 	constructor(props){
 		super(props);
     this.state = {
-      schoolname:"",
-      address:"",
-      city:"",
-      state:"",
-      zipcode:"",
-      grade:"",
-      schooldistrict:"",
-      po:"",
-      taxexid:"",
+      schoolname:this.props.signupdetails.schoolname,
+      address:this.props.signupdetails.address,
+      city:this.props.signupdetails.city,
+      state:this.props.signupdetails.state,
+      zipcode:this.props.signupdetails.zipcode,
+      grade:this.props.signupdetails.grade,
+      schooldistrict:this.props.signupdetails.schooldistrict,
+      po:this.props.signupdetails.po,
+      taxexid:this.props.signupdetails.taxexid,
       error:false,
       errortext:""
     }
@@ -41,7 +41,7 @@ class SignUp3 extends Component{
   }
 
   next(){
-    if(this.state.schoolname=="" || this.state.address=="" || this.state.city=="" || this.state.state=="" || this.state.zipcode==""){
+    if(this.props.signupdetails.schoolname=="" || this.props.signupdetails.address=="" || this.props.signupdetails.city=="" || this.props.signupdetails.state=="" || this.props.signupdetails.zipcode==""){
       this.setState({error:true,errortext:"please fill all fields to continue."})
     }else{
       const db=firebase.firestore();
@@ -106,7 +106,7 @@ class SignUp3 extends Component{
                 <div className="step-iden">
 
                     <ul className="step-view">
-                      <li className="complete"><a>1</a></li>
+                      <li className="complete" onClick={() =>{ this.props.pageRender(2) }}><a>1</a></li>
                       <li className="active"><a>2</a></li>
                       <li className=""><a>3</a></li>
                     </ul>
@@ -118,23 +118,23 @@ class SignUp3 extends Component{
                        <div className="form col">
                           <div className="form-group">
                               <label>schoolName</label>
-                              <input id="schoolname" className="form-control" placeholder="Your schoolname" value={this.state.schoolname} onChange={(e) => {this.setState({schoolname:e.target.value,error:false,errortext:""}); this.props.signupdetails.schoolname=e.target.value }}/>
+                              <input id="schoolname" className="form-control" placeholder="Your schoolname" value={this.props.signupdetails.schoolname} onChange={(e) => {this.setState({schoolname:e.target.value,error:false,errortext:""}); this.props.signupdetails.schoolname=e.target.value }}/>
                           </div>
                           <div className="form-group">
                               <label>Address</label>
-                              <input id="address" className="form-control" placeholder="Your address" value={this.state.address} onChange={(e) => {this.setState({address:e.target.value,error:false,errortext:""}); this.props.signupdetails.address=e.target.value }}/>
+                              <input id="address" className="form-control" placeholder="Your address" value={this.props.signupdetails.address} onChange={(e) => {this.setState({address:e.target.value,error:false,errortext:""}); this.props.signupdetails.address=e.target.value }}/>
                           </div>
                           <div className="form-group">
                               <label>City</label>
-                              <input id="city" className="form-control" placeholder="Your city" value={this.state.city} onChange={(e) => {this.setState({city:e.target.value,error:false,errortext:""}); this.props.signupdetails.city=e.target.value }}/>
+                              <input id="city" className="form-control" placeholder="Your city" value={this.props.signupdetails.city} onChange={(e) => {this.setState({city:e.target.value,error:false,errortext:""}); this.props.signupdetails.city=e.target.value }}/>
                           </div>
                           <div className="form-group">
                               <label>State</label>
-                              <input id="state" className="form-control" placeholder="Your state" value={this.state.state} onChange={(e) => {this.setState({state:e.target.value,error:false,errortext:""}); this.props.signupdetails.state=e.target.value }}/>
+                              <input id="state" className="form-control" placeholder="Your state" value={this.props.signupdetails.state} onChange={(e) => {this.setState({state:e.target.value,error:false,errortext:""}); this.props.signupdetails.state=e.target.value }}/>
                           </div>
                           <div className="form-group">
                               <label>Zip Code</label>
-                              <input id="zipcode" className="form-control" placeholder="Set zipcode" value={this.state.zipcode} onChange={(e) => {this.setState({zipcode:e.target.value,error:false,errortext:""}); this.props.signupdetails.zipcode=e.target.value }}/>
+                              <input id="zipcode" className="form-control" placeholder="Set zipcode" value={this.props.signupdetails.zipcode} onChange={(e) => {this.setState({zipcode:e.target.value,error:false,errortext:""}); this.props.signupdetails.zipcode=e.target.value }}/>
                           </div>
                          {/* <div className="form-group">
                               <label>Grades</label>
@@ -155,15 +155,15 @@ class SignUp3 extends Component{
                        <div className="form col">
                           <div className="form-group">
                               <label>school District</label>
-                              <input id="schooldistrict" className="form-control" placeholder="Your schooldistrict" value={this.state.schooldistrict} onChange={(e) => {this.setState({schooldistrict:e.target.value,error:false,errortext:""}); this.props.signupdetails.schooldistrict=e.target.value }}/>
+                              <input id="schooldistrict" className="form-control" placeholder="Your schooldistrict" value={this.props.signupdetails.schooldistrict} onChange={(e) => {this.setState({schooldistrict:e.target.value,error:false,errortext:""}); this.props.signupdetails.schooldistrict=e.target.value }}/>
                           </div>
                           <div className="form-group">
                               <label>PO#</label>
-                              <input id="po" className="form-control" placeholder="Your po" value={this.state.po} onChange={(e) => {this.setState({po:e.target.value,error:false,errortext:""}); this.props.signupdetails.po=e.target.value }}/>
+                              <input id="po" className="form-control" placeholder="Your po" value={this.props.signupdetails.po} onChange={(e) => {this.setState({po:e.target.value,error:false,errortext:""}); this.props.signupdetails.po=e.target.value }}/>
                           </div>
                           <div className="form-group">
                               <label>Tax Exemption ID</label>
-                              <input id="taxexid" className="form-control" placeholder="Your taxexid" value={this.state.taxexid} onChange={(e) => {this.setState({taxexid:e.target.value,error:false,errortext:""}); this.props.signupdetails.taxexid=e.target.value }}/>
+                              <input id="taxexid" className="form-control" placeholder="Your taxexid" value={this.props.signupdetails.taxexid} onChange={(e) => {this.setState({taxexid:e.target.value,error:false,errortext:""}); this.props.signupdetails.taxexid=e.target.value }}/>
                           </div>
                         </div>
                       </div>

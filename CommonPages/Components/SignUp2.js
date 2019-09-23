@@ -18,13 +18,13 @@ class SignUp2 extends Component{
 	constructor(props){
 		super(props);
     this.state = {
-      firstname:"",
-      lastname:"",
-      email:"",
-      countrycode:"",
-      phonenumber:"",
-      username:"",
-      password:"",
+      firstname:this.props.signupdetails.firstname,
+      lastname:this.props.signupdetails.lastname,
+      email:this.props.signupdetails.email,
+      countrycode:this.props.signupdetails.countrycode,
+      phonenumber:this.props.signupdetails.phonenumber,
+      username:this.props.signupdetails.username,
+      password:this.props.signupdetails.password,
       error:false,
       errortext:""
     }
@@ -35,9 +35,9 @@ class SignUp2 extends Component{
   }
 
   next(){
-    if(this.state.firstname=="" || this.state.lastname=="" || this.state.email=="" || this.state.phonenumber==""){
+    if(this.props.signupdetails.firstname=="" || this.props.signupdetails.lastname=="" || this.props.signupdetails.email=="" || this.props.signupdetails.phonenumber==""){
       this.setState({error:true,errortext:"please fill all fields to continue."})
-    }else if(!strongRegex.test(this.state.password)){
+    }else if(!strongRegex.test(this.props.signupdetails.password)){
       this.setState({error:true,errortext:"password strength not good."})
     }else{
       this.props.pageRender(3)
@@ -47,12 +47,12 @@ class SignUp2 extends Component{
   render(){
       return(
         <div>
-           <div className="signin-second signup-wrap animated fadeIn">
+           <div className="signin-second signup-wrap">
                 <div className="step-iden">
 
                     <ul className="step-view">
                       <li className="active"><a>1</a></li>
-                      <li className=""><a>2</a></li>
+                      <li className="" onClick={() =>{ this.next() }}><a>2</a></li>
                       <li className=""><a>3</a></li>
                     </ul>
 
@@ -64,51 +64,51 @@ class SignUp2 extends Component{
                           <div className="col-sm-6">
                             <div className="form-group">
                                 <label>Firstname</label>
-                                <input id="firstname" className="form-control" placeholder="Your firstname" value={this.state.firstname} onChange={(e) => {this.setState({firstname:e.target.value,error:false,errortext:""}); this.props.signupdetails.firstname=e.target.value }}/>
+                                <input id="firstname" className="form-control" placeholder="Your firstname" value={this.props.signupdetails.firstname} onChange={(e) => {this.setState({firstname:e.target.value,error:false,errortext:""}); this.props.signupdetails.firstname=e.target.value }}/>
                             </div>
                           </div>
                           <div className="col-sm-6">
                             <div className="form-group">
                                 <label>Lastname</label>
-                                <input id="lastname" className="form-control" placeholder="Your lastname" value={this.state.lastname} onChange={(e) => {this.setState({lastname:e.target.value,error:false,errortext:""}); this.props.signupdetails.lastname=e.target.value }}/>
+                                <input id="lastname" className="form-control" placeholder="Your lastname" value={this.props.signupdetails.lastname} onChange={(e) => {this.setState({lastname:e.target.value,error:false,errortext:""}); this.props.signupdetails.lastname=e.target.value }}/>
                             </div>
                           </div>
                         </div>
                       <div className="form-group">
                           <label>Email</label>
-                          <input id="email" className="form-control" placeholder="Your email" value={this.state.email} onChange={(e) => {this.setState({email:e.target.value,error:false,errortext:""}); this.props.signupdetails.email=e.target.value }}/>
+                          <input id="email" className="form-control" placeholder="Your email" value={this.props.signupdetails.email} onChange={(e) => {this.setState({email:e.target.value,error:false,errortext:""}); this.props.signupdetails.email=e.target.value }}/>
                       </div>
                       <div className="form-group">
                           <label>Phone</label>
                           <InputGroup>
                              <Select
                                 style={{ width:60 }}
-                                value={this.state.countrycode}
+                                value={this.props.signupdetails.countrycode}
                                 onChange={(e) =>{this.setState({countrycode:e}); this.props.signupdetails.countrycode=e }}
                                 >
                                   <Option value="+1">+1</Option>
                                   <Option value="+2">+2</Option>
                                   <Option value="+3">+3</Option>
                              </Select>
-                             <input id="phonenumber" className="form-control" placeholder="Your phonenumber" value={this.state.phonenumber} onChange={(e) => {this.setState({phonenumber:e.target.value,error:false,errortext:""}); this.props.signupdetails.phonenumber=e.target.value }}/>
+                             <input id="phonenumber" className="form-control" placeholder="Your phonenumber" value={this.props.signupdetails.phonenumber} onChange={(e) => {this.setState({phonenumber:e.target.value,error:false,errortext:""}); this.props.signupdetails.phonenumber=e.target.value }}/>
                           </InputGroup>
                       </div>
                       <div className="form-group">
                           <label>Username</label>
-                          <input disabled id="username" className="form-control" placeholder="Set username" value={this.state.email} onChange={(e) => {this.setState({email:e.target.value,error:false,errortext:""}); this.props.signupdetails.email=e.target.value }}/>
+                          <input disabled id="username" className="form-control" placeholder="Set username" value={this.props.signupdetails.email} onChange={(e) => {this.setState({email:e.target.value,error:false,errortext:""}); this.props.signupdetails.email=e.target.value }}/>
                       </div>
                       <div className="form-group">
                           <label>password</label>
-                          <input id="password" type="password" className="form-control" placeholder="Create a strong password" value={this.state.password} onChange={(e) => {this.setState({password:e.target.value.trim(),error:false,errortext:""}); this.props.signupdetails.password=e.target.value.trim() }}/>
+                          <input id="password" type="password" className="form-control" placeholder="Create a strong password" value={this.props.signupdetails.password} onChange={(e) => {this.setState({password:e.target.value.trim(),error:false,errortext:""}); this.props.signupdetails.password=e.target.value.trim() }}/>
                       </div>
-                      {this.state.password!="" && (
+                      {this.props.signupdetails.password!="" && (
                         <div className="pass-strength">
                           <div className="pass-strength-tile" style={{backgroundColor: 'red'}}></div>
-                          {mediumRegex.test(this.state.password) && (<div  className="pass-strength-tile" style={{backgroundColor: 'orange'}}></div>)}
-                          {strongRegex.test(this.state.password) && (<div  className="pass-strength-tile" style={{backgroundColor: 'green'}}></div>)}
-                          {mediumRegex.test(this.state.password)==false && strongRegex.test(this.state.password)==false && (<b>Weak</b>)}
-                          {mediumRegex.test(this.state.password)==true && strongRegex.test(this.state.password)==false && (<b>Medium</b>)}
-                          {strongRegex.test(this.state.password) && (<b>Strong</b>)}
+                          {mediumRegex.test(this.props.signupdetails.password) && (<div  className="pass-strength-tile" style={{backgroundColor: 'orange'}}></div>)}
+                          {strongRegex.test(this.props.signupdetails.password) && (<div  className="pass-strength-tile" style={{backgroundColor: 'green'}}></div>)}
+                          {mediumRegex.test(this.props.signupdetails.password)==false && strongRegex.test(this.props.signupdetails.password)==false && (<b>Weak</b>)}
+                          {mediumRegex.test(this.props.signupdetails.password)==true && strongRegex.test(this.props.signupdetails.password)==false && (<b>Medium</b>)}
+                          {strongRegex.test(this.props.signupdetails.password) && (<b>Strong</b>)}
                           <br/><span className="about-password">At least 6 characters including uppercase, lowercase, number and symbol</span>
                         </div>
                         )}
