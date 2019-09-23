@@ -304,6 +304,17 @@ footer{padding: 40px 0;
 		}		
 
 	}
+	.step-view{text-align: center;margin:auto; position: relative; margin-top: 90px;
+		li{display: inline-block;margin:0 14%;
+			a{display: inline-block; background-color: $w; color: $b;padding:13px 15px;width: 40px; height: 
+			40px;border-radius: 50%; }
+			&:after{content: ""; position: absolute; border: 1px solid #D8D8D8;width: 28%; top:19px;}
+			&:last-child:after{display: none}	
+			&.complete a{color: $green}
+			&.active a{color: $green}
+			&.complete:after{border-color: $green;}	
+		}
+	}
 }
 .signin-second{ text-align: left;
 	.step-iden{max-width: 800px; margin:30px auto 20px;

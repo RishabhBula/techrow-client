@@ -53,16 +53,12 @@ class SignUp2 extends Component{
                     <Step status="wait"/>
                   </Steps>*/}
 
-                  <Stepper 
-                    steps={ [{}, {}, {}] } 
-                    activeStep={ 0 }
-                    activeColor="white"
-                    completeColor="white"
-                    className="step"
-                    defaultColor="white"
-                    circleFontColor="black"
-                    completeBarColor="#a9ff69"
-                    lineMarginOffset={0} />
+                 
+                    <ul className="step-view">
+                      <li className="complete"><a>1</a></li>
+                      <li className="active"><a>2</a></li>
+                      <li><a>3</a></li>
+                    </ul>
 
                 </div>
                 <h4>Tell Us About Yourself</h4>
