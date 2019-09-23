@@ -38,12 +38,11 @@ class SignUp4 extends Component{
            <div className="confirm-order">
                 <div className="step-iden">
 
-                  {/*<Steps current={2}>
-                    <Step />
-                    <Step />
-                    <Step />
-                  </Steps>*/}
-                  <span>In Progress</span>
+                    <ul className="step-view">
+                      <li className="complete"><a>1</a></li>
+                      <li className="complete"><a>2</a></li>
+                      <li className="active"><a>3</a></li>
+                    </ul>
 
                 </div>
                 <h4>You're almost done</h4>

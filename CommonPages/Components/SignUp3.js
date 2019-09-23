@@ -102,19 +102,18 @@ class SignUp3 extends Component{
   render(){
       return(
         <div>
-           <div className="signin-second signup-wrap animated fadeIn">
+           <div className="signin-second signup-wrap">
                 <div className="step-iden">
 
-                  {/*<Steps current={1}>
-                    <Step />
-                    <Step />
-                    <Step />
-                  </Steps>*/}
-                  <span>In Progress</span>
+                    <ul className="step-view">
+                      <li className="complete"><a>1</a></li>
+                      <li className="active"><a>2</a></li>
+                      <li className=""><a>3</a></li>
+                    </ul>
 
                 </div>
                 <h4>Tell Us About Your School</h4>
-                <div className="form-wrap">
+                <div className="form-wrap animated fadeIn">
                     <div className="row">
                        <div className="form col">
                           <div className="form-group">

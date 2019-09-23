@@ -11,6 +11,9 @@ const { Step } = Steps;
 const InputGroup = Input.Group;
 const Option = Select.Option;
 
+var strongRegex = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{6,})");
+var mediumRegex = new RegExp("^(((?=.*[a-z])(?=.*[A-Z]))|((?=.*[a-z])(?=.*[0-9]))|((?=.*[A-Z])(?=.*[0-9])))(?=.{6,})");
+
 class SignUp2 extends Component{
 	constructor(props){
 		super(props);
@@ -34,7 +37,7 @@ class SignUp2 extends Component{
   next(){
     if(this.state.firstname=="" || this.state.lastname=="" || this.state.email=="" || this.state.phonenumber==""){
       this.setState({error:true,errortext:"please fill all fields to continue."})
-    }else if(this.state.password.length<6){
+    }else if(!strongRegex.test(this.state.password)){
       this.setState({error:true,errortext:"password strength not good."})
     }else{
       this.props.pageRender(3)
@@ -47,17 +50,15 @@ class SignUp2 extends Component{
            <div className="signin-second signup-wrap animated fadeIn">
                 <div className="step-iden">
 
-
-
-                 
                     <ul className="step-view">
-                      <li className="complete"><a>1</a></li>
-                      <li className="active"><a>2</a></li>
-                      <li><a>3</a></li>
+                      <li className="active"><a>1</a></li>
+                      <li className=""><a>2</a></li>
+                      <li className=""><a>3</a></li>
                     </ul>
+
                 </div>
                 <h4>Tell Us About Yourself</h4>
-                <div className="form-wrap">
+                <div className="form-wrap animated fadeIn">
                     <div className="form">
                       <div className="row">
                           <div className="col-sm-6">
@@ -103,11 +104,11 @@ class SignUp2 extends Component{
                       {this.state.password!="" && (
                         <div className="pass-strength">
                           <div className="pass-strength-tile" style={{backgroundColor: 'red'}}></div>
-                          {this.state.password.length>=3 && (<div  className="pass-strength-tile" style={{backgroundColor: 'orange'}}></div>)}
-                          {this.state.password.length>=6 && (<div  className="pass-strength-tile" style={{backgroundColor: 'green'}}></div>)}
-                          {this.state.password.length<3 && (<b>Weak</b>)}
-                          {this.state.password.length>=3 && this.state.password.length<6 && (<b>Medium</b>)}
-                          {this.state.password.length>=6 && (<b>Strong</b>)}
+                          {mediumRegex.test(this.state.password) && (<div  className="pass-strength-tile" style={{backgroundColor: 'orange'}}></div>)}
+                          {strongRegex.test(this.state.password) && (<div  className="pass-strength-tile" style={{backgroundColor: 'green'}}></div>)}
+                          {mediumRegex.test(this.state.password)==false && strongRegex.test(this.state.password)==false && (<b>Weak</b>)}
+                          {mediumRegex.test(this.state.password)==true && strongRegex.test(this.state.password)==false && (<b>Medium</b>)}
+                          {strongRegex.test(this.state.password) && (<b>Strong</b>)}
                           <br/><span className="about-password">At least 6 characters including uppercase, lowercase, number and symbol</span>
                         </div>
                         )}
