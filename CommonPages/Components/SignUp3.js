@@ -41,7 +41,7 @@ class SignUp3 extends Component{
   }
 
   next(){
-    if(this.state.schoolname=="" || this.state.address=="" || this.state.city=="" || this.state.state=="" || this.state.zipcode=="" || this.state.grade==""){
+    if(this.state.schoolname=="" || this.state.address=="" || this.state.city=="" || this.state.state=="" || this.state.zipcode==""){
       this.setState({error:true,errortext:"please fill all fields to continue."})
     }else{
       const db=firebase.firestore();
@@ -58,7 +58,7 @@ class SignUp3 extends Component{
               city:this.props.signupdetails.city,
               state:this.props.signupdetails.state,
               zipCode:this.props.signupdetails.zipcode,
-              grade:this.props.signupdetails.grade,
+              // grade:this.props.signupdetails.grade,
               schooldistrict:this.props.signupdetails.schooldistrict,
               po:this.props.signupdetails.po,
               taxexid:this.props.signupdetails.taxexid,
@@ -137,7 +137,7 @@ class SignUp3 extends Component{
                               <label>Zip Code</label>
                               <input id="zipcode" className="form-control" placeholder="Set zipcode" value={this.state.zipcode} onChange={(e) => {this.setState({zipcode:e.target.value,error:false,errortext:""}); this.props.signupdetails.zipcode=e.target.value }}/>
                           </div>
-                          <div className="form-group">
+                         {/* <div className="form-group">
                               <label>Grades</label>
                               <Select
                               showSearch
@@ -151,7 +151,7 @@ class SignUp3 extends Component{
                                 <Option value="B+">B+</Option>
                                 <Option value="C+">C+</Option>
                               </Select>
-                          </div>
+                          </div>*/}
                        </div>
                        <div className="form col">
                           <div className="form-group">

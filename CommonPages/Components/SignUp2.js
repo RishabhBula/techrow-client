@@ -32,9 +32,9 @@ class SignUp2 extends Component{
   }
 
   next(){
-    if(this.state.firstname=="" || this.state.lastname=="" || this.state.email=="" || this.state.phonenumber=="" || this.state.password==""){
+    if(this.state.firstname=="" || this.state.lastname=="" || this.state.email=="" || this.state.phonenumber==""){
       this.setState({error:true,errortext:"please fill all fields to continue."})
-    }else if(this.state.password.length<10){
+    }else if(this.state.password.length<6){
       this.setState({error:true,errortext:"password strength not good."})
     }else{
       this.props.pageRender(3)
@@ -97,16 +97,16 @@ class SignUp2 extends Component{
                       </div>
                       <div className="form-group">
                           <label>password</label>
-                          <input id="password" type="password" className="form-control" placeholder="Create a strong password" value={this.state.password} onChange={(e) => {this.setState({password:e.target.value,error:false,errortext:""}); this.props.signupdetails.password=e.target.value }}/>
+                          <input id="password" type="password" className="form-control" placeholder="Create a strong password" value={this.state.password} onChange={(e) => {this.setState({password:e.target.value.trim(),error:false,errortext:""}); this.props.signupdetails.password=e.target.value.trim() }}/>
                       </div>
                       {this.state.password!="" && (
                         <div className="pass-strength">
                           <div className="pass-strength-tile" style={{backgroundColor: 'red'}}></div>
-                          {this.state.password.length>=5 && (<div  className="pass-strength-tile" style={{backgroundColor: 'orange'}}></div>)}
-                          {this.state.password.length>=10 && (<div  className="pass-strength-tile" style={{backgroundColor: 'green'}}></div>)}
-                          {this.state.password.length<5 && (<b>Weak</b>)}
-                          {this.state.password.length>=5 && this.state.password.length<10 && (<b>Medium</b>)}
-                          {this.state.password.length>=10 && (<b>Strong</b>)}
+                          {this.state.password.length>=3 && (<div  className="pass-strength-tile" style={{backgroundColor: 'orange'}}></div>)}
+                          {this.state.password.length>=6 && (<div  className="pass-strength-tile" style={{backgroundColor: 'green'}}></div>)}
+                          {this.state.password.length<3 && (<b>Weak</b>)}
+                          {this.state.password.length>=3 && this.state.password.length<6 && (<b>Medium</b>)}
+                          {this.state.password.length>=6 && (<b>Strong</b>)}
                           <br/><span className="about-password">At least 6 characters including uppercase, lowercase, number and symbol</span>
                         </div>
                         )}
