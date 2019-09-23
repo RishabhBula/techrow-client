@@ -74,6 +74,9 @@ box-shadow: 0px 2px 11px -2px rgba(191,191,191,1);
 	.logo{float: left; margin-right: 20px;margin-top: 5px;
 		img{max-width: 200px;}
 	}
+	.head-right{
+		ul{float: left;}
+	}
 	ul{
 		li{float: left;padding: 34px 10px;
 			a{color: $textgreay; padding: 5px 10px; font-size: 0.9375rem;
@@ -89,6 +92,7 @@ box-shadow: 0px 2px 11px -2px rgba(191,191,191,1);
 	}
 	.ant-dropdown-link{color: $textgreay; display: flex; align-items:center; font-size: 1.25rem;text-decoration: none!important; font-family: $qfont; margin-right: 20px; 
 		img{width: 40px; height: 40px; margin-right: 10px;}
+		
 		.anticon-down{margin-left: 10px;font-size: 1.4rem!important; margin-top: 5px;}
 	}
 }
@@ -238,6 +242,7 @@ footer{padding: 40px 0;
 
 					}
 					button{float: right;
+						&:focus{box-shadow: none; outline: none}
 					}
 				}
 			}
@@ -352,11 +357,23 @@ footer{padding: 40px 0;
 // Small devices (landscape phones, 576px and up)
 @media (max-width: 600px) { 
 	html, body{font-size: 12px;}
-	header{height: 50px;
+
+// ----------------HOME----------------
+
+
+	header{height: 50px;position: relative;
 		.logo{
 			img{width: 100px;}
 		}
-		ul{display: none}
+		menu{position: absolute; right: 10px; top:20px;}
+		.head-right{position: absolute; background: #fff; width: 300px;top:0; height: 100vh; padding-top: 50px; right: -300px; @include transition(all 1s ease);
+			ul{display: block; float: none;float: none;
+				li{display: block; width: 100%; padding: 20px 20px; background:none;
+					a{font-size: 1.2rem;}
+				}
+			}
+			&.openMenu{right: 0;}
+		}
 	}
 	.home-banner{height: 50vh;
 		h1{font-size: 2.5rem;}
@@ -393,16 +410,44 @@ footer{padding: 40px 0;
 		}
 	}
 
+// ----------------HOME----------------
+
+// ----------------Login----------------
+
+	.inner-wrap{padding-top: 50px;
+		.inner-blue-menu{top:50px;width: 100px;
+			h1{font-size: 1rem; line-height: 20px;}
+			h3{font-size: 1rem; line-height: 20px;}
+			a{font-size: 1rem;  padding: 10px 7px; border: 1px solid #B1F543}
+		}
+		.inner-right-wrap{margin-left: 100px;
+			h4{margin-top: 50px;}
+			.form-wrap{width: 90%;
+				.form{width: 100%;}
+			}
+		}
+	}
+
+// ----------------Login----------------
+
+
 }
 
 // Medium devices (Ipad)
-@media only screen  and (min-device-width : 768px)  and (max-device-width : 1024px)  { 
+@media only screen  and (min-device-width : 768px)  and (max-device-width : 1024px) and (orientation : portrait){ 
+
+
 	html, body{font-size: 14px;}
-	header{height: 50px;
+
+// ----------------HOME----------------
+
+	header{height: 70px;
 		.logo{
 			img{width: 100px;}
 		}
-		ul{display: none}
+		ul{
+			li{padding: 25px 5px;}
+		}
 	}
 	.home-banner{height: 50vh;
 		h1{font-size: 2.5rem;}
@@ -420,19 +465,21 @@ footer{padding: 40px 0;
 	}
 	.howItWork{padding-bottom: 50px;
 		h2{padding-top: 50px;}
-		.works-types{margin:0 10% 20px; padding: 30px;}
+		.works-types{ padding: 30px 10px;
+			h3{margin-bottom: 30px;}
+		}
 		.btn-area{margin-top: 30px}
 	}
 	.testimonials{padding: 50px 0;
 		h2{margin-bottom: 50px}
 	}
-	.bottom-blue-banner{padding: 50px 0; background-attachment: fixed;}
-	.contact-us {padding: 50px 0; text-align: center;
+	.bottom-blue-banner{padding: 200px 0; background-attachment: fixed;}
+	.contact-us {padding: 50px 0; 
 		h2{margin-bottom: 30px;}
 		.form{margin-bottom: 30px}
 	}
 	footer{padding: 20px 0;
-		.footer-content{flex-direction:column;
+		.footer-content{
 			.logo{padding: 10px 0;width: 100px;}
 			.social-links{
 				a{
@@ -441,10 +488,72 @@ footer{padding: 40px 0;
 			}
 		}
 	}
+// ----------------HOME----------------
+
+// ----------------Login----------------
+
+	.inner-wrap{padding-top: 70px;
+		.inner-blue-menu{top:70px;width: 200px}
+		.inner-right-wrap{margin-left: 200px;}
+	}
+
+// ----------------Login----------------
+
+
 }
 
 // Large devices (Ipad Landscape)
 @media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : landscape) {
+	html, body{font-size: 16px;}
+
+// ----------------HOME----------------
+
+	header{
+		.logo{
+			img{width: 100px;}
+		}
+	}
+	.home-banner{height: 70vh;
+		h1{font-size: 2.5rem;}
+	}
+	.banner-bottom{padding: 70px 0;}
+	.about-this .cnt-area{ 
+		.cnt-area-lft{padding-left: 15px;padding-top: 50px; padding-bottom: 50px;
+			a{ font-size: 1.2rem;}
+		}
+		.about-cnt-rt{vertical-align: middle; display: flex;}
+	}
+	.techrow-platform{padding: 50px 0;
+		.logo{width: 120px;}
+		.techrow-works{padding: 50px 0 10px;}
+	}
+	.howItWork{padding-bottom: 50px;
+		h2{padding-top: 50px;}
+		.works-types{ padding: 30px 10px;
+			h3{margin-bottom: 30px;}
+		}
+		.btn-area{margin-top: 30px}
+	}
+	.testimonials{padding: 50px 0;
+		h2{margin-bottom: 50px}
+	}
+	.bottom-blue-banner{padding: 200px 0; background-attachment: fixed;}
+	.contact-us {padding: 50px 0; 
+		h2{margin-bottom: 30px;}
+		.form{margin-bottom: 30px}
+	}
+	footer{padding: 20px 0;
+		.footer-content{
+			.logo{padding: 10px 0;width: 100px;}
+			.social-links{
+				a{
+					img{height: 20px}
+				}
+			}
+		}
+	}
+
+// ----------------HOME----------------
 
 }
 

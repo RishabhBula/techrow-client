@@ -127,6 +127,7 @@ class Login extends Component{
                               </div>
                               {this.state.error==true && (<div className="form-group"><span style={{color: 'red'}}>*{this.state.errortext}</span></div>)}
                               <div className="form-group">
+                                <a onClick={() =>{ this.setState({ forgotstate:false, email:"", password:"" }) }}>Sign In</a>
                                 <button className="green-btn" onClick={() =>{ this.forgot(this.state.email) }}>Send</button>
                               </div>
                             </div>
