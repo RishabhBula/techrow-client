@@ -75,7 +75,7 @@ box-shadow: 0px 2px 11px -2px rgba(191,191,191,1);
 		img{max-width: 200px;}
 	}
 	menu{display: none}
-	.head-right{
+	.head-right{width: 80%;
 		ul{float: left;}
 	}
 	ul{
@@ -181,7 +181,7 @@ box-shadow: 0px 2px 11px -2px rgba(191,191,191,1);
 
 	}
 	ul{
-		li{
+		li{margin-bottom: 10px;
 			a{color: #9b9b9b; padding: 10px 0; font-family: $opensan; font-size: 1.4rem; font-weight: 300;display: inline-block; text-decoration: none;
 				&:hover{color: $blue}
 			 }
@@ -213,7 +213,10 @@ footer{padding: 40px 0;
 	.inner-blue-menu{background-color: $blue; width: 300px; position: fixed;left: 0; bottom: 0; top:85px;padding: 60px 0; text-align: center; display: flex;    justify-content: space-between; flex-direction: column; align-items: center;
 		h1{color: $green; font-size: 2rem; font-weight: 500; line-height: 40px;}
 		h3{color: $w; font-size: 1.4rem; font-weight: 500;margin-bottom: 20px;}
-		a{color: $w; font-size: 1.125rem; font-weight: 500;   padding: 10px 20px; border:4px solid $green; border-radius: 8px;display: inline-block;}
+		a{color: $w; font-size: 1.125rem; font-weight: 500;   padding: 10px 20px; border:4px solid $green; border-radius: 8px;display: inline-block;
+			img{width: 25px; float: left; margin-top: -3px; margin-right: 10px;}
+			&:hover{color: $green}
+		}
 		.sidemenu-group{display: flex; flex-direction:column;width: 100%;
 	    	a{border:none;position: relative; display: block;padding: 15px 0; cursor: pointer;border-radius: 0; text-align: left; padding-left: 50px;
 	    		&::after{content: ""; position: absolute; left:20px; right: 20px;bottom: 0; border:1px solid #5F5B8D50;}
@@ -223,14 +226,17 @@ footer{padding: 40px 0;
 	    }
 	}
 	.inner-right-wrap{margin-left: 300px;padding-bottom: 30px;
-		h4{color: $blue; font-size: 2rem; font-weight: 600; line-height: 40px; text-align: center; margin-top: 100px; margin-bottom: 20px;}
+		h4{color: $blue; font-size: 2rem; font-weight: 600; line-height: 40px; text-align: center; margin-top: 50px; margin-bottom: 20px;}
 		h5{color: $b; font-size: 2rem; font-weight: 600; line-height: 40px; text-align: center; margin-top: 30px; margin-bottom: 80px;}
 		.form-wrap{background-color: $w; width: 80%; padding: 30px; margin: auto; border-radius: 20px;
 			.form{width: 390px; margin:80px auto;
 				.form-group{
 					label{color: #6D6D6D; font-size: .75rem;font-family: $opensan; font-weight: 700;margin-bottom: 10px; text-transform: capitalize;}
-					.form-control{background-color: $grey; border:1px solid #707070; border-radius: 5px;
-						&:focus{outline: none; box-shadow: none; border-color: $green}
+					.form-control{background-color: $grey; border:1px solid #707070; border-radius: 5px;font-family: $opensan;
+						&:focus{outline: none; box-shadow: none; border-color: $green; font-family: $opensan;}
+						&::-webkit-input-placeholder {font-size:.75rem; color: #DADADB;font-family: $opensan;}
+						&:-ms-input-placeholder { font-size:.75rem; color: #DADADB;font-family: $opensan;}
+						&::placeholder {font-size:.75rem; color: #DADADB;font-family: $opensan;}
 					}
 					.ant-select{border:1px solid #707070; border-radius: 5px; height: 38px;display: block;width: 100%;
 						.ant-select-selection--single{height: 36px;background-color: $grey; }
@@ -243,14 +249,15 @@ footer{padding: 40px 0;
 						.form-control{width: 84%;display: inline-block;border-radius: 0 5px 5px 0}
 
 					}
-					button{float: right;
+					a{font-family: $opensan; font-style: italic;color: #262626}
+					button{float: right;font-family: $opensan;
 						&:focus{box-shadow: none; outline: none}
 					}
 				}
 			}
 		}
 		.login-btm{text-align: center; border-top: .2px solid #707070; max-width: 800px;margin: 30px auto 10px; padding-top: 40px;
-			span{color: #262261; font-family: $opensan;
+			span{color: #262261; font-family: $opensan;font-size: .75rem;
 				a{color: #262261; text-decoration: underline;}
 			}
 
@@ -570,4 +577,6 @@ footer{padding: 40px 0;
 // ----------------HOME----------------
 
 }
-
+@media (min-width: 1441px) {
+	.inner-wrap .inner-right-wrap h4{margin-top: 100px;}
+ }

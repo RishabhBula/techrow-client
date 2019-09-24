@@ -90,7 +90,7 @@ class Home extends Component{
                 </div>
                 <div className="btn-area">
                   <a href="#" className="blue-btn">Learn more</a>
-                  <a href="#" className="wt-btn">Sign up</a>
+                  <a href="#/signup" className="wt-btn">Sign up</a>
                 </div>
               </div>
             </section>
@@ -126,7 +126,7 @@ class Home extends Component{
               <div className="container">
                 <div className="btn-area">
                   <a href="#" className="trns-btn">Learn more</a>
-                  <a href="#" className="white-btn">Sign up</a>
+                  <a href="#/signup" className="white-btn">Sign up</a>
                 </div>
               </div>
             </section>
@@ -161,8 +161,8 @@ class Home extends Component{
                     <h3>Quick Links</h3>
                     <ul>
                       <li><a href="#">Features</a></li>
-                      <li><a href="#">Sign Up</a></li>
-                      <li><a href="#">Sign In</a></li>
+                      <li><a href="#/signup">Sign Up</a></li>
+                      <li><a href="#/login">Sign In</a></li>
                     </ul>
                     
                   </div>
