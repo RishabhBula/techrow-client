@@ -74,7 +74,26 @@ box-shadow: 0px 2px 11px -2px rgba(191,191,191,1);
 	.logo{float: left; margin-right: 20px;margin-top: 5px;
 		img{max-width: 200px;}
 	}
-	menu{display: none}
+	menu{display: none;
+		span{position: relative;display: block;background-color: $b;padding: 1px; width: 25px;@include transition(all 0.5s ease);
+			&::after{content: ''; position: absolute;top: -7px;left: 0; right: 0;height: 2px; background-color: $b;@include transition(all 0.5s ease);}
+			&::before{content: ''; position: absolute;top: 7px;left: 0; right: 0;height: 2px; background-color: $b;@include transition(all 0.5s ease);}
+		}
+		&.menu-open{
+			span{background-color: $w;
+				&::after{top: 0; -webkit-transform: rotate(45deg);
+				   -moz-transform: rotate(45deg);
+				    -ms-transform: rotate(45deg);
+				     -o-transform: rotate(45deg);
+				        transform: rotate(45deg);}
+				&::before{top: 0;-webkit-transform: rotate(-45deg);
+				   -moz-transform: rotate(-45deg);
+				    -ms-transform: rotate(-45deg);
+				     -o-transform: rotate(-45deg);
+				        transform: rotate(-45deg);}
+			}
+		}
+	}
 	.head-right{width: 80%;
 		ul{float: left;}
 	}
@@ -386,7 +405,7 @@ footer{padding: 40px 0;
 		.logo{
 			img{width: 100px;}
 		}
-		menu{position: absolute; right: 10px; top:20px;display: block;}
+		menu{position: absolute; right: 10px; top:22px;display: block;}
 		.head-right{position: absolute; background: #fff; width: 300px;top:0; height: 100vh; padding-top: 50px; right: -300px; @include transition(all 1s ease);
 			ul{display: block; float: none;float: none;
 				li{display: block; width: 100%; padding: 20px 20px; background:none;

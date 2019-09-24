@@ -39,7 +39,7 @@ class HomeHeader extends Component{
                       <li><a href="#/signup" className="blue-btn">Sign Up</a></li>
                     </ul>
                   </div>
-                </div><menu onClick={() => this.menuOpen()}>Menu</menu>
+                </div><menu className={this.state.menuClass?'menu-open':''} onClick={() => this.menuOpen()}><span></span></menu>
              </header>
       );
    }
