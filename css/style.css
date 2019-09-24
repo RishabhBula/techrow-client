@@ -630,7 +630,7 @@ footer {
           margin-bottom: 10px;
           text-transform: capitalize; }
         .inner-wrap .inner-right-wrap .form-wrap .form .form-group .form-control {
-          background-color: #F3F3F3;
+          background-color: #F1F1F1;
           border: 1px solid #707070;
           border-radius: 5px;
           font-family: "Open Sans", sans-serif; }
@@ -642,19 +642,19 @@ footer {
             font-family: "Open Sans", sans-serif; }
           .inner-wrap .inner-right-wrap .form-wrap .form .form-group .form-control::-webkit-input-placeholder {
             font-size: .75rem;
-            color: #DADADB;
+            color: #919191;
             font-family: "Open Sans", sans-serif; }
           .inner-wrap .inner-right-wrap .form-wrap .form .form-group .form-control:-ms-input-placeholder {
             font-size: .75rem;
-            color: #DADADB;
+            color: #919191;
             font-family: "Open Sans", sans-serif; }
           .inner-wrap .inner-right-wrap .form-wrap .form .form-group .form-control::-ms-input-placeholder {
             font-size: .75rem;
-            color: #DADADB;
+            color: #919191;
             font-family: "Open Sans", sans-serif; }
           .inner-wrap .inner-right-wrap .form-wrap .form .form-group .form-control::placeholder {
             font-size: .75rem;
-            color: #DADADB;
+            color: #919191;
             font-family: "Open Sans", sans-serif; }
         .inner-wrap .inner-right-wrap .form-wrap .form .form-group .ant-select {
           border: 1px solid #707070;
@@ -1135,7 +1135,19 @@ footer {
       top: 70px;
       width: 200px; }
     .inner-wrap .inner-right-wrap {
-      margin-left: 200px; } }
+      margin-left: 200px; }
+      .inner-wrap .inner-right-wrap .form-wrap {
+        width: 95%; }
+  .step-view li {
+    margin: 0 5%; }
+    .step-view li a {
+      font-size: 1.5rem;
+      width: 50px;
+      height: 50px;
+      padding: 15px 0; }
+    .step-view li::after {
+      top: 25px;
+      width: 10%; } }
 
 @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: landscape) {
   html, body {

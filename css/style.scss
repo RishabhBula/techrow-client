@@ -251,11 +251,11 @@ footer{padding: 40px 0;
 			.form{width: 390px; margin:80px auto;
 				.form-group{
 					label{color: #6D6D6D; font-size: .75rem;font-family: $opensan; font-weight: 700;margin-bottom: 10px; text-transform: capitalize;}
-					.form-control{background-color: $grey; border:1px solid #707070; border-radius: 5px;font-family: $opensan;
+					.form-control{background-color: #F1F1F1; border:1px solid #707070; border-radius: 5px;font-family: $opensan;
 						&:focus{outline: none; box-shadow: none; border-color: $green; font-family: $opensan;}
-						&::-webkit-input-placeholder {font-size:.75rem; color: #DADADB;font-family: $opensan;}
-						&:-ms-input-placeholder { font-size:.75rem; color: #DADADB;font-family: $opensan;}
-						&::placeholder {font-size:.75rem; color: #DADADB;font-family: $opensan;}
+						&::-webkit-input-placeholder {font-size:.75rem; color: #919191;font-family: $opensan;}
+						&:-ms-input-placeholder { font-size:.75rem; color: #919191;font-family: $opensan;}
+						&::placeholder {font-size:.75rem; color: #919191;font-family: $opensan;}
 					}
 					.ant-select{border:1px solid #707070; border-radius: 5px; height: 38px;display: block;width: 100%;
 						.ant-select-selection--single{height: 36px;background-color: $grey; }
@@ -534,7 +534,14 @@ footer{padding: 40px 0;
 
 	.inner-wrap{padding-top: 70px;
 		.inner-blue-menu{top:70px;width: 200px}
-		.inner-right-wrap{margin-left: 200px;}
+		.inner-right-wrap{margin-left: 200px;
+			.form-wrap{width: 95%;}
+		}
+	}
+	.step-view li{margin: 0 5%;
+		a{font-size: 1.5rem; width: 50px; height: 50px;padding: 15px 0;
+
+		}&::after{top: 25px;width: 10%}
 	}
 
 // ----------------Login----------------
