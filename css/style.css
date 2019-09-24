@@ -110,8 +110,65 @@ header {
     margin-top: 5px; }
     header .logo img {
       max-width: 200px; }
-  header .head-right ul {
-    float: left; }
+  header menu {
+    display: none; }
+    header menu span {
+      position: relative;
+      display: block;
+      background-color: #000;
+      padding: 1px;
+      width: 25px;
+      -webkit-transition: all 0.5s ease;
+      -moz-transition: all 0.5s ease;
+      -ms-transition: all 0.5s ease;
+      -o-transition: all 0.5s ease;
+      transition: all 0.5s ease; }
+      header menu span::after {
+        content: '';
+        position: absolute;
+        top: -7px;
+        left: 0;
+        right: 0;
+        height: 2px;
+        background-color: #000;
+        -webkit-transition: all 0.5s ease;
+        -moz-transition: all 0.5s ease;
+        -ms-transition: all 0.5s ease;
+        -o-transition: all 0.5s ease;
+        transition: all 0.5s ease; }
+      header menu span::before {
+        content: '';
+        position: absolute;
+        top: 7px;
+        left: 0;
+        right: 0;
+        height: 2px;
+        background-color: #000;
+        -webkit-transition: all 0.5s ease;
+        -moz-transition: all 0.5s ease;
+        -ms-transition: all 0.5s ease;
+        -o-transition: all 0.5s ease;
+        transition: all 0.5s ease; }
+    header menu.menu-open span {
+      background-color: #fff; }
+      header menu.menu-open span::after {
+        top: 0;
+        -webkit-transform: rotate(45deg);
+        -moz-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+        -o-transform: rotate(45deg);
+        transform: rotate(45deg); }
+      header menu.menu-open span::before {
+        top: 0;
+        -webkit-transform: rotate(-45deg);
+        -moz-transform: rotate(-45deg);
+        -ms-transform: rotate(-45deg);
+        -o-transform: rotate(-45deg);
+        transform: rotate(-45deg); }
+  header .head-right {
+    width: 80%; }
+    header .head-right ul {
+      float: left; }
   header ul li {
     float: left;
     padding: 34px 10px; }
@@ -178,7 +235,7 @@ header {
   padding: 70px 0;
   text-align: center; }
   .banner-bottom h2 {
-    font-size: 2.25rem;
+    font-size: 2.125rem;
     line-height: 42px;
     font-family: "Quicksand", sans-serif;
     color: #262161;
@@ -190,7 +247,8 @@ header {
     font-family: "Open Sans", sans-serif;
     max-width: 850px;
     margin: auto;
-    color: #929292; }
+    color: #929292;
+    font-weight: 300; }
 
 .about-this .cnt-area {
   background-color: #FCFCFC; }
@@ -212,30 +270,29 @@ header {
     .about-this .cnt-area .cnt-area-lft h2 {
       color: #262161;
       font-size: 2rem;
-      line-height: 40px; }
+      line-height: 40px;
+      margin-bottom: 20px; }
       .about-this .cnt-area .cnt-area-lft h2 span {
         color: #929292;
         font-size: 1.5rem;
         display: block; }
     .about-this .cnt-area .cnt-area-lft p {
-      font-size: 1.125rem;
-      line-height: 25px;
+      font-size: 0.875rem;
+      line-height: 19px;
       font-family: "Open Sans", sans-serif;
       color: #929292;
-      margin-bottom: 15px; }
-    .about-this .cnt-area .cnt-area-lft p {
-      font-size: 1.125rem;
-      line-height: 25px;
-      font-family: "Open Sans", sans-serif;
-      color: #929292; }
+      margin-bottom: 20px; }
     .about-this .cnt-area .cnt-area-lft a {
-      font-size: .75rem;
+      font-size: 0.8125rem;
       font-family: "Quicksand", sans-serif;
       color: #929292; }
 
 .techrow-platform {
   text-align: center;
   padding: 80px 0; }
+  .techrow-platform h4 {
+    font-family: "Open Sans", sans-serif;
+    color: #929292; }
   .techrow-platform .logo {
     width: 200px;
     display: block;
@@ -255,14 +312,16 @@ header {
     color: #fff;
     padding-top: 100px;
     margin-bottom: 60px;
-    font-weight: 600; }
+    font-weight: 300; }
   .howItWork .how-it-works {
     margin-bottom: 30px; }
   .howItWork p {
     color: #fff;
     max-width: 450px;
+    font-family: "Open Sans", sans-serif;
     margin: auto;
-    line-height: 20px; }
+    line-height: 22px;
+    font-weight: 300; }
   .howItWork .works-types {
     border: 1px solid #fff;
     padding: 50px 40px;
@@ -278,8 +337,9 @@ header {
     display: block;
     margin-top: 100px; }
     .howItWork .btn-area .blue-btn, .howItWork .btn-area .wt-btn {
-      padding: 10px 30px;
-      min-width: 150px;
+      padding: 20px 30px;
+      min-width: 200px;
+      font-size: 1.5rem;
       border-radius: 10px;
       font-weight: 700;
       cursor: pointer;
@@ -318,7 +378,8 @@ header {
       line-height: 30px;
       font-family: "Quicksand", sans-serif;
       color: #262161;
-      margin: 20px auto 10px; }
+      margin: 20px auto 10px;
+      font-weight: 600; }
     .testimonials .each-testimo p {
       font-size: 1rem;
       font-family: "Open Sans", sans-serif;
@@ -361,10 +422,10 @@ header {
   padding: 80px 0;
   background-color: #F3F3F3; }
   .contact-us h2 {
-    font-size: 1.5rem;
+    font-size: 2rem;
     font-family: "Quicksand", sans-serif;
     color: #262161;
-    margin-bottom: 90px;
+    margin-bottom: 50px;
     font-weight: 600; }
   .contact-us h3 {
     font-family: "Open Sans", sans-serif;
@@ -405,16 +466,18 @@ header {
       .contact-us .form button:hover {
         color: #B0F542;
         background-color: #fff; }
-  .contact-us ul li a {
-    color: #9b9b9b;
-    padding: 10px 0;
-    font-family: "Open Sans", sans-serif;
-    font-size: 1.4rem;
-    font-weight: 300;
-    display: inline-block;
-    text-decoration: none; }
-    .contact-us ul li a:hover {
-      color: #262161; }
+  .contact-us ul li {
+    margin-bottom: 10px; }
+    .contact-us ul li a {
+      color: #9b9b9b;
+      padding: 10px 0;
+      font-family: "Open Sans", sans-serif;
+      font-size: 1.4rem;
+      font-weight: 300;
+      display: inline-block;
+      text-decoration: none; }
+      .contact-us ul li a:hover {
+        color: #262161; }
 
 footer {
   padding: 40px 0; }
@@ -428,6 +491,8 @@ footer {
     -webkit-box-pack: justify;
     -ms-flex-pack: justify;
     justify-content: space-between; }
+    footer .footer-content copyright {
+      font-family: "Open Sans", sans-serif; }
     footer .footer-content .logo {
       width: 200px; }
     footer .footer-content .social-links a {
@@ -491,6 +556,13 @@ footer {
       border: 4px solid #B1F543;
       border-radius: 8px;
       display: inline-block; }
+      .inner-wrap .inner-blue-menu a img {
+        width: 25px;
+        float: left;
+        margin-top: -3px;
+        margin-right: 10px; }
+      .inner-wrap .inner-blue-menu a:hover {
+        color: #B1F543; }
     .inner-wrap .inner-blue-menu .sidemenu-group {
       display: -webkit-box;
       display: -ms-flexbox;
@@ -531,7 +603,7 @@ footer {
       font-weight: 600;
       line-height: 40px;
       text-align: center;
-      margin-top: 100px;
+      margin-top: 50px;
       margin-bottom: 20px; }
     .inner-wrap .inner-right-wrap h5 {
       color: #000;
@@ -558,14 +630,32 @@ footer {
           margin-bottom: 10px;
           text-transform: capitalize; }
         .inner-wrap .inner-right-wrap .form-wrap .form .form-group .form-control {
-          background-color: #F3F3F3;
+          background-color: #F1F1F1;
           border: 1px solid #707070;
-          border-radius: 5px; }
+          border-radius: 5px;
+          font-family: "Open Sans", sans-serif; }
           .inner-wrap .inner-right-wrap .form-wrap .form .form-group .form-control:focus {
             outline: none;
             -webkit-box-shadow: none;
             box-shadow: none;
-            border-color: #B1F543; }
+            border-color: #B1F543;
+            font-family: "Open Sans", sans-serif; }
+          .inner-wrap .inner-right-wrap .form-wrap .form .form-group .form-control::-webkit-input-placeholder {
+            font-size: .75rem;
+            color: #919191;
+            font-family: "Open Sans", sans-serif; }
+          .inner-wrap .inner-right-wrap .form-wrap .form .form-group .form-control:-ms-input-placeholder {
+            font-size: .75rem;
+            color: #919191;
+            font-family: "Open Sans", sans-serif; }
+          .inner-wrap .inner-right-wrap .form-wrap .form .form-group .form-control::-ms-input-placeholder {
+            font-size: .75rem;
+            color: #919191;
+            font-family: "Open Sans", sans-serif; }
+          .inner-wrap .inner-right-wrap .form-wrap .form .form-group .form-control::placeholder {
+            font-size: .75rem;
+            color: #919191;
+            font-family: "Open Sans", sans-serif; }
         .inner-wrap .inner-right-wrap .form-wrap .form .form-group .ant-select {
           border: 1px solid #707070;
           border-radius: 5px;
@@ -594,8 +684,13 @@ footer {
             width: 84%;
             display: inline-block;
             border-radius: 0 5px 5px 0; }
+        .inner-wrap .inner-right-wrap .form-wrap .form .form-group a {
+          font-family: "Open Sans", sans-serif;
+          font-style: italic;
+          color: #262626; }
         .inner-wrap .inner-right-wrap .form-wrap .form .form-group button {
-          float: right; }
+          float: right;
+          font-family: "Open Sans", sans-serif; }
           .inner-wrap .inner-right-wrap .form-wrap .form .form-group button:focus {
             -webkit-box-shadow: none;
             box-shadow: none;
@@ -608,7 +703,8 @@ footer {
       padding-top: 40px; }
       .inner-wrap .inner-right-wrap .login-btm span {
         color: #262261;
-        font-family: "Open Sans", sans-serif; }
+        font-family: "Open Sans", sans-serif;
+        font-size: .75rem; }
         .inner-wrap .inner-right-wrap .login-btm span a {
           color: #262261;
           text-decoration: underline; }
@@ -629,7 +725,9 @@ footer {
     .inner-wrap .inner-right-wrap .pass-strength .about-password {
       display: inline-block;
       margin-top: 10px;
-      color: #888888; }
+      color: #888888;
+      font-size: 0.625rem;
+      font-family: "Open Sans", sans-serif; }
     .inner-wrap .inner-right-wrap .order-bundle h2 {
       font-size: 1.5rem;
       font-family: "Quicksand", sans-serif;
@@ -739,21 +837,22 @@ footer {
   margin-top: 90px; }
   .step-view li {
     display: inline-block;
-    margin: 0 14%; }
+    margin: 0 11%; }
     .step-view li a {
       display: inline-block;
       background-color: #fff;
       color: #000;
-      padding: 13px 15px;
-      width: 40px;
-      height: 40px;
-      border-radius: 50%; }
+      padding: 26px 15px;
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      font-size: 1.9375rem; }
     .step-view li:after {
       content: "";
       position: absolute;
       border: 1px solid #D8D8D8;
-      width: 28%;
-      top: 19px; }
+      width: 22%;
+      top: 40px; }
     .step-view li:last-child:after {
       display: none; }
     .step-view li.complete a {
@@ -860,7 +959,8 @@ footer {
     header menu {
       position: absolute;
       right: 10px;
-      top: 20px; }
+      top: 22px;
+      display: block; }
     header .head-right {
       position: absolute;
       background: #fff;
@@ -1035,7 +1135,19 @@ footer {
       top: 70px;
       width: 200px; }
     .inner-wrap .inner-right-wrap {
-      margin-left: 200px; } }
+      margin-left: 200px; }
+      .inner-wrap .inner-right-wrap .form-wrap {
+        width: 95%; }
+  .step-view li {
+    margin: 0 5%; }
+    .step-view li a {
+      font-size: 1.5rem;
+      width: 50px;
+      height: 50px;
+      padding: 15px 0; }
+    .step-view li::after {
+      top: 25px;
+      width: 10%; } }
 
 @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: landscape) {
   html, body {
@@ -1095,3 +1207,7 @@ footer {
       width: 100px; }
     footer .footer-content .social-links a img {
       height: 20px; } }
+
+@media (min-width: 1441px) {
+  .inner-wrap .inner-right-wrap h4 {
+    margin-top: 100px; } }

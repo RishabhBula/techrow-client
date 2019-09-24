@@ -93,7 +93,7 @@ class SignUp2 extends Component{
                                 value={this.props.signupdetails.countrycode}
                                 onChange={(e) =>{this.setState({countrycode:e}); this.props.signupdetails.countrycode=e }}
                                 >
-                                  <Option value="+1">+1</Option>
+                                  <Option selected value="+1">+1</Option>
                                   <Option value="+2">+2</Option>
                                   <Option value="+3">+3</Option>
                              </Select>

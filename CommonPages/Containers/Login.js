@@ -89,7 +89,7 @@ class Login extends Component{
                     {this.state.forgotstate==true && (<h1>Forgot password</h1>)}
                     <div>
                       <h3>Questions?</h3>
-                      <a>Contact Us</a>
+                      <a>< img src="../images/contact-icon.png" className="img-fluid"/>Contact Us</a>
                     </div>
                 </div>
                 <div className="inner-right-wrap">
@@ -99,12 +99,12 @@ class Login extends Component{
                           <div className="form-wrap">
                             <div className="form">
                               <div className="form-group">
-                                <label>email</label>
-                                <input id="email" className="form-control" placeholder="email" value={this.state.email} onChange={(e) =>this.setState({email:e.target.value,error:false,errortext:""})}/><br/>
+                                <label>User Name</label>
+                                <input id="email" className="form-control" placeholder="Your username" value={this.state.email} onChange={(e) =>this.setState({email:e.target.value,error:false,errortext:""})}/><br/>
                               </div>
                               <div className="form-group">
                                 <label>password</label>
-                                <input id="password" type="password" className="form-control" placeholder="password" value={this.state.password} onChange={(e) =>this.setState({password:e.target.value,error:false,errortext:""})}/><br/>
+                                <input id="password" type="password" className="form-control" placeholder="Type your password" value={this.state.password} onChange={(e) =>this.setState({password:e.target.value,error:false,errortext:""})}/><br/>
                               </div>
                               {this.state.error==true && (<div className="form-group"><span style={{color: 'red'}}>*{this.state.errortext}</span></div>)}
                               <div className="form-group">
