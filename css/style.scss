@@ -74,6 +74,7 @@ box-shadow: 0px 2px 11px -2px rgba(191,191,191,1);
 	.logo{float: left; margin-right: 20px;margin-top: 5px;
 		img{max-width: 200px;}
 	}
+	menu{display: none}
 	.head-right{
 		ul{float: left;}
 	}
@@ -106,30 +107,30 @@ box-shadow: 0px 2px 11px -2px rgba(191,191,191,1);
 	h1{font-family: $qfont; font-size: 4rem; text-align: center;color: $w; font-weight: 400;}
 }
 .banner-bottom{padding: 70px 0;text-align: center;
-	h2{font-size: 2.25rem; line-height: 42px; font-family: $qfont; color: $blue; margin-bottom: 20px; font-weight: 600}
-	p{font-size: 1.125rem; line-height: 25px; font-family: $opensan; max-width: 850px; margin: auto;color: $ltgrey}
+	h2{font-size: 2.125rem; line-height: 42px; font-family: $qfont; color: $blue; margin-bottom: 20px; font-weight: 600}
+	p{font-size: 1.125rem; line-height: 25px; font-family: $opensan; max-width: 850px; margin: auto;color: $ltgrey; font-weight: 300;}
 }
 .about-this{
 	.cnt-area{background-color: #FCFCFC;
 		.cnt-area-lft{display: flex; align-items: flex-start; padding-left: 70px; flex-direction:column; justify-content: center;
-				h2{color: $blue; font-size: 2rem; line-height: 40px;
+				h2{color: $blue; font-size: 2rem; line-height: 40px;margin-bottom: 20px;
 					span{color:$ltgrey; font-size: 1.5rem; display: block; }
 				}
-				p{font-size: 1.125rem; line-height: 25px; font-family: $opensan;color: $ltgrey; margin-bottom: 15px;}
-				p{font-size: 1.125rem; line-height: 25px; font-family: $opensan; color: $ltgrey}
-				a{font-size: .75rem;font-family: $qfont; color: $ltgrey;}
+				p{font-size:0.875rem; line-height: 19px; font-family: $opensan;color: $ltgrey; margin-bottom: 20px;}
+				a{font-size:0.8125rem;font-family: $qfont; color: $ltgrey;}
 			}
 		}
 }
 .techrow-platform{text-align: center; padding: 80px 0;
+	h4{ font-family: $opensan; color: #929292}
 	.logo{width: 200px;display: block;text-align: center;margin:10px auto;}
 	.techrow-works{padding: 50px 50px;}
 }
 
 .howItWork{text-align: center; padding:0 0 80px;background-color: $blue;
-	h2{font-size: 2.25rem; line-height: 42px; font-family: $qfont; color: $w;padding-top: 100px; margin-bottom: 60px; font-weight: 600}
+	h2{font-size: 2.25rem; line-height: 42px; font-family: $qfont; color: $w;padding-top: 100px; margin-bottom: 60px; font-weight: 300}
 	.how-it-works{margin-bottom: 30px;}
-	p{color: $w; max-width: 450px; margin: auto; line-height: 20px}
+	p{color: $w; max-width: 450px ; font-family: $opensan;  margin: auto; line-height: 22px; font-weight: 300}
 	.works-types{border:1px solid $w; padding: 50px 40px; border-radius: 30px;
 		h3{font-family: $qfont; font-size:1.5rem; margin-bottom: 40px; color: $w;}
 		p{ line-height: 20px}
@@ -137,7 +138,7 @@ box-shadow: 0px 2px 11px -2px rgba(191,191,191,1);
 
 	}
 	.btn-area{display: block;margin-top: 100px;
-		.blue-btn, .wt-btn{ padding: 10px 30px;min-width: 150px; border-radius: 10px; font-weight: 700;cursor: pointer; display: inline-block;margin: 10px; text-decoration: none;}
+		.blue-btn, .wt-btn{ padding: 20px 30px;min-width: 200px; font-size: 1.5rem; border-radius: 10px; font-weight: 700;cursor: pointer; display: inline-block;margin: 10px; text-decoration: none;}
 	}
 	.blue-btn{background-color: $blue !important; color: $w !important; border: 1px solid $w; 
 		&:hover{background-color: $w !important; color: $blue !important;}
@@ -149,7 +150,7 @@ box-shadow: 0px 2px 11px -2px rgba(191,191,191,1);
 .testimonials{padding: 100px 0; text-align: center;
 	h2{font-size: 2rem; line-height: 40px; font-family: $qfont; color: $blue; margin-bottom: 90px; font-weight: 600}
 	.each-testimo{margin: 0 20px;
-		h3{font-size: 1.5rem; line-height: 30px; font-family: $qfont; color: $blue; margin: 20px auto 10px;}
+		h3{font-size: 1.5rem; line-height: 30px; font-family: $qfont; color: $blue; margin: 20px auto 10px;font-weight: 600}
 		p{font-size: 1rem; font-family: $opensan; line-height: 22px;}
 	}
 }
@@ -165,7 +166,7 @@ box-shadow: 0px 2px 11px -2px rgba(191,191,191,1);
 	}
 }
 .contact-us{padding: 80px 0; background-color: #F3F3F3;
-	h2{font-size: 1.5rem;  font-family: $qfont; color: $blue; margin-bottom: 90px; font-weight: 600}
+	h2{font-size:2rem;  font-family: $qfont; color: $blue; margin-bottom: 50px; font-weight: 600}
 	h3{font-family: $opensan; font-size: 1.4rem; color: #7e7e7e; margin-bottom: 20px; font-weight: 600}
 	.form{max-width: 450px; 
 		.form-control{background-color: $w; border:none;border-radius: 10px;}
@@ -189,6 +190,7 @@ box-shadow: 0px 2px 11px -2px rgba(191,191,191,1);
 }
 footer{padding: 40px 0;
 	.footer-content{display: flex; align-items:center; justify-content:space-between;
+		copyright{font-family: $opensan; }
 		.logo{width: 200px}
 		.social-links{
 			a{padding: 5px;margin-left: 10px;
@@ -377,7 +379,7 @@ footer{padding: 40px 0;
 		.logo{
 			img{width: 100px;}
 		}
-		menu{position: absolute; right: 10px; top:20px;}
+		menu{position: absolute; right: 10px; top:20px;display: block;}
 		.head-right{position: absolute; background: #fff; width: 300px;top:0; height: 100vh; padding-top: 50px; right: -300px; @include transition(all 1s ease);
 			ul{display: block; float: none;float: none;
 				li{display: block; width: 100%; padding: 20px 20px; background:none;

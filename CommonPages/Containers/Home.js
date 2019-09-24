@@ -146,7 +146,7 @@ class Home extends Component{
                         <input type="text" className="form-control" placeholder="Subject"/>
                       </div>
                       <div className="form-group">
-                        <textarea type="text" className="form-control" placeholder="Message"></textarea>
+                        <textarea type="text" className="form-control" placeholder="Message...."></textarea>
                       </div>
                       <div className="form-group checkbox">
                         <label><input type="checkbox" value=""/>Receive our TechRow newsletter</label>
