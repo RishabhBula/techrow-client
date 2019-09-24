@@ -7,6 +7,7 @@ import headjackreducer from './HeadjackReducer';
 
 import userData from './userData';
 import classMode from './classMode';
+import myLibrary from './myLibrary';
 const allReducers = combineReducers({
 	app: app,
 	auth:authentication,
@@ -14,7 +15,8 @@ const allReducers = combineReducers({
 	orderdetails:orderdetails,
 	headjackreducer:headjackreducer,
 	userData:userData,
-	classMode:classMode
+	classMode:classMode,
+	myLibrary:myLibrary
 });
 
 export default allReducers

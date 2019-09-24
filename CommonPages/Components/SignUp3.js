@@ -82,6 +82,7 @@ class SignUp3 extends Component{
 
             db.collection("users").doc(res.user.uid).set(userObj)
             this.props.pageRender(4)
+            this.clearsignupredux()
       })
       .catch((error) =>{
         // Handle Errors here.
@@ -97,6 +98,24 @@ class SignUp3 extends Component{
       })
 
     }
+  }
+  clearsignupredux(){
+        this.props.signupdetails.type="";
+        this.props.signupdetails.firstname="";
+        this.props.signupdetails.lastname=""
+        this.props.signupdetails.email="";
+        this.props.signupdetails.password="";
+        this.props.signupdetails.countrycode="";
+        this.props.signupdetails.phonenumber="";
+        this.props.signupdetails.schoolname="";
+        this.props.signupdetails.address="";
+        this.props.signupdetails.city="";
+        this.props.signupdetails.state="";
+        this.props.signupdetails.zipcode="";
+        this.props.signupdetails.grade="";
+        this.props.signupdetails.schooldistrict="";
+        this.props.signupdetails.po="";
+        this.props.signupdetails.taxexid="";
   }
 
   render(){

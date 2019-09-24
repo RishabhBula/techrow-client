@@ -11,7 +11,7 @@ const { Step } = Steps;
 const InputGroup = Input.Group;
 const Option = Select.Option;
 
-var strongRegex = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{6,})");
+var strongRegex = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_+])(?=.{6,})");
 var mediumRegex = new RegExp("^(((?=.*[a-z])(?=.*[A-Z]))|((?=.*[a-z])(?=.*[0-9]))|((?=.*[A-Z])(?=.*[0-9])))(?=.{6,})");
 
 class SignUp2 extends Component{
@@ -43,6 +43,13 @@ class SignUp2 extends Component{
       this.props.pageRender(3)
     }
   }
+  complete(){
+    if(this.props.signupdetails.firstname=="" || this.props.signupdetails.lastname=="" || this.props.signupdetails.email=="" || this.props.signupdetails.phonenumber==""){
+      return false
+    }else{
+      return true
+    }
+  }
 
   render(){
       return(
@@ -51,7 +58,7 @@ class SignUp2 extends Component{
                 <div className="step-iden">
 
                     <ul className="step-view">
-                      <li className="active"><a>1</a></li>
+                      <li className={this.complete() ? "complete active" : "active"}><a>1</a></li>
                       <li className="" onClick={() =>{ this.next() }}><a>2</a></li>
                       <li className=""><a>3</a></li>
                     </ul>
