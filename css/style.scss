@@ -290,7 +290,7 @@ footer{padding: 40px 0;
 		}
 		.pass-strength{
 			.pass-strength-tile{width: 40px; height: 10px; display: inline-block;margin-right: 10px}
-			.about-password{display: inline-block;margin-top: 10px; color: #888888}
+			.about-password{display: inline-block;margin-top: 10px; color: #888888; font-size: 0.625rem; font-family: $opensan; }
 
 		}
 		.order-bundle{
@@ -335,10 +335,10 @@ footer{padding: 40px 0;
 
 }
 .step-view{text-align: center;margin:auto; position: relative; margin-top: 90px;
-		li{display: inline-block;margin:0 14%;
-			a{display: inline-block; background-color: $w; color: $b;padding:13px 15px;width: 40px; height: 
-			40px;border-radius: 50%; }
-			&:after{content: ""; position: absolute; border: 1px solid #D8D8D8;width: 28%; top:19px;}
+		li{display: inline-block;margin:0 11%;
+			a{display: inline-block; background-color: $w; color: $b;padding:26px 15px;width: 80px; height: 
+			80px;border-radius: 50%; font-size: 1.9375rem}
+			&:after{content: ""; position: absolute; border: 1px solid #D8D8D8;width: 22%; top:40px;}
 			&:last-child:after{display: none}	
 			&.complete a{color: $green}
 			&.active a{color: $green}
