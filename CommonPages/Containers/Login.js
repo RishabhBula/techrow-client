@@ -62,9 +62,16 @@ class Login extends Component{
       if(this.state.email==""){
         this.setState({error:true,errortext:"Please enter email to continue"})
       }else{
-        firebase.auth().sendPasswordResetEmail(email.trim().toLocaleLowerCase())
+        var actionCodeSettings = {
+          // After password reset, the user will be give the ability to go back
+          // to this page.
+          url: 'https://hk-project-0.firebaseapp.com/#/login',
+          handleCodeInApp: false
+        };
+        firebase.auth().sendPasswordResetEmail(email.trim().toLocaleLowerCase(),actionCodeSettings)
         .then((res) =>{
           console.log("forgot success response",res)
+          Notification("success","Email sent","Reset password link sent to your account")
           this.setState({forgotstate:false,email:"",password:""})
           // Email sent.
         })

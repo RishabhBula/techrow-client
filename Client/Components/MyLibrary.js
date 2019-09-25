@@ -28,10 +28,7 @@ class MyLibrary extends Component{
 	}
   
   componentDidMount(){
-      console.log("componentDidMount===componentDidMount")
       this.mylibrary()
-      // this.props.getMylibrary(this.props.auth.authData.uid)
-
   }
 
   async mylibrary(){
