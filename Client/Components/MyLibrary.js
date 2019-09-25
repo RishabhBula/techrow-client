@@ -29,29 +29,29 @@ class MyLibrary extends Component{
   
   componentDidMount(){
       console.log("componentDidMount===componentDidMount")
-      // this.mylibrary()
-      this.props.getMylibrary(this.props.auth.authData.uid)
+      this.mylibrary()
+      // this.props.getMylibrary(this.props.auth.authData.uid)
 
   }
 
-  // async mylibrary(){
-  //     try {
-  //         let myLibrary =[];
-  //         let library = await firebase.firestore().collection('users').doc(this.props.auth.authData.uid).collection('myLibrary').get()
-  //         console.log("library",library.size)
-  //                       await library.forEach((item) =>{
-  //                               myLibrary.push(item.data())
-  //                             })
-  //         console.log("myLibrary",myLibrary)
-  //         this.setState({mylibrary:myLibrary})
-  //         return myLibrary
+  async mylibrary(){
+      try {
+          let myLibrary =[];
+          let library = await firebase.firestore().collection('users').doc(this.props.auth.authData.uid).collection('myLibrary').get()
+          console.log("library",library.size)
+                        await library.forEach((item) =>{
+                                myLibrary.push(item.data())
+                              })
+          console.log("myLibrary",myLibrary)
+          this.props.getMylibrary(myLibrary)
+          return myLibrary
 
-  //       }
-  //       catch (err) {
-  //           console.log("Error", err)
-  //           return err
-  //       }
-  // }
+        }
+        catch (err) {
+            console.log("Error", err)
+            return err
+        }
+  }
 
   onItemClick(id){
     window.location.href='#/class/:'+id+'/:theater'
