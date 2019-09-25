@@ -50,7 +50,7 @@ class SignUp1 extends Component{
                         </div>
                       </div>
                       <div className="col-6 ">
-                        <div className="signin-opt" onClick={() =>{ {/*this.setState({state1:"#fff",state2:" #B1F543",type:"publisher",error:false,errortext:""}); this.props.signupdetails.type="publisher"*/} }} style={{borderColor:this.state.state2}}>
+                        <div className="signin-opt"  style={{background:'none', opacity:'.3', border:'none', cursor:'default' }}onClick={() =>{ {/*this.setState({state1:"#fff",state2:" #B1F543",type:"publisher",error:false,errortext:""}); this.props.signupdetails.type="publisher"*/} }} >
                           <img src={this.props.signupdetails.type=="publisher"?"./images/study.png":"./images/study grey.png"} className="img-fluid" alt="study"/>
                           <h5 >"Publisher"</h5 >
                           <p>Coming Soon...</p>
