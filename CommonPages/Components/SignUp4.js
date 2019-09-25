@@ -49,7 +49,7 @@ class SignUp4 extends Component{
                 <div className="form-wrap animated fadeIn">
                    <div>
                      <h5>Would you like to order a VR bundle?</h5>
-                     <button className="green-btn" onClick={() =>{ this.orderbundle() }}>Order Bundle</button><br/>
+                     <button disabled className="green-btn" onClick={() =>{ this.orderbundle() }}>Order Bundle</button><br/>
                      <a  onClick={() =>{ this.skip() }}><u>skip for now</u></a><br/>
                    </div>
                 </div>

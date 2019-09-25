@@ -13,6 +13,7 @@ import 'firebase/database';
 import {getAuthentication} from '../../actions/authentication'
 
 import LoginHeader from '../Components/LoginHeader';
+import {Notification} from '../Components/Notification';
 
 class Login extends Component{
 	constructor(props){
@@ -46,11 +47,11 @@ class Login extends Component{
                   console.log("====error",error)
                   var errorCode = error.code;
                   var errorMessage = error.message;
-                  notification.error({
-                    message: error.code.split("/")[1],
-                    description: error.message,
-                    top: 100,
-                  });
+                  if(error.code=="auth/wrong-password"){
+                    Notification("error","Login Failed","Email and password do not match.")
+                  }else{
+                    Notification("error",error.code.split("/")[1],error.message)
+                  }
                   // ...
                 })
       }
@@ -69,11 +70,7 @@ class Login extends Component{
         })
         .catch((error) =>{
           console.log("forgot error response",error)
-          notification.error({
-            message: error.code.split("/")[1],
-            description: error.message,
-            top: 100,
-          });
+          Notification("error",error.code.split("/")[1],error.message)
           // An error happened.
         })
       }

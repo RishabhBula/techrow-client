@@ -30,6 +30,7 @@ class SignUp1 extends Component{
   }
 
   render(){
+      console.log("=====",this.props.signupdetails)
       return(
         <div>
            <div>
@@ -43,14 +44,14 @@ class SignUp1 extends Component{
                           style={{borderColor:this.state.state1}}
                         >
                           
-                          <img src="./images/man-and-tie.png" className="img-fluid" alt="study"/>
+                          <img src={this.props.signupdetails.type=="teacher/educator"?"./images/man-and-tie.png":"./images/man-and-tie-grey.png"} className="img-fluid" alt="study"/>
                           <h5 >Teacher/Educator</h5>
                           <p>I want to bring Virtual Reality into my classroom/school. I want access to hours of learning contents and well-structured, standards-aligned lesson plan</p>
                         </div>
                       </div>
                       <div className="col-6 ">
                         <div className="signin-opt" onClick={() =>{ {/*this.setState({state1:"#fff",state2:" #B1F543",type:"publisher",error:false,errortext:""}); this.props.signupdetails.type="publisher"*/} }} style={{borderColor:this.state.state2}}>
-                          <img src="./images/study.png" className="img-fluid" alt="study"/>
+                          <img src={this.props.signupdetails.type=="publisher"?"./images/study.png":"./images/study grey.png"} className="img-fluid" alt="study"/>
                           <h5 >"Publisher"</h5 >
                           <p>Coming Soon...</p>
                         </div>

@@ -8,6 +8,7 @@ import {Select,Steps} from 'antd';
 import Stepper from 'react-stepper-horizontal';
 
 import {setSignupDetails} from '../../actions/setSignupDetails';
+import {Notification} from '../Components/Notification';
 
 const { Step } = Steps;
 const Option = Select.Option;
@@ -82,21 +83,36 @@ class SignUp3 extends Component{
 
             db.collection("users").doc(res.user.uid).set(userObj)
             this.props.pageRender(4)
+            this.clearsignupredux()
       })
       .catch((error) =>{
         // Handle Errors here.
         console.log("====error",error)
         var errorCode = error.code;
         var errorMessage = error.message;
-        notification.error({
-          message: error.code.split("/")[1],
-          description: error.message,
-          top: 100,
-        });
+        Notification("error",error.code.split("/")[1],error.message)
         // ...
       })
 
     }
+  }
+  clearsignupredux(){
+        this.props.signupdetails.type="";
+        this.props.signupdetails.firstname="";
+        this.props.signupdetails.lastname=""
+        this.props.signupdetails.email="";
+        this.props.signupdetails.password="";
+        this.props.signupdetails.countrycode="";
+        this.props.signupdetails.phonenumber="";
+        this.props.signupdetails.schoolname="";
+        this.props.signupdetails.address="";
+        this.props.signupdetails.city="";
+        this.props.signupdetails.state="";
+        this.props.signupdetails.zipcode="";
+        this.props.signupdetails.grade="";
+        this.props.signupdetails.schooldistrict="";
+        this.props.signupdetails.po="";
+        this.props.signupdetails.taxexid="";
   }
 
   render(){

@@ -4,7 +4,7 @@ const initialState = {
 	lastname:"",
 	email:"",
 	username:"",
-	countrycode:"",
+	countrycode:"+1",
 	phonenumber:"",
 	password:"",
 	schoolname:"",
