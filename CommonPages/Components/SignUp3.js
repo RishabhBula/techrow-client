@@ -8,6 +8,7 @@ import {Select,Steps} from 'antd';
 import Stepper from 'react-stepper-horizontal';
 
 import {setSignupDetails} from '../../actions/setSignupDetails';
+import {Notification} from '../Components/Notification';
 
 const { Step } = Steps;
 const Option = Select.Option;
@@ -89,11 +90,7 @@ class SignUp3 extends Component{
         console.log("====error",error)
         var errorCode = error.code;
         var errorMessage = error.message;
-        notification.error({
-          message: error.code.split("/")[1],
-          description: error.message,
-          top: 100,
-        });
+        Notification("error",error.code.split("/")[1],error.message)
         // ...
       })
 
