@@ -680,6 +680,8 @@ footer {
             .inner-wrap .inner-right-wrap .form-wrap .form .form-group .ant-input-group .ant-select .ant-select-selection--single {
               height: 36px;
               background-color: #F3F3F3; }
+              .inner-wrap .inner-right-wrap .form-wrap .form .form-group .ant-input-group .ant-select .ant-select-selection--single .ant-select-selection__rendered {
+                line-height: 35px; }
           .inner-wrap .inner-right-wrap .form-wrap .form .form-group .ant-input-group .form-control {
             width: 84%;
             display: inline-block;
@@ -846,7 +848,8 @@ footer {
       width: 80px;
       height: 80px;
       border-radius: 50%;
-      font-size: 1.9375rem; }
+      font-size: 1.9375rem;
+      font-weight: 600; }
     .step-view li:after {
       content: "";
       position: absolute;
