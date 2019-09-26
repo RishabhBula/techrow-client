@@ -65,6 +65,7 @@ class Login extends Component{
         firebase.auth().sendPasswordResetEmail(email.trim().toLocaleLowerCase())
         .then((res) =>{
           console.log("forgot success response",res)
+          Notification("success","Email sent","Reset password link sent to your email")
           this.setState({forgotstate:false,email:"",password:""})
           // Email sent.
         })

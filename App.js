@@ -18,6 +18,7 @@ import Home from './CommonPages/Containers/Home';
 import Login from './CommonPages/Containers/Login';
 import SignUp from './CommonPages/Containers/SignUp';
 import OrderBundle from './CommonPages/Containers/OrderBundle';
+import Redirect from './CommonPages/Containers/Redirect';
 
 import Dashboard from './Client/Containers/Dashboard';
 import Header from './Client/Components/Header';
@@ -77,6 +78,7 @@ class App extends Component{
    					<Route exact path="/" component={Home} />
             <Route exact path="/login" component={Login} />
             <Route exact path="/signup" component={SignUp} />
+            <Route exact path="/redirect" component={Redirect} />
    				</div>
 
    			)

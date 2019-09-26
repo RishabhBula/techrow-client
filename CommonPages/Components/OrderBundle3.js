@@ -32,6 +32,22 @@ class OrderBundle3 extends Component{
     }
   }
 
+  // paynow(){
+  //   // https://us-central1-hk-project-0.cloudfunctions.net/httpReq
+  //   axios({
+  //         method:"POST",
+  //         url:'https://us-central1-hk-project-0.cloudfunctions.net/httpReq',
+  //         params:{
+  //           email:"harikrishnan@hubspire.com",
+  //           password:"1234567890Zx"
+  //         }
+  //       }).then((response) =>{
+  //           console.log("-----response--->",response)
+  //       }).catch((err) =>{
+  //           console.log("err-----err-err--->",err.response)
+  //       })
+  // }
+
   render(){
       return(
         <div>
@@ -68,6 +84,7 @@ class OrderBundle3 extends Component{
                     </div>
                    {this.state.error==true && (<div><span style={{color: 'red'}}>*{this.state.errortext}</span></div>)}
                    <button className="pointer"  onClick={() =>{ this.next() }}>Next<img src="./images/arrow-right.png" className="img-fluid"/></button>
+                  {/* <button className="pointer"  onClick={() =>{ this.paynow() }}>paynow<img src="./images/arrow-right.png" className="img-fluid"/></button>*/}
                    <div className="clearfix"></div>
                 </div>
             </div>
