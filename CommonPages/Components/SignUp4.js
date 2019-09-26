@@ -48,7 +48,7 @@ class SignUp4 extends Component{
                 <h4>You're almost done</h4>
                 <div className="form-wrap animated fadeIn">
                    <div>
-                     <h5>Would you like to order a VR bundle?</h5>
+                     <h5>Each Bundle includes 10 VR Headsets, if you need additional please enter additional amount in the field below:</h5>
                      <button disabled className="green-btn" onClick={() =>{ this.orderbundle() }}>Order Bundle</button><br/>
                      <a  onClick={() =>{ this.skip() }}><u>skip for now</u></a><br/>
                    </div>
