@@ -23,7 +23,8 @@ class MyLibrary extends Component{
               {id:"654",shortdisc:"Lorem Ipsum Sit Dolor - amet Specialization",longdisc:"Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium"},
               {id:"321",shortdisc:"Lorem Ipsum Sit Dolor - amet Specialization",longdisc:"Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium"},
             ],
-      mylibrary:[]
+      mylibrary:[],
+      search:""
     }
 	}
   
@@ -54,6 +55,23 @@ class MyLibrary extends Component{
     window.location.href='#/class/:'+id+'/:theater'
   }
 
+  search(s){
+    console.log("this.state.search",this.state.search)
+    firebase.firestore().collection('users').doc(this.props.auth.authData.uid).collection('myLibrary').where("name", "==", s)
+    .get()
+    .then((querySnapshot) => {
+        let myLibrary =[];
+        querySnapshot.forEach((doc) => {
+            // doc.data() is never undefined for query doc snapshots
+            myLibrary.push(doc.data())
+        });
+        this.props.getMylibrary(myLibrary)
+    })
+    .catch(function(error) {
+        console.log("Error getting documents: ", error);
+    });
+  }
+
 
   render(){
       return(
@@ -61,8 +79,8 @@ class MyLibrary extends Component{
           <div>
             <h2>My Library</h2>
             <div className="search form-group">
-              <input type="text" className="form-control" placeholder="Search Classes" />
-              <button><img src="../images/search-icon.png" className="img-fluid"/></button>
+              <input type="text" className="form-control" placeholder="Search in my library" value={this.state.search} onChange={(e) =>{ this.setState({search:e.target.value}) }} />
+              <button onClick={() =>{ this.search(this.state.search) }}><img src="../images/search-icon.png" className="img-fluid"/></button>
             </div>
             <div className="classesList">
               {this.props.myLibrary.length==0 &&(<div className="row">

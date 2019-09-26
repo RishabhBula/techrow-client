@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import {bindActionCreators} from 'redux';
 import { connect } from 'react-redux';
 import axios from 'axios';
+import {getAuthentication} from '../../actions/authentication'
 
 class SignupHeader extends Component{
 	constructor(props){
@@ -19,7 +20,7 @@ class SignupHeader extends Component{
       return(
          <header className="navbar fixed-top">
             <div className="container-fluid">
-              <a onClick={() =>{ window.location.href="#/" }} className="logo"><img src="../images/techrow-logo.png"/> </a>
+              <a onClick={() =>{ this.props.getAuthentication(); window.location.href="#/" }} className="logo"><img src="../images/techrow-logo.png"/> </a>
             </div>
         </header>
       );
@@ -33,6 +34,6 @@ function mapStateToProps(state){
   };
 }
 function matchDispatchToProps(dispatch){
-  return bindActionCreators({ }, dispatch);
+  return bindActionCreators({ getAuthentication:getAuthentication }, dispatch);
 }
 export default connect(mapStateToProps, matchDispatchToProps)(SignupHeader);
