@@ -77,7 +77,7 @@ class SignUp2 extends Component{
                           <div className="col-sm-6">
                             <div className="form-group">
                                 <label>Last Name</label>
-                                <input id="lastname" className="form-control" placeholder="Your nick name" value={this.props.signupdetails.lastname} onChange={(e) => {this.setState({lastname:e.target.value,error:false,errortext:""}); this.props.signupdetails.lastname=e.target.value }}/>
+                                <input id="lastname" className="form-control" placeholder="Your Last name" value={this.props.signupdetails.lastname} onChange={(e) => {this.setState({lastname:e.target.value,error:false,errortext:""}); this.props.signupdetails.lastname=e.target.value }}/>
                             </div>
                           </div>
                         </div>

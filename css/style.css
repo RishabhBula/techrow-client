@@ -689,10 +689,11 @@ footer {
         .inner-wrap .inner-right-wrap .form-wrap .form .form-group a {
           font-family: "Open Sans", sans-serif;
           font-style: italic;
-          color: #262626; }
+          color: #262261; }
         .inner-wrap .inner-right-wrap .form-wrap .form .form-group button {
           float: right;
-          font-family: "Open Sans", sans-serif; }
+          font-family: "Open Sans", sans-serif;
+          font-size: 0.875rem; }
           .inner-wrap .inner-right-wrap .form-wrap .form .form-group button:focus {
             -webkit-box-shadow: none;
             box-shadow: none;
