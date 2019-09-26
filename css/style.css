@@ -190,7 +190,10 @@ header {
       background: -o-linear-gradient(top, #F3F3F3 0%, #FFFFFF 100%);
       background: linear-gradient(180deg, #F3F3F3 0%, #FFFFFF 100%); }
     header ul:last-child .blue-btn {
-      margin-left: 20px; }
+      margin-left: 20px;
+      border: none !important; }
+    header ul:last-child .blue-btn:hover {
+      background-color: #B1F543 !important; }
   header .ant-dropdown-link {
     color: #707070;
     display: -webkit-box;
@@ -292,7 +295,8 @@ header {
   padding: 80px 0; }
   .techrow-platform h4 {
     font-family: "Open Sans", sans-serif;
-    color: #929292; }
+    color: #929292;
+    font-size: 18px; }
   .techrow-platform .logo {
     width: 200px;
     display: block;
@@ -306,7 +310,7 @@ header {
   padding: 0 0 80px;
   background-color: #262161; }
   .howItWork h2 {
-    font-size: 2.25rem;
+    font-size: 2rem;
     line-height: 42px;
     font-family: "Quicksand", sans-serif;
     color: #fff;
@@ -325,7 +329,8 @@ header {
   .howItWork .works-types {
     border: 1px solid #fff;
     padding: 50px 40px;
-    border-radius: 30px; }
+    border-radius: 30px;
+    margin: 0 15px; }
     .howItWork .works-types h3 {
       font-family: "Quicksand", sans-serif;
       font-size: 1.5rem;
@@ -693,7 +698,8 @@ footer {
         .inner-wrap .inner-right-wrap .form-wrap .form .form-group button {
           float: right;
           font-family: "Open Sans", sans-serif;
-          font-size: 0.875rem; }
+          font-size: 0.875rem;
+          margin-top: -10px; }
           .inner-wrap .inner-right-wrap .form-wrap .form .form-group button:focus {
             -webkit-box-shadow: none;
             box-shadow: none;
