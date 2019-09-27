@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import axios from 'axios';
 import {Steps, Input, Select} from 'antd';
 import Stepper from 'react-stepper-horizontal';
+import phonecode from '../../countryPhoneCode.json';
 
 import {setSignupDetails} from '../../actions/setSignupDetails';
 
@@ -31,7 +32,7 @@ class SignUp2 extends Component{
 	}
   
   componentDidMount(){
-      
+      console.log("phonecode==phonecode===phonecode",phonecode)
   }
 
   next(){
@@ -49,6 +50,9 @@ class SignUp2 extends Component{
     }else{
       return true
     }
+  }
+  getcountryphonecode(){
+    return phonecode.countries.map((data) =><Option key={data.code}>{data.code}</Option>)
   }
 
   render(){
@@ -89,13 +93,12 @@ class SignUp2 extends Component{
                           <label>Phone</label>
                           <InputGroup>
                              <Select
+                                showSearch
                                 style={{ width:60 }}
                                 value={this.props.signupdetails.countrycode}
                                 onChange={(e) =>{this.setState({countrycode:e}); this.props.signupdetails.countrycode=e }}
                                 >
-                                  <Option value="+1">+1</Option>
-                                  <Option value="+2">+2</Option>
-                                  <Option value="+3">+3</Option>
+                                  {this.getcountryphonecode()}
                              </Select>
                              <input id="phonenumber" className="form-control" placeholder="Your phone number" value={this.props.signupdetails.phonenumber} onChange={(e) => {this.setState({phonenumber:e.target.value,error:false,errortext:""}); this.props.signupdetails.phonenumber=e.target.value }}/>
                           </InputGroup>

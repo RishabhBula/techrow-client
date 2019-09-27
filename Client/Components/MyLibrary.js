@@ -24,7 +24,8 @@ class MyLibrary extends Component{
               {id:"321",shortdisc:"Lorem Ipsum Sit Dolor - amet Specialization",longdisc:"Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium"},
             ],
       mylibrary:[],
-      search:""
+      search:"",
+      searcharray:[]
     }
 	}
   
@@ -42,6 +43,7 @@ class MyLibrary extends Component{
                               })
           console.log("myLibrary",myLibrary)
           this.props.getMylibrary(myLibrary)
+          this.setState({searcharray:myLibrary})
           return myLibrary
 
         }
@@ -57,7 +59,7 @@ class MyLibrary extends Component{
 
   search(s){
     console.log("this.state.search",this.state.search)
-    firebase.firestore().collection('users').doc(this.props.auth.authData.uid).collection('myLibrary').where("name", "==", s)
+    firebase.firestore().collection('users').doc(this.props.auth.authData.uid).collection('myLibrary').where('name', '>=', s).where('name', '<=', s+ '\uf8ff')
     .get()
     .then((querySnapshot) => {
         let myLibrary =[];
@@ -72,14 +74,13 @@ class MyLibrary extends Component{
     });
   }
 
-
   render(){
       return(
          <div className="dashboard animated fadeIn">
           <div>
             <h2>My Library</h2>
             <div className="search form-group">
-              <input type="text" className="form-control" placeholder="Search in my library" value={this.state.search} onChange={(e) =>{ this.setState({search:e.target.value}) }} />
+              <input type="text" className="form-control" placeholder="Search in my library" value={this.state.search} onChange={(e) =>{ this.setState({search:e.target.value}); }} />
               <button onClick={() =>{ this.search(this.state.search) }}><img src="../images/search-icon.png" className="img-fluid"/></button>
             </div>
             <div className="classesList">
