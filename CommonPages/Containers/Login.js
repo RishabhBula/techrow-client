@@ -66,7 +66,7 @@ class Login extends Component{
         .then((res) =>{
           console.log("forgot success response",res)
           Notification("success","Email sent","Reset password link sent to your email")
-          this.setState({forgotstate:false,email:"",password:""})
+          this.setState({forgotstate:false,password:""})
           // Email sent.
         })
         .catch((error) =>{
@@ -106,7 +106,7 @@ class Login extends Component{
                               </div>
                               {this.state.error==true && (<div className="form-group"><span style={{color: 'red'}}>{this.state.errortext}</span></div>)}
                               <div className="form-group">
-                                <a style={{fontSize:'12px'}} onClick={() =>{ this.setState({ forgotstate:true, email:"", password:"",error:false,errortext:"" }) }}>Forgot Password</a>
+                                <a style={{fontSize:'12px'}} onClick={() =>{ this.setState({ forgotstate:true, password:"",error:false,errortext:"" }) }}>Forgot Password</a>
                                 <button className="green-btn" onClick={() =>{ this.login(this.state.email,this.state.password) }}>Login</button>
                               </div>
                             </div>
@@ -125,7 +125,7 @@ class Login extends Component{
                               </div>
                               {this.state.error==true && (<div className="form-group"><span style={{color: 'red'}}>{this.state.errortext}</span></div>)}
                               <div className="form-group">
-                                <a  style={{fontSize:'12px'}}  onClick={() =>{ this.setState({ forgotstate:false, email:"", password:"" }) }}>Sign In</a>
+                                <a  style={{fontSize:'12px'}}  onClick={() =>{ this.setState({ forgotstate:false, password:"" }) }}>Sign In</a>
                                 <button className="green-btn" onClick={() =>{ this.forgot(this.state.email) }}>Send</button>
                               </div>
                             </div>

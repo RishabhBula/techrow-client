@@ -92,12 +92,12 @@ class SignUp2 extends Component{
                           <label>Phone</label>
                           <InputGroup>
                              <Select
-                                showSearch
                                 style={{ width:80 }}
                                 value={this.props.signupdetails.countrycode}
                                 onChange={(e) =>{this.setState({countrycode:e}); this.props.signupdetails.countrycode=e }}
                                 >
-                                  {this.getcountryphonecode()}
+                                 {/* {this.getcountryphonecode()}*/}
+                                 <Option key="+1">+1</Option>
                              </Select>
                              <input id="phonenumber" className="form-control" placeholder="Your phone number" value={this.props.signupdetails.phonenumber} onChange={(e) => {this.setState({phonenumber:e.target.value,error:false,errortext:""}); this.props.signupdetails.phonenumber=e.target.value }}/>
                           </InputGroup>
