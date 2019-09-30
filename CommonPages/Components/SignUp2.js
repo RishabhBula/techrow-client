@@ -3,7 +3,6 @@ import {bindActionCreators} from 'redux';
 import { connect } from 'react-redux';
 import axios from 'axios';
 import {Steps, Input, Select} from 'antd';
-import Stepper from 'react-stepper-horizontal';
 import phonecode from '../../countryPhoneCode.json';
 
 import {setSignupDetails} from '../../actions/setSignupDetails';
@@ -37,9 +36,9 @@ class SignUp2 extends Component{
 
   next(){
     if(this.props.signupdetails.firstname=="" || this.props.signupdetails.lastname=="" || this.props.signupdetails.email=="" || this.props.signupdetails.phonenumber==""){
-      this.setState({error:true,errortext:"please fill all fields to continue."})
+      this.setState({error:true,errortext:"Please fill all fields to continue."})
     }else if(!strongRegex.test(this.props.signupdetails.password)){
-      this.setState({error:true,errortext:"password strength not good."})
+      this.setState({error:true,errortext:"Password strength not good."})
     }else{
       this.props.pageRender(3)
     }
@@ -122,8 +121,8 @@ class SignUp2 extends Component{
                           <br/><span className="about-password">At least 6 characters including uppercase, lowercase, number and symbol</span>
                         </div>
                         )}
+                      {this.state.error==true && (<div><span style={{color: 'red'}}>{this.state.errortext}</span></div>)}
                    </div>
-                   {this.state.error==true && (<div><span style={{color: 'red'}}>*{this.state.errortext}</span></div>)}
                    <button className="pointer" onClick={() =>{ this.next() }}>Next<img src="./images/arrow-right.png" className="img-fluid"/></button>
                    <div className="clearfix"></div>
                 </div>

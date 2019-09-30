@@ -2,10 +2,18 @@ import React, { Component } from 'react';
 import {bindActionCreators} from 'redux';
 import { connect } from 'react-redux';
 import axios from 'axios';
+import {
+  CardNumberElement,
+  CardExpiryElement,
+  CardCVCElement,
+  injectStripe,
+  StripeProvider,
+  Elements,
+} from 'react-stripe-elements';
 
 import {setOrderDetails} from '../../actions/setOrderDetails';
 
-class OrderBundle3 extends Component{
+class _SplitFieldsForm extends Component{
 	constructor(props){
 		super(props);
     this.state = {
@@ -32,21 +40,32 @@ class OrderBundle3 extends Component{
     }
   }
 
-  // paynow(){
-  //   // https://us-central1-hk-project-0.cloudfunctions.net/httpReq
-  //   axios({
-  //         method:"POST",
-  //         url:'https://us-central1-hk-project-0.cloudfunctions.net/httpReq',
-  //         params:{
-  //           email:"harikrishnan@hubspire.com",
-  //           password:"1234567890Zx"
-  //         }
-  //       }).then((response) =>{
-  //           console.log("-----response--->",response)
-  //       }).catch((err) =>{
-  //           console.log("err-----err-err--->",err.response)
-  //       })
-  // }
+  paynow(){
+    // https://us-central1-hk-project-0.cloudfunctions.net/paynow
+    if(this.props.stripe){
+        this.props.stripe.createToken()
+                         .then((response) =>{
+                                console.log("stripe======response",response)
+                                axios({
+                                  method:"POST",
+                                  url:'https://us-central1-hk-project-0.cloudfunctions.net/paynow',
+                                  data:{
+                                    cardToken:response.token.id,
+                                    additional:"2"
+                                  }
+                                }).then((response) =>{
+                                    console.log("-----response from server--->",response.data)
+                                }).catch((err) =>{
+                                    console.log("err-----err-err--->",err.response)
+                                })
+                         })
+                         .catch((error) =>{
+                                console.log("stripe======error",error)
+                         })
+    }else{
+
+    }
+  }
 
   render(){
       return(
@@ -68,21 +87,27 @@ class OrderBundle3 extends Component{
                           </div>
                           <div className="form-group">
                               <label>Card Number(no spaces or dashes)</label>
-                              <input id="cardnumber" className="form-control" placeholder="cardnumber" value={this.state.cardnumber} onChange={(e) =>{ this.setState({cardnumber:e.target.value,error:false,errortext:""}); this.props.orderdetails.cardnumber=e.target.value; }}/>
+                              {/*<input id="cardnumber" className="form-control" placeholder="cardnumber" value={this.state.cardnumber} onChange={(e) =>{ this.setState({cardnumber:e.target.value,error:false,errortext:""}); this.props.orderdetails.cardnumber=e.target.value; }}/>*/}
+                              <CardNumberElement className="form-control"/>
                           </div>
                           <div className="form-group">
                               <label>Expiration</label>
-                              <input className="form-control" placeholder="MM" value={this.state.expmonth} onChange={(e) =>{ this.setState({expmonth:e.target.value,error:false,errortext:""}); this.props.orderdetails.expmonth=e.target.value; }}/>
-                              <input className="form-control" placeholder="YY" value={this.state.expyear} onChange={(e) =>{ this.setState({expyear:e.target.value,error:false,errortext:""}); this.props.orderdetails.expyear=e.target.value; }}/>
+                              {/*<input className="form-control" placeholder="MM" value={this.state.expmonth} onChange={(e) =>{ this.setState({expmonth:e.target.value,error:false,errortext:""}); this.props.orderdetails.expmonth=e.target.value; }}/>
+                              <input className="form-control" placeholder="YY" value={this.state.expyear} onChange={(e) =>{ this.setState({expyear:e.target.value,error:false,errortext:""}); this.props.orderdetails.expyear=e.target.value; }}/>*/}
+                              <CardExpiryElement className="form-control"/>
                           </div>
                           <div className="form-group">
                               <label>CVV</label>
-                              <input id="cvv" className="form-control" placeholder="cvv" value={this.state.cvv} onChange={(e) =>{ this.setState({cvv:e.target.value,error:false,errortext:""}); this.props.orderdetails.cvv=e.target.value; }}/>
+                              {/*<input id="cvv" className="form-control" placeholder="cvv" value={this.state.cvv} onChange={(e) =>{ this.setState({cvv:e.target.value,error:false,errortext:""}); this.props.orderdetails.cvv=e.target.value; }}/>*/}
+                              <CardCVCElement className="form-control"/>
+                          </div>
+                          <div className="form-group">
+                              <button onClick={() =>{ this.paynow() }}>Pay Now</button>
                           </div>
                         </div>
                       </div>
                     </div>
-                   {this.state.error==true && (<div><span style={{color: 'red'}}>*{this.state.errortext}</span></div>)}
+                   {this.state.error==true && (<div><span style={{color: 'red'}}>{this.state.errortext}</span></div>)}
                    <button className="pointer"  onClick={() =>{ this.next() }}>Next<img src="./images/arrow-right.png" className="img-fluid"/></button>
                   {/* <button className="pointer"  onClick={() =>{ this.paynow() }}>paynow<img src="./images/arrow-right.png" className="img-fluid"/></button>*/}
                    <div className="clearfix"></div>
@@ -91,6 +116,20 @@ class OrderBundle3 extends Component{
         </div>
       );
    }
+}
+
+const SplitFieldsForm = injectStripe(_SplitFieldsForm);
+
+class OrderBundle3 extends Component {
+  render() {
+    return (
+      <StripeProvider apiKey="pk_test_3cm5TpbHpNtHkYSLTxwwrZiN00z0pDqLFP">
+        <Elements>
+          <SplitFieldsForm/>
+        </Elements>
+      </StripeProvider>
+    );
+  }
 }
 
 

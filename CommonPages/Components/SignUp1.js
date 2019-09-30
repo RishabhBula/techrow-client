@@ -23,7 +23,7 @@ class SignUp1 extends Component{
 
   next(){
     if(this.state.type==""){
-        this.setState({error:true,errortext:"please select a user type"})
+        this.setState({error:true,errortext:"Please select a user type"})
     }else{
         this.props.pageRender(2)
     }
@@ -58,7 +58,7 @@ class SignUp1 extends Component{
                       </div>
                    </div>
                   </div>
-                   {this.state.error==true && (<div><span style={{color: 'red'}}>*{this.state.errortext}</span></div>)}
+                   {this.state.error==true && (<div><span style={{color: 'red'}}>{this.state.errortext}</span></div>)}
                    <button onClick={() =>{ this.next() }}>Next <img src="./images/arrow-right.png" className="img-fluid"/></button>
                    <div className="clearfix"></div>
                 </div>

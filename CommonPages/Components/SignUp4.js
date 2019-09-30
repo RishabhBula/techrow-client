@@ -3,7 +3,6 @@ import {bindActionCreators} from 'redux';
 import { connect } from 'react-redux';
 import axios from 'axios';
 import {Steps} from 'antd';
-import Stepper from 'react-stepper-horizontal';
 
 import {setSignupDetails} from '../../actions/setSignupDetails';
 import {getAuthentication} from '../../actions/authentication'

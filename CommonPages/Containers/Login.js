@@ -104,7 +104,7 @@ class Login extends Component{
                                 <label>password</label>
                                 <input id="password" type="password" className="form-control" placeholder="Type your password" value={this.state.password} onChange={(e) =>this.setState({password:e.target.value,error:false,errortext:""})}/><br/>
                               </div>
-                              {this.state.error==true && (<div className="form-group"><span style={{color: 'red'}}>*{this.state.errortext}</span></div>)}
+                              {this.state.error==true && (<div className="form-group"><span style={{color: 'red'}}>{this.state.errortext}</span></div>)}
                               <div className="form-group">
                                 <a style={{fontSize:'12px'}} onClick={() =>{ this.setState({ forgotstate:true, email:"", password:"",error:false,errortext:"" }) }}>Forgot Password</a>
                                 <button className="green-btn" onClick={() =>{ this.login(this.state.email,this.state.password) }}>Login</button>
@@ -123,7 +123,7 @@ class Login extends Component{
                                 <label>email</label>
                                 <input id="email" type="email" className="form-control" placeholder="email" value={this.state.email} onChange={(e) =>this.setState({email:e.target.value,error:false,errortext:""})}/><br/>
                               </div>
-                              {this.state.error==true && (<div className="form-group"><span style={{color: 'red'}}>*{this.state.errortext}</span></div>)}
+                              {this.state.error==true && (<div className="form-group"><span style={{color: 'red'}}>{this.state.errortext}</span></div>)}
                               <div className="form-group">
                                 <a  style={{fontSize:'12px'}}  onClick={() =>{ this.setState({ forgotstate:false, email:"", password:"" }) }}>Sign In</a>
                                 <button className="green-btn" onClick={() =>{ this.forgot(this.state.email) }}>Send</button>

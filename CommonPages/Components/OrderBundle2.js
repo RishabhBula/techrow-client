@@ -123,7 +123,7 @@ class OrderBundle2 extends Component{
                           </div>
                        </div>
                     </div>
-                   {this.state.error==true && (<div><span style={{color: 'red'}}>*{this.state.errortext}</span></div>)}
+                   {this.state.error==true && (<div><span style={{color: 'red'}}>{this.state.errortext}</span></div>)}
                    <button className="pointer" onClick={() =>{ this.paynow() }}>Pay Now using Credit Card<img src="./images/arrow-right.png" className="img-fluid"/></button>
                    <button className="pointer" onClick={() =>{ this.paylater() }}>Pay later - Send me an Invoice<img src="./images/arrow-right.png" className="img-fluid"/></button>
                    <div className="clearfix"></div>

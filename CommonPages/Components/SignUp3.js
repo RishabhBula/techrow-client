@@ -5,7 +5,6 @@ import axios from 'axios';
 import {notification} from 'antd';
 
 import {Select,Steps} from 'antd';
-import Stepper from 'react-stepper-horizontal';
 
 import {setSignupDetails} from '../../actions/setSignupDetails';
 import {Notification} from '../Components/Notification';
@@ -43,7 +42,7 @@ class SignUp3 extends Component{
 
   next(){
     if(this.props.signupdetails.schoolname=="" || this.props.signupdetails.address=="" || this.props.signupdetails.city=="" || this.props.signupdetails.state=="" || this.props.signupdetails.zipcode==""){
-      this.setState({error:true,errortext:"please fill all fields to continue."})
+      this.setState({error:true,errortext:"Please fill all fields to continue."})
     }else{
       const db=firebase.firestore();
       let userObj={
@@ -167,6 +166,7 @@ class SignUp3 extends Component{
                                 <Option value="C+">C+</Option>
                               </Select>
                           </div>*/}
+                       {this.state.error==true && (<div><span style={{color: 'red'}}>{this.state.errortext}</span></div>)}
                        </div>
                        <div className="form col">
                           <div className="form-group">
@@ -183,7 +183,6 @@ class SignUp3 extends Component{
                           </div>
                         </div>
                       </div>
-                   {this.state.error==true && (<div><span style={{color: 'red'}}>*{this.state.errortext}</span></div>)}
                   
                   <button className="pointer"onClick={() =>{ this.next() }}>Create Account<img src="./images/arrow-right.png" className="img-fluid"/></button>
                    <div className="clearfix"></div>
