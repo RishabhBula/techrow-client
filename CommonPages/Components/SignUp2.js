@@ -93,7 +93,7 @@ class SignUp2 extends Component{
                           <InputGroup>
                              <Select
                                 showSearch
-                                style={{ width:60 }}
+                                style={{ width:80 }}
                                 value={this.props.signupdetails.countrycode}
                                 onChange={(e) =>{this.setState({countrycode:e}); this.props.signupdetails.countrycode=e }}
                                 >
