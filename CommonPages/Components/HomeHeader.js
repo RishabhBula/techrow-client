@@ -30,9 +30,7 @@ class HomeHeader extends Component{
                     <ul>
                       <li><a  href="#">About</a></li>
                       <li><a  href="#">Features</a></li>
-                      <li><a  href="#">Blog</a></li>
                       <li><a  href="#">Contact</a></li>
-                      <li><a  href="#">Publishers</a></li>
                     </ul>
                     <ul>
                       <li className="login"> <a href="#/login">Login</a></li>
