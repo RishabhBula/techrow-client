@@ -118,8 +118,8 @@ class Redirect extends Component{
                                       <br/><span className="about-password">At least 6 characters including uppercase, lowercase, number and symbol</span>
                                     </div>
                                     )}
-                                  {this.state.error==true && (<div><span style={{color: 'red'}}>{this.state.errortext}</span></div>)}
-                                  <div className="form-group">
+                                  {this.state.error==true && (<div style={{paddingTop: '10px'}}><span style={{color: 'red'}}>{this.state.errortext}</span></div>)}
+                                  <div style={{paddingTop: '32px'}} className="form-group">
                                     <button className="green-btn" onClick={() =>{ this.handleResetPassword() }}>Reset</button>
                                   </div>
                                 </div>
