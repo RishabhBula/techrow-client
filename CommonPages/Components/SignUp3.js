@@ -5,6 +5,7 @@ import axios from 'axios';
 import {notification} from 'antd';
 
 import {Select,Steps} from 'antd';
+// import ReCAPTCHA from "react-google-recaptcha";
 
 import {setSignupDetails} from '../../actions/setSignupDetails';
 import {Notification} from '../Components/Notification';
@@ -113,6 +114,21 @@ class SignUp3 extends Component{
         this.props.signupdetails.po="";
         this.props.signupdetails.taxexid="";
   }
+  // onChange(value){
+  //   console.log("captcha this.captchaRef",this.captchaRef)
+  //   console.log("captcha value",value)
+  //   axios({
+  //         method:"POST",
+  //         url:'https://us-central1-hk-project-0.cloudfunctions.net/recaptcha',
+  //         data:{
+  //           generatedKey:value,
+  //         }
+  //       }).then((response) =>{
+  //           console.log("-----response from server--->",response)
+  //       }).catch((err) =>{
+  //           console.log("err-----err-err--->",err.response)
+  //       })
+  // }
 
   render(){
       return(
@@ -181,6 +197,17 @@ class SignUp3 extends Component{
                               <label>Tax ID</label>
                               <input id="taxexid" className="form-control" placeholder="" value={this.props.signupdetails.taxexid} onChange={(e) => {this.setState({taxexid:e.target.value,error:false,errortext:""}); this.props.signupdetails.taxexid=e.target.value }}/>
                           </div>
+                         {/* <div className="form-group">
+                            <ReCAPTCHA
+                              ref={(e) => { this.captchaRef=e }}
+                              sitekey="6LeWOLsUAAAAAPNpTNRoRsMGk6sWY3NcokH8QgA7"
+                              onChange={(value) => this.onChange(value)}
+                              onExpired={() => { console.log("expired"); this.captchaRef.reset() }}
+                              onErrored={() => { }}
+                              type="image"
+                              size="normal"
+                            />
+                          </div>*/}
                         </div>
                       </div>
                   

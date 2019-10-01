@@ -37,7 +37,7 @@ class SignUp2 extends Component{
   next(){
     if(this.props.signupdetails.firstname=="" || this.props.signupdetails.lastname=="" || this.props.signupdetails.email=="" || this.props.signupdetails.phonenumber==""){
       this.setState({error:true,errortext:"Please fill all fields to continue."})
-    }else if(!strongRegex.test(this.props.signupdetails.password)){
+    }else if(!mediumRegex.test(this.props.signupdetails.password)){
       this.setState({error:true,errortext:"Password strength not good."})
     }else{
       this.props.pageRender(3)
