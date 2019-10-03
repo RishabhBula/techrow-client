@@ -80,17 +80,41 @@ class SignUp3 extends Component{
             userObj.emailVerified=true
             userObj.createdDate=firebase.firestore.FieldValue.serverTimestamp()
             userObj.updatedDate=firebase.firestore.FieldValue.serverTimestamp()
+            userObj.searchquery=userObj.firstName.toLocaleLowerCase()
 
             db.collection("users").doc(res.user.uid).set(userObj)
+            .then(() =>{
+              let orgObj = {
+                  name:this.props.signupdetails.schoolname,
+                  address:this.props.signupdetails.address,
+                  city:this.props.signupdetails.city,
+                  state:this.props.signupdetails.state,
+                  zipCode:this.props.signupdetails.zipcode,
+                  // grade:this.props.signupdetails.grade,
+                  schooldistrict:this.props.signupdetails.schooldistrict,
+                  po:this.props.signupdetails.po,
+                  taxexid:this.props.signupdetails.taxexid,
+                }
+                var org = db.collection("organisations").doc();
+                    orgObj.id = org.id;
+                    orgObj.searchquery = orgObj.name.toLocaleLowerCase();
+                    org.set(orgObj);
+                    let schoolObj={school:{ id:org.id }}
+                    db.collection("users").doc(res.user.uid).set(schoolObj, { merge: true })
+
             this.props.pageRender(4)
             this.clearsignupredux()
+            })
+            .catch((error) =>{
+
+            })
       })
-      .catch((error) =>{
+      .catch((err) =>{
         // Handle Errors here.
-        console.log("====error",error)
-        var errorCode = error.code;
-        var errorMessage = error.message;
-        Notification("error",error.code.split("/")[1],error.message)
+        console.log("====error",err)
+        var errorCode = err.code;
+        var errorMessage = err.message;
+        Notification("error",err.code.split("/")[1],err.message)
         // ...
       })
 

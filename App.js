@@ -33,13 +33,13 @@ import 'firebase/firestore';
 import 'firebase/database';
 
 const firebaseConfig = {
-  apiKey: "AIzaSyCEbqRejmMFeaPFtGPR9gK6zUKYIJqJeF8",
-  authDomain: "hk-project-0.firebaseapp.com",
-  databaseURL: "https://hk-project-0.firebaseio.com",
-  projectId: "hk-project-0",
-  storageBucket: "hk-project-0.appspot.com",
-  messagingSenderId: "129701118966",
-  appId: "1:129701118966:web:422c5d5f8b930a14"
+  apiKey: "AIzaSyAB1yWXPpiOvXHO4w6SUjhvnAejF-bQ5cs",
+  authDomain: "techrow-platform.firebaseapp.com",
+  databaseURL: "https://techrow-platform.firebaseio.com",
+  projectId: "techrow-platform",
+  storageBucket: "techrow-platform.appspot.com",
+  messagingSenderId: "630640448823",
+  appId: "1:630640448823:web:47ec2a995f0d1c9d70f6b2"
 };
 
 firebase.initializeApp(firebaseConfig);
