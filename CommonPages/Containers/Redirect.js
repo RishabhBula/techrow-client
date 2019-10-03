@@ -49,7 +49,7 @@ class Redirect extends Component{
   handleResetPassword() {
     if(this.state.password==""){
       this.setState({error:true,errortext:"Please enter a password to continue"})
-    }else if(!strongRegex.test(this.state.password)){
+    }else if(!mediumRegex.test(this.state.password)){
       this.setState({error:true,errortext:"password strength not good."})
     }else{
         // Localize the UI to the selected language as determined by the lang

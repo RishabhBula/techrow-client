@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import {bindActionCreators} from 'redux';
 import { connect } from 'react-redux';
 import axios from 'axios';
+import {notification} from 'antd';
 import {
   CardNumberElement,
   CardExpiryElement,
@@ -12,6 +13,7 @@ import {
 } from 'react-stripe-elements';
 
 import {setOrderDetails} from '../../actions/setOrderDetails';
+import {Notification} from '../Components/Notification';
 
 class _SplitFieldsForm extends Component{
 	constructor(props){
@@ -46,18 +48,22 @@ class _SplitFieldsForm extends Component{
         this.props.stripe.createToken()
                          .then((response) =>{
                                 console.log("stripe======response",response)
-                                axios({
-                                  method:"POST",
-                                  url:'https://us-central1-techrow-platform.cloudfunctions.net/paynow/charge',
-                                  data:{
-                                    cardToken:response.token.id,
-                                    additional:"2"
-                                  }
-                                }).then((response) =>{
-                                    console.log("-----response from server--->",response.data)
-                                }).catch((err) =>{
-                                    console.log("err-----err-err--->",err.response)
-                                })
+                                if(response.token!=undefined)
+                                Notification("success","cardToken generated",response.token.id)
+                                if(response.error!=undefined)
+                                Notification("error",response.error.code,response.error.message)
+                                // axios({
+                                //   method:"POST",
+                                //   url:'https://us-central1-techrow-platform.cloudfunctions.net/paynow/charge',
+                                //   data:{
+                                //     cardToken:response.token.id,
+                                //     additional:"2"
+                                //   }
+                                // }).then((response) =>{
+                                //     console.log("-----response from server--->",response.data)
+                                // }).catch((err) =>{
+                                //     console.log("err-----err-err--->",err.response)
+                                // })
                          })
                          .catch((error) =>{
                                 console.log("stripe======error",error)
