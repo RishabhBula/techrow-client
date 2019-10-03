@@ -41,14 +41,14 @@ class _SplitFieldsForm extends Component{
   }
 
   paynow(){
-    // https://us-central1-hk-project-0.cloudfunctions.net/paynow
+    // https://us-central1-techrow-platform.cloudfunctions.net/paynow/charge
     if(this.props.stripe){
         this.props.stripe.createToken()
                          .then((response) =>{
                                 console.log("stripe======response",response)
                                 axios({
                                   method:"POST",
-                                  url:'https://us-central1-hk-project-0.cloudfunctions.net/paynow',
+                                  url:'https://us-central1-techrow-platform.cloudfunctions.net/paynow/charge',
                                   data:{
                                     cardToken:response.token.id,
                                     additional:"2"
