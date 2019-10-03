@@ -7,13 +7,13 @@ const cors = require('cors');
 const app = express();
 app.use(cors({ origin: true }));
 
-app.post('/sample', (req, res) => {
+app.post('/charge', (req, res) => {
       console.log("req.method",req.method)
       console.log("req.body",req.body)
-      res.send("hello world")
+      res.send(req.body)
 });
 
-exports.samplefunction = functions.https.onRequest(app);
+exports.paynow = functions.https.onRequest(app);
 
 // // Create and Deploy Your First Cloud Functions
 // // https://firebase.google.com/docs/functions/write-firebase-functions
