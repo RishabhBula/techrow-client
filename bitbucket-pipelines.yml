@@ -16,7 +16,7 @@ pipelines:
             variables:
               FIREBASE_TOKEN: $FIREBASE_TOKEN
               PROJECT_ID: $PROJECT_ID
-              EXTRA_ARGS: $BITBUCKET_BUILD_NUMBER
+              EXTRA_ARGS: ''
               MESSAGE: $BITBUCKET_COMMIT
               DEBUG: 'true'
 
