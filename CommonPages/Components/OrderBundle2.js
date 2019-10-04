@@ -6,6 +6,12 @@ import {Checkbox} from 'antd';
 
 import {setOrderDetails} from '../../actions/setOrderDetails';
 
+import firebase from 'firebase/app';
+import 'firebase/auth';
+import 'firebase/app';
+import 'firebase/firestore';
+import 'firebase/database';
+
 class OrderBundle2 extends Component{
 	constructor(props){
 		super(props);
@@ -25,6 +31,10 @@ class OrderBundle2 extends Component{
       errortext:""
     }
 	}
+
+  componentWillMount(){
+      this.props.orderdetails.ordercount=localStorage.extraCount
+  }
   
   componentDidMount(){
       
@@ -39,13 +49,75 @@ class OrderBundle2 extends Component{
     console.log("=======",this.props.orderdetails)
   }
 
-  paylater(){
+  async paylater(){
     if(this.state.sname=="" || this.state.saddress=="" || this.state.scity=="" || this.state.sstate=="" || this.state.szipcode=="" ){
       this.setState({error:true,errortext:"please fill all fields to continue."})
     }else{
-      this.props.pageRender(5)
+      // this.props.pageRender(5)
+      console.log("===userData====",this.props.userData)
+
+      let headSetBundleCount=1;
+      let headSetBundlePrice=1500;
+      let totalBundleCost=headSetBundleCount*headSetBundlePrice;
+      let additionalHeadSetCount=Number(this.props.orderdetails.ordercount);
+      let additionalHeadSetPrice=150;
+      let totalAdditionalHeadSetCost=additionalHeadSetCount*additionalHeadSetPrice;
+      let orderTotalAmount=totalBundleCost+totalAdditionalHeadSetCost;
+
+      const db=firebase.firestore();
+      let orderObj = {
+          headSetBundleCount:headSetBundleCount,
+          headSetBundlePrice:headSetBundlePrice,
+          totalBundleCost:totalBundleCost,
+          additionalHeadSetCount:additionalHeadSetCount,
+          additionalHeadSetPrice:additionalHeadSetPrice,
+          totalAdditionalHeadSetCost:totalAdditionalHeadSetCost,
+          orderTotalAmount:orderTotalAmount,
+          orderAmountPaid:0,
+          paymentSuccessfull:false,
+          orderConfirmed:false,
+          updatedDate:firebase.firestore.FieldValue.serverTimestamp(),
+          createdDate:firebase.firestore.FieldValue.serverTimestamp(),
+          BillingAddressSameAsshippingAddress:this.state.billingcheck,
+          teacherInformation:{
+                                id:this.props.userData.id,
+                                firstName:this.props.userData.firstName,
+                                lastName:this.props.userData.lastName,
+                                email:this.props.userData.email,
+                                username:this.props.userData.username,
+                                phoneNumber:this.props.userData.phoneNumber,
+                                organization:this.props.userData.organization
+                             },
+          billingInformation:{
+                                name:this.state.bname,
+                                address:this.state.baddress,
+                                city:this.state.bcity,
+                                state:this.state.bstate,
+                                zipCode:this.state.bzipcode
+                             },
+          shippingInformation:{
+                                name:this.state.sname,
+                                address:this.state.saddress,
+                                city:this.state.scity,
+                                state:this.state.sstate,
+                                zipCode:this.state.szipcode
+                             },
+          stripePaymentInfo:{}
+      }
+
+      let userId = this.props.userData.id
+      var order = db.collection("orders").doc();
+      orderObj.id = order.id;
+      orderObj.orderNumber = order.id;
+      await order.set(orderObj)
+      let orderArray=[]
+      orderArray=this.props.userData.myOrders;
+      orderArray.push(order.id);
+      let update={myOrders:orderArray,deafultShippingInformation:orderObj.shippingInformation}
+      await db.collection("users").doc(userId).set(update, { merge: true })
+
     }
-    console.log("=======",this.props.orderdetails)
+    console.log("===00000====",this.props.orderdetails)
   }
 
   billingcheck(e){
@@ -138,6 +210,7 @@ class OrderBundle2 extends Component{
 function mapStateToProps(state){
   return{
       orderdetails:state.orderdetails,
+      userData:state.userData,
   };
 }
 function matchDispatchToProps(dispatch){

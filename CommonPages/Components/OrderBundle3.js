@@ -108,13 +108,13 @@ class _SplitFieldsForm extends Component{
                               <CardCVCElement className="form-control"/>
                           </div>
                           <div className="form-group">
-                              <button onClick={() =>{ this.paynow() }}>Pay Now</button>
+                              <button className="form-control img-fluid" onClick={() =>{ this.paynow() }}>Pay Now</button>
                           </div>
                         </div>
                       </div>
                     </div>
                    {this.state.error==true && (<div><span style={{color: 'red'}}>{this.state.errortext}</span></div>)}
-                   <button className="pointer"  onClick={() =>{ this.next() }}>Next<img src="./images/arrow-right.png" className="img-fluid"/></button>
+                   {/*<button className="pointer"  onClick={() =>{ this.next() }}>Next<img src="./images/arrow-right.png" className="img-fluid"/></button>*/}
                   {/* <button className="pointer"  onClick={() =>{ this.paynow() }}>paynow<img src="./images/arrow-right.png" className="img-fluid"/></button>*/}
                    <div className="clearfix"></div>
                 </div>

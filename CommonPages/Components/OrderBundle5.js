@@ -25,7 +25,7 @@ class OrderBundle5 extends Component{
            <div className="confirm-order animated fadeIn">
                 <div className="form-wrap">
                     <h5>Thank you for your interest and we will email you an email with the invoice.</h5><br/>
-                    <button className="green-btn pointer" onClick={() =>{ window.location.href="#/" }}>Go to My Library</button><br/>
+                    <button className="green-btn pointer" onClick={() =>{ window.location.href="#/";localStorage.removeItem("extraCount"); }}>Go to My Library</button><br/>
                 </div>
             </div>
         </div>

@@ -53,16 +53,16 @@ class SignUp3 extends Component{
             email:this.props.signupdetails.email.trim().toLocaleLowerCase(),
             username:this.props.signupdetails.email.trim().toLocaleLowerCase(),
             phoneNumber:this.props.signupdetails.countrycode+this.props.signupdetails.phonenumber,
-            school:{
-              name:this.props.signupdetails.schoolname,
-              address:this.props.signupdetails.address,
-              city:this.props.signupdetails.city,
-              state:this.props.signupdetails.state,
-              zipCode:this.props.signupdetails.zipcode,
+            organization:{
+              orgName:this.props.signupdetails.schoolname,
+              orgAddress:this.props.signupdetails.address,
+              orgCity:this.props.signupdetails.city,
+              orgState:this.props.signupdetails.state,
+              orgZipcode:this.props.signupdetails.zipcode,
               // grade:this.props.signupdetails.grade,
-              schooldistrict:this.props.signupdetails.schooldistrict,
-              po:this.props.signupdetails.po,
-              taxexid:this.props.signupdetails.taxexid,
+              orgDistrict:this.props.signupdetails.schooldistrict,
+              orgPo:this.props.signupdetails.po,
+              orgTaxexm:this.props.signupdetails.taxexid,
 
             },
             headJackCredentials:{
@@ -70,12 +70,14 @@ class SignUp3 extends Component{
               appId:""
             },
             myOrders:[],
-            myRecentViews:[]
+            myRecentViews:[],
+            deafultShippingInformation:{}
           }
       console.log("prooooopspspspsppspspsps======",this.props.signupdetails)
       firebase.auth().createUserWithEmailAndPassword(this.props.signupdetails.email.trim().toLocaleLowerCase(), this.props.signupdetails.password.trim())
       .then((res) =>{
             userObj.id=res.user.uid
+            userObj.profileImage=""
             userObj.status=true
             userObj.emailVerified=true
             userObj.createdDate=firebase.firestore.FieldValue.serverTimestamp()
@@ -99,7 +101,7 @@ class SignUp3 extends Component{
                     orgObj.id = org.id;
                     orgObj.searchquery = orgObj.name.toLocaleLowerCase();
                     org.set(orgObj);
-                    let schoolObj={school:{ id:org.id }}
+                    let schoolObj={organization:{ id:org.id }}
                     db.collection("users").doc(res.user.uid).set(schoolObj, { merge: true })
 
             this.props.pageRender(4)
