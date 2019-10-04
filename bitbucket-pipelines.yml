@@ -16,9 +16,9 @@ pipelines:
           - cd functions && npm install && cd ..
           - npm install
           - npm run build
-          - cp -Rf build/* ./public/
-          - cp -Rf ./images ./public
-          - cp -Rf ./fonts  ./public
+          - cp -Rf bundle/* ./public/
+          - cp -Rf images ./public
+          - cp -Rf Fonts  ./public
           - pipe: atlassian/firebase-deploy:0.3.4
             variables:
               FIREBASE_TOKEN: $FIREBASE_TOKEN
