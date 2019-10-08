@@ -145,34 +145,69 @@ class _SplitFieldsForm extends Component{
                 <div className="form-wrap">
                     <div className="form">
                       <div className="row">
-                        <div className="col-sm-6"></div>
                         <div className="col-sm-6">
-                          <div className="form-group">
-                              <label>Name on Card</label>
-                              <input id="cardholdername" className="form-control" placeholder="card holder name" value={this.state.cardholdername} onChange={(e) =>{ this.setState({cardholdername:e.target.value,error:false,errortext:""}); this.props.orderdetails.cardholdername=e.target.value; }}/>
+                          <div className="row card">
+                            <div className="col-sm-12">
+                              <img src="./images/headset.png"/>
+                            </div>
+                            <div className="col-sm-12" style={{paddingTop: '20px', paddingBottom: '20px' }}>
+                              <span>{this.props.orderdetails.ordercount} X <span>Headsets</span> </span>
+                            </div>
                           </div>
-                          <div className="form-group">
-                              <label>Postal Code</label>
-                              <input id="postalcode" className="form-control" placeholder="postalcode" value={this.state.postalcode} onChange={(e) =>{ this.setState({postalcode:e.target.value,error:false,errortext:""}); this.props.orderdetails.postalcode=e.target.value; }}/>
+                          <div className="row" style={{paddingTop: '50px'}}>
+                           <div  className="col-sm-3">
+                             <img src="./images/visa.png"/>
+                           </div>
+                           <div  className="col-sm-3">
+                             <img src="./images/master.png"/>
+                           </div>
+                           <div  className="col-sm-3">
+                             <img src="./images/amex.png"/>
+                           </div>
+                           <div  className="col-sm-3">
+                             <img src="./images/discover.png"/>
+                           </div>
                           </div>
+                        </div>
+                        <div className="col-sm-6">
+                        <div className="row">
+                          <div  className="col-sm-7">
+                            <div className="form-group">
+                                <label>Name on Card</label>
+                                <input id="cardholdername" className="form-control" placeholder="card holder name" value={this.state.cardholdername} onChange={(e) =>{ this.setState({cardholdername:e.target.value,error:false,errortext:""}); this.props.orderdetails.cardholdername=e.target.value; }}/>
+                            </div>
+                          </div>
+                          <div  className="col-sm-5">
+                            <div className="form-group">
+                                <label>Postal Code</label>
+                                <input id="postalcode" className="form-control" placeholder="postalcode" value={this.state.postalcode} onChange={(e) =>{ this.setState({postalcode:e.target.value,error:false,errortext:""}); this.props.orderdetails.postalcode=e.target.value; }}/>
+                            </div>
+                          </div>
+                        </div>
                           <div className="form-group">
                               <label>Card Number(no spaces or dashes)</label>
                               {/*<input id="cardnumber" className="form-control" placeholder="cardnumber" value={this.state.cardnumber} onChange={(e) =>{ this.setState({cardnumber:e.target.value,error:false,errortext:""}); this.props.orderdetails.cardnumber=e.target.value; }}/>*/}
                               <CardNumberElement className="form-control"/>
                           </div>
+                          <div className="row">
+                          <div  className="col-sm-7">
                           <div className="form-group">
                               <label>Expiration</label>
                               {/*<input className="form-control" placeholder="MM" value={this.state.expmonth} onChange={(e) =>{ this.setState({expmonth:e.target.value,error:false,errortext:""}); this.props.orderdetails.expmonth=e.target.value; }}/>
                               <input className="form-control" placeholder="YY" value={this.state.expyear} onChange={(e) =>{ this.setState({expyear:e.target.value,error:false,errortext:""}); this.props.orderdetails.expyear=e.target.value; }}/>*/}
                               <CardExpiryElement className="form-control"/>
                           </div>
+                          </div>
+                          <div  className="col-sm-5">
                           <div className="form-group">
                               <label>CVV</label>
                               {/*<input id="cvv" className="form-control" placeholder="cvv" value={this.state.cvv} onChange={(e) =>{ this.setState({cvv:e.target.value,error:false,errortext:""}); this.props.orderdetails.cvv=e.target.value; }}/>*/}
                               <CardCVCElement className="form-control"/>
                           </div>
+                          </div>
+                        </div>
                           <div className="form-group">
-                              <button className="form-control img-fluid" onClick={() =>{ this.paynow() }}>Pay Now</button>
+                              <button style={{display: 'block',backgroundColor: 'darkblue',borderRadius: '25px'}} className="form-control img-fluid" onClick={() =>{ this.paynow() }}>Pay Now</button>
                           </div>
                         </div>
                       </div>
