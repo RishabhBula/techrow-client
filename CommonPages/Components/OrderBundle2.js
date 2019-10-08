@@ -129,6 +129,7 @@ class OrderBundle2 extends Component{
         bstate:this.state.sstate,
         bzipcode:this.state.szipcode,
     })
+    this.props.orderdetails.billingcheck=e.target.checked;
     this.props.orderdetails.bname=this.state.sname;
     this.props.orderdetails.baddress=this.state.saddress;
     this.props.orderdetails.bcity=this.state.scity;

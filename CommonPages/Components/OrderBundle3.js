@@ -12,6 +12,12 @@ import {
   Elements,
 } from 'react-stripe-elements';
 
+import firebase from 'firebase/app';
+import 'firebase/auth';
+import 'firebase/app';
+import 'firebase/firestore';
+import 'firebase/database';
+
 import {setOrderDetails} from '../../actions/setOrderDetails';
 import {Notification} from '../Components/Notification';
 
@@ -34,24 +40,82 @@ class _SplitFieldsForm extends Component{
       
   }
 
-  next(){
-    if(this.state.cardholdername=="" || this.state.postalcode=="" || this.state.cardnumber=="" || this.state.expmonth=="" || this.state.expyear=="" || this.state.cvv==""){
-      this.setState({error:true,errortext:"please enter card details."})
-    }else{
-      this.props.pageRender(4)
-    }
-  }
-
   paynow(){
     // https://us-central1-techrow-platform.cloudfunctions.net/paynow/charge
     if(this.props.stripe){
         this.props.stripe.createToken()
-                         .then((response) =>{
-                                console.log("stripe======response",response)
-                                if(response.token!=undefined)
-                                Notification("success","cardToken generated",response.token.id)
-                                if(response.error!=undefined)
-                                Notification("error",response.error.code,response.error.message)
+                         .then(async (response) =>{
+                                console.log("stripe======response",response,this.props)
+                                if(response.token!=undefined){
+
+                                    let headSetBundleCount=1;
+                                    let headSetBundlePrice=1500;
+                                    let totalBundleCost=headSetBundleCount*headSetBundlePrice;
+                                    let additionalHeadSetCount=Number(this.props.orderdetails.ordercount);
+                                    let additionalHeadSetPrice=150;
+                                    let totalAdditionalHeadSetCost=additionalHeadSetCount*additionalHeadSetPrice;
+                                    let orderTotalAmount=totalBundleCost+totalAdditionalHeadSetCost;
+
+                                    const db=firebase.firestore();
+                                    let orderObj = {
+                                        headSetBundleCount:headSetBundleCount,
+                                        headSetBundlePrice:headSetBundlePrice,
+                                        totalBundleCost:totalBundleCost,
+                                        additionalHeadSetCount:additionalHeadSetCount,
+                                        additionalHeadSetPrice:additionalHeadSetPrice,
+                                        totalAdditionalHeadSetCost:totalAdditionalHeadSetCost,
+                                        orderTotalAmount:orderTotalAmount,
+                                        orderAmountPaid:0,
+                                        paymentSuccessfull:false,
+                                        orderConfirmed:false,
+                                        updatedDate:firebase.firestore.FieldValue.serverTimestamp(),
+                                        createdDate:firebase.firestore.FieldValue.serverTimestamp(),
+                                        BillingAddressSameAsshippingAddress:this.props.orderdetails.billingcheck,
+                                        teacherInformation:{
+                                                              id:this.props.userData.id,
+                                                              firstName:this.props.userData.firstName,
+                                                              lastName:this.props.userData.lastName,
+                                                              email:this.props.userData.email,
+                                                              username:this.props.userData.username,
+                                                              phoneNumber:this.props.userData.phoneNumber,
+                                                              organization:this.props.userData.organization
+                                                           },
+                                        billingInformation:{
+                                                              name:this.props.orderdetails.bname,
+                                                              address:this.props.orderdetails.baddress,
+                                                              city:this.props.orderdetails.bcity,
+                                                              state:this.props.orderdetails.bstate,
+                                                              zipCode:this.props.orderdetails.bzipcode
+                                                           },
+                                        shippingInformation:{
+                                                              name:this.props.orderdetails.sname,
+                                                              address:this.props.orderdetails.saddress,
+                                                              city:this.props.orderdetails.scity,
+                                                              state:this.props.orderdetails.sstate,
+                                                              zipCode:this.props.orderdetails.szipcode
+                                                           },
+                                        stripePaymentInfo:{
+                                                            cardToken:response.token.id
+                                                          }
+                                    }
+
+                                    let userId = this.props.userData.id
+                                    var order = db.collection("orders").doc();
+                                    orderObj.id = order.id;
+                                    orderObj.orderNumber = order.id;
+                                    await order.set(orderObj)
+                                    let orderArray=[]
+                                    orderArray=this.props.userData.myOrders;
+                                    orderArray.push(order.id);
+                                    let update={myOrders:orderArray,deafultShippingInformation:orderObj.shippingInformation}
+                                    await db.collection("users").doc(userId).set(update, { merge: true })
+
+                                  Notification("success","cardToken generated",response.token.id)
+                                  this.props.pageRender(4)
+                                }
+                                if(response.error!=undefined){
+                                  Notification("error",response.error.code,response.error.message)
+                                }
                                 // axios({
                                 //   method:"POST",
                                 //   url:'https://us-central1-techrow-platform.cloudfunctions.net/paynow/charge',
@@ -131,7 +195,7 @@ class OrderBundle3 extends Component {
     return (
       <StripeProvider apiKey="pk_test_3cm5TpbHpNtHkYSLTxwwrZiN00z0pDqLFP">
         <Elements>
-          <SplitFieldsForm/>
+          <SplitFieldsForm userData={this.props.userData} orderdetails={this.props.orderdetails} pageRender={this.props.pageRender}/>
         </Elements>
       </StripeProvider>
     );
@@ -142,6 +206,7 @@ class OrderBundle3 extends Component {
 function mapStateToProps(state){
   return{
       orderdetails:state.orderdetails,
+      userData:state.userData,
   };
 }
 function matchDispatchToProps(dispatch){
