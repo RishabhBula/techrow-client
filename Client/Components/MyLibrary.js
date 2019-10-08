@@ -11,6 +11,9 @@ import 'firebase/app';
 import 'firebase/firestore';
 import 'firebase/database';
 
+import { Spin, Icon } from 'antd';
+const antIcon = <Icon type="loading" style={{ fontSize: 24 }} spin />
+
 class MyLibrary extends Component{
 	constructor(props){
 		super(props);
@@ -25,7 +28,8 @@ class MyLibrary extends Component{
             ],
       mylibrary:[],
       search:"",
-      searcharray:[]
+      searcharray:[],
+      loading:false
     }
 	}
   
@@ -35,20 +39,23 @@ class MyLibrary extends Component{
 
   async mylibrary(){
       try {
+          this.setState({loading:true})
           let myLibrary =[];
-          let library = await firebase.firestore().collection('users').doc(this.props.auth.authData.uid).collection('myLibrary').get()
+          // let library = await firebase.firestore().collection('users').doc(this.props.auth.authData.uid).collection('myLibrary').get()
+          let library = await firebase.firestore().collection('contents').get()
           console.log("library",library.size)
                         await library.forEach((item) =>{
                                 myLibrary.push(item.data())
                               })
           console.log("myLibrary",myLibrary)
           this.props.getMylibrary(myLibrary)
-          this.setState({searcharray:myLibrary})
+          this.setState({searcharray:myLibrary,loading:false})
           return myLibrary
 
         }
         catch (err) {
             console.log("Error", err)
+            this.setState({loading:false})
             return err
         }
   }
@@ -59,7 +66,8 @@ class MyLibrary extends Component{
 
   search(s){
     console.log("this.state.search",this.state.search)
-    firebase.firestore().collection('users').doc(this.props.auth.authData.uid).collection('myLibrary').where('name', '>=', s).where('name', '<=', s+ '\uf8ff')
+    // firebase.firestore().collection('users').doc(this.props.auth.authData.uid).collection('myLibrary').where('name', '>=', s).where('name', '<=', s+ '\uf8ff')
+    firebase.firestore().collection('contents').where('searchQuery', '>=', s).where('searchQuery', '<=', s+ '\uf8ff')
     .get()
     .then((querySnapshot) => {
         let myLibrary =[];
@@ -74,30 +82,26 @@ class MyLibrary extends Component{
     });
   }
 
+  search2(event){
+      if (event.keyCode == 13 || event.which == 13){
+                    this.search(this.state.search);
+                }
+  }
+
+
   render(){
       return(
          <div className="dashboard animated fadeIn">
           <div>
             <h2>My Library</h2>
             <div className="search form-group">
-              <input type="text" className="form-control" placeholder="Search in my library" value={this.state.search} onChange={(e) =>{ this.setState({search:e.target.value}); }} />
+              <input type="text" className="form-control" placeholder="Search in my library" value={this.state.search} onChange={(e) =>{ this.setState({search:e.target.value}); if(e.target.value==""){this.search(e.target.value)} }} onKeyPress={(event) =>{ this.search2(event) }} />
               <button onClick={() =>{ this.search(this.state.search) }}><img src="../images/search-icon.png" className="img-fluid"/></button>
             </div>
-            <div className="classesList">
-              {this.props.myLibrary.length==0 &&(<div className="row">
-                {this.state.data.map((item,index) =>{
-                  return(
-                    <div className="col-lg-3 col-md-4">
-                      <a onClick={() =>{ this.onItemClick(item.id) }} className="each-class">
-                        <div className="class-banne-wrap">
-                          <img src="../images/class-image.jpg" className="img-fluid class-banner" />
-                        </div>
-                        <h3>{item.shortdisc}</h3>
-                        <p>{item.longdisc}</p>
-                      </a>
-                    </div>)
-                })}
-                
+            {this.state.loading==false ? <div className="classesList">
+              {this.props.myLibrary.length==0 &&(<div style={{textAlign:'center',display: 'block'}} className="row">
+               
+                <span>No results found.!</span>
 
               </div>)}
               {this.props.myLibrary.length>0 &&(<div className="row">
@@ -116,7 +120,9 @@ class MyLibrary extends Component{
                 
 
               </div>)}
-            </div>
+             </div>:<div className="classesList">
+              <div className="row"> <div className="loader"><Spin indicator={antIcon} /></div> </div>
+            </div>}
           </div>
          </div>
       );
