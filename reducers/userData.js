@@ -9,7 +9,7 @@ const initialState = {
 	myOrders:[],
 	myRecentViews:[],
 	phoneNumber:"",
-	school:{},
+	organization:{},
 	status:true,
 	updatedDate:"",
 	userType:"",

@@ -70,7 +70,7 @@ class Header extends Component{
               </div>
               <Dropdown overlay={menu}>
                 <a className="ant-dropdown-link" href="#">
-                  <img src="../images/home-demo-photo-2c.png"/> {this.props.userData.school.name} <Icon type="down" />
+                  <img src="../images/home-demo-photo-2c.png"/> {this.props.userData.organization.orgName} <Icon type="down" />
                 </a>
               </Dropdown>
               
