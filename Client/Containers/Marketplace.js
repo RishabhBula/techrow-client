@@ -24,8 +24,17 @@ class Marketplace extends Component{
       return(
         <div className="full-page">
               <div className="inner-wrap">
-                 <MarketContents/>
+                <div className="marketplace">
+                  <a href="#">Back to Dashboard</a>
+                  <div className="form-group">
+                    <input type="text" placeholder="Content Search" className="form-control"/>
+                  </div>
+                  <div>
+                  </div>
+                </div>
                  <MarketFeaturedContents/>
+                 <MarketContents/>
+                 
               </div>
         </div>
       );

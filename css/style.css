@@ -165,6 +165,19 @@ header {
         -ms-transform: rotate(-45deg);
         -o-transform: rotate(-45deg);
         transform: rotate(-45deg); }
+  header .header-menu {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    width: 380px; }
+    header .header-menu .anticon {
+      float: left; }
   header .head-right {
     width: 80%; }
     header .head-right ul {
@@ -612,7 +625,7 @@ footer {
       margin-bottom: 20px; }
     .inner-wrap .inner-right-wrap h5 {
       color: #000;
-      font-size: 2rem;
+      font-size: 1.8rem;
       font-weight: 600;
       line-height: 40px;
       text-align: center;
@@ -721,11 +734,22 @@ footer {
       text-align: center; }
       .inner-wrap .inner-right-wrap .confirm-order .form-wrap {
         padding: 100px; }
+        .inner-wrap .inner-right-wrap .confirm-order .form-wrap .form-control:focus {
+          outline: none;
+          -webkit-box-shadow: none;
+          box-shadow: none; }
         .inner-wrap .inner-right-wrap .confirm-order .form-wrap a {
           margin-top: 10px;
           display: inline-block; }
         .inner-wrap .inner-right-wrap .confirm-order .form-wrap h5 {
-          margin-bottom: 40px; }
+          margin-bottom: 30px;
+          margin-top: 0; }
+        .inner-wrap .inner-right-wrap .confirm-order .form-wrap h6 {
+          font-family: "Open Sans", sans-serif;
+          font-size: .75rem;
+          margin-bottom: 10px;
+          color: #6D6D6D;
+          line-height: 16px; }
     .inner-wrap .inner-right-wrap .pass-strength .pass-strength-tile {
       width: 40px;
       height: 10px;
@@ -737,6 +761,41 @@ footer {
       color: #888888;
       font-size: 0.625rem;
       font-family: "Open Sans", sans-serif; }
+    .inner-wrap .inner-right-wrap .orderbundle .form-wrap .form {
+      margin: 30px !important; }
+    .inner-wrap .inner-right-wrap .orderbundle .ant-checkbox-wrapper {
+      float: right;
+      margin-top: 5px; }
+      .inner-wrap .inner-right-wrap .orderbundle .ant-checkbox-wrapper span {
+        font-weight: 300; }
+    .inner-wrap .inner-right-wrap .orderbundle .form .form-group .form-control {
+      background-color: #fff !important;
+      border-color: #E9E9E9; }
+    .inner-wrap .inner-right-wrap .orderbundle .card {
+      width: 100%;
+      padding: 20px 0; }
+      .inner-wrap .inner-right-wrap .orderbundle .card span {
+        font-family: "Quicksand", sans-serif;
+        font-size: 4rem;
+        color: #262261;
+        vertical-align: middle;
+        display: inline-block; }
+        .inner-wrap .inner-right-wrap .orderbundle .card span span {
+          font-size: 1.8rem;
+          color: #919191; }
+    .inner-wrap .inner-right-wrap .orderbundle .card-details-form .form-control {
+      height: 50px !important; }
+    .inner-wrap .inner-right-wrap .orderbundle .card-details-form .StripeElement {
+      padding-top: 15px;
+      height: 50px !important; }
+    .inner-wrap .inner-right-wrap .orderbundle .card-details-form .blue-btn {
+      width: 100%;
+      padding: 20px;
+      text-align: center !important;
+      border-radius: 30px;
+      display: block;
+      margin-top: 10px !important;
+      float: none !important; }
     .inner-wrap .inner-right-wrap .order-bundle h2 {
       font-size: 1.5rem;
       font-family: "Quicksand", sans-serif;
@@ -921,7 +980,8 @@ footer {
       margin-bottom: 30px;
       display: block; }
       .dashboard .classesList .each-class .class-banne-wrap {
-        overflow: hidden; }
+        overflow: hidden !important;
+        height: 140px; }
         .dashboard .classesList .each-class .class-banne-wrap .class-banner {
           width: 100%;
           -webkit-transition: all 1s ease;
@@ -957,6 +1017,116 @@ footer {
         .dashboard .classesList .each-class:hover p {
           color: #262161;
           text-decoration: none; }
+
+.marketplace {
+  padding: 30px 30px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between; }
+  .marketplace a {
+    color: #000; }
+  .marketplace .form-group {
+    margin-bottom: 0; }
+    .marketplace .form-group .form-control {
+      width: 650px;
+      border-radius: 30px; }
+
+.featured-slider img {
+  width: 100%;
+  height: 350px;
+  -o-object-fit: cover;
+  object-fit: cover; }
+
+.featured-slider .featured-slider-item {
+  position: relative; }
+  .featured-slider .featured-slider-item .featured-slider-cnt {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    padding: 20px;
+    z-index: 2;
+    opacity: 0;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -ms-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease; }
+    .featured-slider .featured-slider-item .featured-slider-cnt h2 {
+      font-size: 1.5rem;
+      color: #fff;
+      margin-bottom: 10px; }
+    .featured-slider .featured-slider-item .featured-slider-cnt p {
+      font-size: 1rem;
+      color: #fff;
+      margin-bottom: 20px;
+      line-height: 20px; }
+    .featured-slider .featured-slider-item .featured-slider-cnt h3 {
+      font-size: 1.5rem;
+      color: #fff;
+      float: left; }
+    .featured-slider .featured-slider-item .featured-slider-cnt a {
+      padding: 5px 20px;
+      margin-left: 20%;
+      font-size: 0.875rem !important;
+      font-weight: 300;
+      color: #000 !important; }
+
+.featured-slider .slick-current::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: #00000060; }
+
+.featured-slider .slick-current .featured-slider-cnt {
+  opacity: 1; }
+
+.seience-slide h1 {
+  font-size: 1.5rem;
+  color: #262261;
+  margin-bottom: 10px;
+  margin: 20px 30px; }
+
+.seience-slide .featured-slider-item img {
+  width: 100%;
+  height: 210px;
+  -o-object-fit: cover;
+  object-fit: cover; }
+
+.seience-slide .featured-slider-item .featured-slider-cnt {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  padding: 20px;
+  z-index: 2;
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -ms-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  transition: all 0.5s ease; }
+  .seience-slide .featured-slider-item .featured-slider-cnt h2 {
+    font-size: 1.2rem;
+    color: #fff;
+    margin-bottom: 10px; }
+  .seience-slide .featured-slider-item .featured-slider-cnt p {
+    font-size: .875rem;
+    color: #fff;
+    margin-bottom: 20px;
+    line-height: 20px; }
+  .seience-slide .featured-slider-item .featured-slider-cnt h3 {
+    font-size: 1.2rem;
+    color: #fff;
+    float: left; }
 
 @media (max-width: 600px) {
   html, body {

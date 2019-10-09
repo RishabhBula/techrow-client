@@ -140,19 +140,21 @@ class _SplitFieldsForm extends Component{
   render(){
       return(
         <div>
-           <div className="signin-second signup-wrap billing-wrap animated fadeIn">
+           <div className="signin-second signup-wrap billing-wrap animated fadeIn orderbundle">
                 <h4>Please enter Billing information:</h4>
                 <div className="form-wrap">
                     <div className="form">
                       <div className="row">
                         <div className="col-sm-6">
-                          <div className="row card">
+                          <div className="card">
+                          <div className="row ">
                             <div className="col-sm-12">
                               <img src="./images/headset.png"/>
                             </div>
                             <div className="col-sm-12" style={{paddingTop: '20px', paddingBottom: '20px' }}>
                               <span>{this.props.orderdetails.ordercount} X <span>Headsets</span> </span>
                             </div>
+                          </div>
                           </div>
                           <div className="row" style={{paddingTop: '50px'}}>
                            <div  className="col-sm-3">
@@ -169,8 +171,8 @@ class _SplitFieldsForm extends Component{
                            </div>
                           </div>
                         </div>
-                        <div className="col-sm-6">
-                        <div className="row">
+                        <div className="col-sm-6 card-details-form">
+                        <div className="row ">
                           <div  className="col-sm-7">
                             <div className="form-group">
                                 <label>Name on Card</label>
@@ -207,7 +209,10 @@ class _SplitFieldsForm extends Component{
                           </div>
                         </div>
                           <div className="form-group">
-                              <button style={{display: 'block',backgroundColor: 'darkblue',borderRadius: '25px'}} className="form-control img-fluid" onClick={() =>{ this.paynow() }}>Pay Now</button>
+                              <button className="blue-btn" onClick={() =>{ this.paynow() }}>Pay Now</button>
+                          </div>
+                          <div className="form-group">
+                              <span style={{color:'#f00', display:'block', textAlign:'center', marginTop:'10px', fontSize:'16px'}}>Total Amount:$100.00</span>
                           </div>
                         </div>
                       </div>

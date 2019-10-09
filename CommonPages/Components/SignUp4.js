@@ -52,6 +52,7 @@ class SignUp4 extends Component{
                 <div className="form-wrap animated fadeIn">
                    <div>
                      <h5>Each Bundle includes 10 VR Headsets, if you need additional please enter additional amount in the field below:</h5>
+                     <h6>Additional Headsets (Optional) <br/>Each Additional Headset costs $150</h6>
                      <div className="form-group">
                        <input id="count" className="form-control order-num" style={{width: '50%',display: 'unset', textAlign:'center'}} placeholder="000" value={this.state.count} onChange={(e) =>{ this.setState({count:e.target.value,error:false,errortext:""}); this.props.orderdetails.ordercount=e.target.value; localStorage.extraCount=e.target.value }}/>
                      </div>

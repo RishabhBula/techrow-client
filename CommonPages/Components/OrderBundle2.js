@@ -140,14 +140,14 @@ class OrderBundle2 extends Component{
   render(){
       return(
         <div>
-           <div className="signin-second signup-wrap animated fadeIn">
+           <div className="signin-second signup-wrap animated fadeIn orderbundle">
                 <h4>Please enter shipping information:</h4>
                 <div className="form-wrap">
                     <div className="row">
                        <div className="form col">
-                          <div className="row">
-                            <label className="col">Shipping Address</label>
-                            <Checkbox className="col" checked={this.state.billingcheck} onChange={(e) =>{ this.billingcheck(e) }}>Billing same as Shipping</Checkbox>
+                          <div className="form-group">
+                            <label style={{fontSize:'18px'}}>Shipping Address</label>
+                            <Checkbox  checked={this.state.billingcheck} onChange={(e) =>{ this.billingcheck(e) }}>Billing same as Shipping</Checkbox>
                           </div>
                           <div className="form-group">
                               <label>Name</label>
@@ -171,8 +171,8 @@ class OrderBundle2 extends Component{
                           </div>
                        </div>
                        <div className="form col">
-                          <div className="row">
-                            <label className="col">Billing Address</label>
+                          <div className="form-group">
+                            <label style={{fontSize:'18px'}}>Billing Address</label>
                           </div>
                           <div className="form-group">
                               <label>Name</label>

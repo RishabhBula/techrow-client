@@ -22,7 +22,7 @@ class OrderBundle4 extends Component{
   render(){
       return(
         <div>
-           <div className="confirm-order animated fadeIn">
+           <div className="confirm-order animated fadeIn orderbundle">
            <h4></h4>
              <div className="form-wrap order-bundle">
                     <img src="../images/green-tick.png" className="img-fluid tick"  />

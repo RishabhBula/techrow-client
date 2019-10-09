@@ -22,7 +22,7 @@ class OrderBundle5 extends Component{
   render(){
       return(
         <div>
-           <div className="confirm-order animated fadeIn">
+           <div className="confirm-order animated fadeIn orderbundle">
                 <div className="form-wrap">
                     <h5>Thank you for your interest and we will email you an email with the invoice.</h5><br/>
                     <button className="green-btn pointer" onClick={() =>{ window.location.href="#/";localStorage.removeItem("extraCount"); }}>Go to My Library</button><br/>
