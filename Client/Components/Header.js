@@ -64,8 +64,10 @@ class Header extends Component{
       return(
          <header className="navbar fixed-top">
             <div className="container-fluid">
-              <a onClick={() =>{ window.location.href="#/" }} className="logo"><img src="../images/techrow-logo.png"/> </a>
-              <span> <Icon type="caret-right" />{this.header()}</span>
+              <div className="header-menu">
+                <a onClick={() =>{ window.location.href="#/" }} className="logo"><img src="../images/techrow-logo.png"/> </a>
+                <span > <Icon type="caret-right" />{this.header()}</span>
+              </div>
               <Dropdown overlay={menu}>
                 <a className="ant-dropdown-link" href="#">
                   <img src="../images/home-demo-photo-2c.png"/> {this.props.userData.organization.orgName} <Icon type="down" />
