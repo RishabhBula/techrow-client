@@ -28,6 +28,7 @@ class MyLibrary extends Component{
             ],
       mylibrary:[],
       search:"",
+      searchheader:false,
       searcharray:[],
       loading:false
     }
@@ -76,6 +77,7 @@ class MyLibrary extends Component{
             myLibrary.push(doc.data())
         });
         this.props.getMylibrary(myLibrary)
+        if(this.state.search==""){ this.setState({searchheader:false}) }else{ this.setState({searchheader:true}) }
     })
     .catch(function(error) {
         console.log("Error getting documents: ", error);
@@ -93,7 +95,7 @@ class MyLibrary extends Component{
       return(
          <div className="dashboard animated fadeIn">
           <div>
-            <h2>My Library</h2>
+            {this.state.searchheader==false?<h2>My Library</h2>:<h2>Search Results</h2>}
             <div className="search form-group">
               <input type="text" className="form-control" placeholder="Search in my library" value={this.state.search} onChange={(e) =>{ this.setState({search:e.target.value}); if(e.target.value==""){this.search(e.target.value)} }} onKeyPress={(event) =>{ this.search2(event) }} />
               <button onClick={() =>{ this.search(this.state.search) }}><img src="../images/search-icon.png" className="img-fluid"/></button>

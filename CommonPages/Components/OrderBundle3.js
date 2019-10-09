@@ -121,7 +121,7 @@ class _SplitFieldsForm extends Component{
                                 //   url:'https://us-central1-techrow-platform.cloudfunctions.net/paynow/charge',
                                 //   data:{
                                 //     cardToken:response.token.id,
-                                //     additional:"2"
+                                //     additional:this.props.orderdetails.ordercount
                                 //   }
                                 // }).then((response) =>{
                                 //     console.log("-----response from server--->",response.data)
