@@ -24,6 +24,7 @@ import Dashboard from './Client/Containers/Dashboard';
 import Header from './Client/Components/Header';
 import Class from './Client/Containers/Class';
 import Marketplace from './Client/Containers/Marketplace';
+import MarketplaceDiscription from './Client/Containers/MarketplaceDiscription'
 
 //==============firebase connection==============//
 
@@ -69,6 +70,7 @@ class App extends Component{
                  <Route exact path="/" component={Dashboard} />
            			 <Route exact path="/class/:id/:mode" component={Class} />
                  <Route exact path="/marketplace" component={Marketplace} />
+                 <Route exact path="/marketplace/:id" component={MarketplaceDiscription} />
                  <Route exact path="/orderbundle" component={OrderBundle} />
               </div>
    				)
