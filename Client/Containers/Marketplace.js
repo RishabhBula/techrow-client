@@ -89,7 +89,7 @@ class Marketplace extends Component{
 
   search2(event){
       if (event.keyCode == 13 || event.which == 13){
-                    this.search(this.state.search);
+                    if(this.state.search!=""){ this.search(this.state.search); }
                 }
   }
 
@@ -98,10 +98,10 @@ class Marketplace extends Component{
         <div className="full-page">
              {this.state.loading==false ?  <div className="inner-wrap">
                 <div className="marketplace">
-                  <a href="#">Back to Dashboard</a>
+                  <a href="#"><Icon type="caret-left" />Back to My Library</a>
                   <div className="form-group">
                     <input type="text" placeholder="Content Search" className="form-control" value={this.state.search} onChange={(e) =>{ this.setState({search:e.target.value}); if(e.target.value==""){ this.setState({searchshow:false}); let data=[];this.props.setMarketsearch(data); this.getMarketplace() } }} onKeyPress={(event) =>{ this.search2(event) }}/>
-                    {/*<button onClick={() =>{ this.search(this.state.search) }}><img src="../images/search-icon.png" className="img-fluid"/></button>*/}
+                    <button onClick={() =>{ if(this.state.search!=""){ this.search(this.state.search) } }}><img src="../images/search-icon.png" className="img-fluid"/></button>
                   </div>
                   <div>
                   </div>

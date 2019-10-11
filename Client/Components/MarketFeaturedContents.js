@@ -4,6 +4,8 @@ import { connect } from 'react-redux';
 import axios from 'axios';
 import Slider from "react-slick";
 
+import {setMarketdetails} from '../../actions/setMarketdetails';
+
 class MarketFeaturedContents extends Component{
 	constructor(props){
 		super(props);
@@ -33,6 +35,11 @@ class MarketFeaturedContents extends Component{
     };
   }
 
+  onItemClick(item){
+    this.props.setMarketdetails(item)
+    window.location.href='#/marketplace/:'+item.id
+  }
+
 
   render(){
 
@@ -55,11 +62,11 @@ class MarketFeaturedContents extends Component{
                   return(
                       <div className="featured-slider-item">
                         <img src={item.thumbnail} className="img-fluid" />
-                        <div className="featured-slider-cnt">
+                        <div className="featured-slider-cnt pointer" onClick={() =>{ this.onItemClick(item) }}>
                           <h2>{item.name}</h2>
                           <p>{item.description}</p>
                           <h3>{this.convertMS(item.duration).hour} hr {this.convertMS(item.duration).minute} min</h3>
-                          <a href="#" className="green-btn">Contact to Access</a>
+                          <a onClick={() =>{ this.onItemClick(item) }} className="green-btn">Contact to Access</a>
                         </div>
                       </div>
                   )}
@@ -79,6 +86,6 @@ function mapStateToProps(state){
   };
 }
 function matchDispatchToProps(dispatch){
-  return bindActionCreators({  }, dispatch);
+  return bindActionCreators({ setMarketdetails:setMarketdetails }, dispatch);
 }
 export default connect(mapStateToProps, matchDispatchToProps)(MarketFeaturedContents);

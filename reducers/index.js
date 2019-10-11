@@ -11,6 +11,7 @@ import myLibrary from './myLibrary';
 import marketContent from './marketContent';
 import marketFeature from './marketFeature';
 import marketSearch from './marketSearch';
+import marketDetails from './marketDetails';
 const allReducers = combineReducers({
 	app: app,
 	auth:authentication,
@@ -22,7 +23,8 @@ const allReducers = combineReducers({
 	myLibrary:myLibrary,
 	marketContent:marketContent,
 	marketFeature:marketFeature,
-	marketSearch:marketSearch
+	marketSearch:marketSearch,
+	marketDetails:marketDetails
 });
 
 export default allReducers

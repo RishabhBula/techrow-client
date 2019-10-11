@@ -3,6 +3,8 @@ import {bindActionCreators} from 'redux';
 import { connect } from 'react-redux';
 import axios from 'axios';
 
+import {setMarketdetails} from '../../actions/setMarketdetails';
+
 class MarketSearchContents extends Component{
   constructor(props){
     super(props);
@@ -13,6 +15,11 @@ class MarketSearchContents extends Component{
   
   componentDidMount(){
 
+  }
+
+  onItemClick(item){
+    this.props.setMarketdetails(item)
+    window.location.href='#/marketplace/:'+item.id
   }
 
 
@@ -30,7 +37,7 @@ class MarketSearchContents extends Component{
                 {this.props.marketSearch.marketsearch.map((item,index) =>{
                   return(
                     <div className="col-lg-3 col-md-4">
-                      <a onClick={() =>{ this.onItemClick(item.id) }} className="each-class">
+                      <a onClick={() =>{ this.onItemClick(item) }} className="each-class">
                         <div className="class-banne-wrap">
                           <img src={item.thumbnail} className="img-fluid class-banner" />
                         </div>
@@ -56,6 +63,6 @@ function mapStateToProps(state){
   };
 }
 function matchDispatchToProps(dispatch){
-  return bindActionCreators({  }, dispatch);
+  return bindActionCreators({ setMarketdetails:setMarketdetails }, dispatch);
 }
 export default connect(mapStateToProps, matchDispatchToProps)(MarketSearchContents);
