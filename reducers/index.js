@@ -8,6 +8,9 @@ import headjackreducer from './HeadjackReducer';
 import userData from './userData';
 import classMode from './classMode';
 import myLibrary from './myLibrary';
+import marketContent from './marketContent';
+import marketFeature from './marketFeature';
+import marketSearch from './marketSearch';
 const allReducers = combineReducers({
 	app: app,
 	auth:authentication,
@@ -16,7 +19,10 @@ const allReducers = combineReducers({
 	headjackreducer:headjackreducer,
 	userData:userData,
 	classMode:classMode,
-	myLibrary:myLibrary
+	myLibrary:myLibrary,
+	marketContent:marketContent,
+	marketFeature:marketFeature,
+	marketSearch:marketSearch
 });
 
 export default allReducers

@@ -18,14 +18,6 @@ class MyLibrary extends Component{
 	constructor(props){
 		super(props);
     this.state = {
-      data :[
-              {id:"123",shortdisc:"Lorem Ipsum Sit Dolor - amet Specialization",longdisc:"Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium"},
-              {id:"456",shortdisc:"Lorem Ipsum Sit Dolor - amet Specialization",longdisc:"Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium"},
-              {id:"789",shortdisc:"Lorem Ipsum Sit Dolor - amet Specialization",longdisc:"Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium"},
-              {id:"987",shortdisc:"Lorem Ipsum Sit Dolor - amet Specialization",longdisc:"Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium"},
-              {id:"654",shortdisc:"Lorem Ipsum Sit Dolor - amet Specialization",longdisc:"Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium"},
-              {id:"321",shortdisc:"Lorem Ipsum Sit Dolor - amet Specialization",longdisc:"Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium"},
-            ],
       mylibrary:[],
       search:"",
       searchheader:false,
@@ -40,12 +32,12 @@ class MyLibrary extends Component{
 
   async mylibrary(){
       try {
-          this.setState({loading:true})
+          if(this.props.myLibrary.mylibrary.length==0){ this.setState({loading:true}) }
           let myLibrary =[];
           // let library = await firebase.firestore().collection('users').doc(this.props.auth.authData.uid).collection('myLibrary').get()
           let library = await firebase.firestore().collection('contents').get()
           console.log("library",library.size)
-                        await library.forEach((item) =>{
+                              library.forEach((item) =>{
                                 myLibrary.push(item.data())
                               })
           console.log("myLibrary",myLibrary)
@@ -101,13 +93,13 @@ class MyLibrary extends Component{
               <button onClick={() =>{ this.search(this.state.search) }}><img src="../images/search-icon.png" className="img-fluid"/></button>
             </div>
             {this.state.loading==false ? <div className="classesList">
-              {this.props.myLibrary.length==0 &&(<div style={{textAlign:'center',display: 'block'}} className="row">
+              {this.props.myLibrary.mylibrary.length==0 &&(<div style={{textAlign:'center',display: 'block'}} className="row">
                
                 <span>No results found.!</span>
 
               </div>)}
-              {this.props.myLibrary.length>0 &&(<div className="row">
-                {this.props.myLibrary.map((item,index) =>{
+              {this.props.myLibrary.mylibrary.length>0 &&(<div className="row">
+                {this.props.myLibrary.mylibrary.map((item,index) =>{
                   return(
                     <div className="col-lg-3 col-md-4">
                       <a onClick={() =>{ this.onItemClick(item.id) }} className="each-class">
@@ -136,7 +128,7 @@ function mapStateToProps(state){
   return{
     userData:state.userData,
     auth:state.auth,
-    myLibrary:state.myLibrary.mylibrary
+    myLibrary:state.myLibrary
   };
 }
 function matchDispatchToProps(dispatch){

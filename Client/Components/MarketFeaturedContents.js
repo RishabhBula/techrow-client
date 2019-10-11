@@ -16,6 +16,23 @@ class MarketFeaturedContents extends Component{
       
   }
 
+  convertMS( milliseconds ) {
+    var day, hour, minute, seconds;
+    seconds = Math.floor(milliseconds / 1000);
+    minute = Math.floor(seconds / 60);
+    seconds = seconds % 60;
+    hour = Math.floor(minute / 60);
+    minute = minute % 60;
+    day = Math.floor(hour / 24);
+    hour = hour % 24;
+    return {
+        day: day,
+        hour: hour,
+        minute: minute,
+        seconds: seconds
+    };
+  }
+
 
   render(){
 
@@ -33,51 +50,20 @@ class MarketFeaturedContents extends Component{
          <div className="animated fadeIn">
             <div className="featured-slider">
               <Slider {...settings}>
-                <div className="featured-slider-item">
-                  <img src="../images/class-image.jpg" className="img-fluid" />
-                  <div className="featured-slider-cnt">
-                    <h2>Featured Content Tittle</h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea </p>
-                    <h3>2 hr 40 min</h3>
-                    <a href="#" className="green-btn">Contact to Access</a>
-                  </div>
-                </div>
-                <div className="featured-slider-item">
-                  <img src="../images/class-image.jpg" className="img-fluid" />
-                  <div className="featured-slider-cnt">
-                    <h2>Featured Content Tittle</h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea </p>
-                    <h3>2 hr 40 min</h3>
-                    <a href="#" className="green-btn">Contact to Access</a>
-                  </div>
-                </div>
-                <div className="featured-slider-item">
-                  <img src="../images/class-image.jpg" className="img-fluid" />
-                  <div className="featured-slider-cnt">
-                    <h2>Featured Content Tittle</h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea </p>
-                    <h3>2 hr 40 min</h3>
-                    <a href="#" className="green-btn">Contact to Access</a>
-                  </div>
-                </div>
-                <div className="featured-slider-item">
-                  <img src="../images/class-image.jpg" className="img-fluid" />
-                  <div className="featured-slider-cnt">
-                    <h2>Featured Content Tittle</h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea </p>
-                    <h3>2 hr 40 min</h3>
-                    <a href="#" className="green-btn">Contact to Access</a>
-                  </div>
-                </div>
-                <div className="featured-slider-item">
-                  <img src="../images/class-image.jpg" className="img-fluid" />
-                  <div className="featured-slider-cnt">
-                    <h2>Featured Content Tittle</h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea </p>
-                    <h3>2 hr 40 min</h3>
-                    <a href="#" className="green-btn">Contact to Access</a>
-                  </div>
-                </div>
+
+                {this.props.marketFeature.marketfeature.map((item,index) =>{
+                  return(
+                      <div className="featured-slider-item">
+                        <img src={item.thumbnail} className="img-fluid" />
+                        <div className="featured-slider-cnt">
+                          <h2>{item.name}</h2>
+                          <p>{item.description}</p>
+                          <h3>{this.convertMS(item.duration).hour} hr {this.convertMS(item.duration).minute} min</h3>
+                          <a href="#" className="green-btn">Contact to Access</a>
+                        </div>
+                      </div>
+                  )}
+                )}
                
               </Slider>
             </div>
@@ -89,7 +75,7 @@ class MarketFeaturedContents extends Component{
 
 function mapStateToProps(state){
   return{
-    
+    marketFeature:state.marketFeature
   };
 }
 function matchDispatchToProps(dispatch){

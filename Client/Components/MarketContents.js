@@ -16,6 +16,23 @@ class MarketContents extends Component{
       
   }
 
+  convertMS( milliseconds ) {
+    var day, hour, minute, seconds;
+    seconds = Math.floor(milliseconds / 1000);
+    minute = Math.floor(seconds / 60);
+    seconds = seconds % 60;
+    hour = Math.floor(minute / 60);
+    minute = minute % 60;
+    day = Math.floor(hour / 24);
+    hour = hour % 24;
+    return {
+        day: day,
+        hour: hour,
+        minute: minute,
+        seconds: seconds
+    };
+  }
+
 
   render(){
 
@@ -24,73 +41,30 @@ class MarketContents extends Component{
       infinite: true,
       speed: 500,
       arrows:false,
-      slidesToShow: 5,
+      slidesToShow: 3,
       slidesToScroll: 1,
       centerMode:true,
       autoplay:true
     };
       return(
          <div className=" animated fadeIn seience-slide">
-            <h1>seience</h1>
+            <h1>All Contents</h1>
             <div className="featured-slider">
               <Slider {...settings}>
-                <div className="featured-slider-item">
-                  <img src="../images/class-image.jpg" className="img-fluid" />
-                  <div className="featured-slider-cnt">
-                    <h2>Featured Content Tittle</h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                    <h3>2 hr 40 min</h3>
-                  </div>
-                </div>
-                <div className="featured-slider-item">
-                  <img src="../images/class-image.jpg" className="img-fluid" />
-                  <div className="featured-slider-cnt">
-                    <h2>Featured Content Tittle</h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                    <h3>2 hr 40 min</h3>
-                  </div>
-                </div>
-                <div className="featured-slider-item">
-                  <img src="../images/class-image.jpg" className="img-fluid" />
-                  <div className="featured-slider-cnt">
-                    <h2>Featured Content Tittle</h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                    <h3>2 hr 40 min</h3>
-                  </div>
-                </div>
-                <div className="featured-slider-item">
-                  <img src="../images/class-image.jpg" className="img-fluid" />
-                  <div className="featured-slider-cnt">
-                    <h2>Featured Content Tittle</h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                    <h3>2 hr 40 min</h3>
-                  </div>
-                </div>
-                <div className="featured-slider-item">
-                  <img src="../images/class-image.jpg" className="img-fluid" />
-                  <div className="featured-slider-cnt">
-                    <h2>Featured Content Tittle</h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                    <h3>2 hr 40 min</h3>
-                  </div>
-                </div>
-                <div className="featured-slider-item">
-                  <img src="../images/class-image.jpg" className="img-fluid" />
-                  <div className="featured-slider-cnt">
-                    <h2>Featured Content Tittle</h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                    <h3>2 hr 40 min</h3>
-                  </div>
-                </div>
-                <div className="featured-slider-item">
-                  <img src="../images/class-image.jpg" className="img-fluid" />
-                  <div className="featured-slider-cnt">
-                    <h2>Featured Content Tittle</h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                    <h3>2 hr 40 min</h3>
-                  </div>
-                </div>
-               
+
+              {this.props.marketContent.marketcontent.map((item,index) =>{
+                  return(
+                      <div className="featured-slider-item">
+                        <img src={item.thumbnail} className="img-fluid" />
+                        <div className="featured-slider-cnt">
+                          <h2>{item.name}</h2>
+                          <p>{item.description}</p>
+                          <h3>{this.convertMS(item.duration).hour} hr {this.convertMS(item.duration).minute} min</h3>
+                        </div>
+                      </div>
+                  )}
+              )}   
+
               </Slider>
             </div>
          </div>
@@ -101,7 +75,7 @@ class MarketContents extends Component{
 
 function mapStateToProps(state){
   return{
-    
+    marketContent:state.marketContent
   };
 }
 function matchDispatchToProps(dispatch){
