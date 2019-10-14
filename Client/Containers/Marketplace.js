@@ -13,6 +13,7 @@ import {setClassMode} from '../../actions/setClassMode';
 import {setMarketcontent} from '../../actions/setMarketcontent';
 import {setMarketfeature} from '../../actions/setMarketfeature';
 import {setMarketsearch} from '../../actions/setMarketsearch';
+import {setMarketsearchquery} from '../../actions/setMarketsearchquery';
 
 import firebase from 'firebase/app';
 import 'firebase/auth';
@@ -32,7 +33,13 @@ class Marketplace extends Component{
   
   componentDidMount(){
     this.props.setClassMode(this.props.match.url.split("/")[1],"","theater")
-    this.getMarketplace()
+    if(this.props.marketSearchquery.query==""){
+      this.getMarketplace()
+    }
+    else{
+      this.setState({search:this.props.marketSearchquery.query,searchshow:true})
+      this.search(this.props.marketSearchquery.query)
+    }
   }
 
   async getMarketplace(){
@@ -68,6 +75,7 @@ class Marketplace extends Component{
 
   search(s){
     console.log("this.state.search",this.state.search)
+    this.props.setMarketsearchquery(s,0)
     // firebase.firestore().collection('users').doc(this.props.auth.authData.uid).collection('myLibrary').where('name', '>=', s).where('name', '<=', s+ '\uf8ff')
     firebase.firestore().collection('contents').where('searchQuery', '>=', s).where('searchQuery', '<=', s+ '\uf8ff')
     .get()
@@ -100,7 +108,7 @@ class Marketplace extends Component{
                 <div className="marketplace">
                   <a href="#"><Icon type="caret-left" />Back to My Library</a>
                   <div className="form-group">
-                    <input type="text" placeholder="Content Search" className="form-control" value={this.state.search} onChange={(e) =>{ this.setState({search:e.target.value}); if(e.target.value==""){ this.setState({searchshow:false}); let data=[];this.props.setMarketsearch(data); this.getMarketplace() } }} onKeyPress={(event) =>{ this.search2(event) }}/>
+                    <input type="text" placeholder="Content Search" className="form-control" value={this.state.search} onChange={(e) =>{ this.setState({search:e.target.value}); if(e.target.value==""){ this.props.setMarketsearchquery("",0); this.setState({searchshow:false}); let data=[];this.props.setMarketsearch(data); this.getMarketplace() } }} onKeyPress={(event) =>{ this.search2(event) }}/>
                     <button onClick={() =>{ if(this.state.search!=""){ this.search(this.state.search) } }}><img src="../images/search-icon.png" className="img-fluid"/></button>
                   </div>
                   <div>
@@ -124,10 +132,11 @@ function mapStateToProps(state){
     classMode:state.classMode,
     marketFeature:state.marketFeature,
     marketContent:state.marketContent,
-    marketSearch:state.marketSearch
+    marketSearch:state.marketSearch,
+    marketSearchquery:state.marketSearchquery
   };
 }
 function matchDispatchToProps(dispatch){
-  return bindActionCreators({ setClassMode:setClassMode, setMarketcontent:setMarketcontent, setMarketfeature:setMarketfeature, setMarketsearch:setMarketsearch }, dispatch);
+  return bindActionCreators({ setClassMode:setClassMode, setMarketcontent:setMarketcontent, setMarketfeature:setMarketfeature, setMarketsearch:setMarketsearch, setMarketsearchquery:setMarketsearchquery }, dispatch);
 }
 export default connect(mapStateToProps, matchDispatchToProps)(Marketplace);

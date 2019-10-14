@@ -33,7 +33,10 @@ class OrderBundle2 extends Component{
 	}
 
   componentWillMount(){
-      this.props.orderdetails.ordercount=localStorage.extraCount
+      if(localStorage.extraCount==undefined)
+        this.props.orderdetails.ordercount="0"
+      else
+        this.props.orderdetails.ordercount=localStorage.extraCount
   }
   
   componentDidMount(){

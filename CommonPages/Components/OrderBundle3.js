@@ -40,6 +40,17 @@ class _SplitFieldsForm extends Component{
       
   }
 
+  calculateprice(){
+      let headSetBundleCount=1;
+      let headSetBundlePrice=850;
+      let totalBundleCost=headSetBundleCount*headSetBundlePrice;
+      let additionalHeadSetCount=Number(this.props.orderdetails.ordercount);
+      let additionalHeadSetPrice=150;
+      let totalAdditionalHeadSetCost=additionalHeadSetCount*additionalHeadSetPrice;
+      let orderTotalAmount=totalBundleCost+totalAdditionalHeadSetCost;
+      return orderTotalAmount;
+  }
+
   paynow(){
     // https://us-central1-techrow-platform.cloudfunctions.net/paynow/charge
     if(this.props.stripe){
@@ -49,7 +60,7 @@ class _SplitFieldsForm extends Component{
                                 if(response.token!=undefined){
 
                                     let headSetBundleCount=1;
-                                    let headSetBundlePrice=1500;
+                                    let headSetBundlePrice=850;
                                     let totalBundleCost=headSetBundleCount*headSetBundlePrice;
                                     let additionalHeadSetCount=Number(this.props.orderdetails.ordercount);
                                     let additionalHeadSetPrice=150;
@@ -212,7 +223,7 @@ class _SplitFieldsForm extends Component{
                               <button className="blue-btn" onClick={() =>{ this.paynow() }}>Pay Now</button>
                           </div>
                           <div className="form-group">
-                              <span style={{color:'#f00', display:'block', textAlign:'center', marginTop:'10px', fontSize:'16px'}}>Total Amount:$100.00</span>
+                              <span style={{color:'#f00', display:'block', textAlign:'center', marginTop:'10px', fontSize:'16px'}}>Total Amount:${this.calculateprice()}.00</span>
                           </div>
                         </div>
                       </div>

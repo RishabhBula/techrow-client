@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import axios from 'axios';
 
 import {getMylibrary} from '../../actions/getMylibrary';
+import {setMylibraryquery} from '../../actions/setMylibraryquery';
 
 import firebase from 'firebase/app';
 import 'firebase/auth';
@@ -27,7 +28,13 @@ class MyLibrary extends Component{
 	}
   
   componentDidMount(){
+    if(this.props.myLibraryquery.query==""){
       this.mylibrary()
+    }
+    else{
+      this.setState({search:this.props.myLibraryquery.query,searchheader:true})
+      this.search(this.props.myLibraryquery.query)
+    }
   }
 
   async mylibrary(){
@@ -59,6 +66,7 @@ class MyLibrary extends Component{
 
   search(s){
     console.log("this.state.search",this.state.search)
+    this.props.setMylibraryquery(s,0)
     // firebase.firestore().collection('users').doc(this.props.auth.authData.uid).collection('myLibrary').where('name', '>=', s).where('name', '<=', s+ '\uf8ff')
     firebase.firestore().collection('contents').where('searchQuery', '>=', s).where('searchQuery', '<=', s+ '\uf8ff')
     .get()
@@ -89,7 +97,7 @@ class MyLibrary extends Component{
           <div>
             {this.state.searchheader==false?<h2>My Library</h2>:<h2>Search Results</h2>}
             <div className="search form-group">
-              <input type="text" className="form-control" placeholder="Search in my library" value={this.state.search} onChange={(e) =>{ this.setState({search:e.target.value}); if(e.target.value==""){this.search(e.target.value)} }} onKeyPress={(event) =>{ this.search2(event) }} />
+              <input type="text" className="form-control" placeholder="Search in my library" value={this.state.search} onChange={(e) =>{ this.setState({search:e.target.value}); if(e.target.value==""){ this.props.setMylibraryquery("",0);this.search(e.target.value) } }} onKeyPress={(event) =>{ this.search2(event) }} />
               <button onClick={() =>{ this.search(this.state.search) }}><img src="../images/search-icon.png" className="img-fluid"/></button>
             </div>
             {this.state.loading==false ? <div className="classesList">
@@ -128,10 +136,11 @@ function mapStateToProps(state){
   return{
     userData:state.userData,
     auth:state.auth,
-    myLibrary:state.myLibrary
+    myLibrary:state.myLibrary,
+    myLibraryquery:state.myLibraryquery
   };
 }
 function matchDispatchToProps(dispatch){
-  return bindActionCreators({ getMylibrary:getMylibrary }, dispatch);
+  return bindActionCreators({ getMylibrary:getMylibrary, setMylibraryquery:setMylibraryquery }, dispatch);
 }
 export default connect(mapStateToProps, matchDispatchToProps)(MyLibrary);

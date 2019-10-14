@@ -10,7 +10,7 @@ import './css/bootstrap.min.css';
 import './css/temp.css';
 import './css/style.css';
 
-import { Spin, Icon } from 'antd';
+import { Spin, Icon, notification } from 'antd';
 const antIcon = <Icon type="loading" style={{ fontSize: 24 }} spin />;
 
 import {getAuthentication} from './actions/authentication'
@@ -58,7 +58,25 @@ class App extends Component{
 		this.props.getAuthentication()
 	}
   componentDidMount(){
+    // window.addEventListener("offline",(e) => {
+    //   console.log("offline")
+    // notification.error({
+    //   message:'you are offline',
+    //   duration:0,
+    //   top:100
+    // })
+    // });
 
+    // // Add event listener online to detect network recovery.
+    // window.addEventListener("online",(e) => {
+    //   console.log("online")
+    // notification.destroy();
+    // notification.success({
+    //   message:'back in action',
+    //   duration:2,
+    //   top:100
+    // });
+    // });
   }
    render(){
    	let route=""
