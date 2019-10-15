@@ -56,6 +56,7 @@ class OrderBundle2 extends Component{
     if(this.state.sname=="" || this.state.saddress=="" || this.state.scity=="" || this.state.sstate=="" || this.state.szipcode=="" ){
       this.setState({error:true,errortext:"please fill all fields to continue."})
     }else{
+      try{
       // this.props.pageRender(5)
       console.log("===userData====",this.props.userData)
 
@@ -118,8 +119,12 @@ class OrderBundle2 extends Component{
       orderArray.push(order.id);
       let update={myOrders:orderArray,deafultShippingInformation:orderObj.shippingInformation}
       await db.collection("users").doc(userId).set(update, { merge: true })
-
+      this.props.pageRender(5)
     }
+    catch(err){
+      console.log("===err====",err)
+    }
+  }
     console.log("===00000====",this.props.orderdetails)
   }
 
@@ -144,7 +149,7 @@ class OrderBundle2 extends Component{
       return(
         <div>
            <div className="signin-second signup-wrap animated fadeIn orderbundle">
-                <h4>Please enter shipping information:</h4>
+                <h4>Please Enter Shipping information:</h4>
                 <div className="form-wrap">
                     <div className="row">
                        <div className="form col">
@@ -153,7 +158,7 @@ class OrderBundle2 extends Component{
                             <Checkbox  checked={this.state.billingcheck} onChange={(e) =>{ this.billingcheck(e) }}>Billing same as Shipping</Checkbox>
                           </div>
                           <div className="form-group">
-                              <label>Name</label>
+                              <label>Attn</label>
                               <input id="sname" className="form-control" placeholder="Your name" value={this.state.sname} onChange={(e) =>{ if(this.state.billingcheck) { this.setState({sname:e.target.value,bname:e.target.value,error:false,errortext:""}); this.props.orderdetails.sname=e.target.value; this.props.orderdetails.bname=e.target.value; }else{ this.setState({sname:e.target.value,error:false,errortext:""}); this.props.orderdetails.sname=e.target.value; }  }}/>
                           </div>
                           <div className="form-group">
@@ -178,7 +183,7 @@ class OrderBundle2 extends Component{
                             <label style={{fontSize:'18px'}}>Billing Address</label>
                           </div>
                           <div className="form-group">
-                              <label>Name</label>
+                              <label>Attn</label>
                               <input disabled={this.state.billingcheck} id="bname" className="form-control" placeholder="Your name" value={this.state.bname} onChange={(e) =>{ this.setState({bname:e.target.value,error:false,errortext:""}); this.props.orderdetails.bname=e.target.value; }}/>
                           </div>
                           <div className="form-group">
@@ -202,10 +207,10 @@ class OrderBundle2 extends Component{
                    {this.state.error==true && (<div><span style={{color: 'red'}}>{this.state.errortext}</span></div>)}
                    <div className="row">
                     <div className="col-sm-6">
-                      <button className="pointer" onClick={() =>{ this.paynow() }}>Pay Now using Credit Card<img src="./images/arrow-right.png" className="img-fluid"/></button>
+                      <button className="pointer" onClick={() =>{ this.paylater() }}>Pay later - Send me an Invoice<img src="./images/arrow-right.png" className="img-fluid"/></button>
                     </div>
                     <div className="col-sm-6">
-                      <button className="pointer" onClick={() =>{ this.paylater() }}>Pay later - Send me an Invoice<img src="./images/arrow-right.png" className="img-fluid"/></button>
+                      <button className="pointer" onClick={() =>{ this.paynow() }}>Pay Now using Credit Card<img src="./images/arrow-right.png" className="img-fluid"/></button>
                     </div>
                    </div>
                    <div className="clearfix"></div>

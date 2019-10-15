@@ -152,7 +152,7 @@ class _SplitFieldsForm extends Component{
       return(
         <div>
            <div className="signin-second signup-wrap billing-wrap animated fadeIn orderbundle">
-                <h4>Please enter Billing information:</h4>
+                <h4>Please Enter Credit Card information:</h4>
                 <div className="form-wrap">
                     <div className="form">
                       <div className="row">
