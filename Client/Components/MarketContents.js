@@ -40,6 +40,15 @@ class MarketContents extends Component{
     window.location.href='#/marketplace/:'+item.id
   }
 
+  trimm(a){
+    var string = a;
+    var length = 55;
+    var trimmedString = string.length > length ? 
+                        string.substring(0, length - 3) + "..." : 
+                        string;
+    return trimmedString;
+  }
+
 
   render(){
 
@@ -65,7 +74,7 @@ class MarketContents extends Component{
                         <img src={item.thumbnail} className="img-fluid" />
                         <div className="featured-slider-cnt pointer" onClick={() =>{ this.onItemClick(item) }}>
                           <h2>{item.name}</h2>
-                          <p>{item.description}</p>
+                          <p>{this.trimm(item.description)}</p>
                           <h3>{this.convertMS(item.duration).hour} hr {this.convertMS(item.duration).minute} min</h3>
                         </div>
                       </div>
