@@ -26,27 +26,29 @@ class Class extends Component{
   }
   
   componentDidMount(){
-      var socket = io('https://cinema.headjack.io/', {transports: ['polling'], upgrade: false});
-      socket.on('connect', () => {
-        console.log("socket connection established....socket id",socket.id); // 'G5p5...'
-          if(socket.id){
-              setTimeout(() =>{ 
-                var auth = socket.emit('appAuth', this.props.userData.headJackCredentials.appId, this.props.userData.headJackCredentials.authId);
-                console.log("auth======================auth",auth) 
-              },3000);
-          }
-      });
+      // var socket = io('https://cinema.headjack.io/', {transports: ['polling'], upgrade: false});
+      // socket.on('connect', () => {
+      //   console.log("socket connection established....socket id",socket.id); // 'G5p5...'
+      //     if(socket.id){
+      //         setTimeout(() =>{ 
+      //           var auth = socket.emit('appAuth', this.props.userData.headJackCredentials.appId, this.props.userData.headJackCredentials.authId);
+      //           console.log("auth======================auth",auth) 
+      //         },3000);
+      //     }
+      // });
       
-      socket.on('appList', this.props.applist);
+      // // socket.on('appList', this.props.applist);
 
-      socket.on('exception', (exception) =>{ console.log("exception******",exception) });
-      socket.on('unauthorized', (unauthorized) =>{ console.log("unauthorized******",unauthorized) });
+      // socket.on('exception', (exception) =>{ console.log("exception******",exception) });
+      // socket.on('unauthorized', (unauthorized) =>{ console.log("unauthorized******",unauthorized) });
 
-      // socket.on('deviceStateList', this.props.deviceStateList);
+      // // socket.on('deviceStateList', this.props.deviceStateList);
 
-      // socket.on('deviceAliasList', this.props.deviceAliasList);
+      // // socket.on('deviceAliasList', this.props.deviceAliasList);
+      // socket.on('cinemaEnabled', (cinemaEnabled,status) =>{ console.log("cinemaEnabled",cinemaEnabled,status) })
 
-
+      // socket.on('deviceAliasList', (deviceAliasList) =>{ console.log("deviceAliasList",deviceAliasList) })
+      // socket.on('deviceStateList', (deviceStateList) =>{ console.log("deviceStateList",deviceStateList) })
       
 
   }
@@ -58,7 +60,7 @@ class Class extends Component{
           <div className="inner-wrap"> 
               <Sidemenu/>
               <div className="inner-right-wrap">
-                {this.props.classMode.mode=="theater" &&(<ClassTheater/>)}
+                {this.props.classMode.mode=="theater" &&(<ClassTheater props={this.props}/>)}
                 {this.props.classMode.mode=="individual" &&(<ClassIndividual/>)}
               </div>
           </div>
