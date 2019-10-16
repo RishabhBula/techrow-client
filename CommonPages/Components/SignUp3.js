@@ -33,7 +33,8 @@ class SignUp3 extends Component{
       po:this.props.signupdetails.po,
       taxexid:this.props.signupdetails.taxexid,
       error:false,
-      errortext:""
+      errortext:"",
+      buttonstate:false
     }
 	}
   
@@ -45,6 +46,7 @@ class SignUp3 extends Component{
     if(this.props.signupdetails.schoolname=="" || this.props.signupdetails.address=="" || this.props.signupdetails.city=="" || this.props.signupdetails.state=="" || this.props.signupdetails.zipcode==""){
       this.setState({error:true,errortext:"Please fill all fields to continue."})
     }else{
+      this.setState({buttonstate:true})
       const db=firebase.firestore();
       let userObj={
             userType:this.props.signupdetails.type,
@@ -106,9 +108,11 @@ class SignUp3 extends Component{
 
             this.props.pageRender(4)
             this.clearsignupredux()
+            this.setState({buttonstate:false})
             })
             .catch((error) =>{
-
+              console.log("Error==>", error)
+              this.setState({buttonstate:false})
             })
       })
       .catch((err) =>{
@@ -117,6 +121,7 @@ class SignUp3 extends Component{
         var errorCode = err.code;
         var errorMessage = err.message;
         Notification("error",err.code.split("/")[1],err.message)
+        this.setState({buttonstate:false})
         // ...
       })
 
@@ -237,7 +242,8 @@ class SignUp3 extends Component{
                         </div>
                       </div>
                   
-                  <button className="pointer"onClick={() =>{ this.next() }}>Create Account<img src="./images/arrow-right.png" className="img-fluid"/></button>
+                   {this.state.buttonstate==false && (<button className="pointer" onClick={() =>{ this.next() }}>Create Account<img src="./images/arrow-right.png" className="img-fluid"/></button>)}
+                   {this.state.buttonstate==true && (<button disabled className="pointer">Creating Account<img src="./images/arrow-right.png" className="img-fluid"/></button>)}
                    <div className="clearfix"></div>
                 </div>
             </div>

@@ -32,7 +32,8 @@ class _SplitFieldsForm extends Component{
       expyear:"",
       cvv:"",
       error:false,
-      errortext:""
+      errortext:"",
+      buttonstate:false
     }
 	}
   
@@ -58,87 +59,101 @@ class _SplitFieldsForm extends Component{
                          .then(async (response) =>{
                                 console.log("stripe======response",response,this.props)
                                 if(response.token!=undefined){
+                                    this.setState({buttonstate:true})
 
-                                    let headSetBundleCount=1;
-                                    let headSetBundlePrice=850;
-                                    let totalBundleCost=headSetBundleCount*headSetBundlePrice;
-                                    let additionalHeadSetCount=Number(this.props.orderdetails.ordercount);
-                                    let additionalHeadSetPrice=150;
-                                    let totalAdditionalHeadSetCost=additionalHeadSetCount*additionalHeadSetPrice;
-                                    let orderTotalAmount=totalBundleCost+totalAdditionalHeadSetCost;
+                                    // axios({
+                                    //   method:"POST",
+                                    //   url:'http://localhost:4001/charge',
+                                    //   data:{
+                                    //     cardToken:response.token.id,
+                                    //     email:this.props.userData.email,
+                                    //     additional:Number(this.props.orderdetails.ordercount)
+                                    //   }
+                                    // }).then(async (res) =>{
+                                    //     console.log("-----response from server--->",res.data)
+                                          try{
+                                                let headSetBundleCount=1;
+                                                let headSetBundlePrice=850;
+                                                let totalBundleCost=headSetBundleCount*headSetBundlePrice;
+                                                let additionalHeadSetCount=Number(this.props.orderdetails.ordercount);
+                                                let additionalHeadSetPrice=150;
+                                                let totalAdditionalHeadSetCost=additionalHeadSetCount*additionalHeadSetPrice;
+                                                let orderTotalAmount=totalBundleCost+totalAdditionalHeadSetCost;
 
-                                    const db=firebase.firestore();
-                                    let orderObj = {
-                                        headSetBundleCount:headSetBundleCount,
-                                        headSetBundlePrice:headSetBundlePrice,
-                                        totalBundleCost:totalBundleCost,
-                                        additionalHeadSetCount:additionalHeadSetCount,
-                                        additionalHeadSetPrice:additionalHeadSetPrice,
-                                        totalAdditionalHeadSetCost:totalAdditionalHeadSetCost,
-                                        orderTotalAmount:orderTotalAmount,
-                                        orderAmountPaid:0,
-                                        paymentSuccessfull:false,
-                                        orderConfirmed:false,
-                                        updatedDate:firebase.firestore.FieldValue.serverTimestamp(),
-                                        createdDate:firebase.firestore.FieldValue.serverTimestamp(),
-                                        BillingAddressSameAsshippingAddress:this.props.orderdetails.billingcheck,
-                                        teacherInformation:{
-                                                              id:this.props.userData.id,
-                                                              firstName:this.props.userData.firstName,
-                                                              lastName:this.props.userData.lastName,
-                                                              email:this.props.userData.email,
-                                                              username:this.props.userData.username,
-                                                              phoneNumber:this.props.userData.phoneNumber,
-                                                              organization:this.props.userData.organization
-                                                           },
-                                        billingInformation:{
-                                                              name:this.props.orderdetails.bname,
-                                                              address:this.props.orderdetails.baddress,
-                                                              city:this.props.orderdetails.bcity,
-                                                              state:this.props.orderdetails.bstate,
-                                                              zipCode:this.props.orderdetails.bzipcode
-                                                           },
-                                        shippingInformation:{
-                                                              name:this.props.orderdetails.sname,
-                                                              address:this.props.orderdetails.saddress,
-                                                              city:this.props.orderdetails.scity,
-                                                              state:this.props.orderdetails.sstate,
-                                                              zipCode:this.props.orderdetails.szipcode
-                                                           },
-                                        stripePaymentInfo:{
-                                                            cardToken:response.token.id
-                                                          }
-                                    }
+                                                const db=firebase.firestore();
+                                                let orderObj = {
+                                                    headSetBundleCount:headSetBundleCount,
+                                                    headSetBundlePrice:headSetBundlePrice,
+                                                    totalBundleCost:totalBundleCost,
+                                                    additionalHeadSetCount:additionalHeadSetCount,
+                                                    additionalHeadSetPrice:additionalHeadSetPrice,
+                                                    totalAdditionalHeadSetCost:totalAdditionalHeadSetCost,
+                                                    orderTotalAmount:orderTotalAmount,
+                                                    orderAmountPaid:0,
+                                                    paymentSuccessfull:false,
+                                                    orderConfirmed:false,
+                                                    updatedDate:firebase.firestore.FieldValue.serverTimestamp(),
+                                                    createdDate:firebase.firestore.FieldValue.serverTimestamp(),
+                                                    BillingAddressSameAsshippingAddress:this.props.orderdetails.billingcheck,
+                                                    teacherInformation:{
+                                                                          id:this.props.userData.id,
+                                                                          firstName:this.props.userData.firstName,
+                                                                          lastName:this.props.userData.lastName,
+                                                                          email:this.props.userData.email,
+                                                                          username:this.props.userData.username,
+                                                                          phoneNumber:this.props.userData.phoneNumber,
+                                                                          organization:this.props.userData.organization
+                                                                       },
+                                                    billingInformation:{
+                                                                          name:this.props.orderdetails.bname,
+                                                                          address:this.props.orderdetails.baddress,
+                                                                          city:this.props.orderdetails.bcity,
+                                                                          state:this.props.orderdetails.bstate,
+                                                                          zipCode:this.props.orderdetails.bzipcode
+                                                                       },
+                                                    shippingInformation:{
+                                                                          name:this.props.orderdetails.sname,
+                                                                          address:this.props.orderdetails.saddress,
+                                                                          city:this.props.orderdetails.scity,
+                                                                          state:this.props.orderdetails.sstate,
+                                                                          zipCode:this.props.orderdetails.szipcode
+                                                                       },
+                                                    stripePaymentInfo:{
+                                                                        cardToken:response.token.id,
+                                                                        // successDetails:res.data
+                                                                      }
+                                                }
 
-                                    let userId = this.props.userData.id
-                                    var order = db.collection("orders").doc();
-                                    orderObj.id = order.id;
-                                    orderObj.orderNumber = order.id;
-                                    await order.set(orderObj)
-                                    let orderArray=[]
-                                    orderArray=this.props.userData.myOrders;
-                                    orderArray.push(order.id);
-                                    let update={myOrders:orderArray,deafultShippingInformation:orderObj.shippingInformation}
-                                    await db.collection("users").doc(userId).set(update, { merge: true })
+                                                let userId = this.props.userData.id
+                                                var order = db.collection("orders").doc();
+                                                orderObj.id = order.id;
+                                                orderObj.orderNumber = order.id;
+                                                await order.set(orderObj)
+                                                let orderArray=[]
+                                                orderArray=this.props.userData.myOrders;
+                                                orderArray.push(order.id);
+                                                let update={myOrders:orderArray,deafultShippingInformation:orderObj.shippingInformation}
+                                                await db.collection("users").doc(userId).set(update, { merge: true })
 
-                                  Notification("success","cardToken generated",response.token.id)
-                                  this.props.pageRender(4)
+                                                Notification("success","cardToken generated",response.token.id)
+                                                this.props.pageRender(4)
+                                                this.setState({buttonstate:false})
+                                             }
+                                             catch (err){
+                                                console.log("Error==>", err)
+                                                this.setState({buttonstate:false})
+                                             }
+
+                                    // }).catch((err) =>{
+                                    //     console.log("err-----err-err--->",err)
+                                    //     this.setState({buttonstate:false})
+                                    // })
+
                                 }
                                 if(response.error!=undefined){
                                   Notification("error",response.error.code,response.error.message)
                                 }
-                                // axios({
-                                //   method:"POST",
-                                //   url:'http://localhost:4001/charge',
-                                //   data:{
-                                //     cardToken:response.token.id,
-                                //     additional:this.props.orderdetails.ordercount
-                                //   }
-                                // }).then((response) =>{
-                                //     console.log("-----response from server--->",response.data)
-                                // }).catch((err) =>{
-                                //     console.log("err-----err-err--->",err.response)
-                                // })
+                                
                          })
                          .catch((error) =>{
                                 console.log("stripe======error",error)
@@ -220,7 +235,8 @@ class _SplitFieldsForm extends Component{
                           </div>
                         </div>
                           <div className="form-group">
-                              <button className="blue-btn" onClick={() =>{ this.paynow() }}>Pay Now</button>
+                              {this.state.buttonstate==false && (<button className="blue-btn" onClick={() =>{ this.paynow() }}>Pay Now</button>)}
+                              {this.state.buttonstate==true && (<button disabled className="blue-btn">Processing</button>)}
                           </div>
                           <div className="form-group">
                               <span style={{color:'#f00', display:'block', textAlign:'center', marginTop:'10px', fontSize:'16px'}}>Total Amount:${this.calculateprice()}.00</span>
