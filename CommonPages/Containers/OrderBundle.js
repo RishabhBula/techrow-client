@@ -14,7 +14,7 @@ class OrderBundle extends Component{
 	constructor(props){
 		super(props);
     this.state = {
-      page:2,
+      page:3,
     }
 	}
   

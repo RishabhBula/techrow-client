@@ -167,7 +167,7 @@ class _SplitFieldsForm extends Component{
                             </div>
                           </div>
                           </div>
-                          <div className="row" style={{paddingTop: '50px'}}>
+                          <div className="row card-types" style={{paddingTop: '50px'}}>
                            <div  className="col-sm-3">
                              <img src="./images/visa.png"/>
                            </div>
@@ -187,13 +187,13 @@ class _SplitFieldsForm extends Component{
                           <div  className="col-sm-7">
                             <div className="form-group">
                                 <label>Name on Card</label>
-                                <input id="cardholdername" className="form-control" placeholder="card holder name" value={this.state.cardholdername} onChange={(e) =>{ this.setState({cardholdername:e.target.value,error:false,errortext:""}); this.props.orderdetails.cardholdername=e.target.value; }}/>
+                                <input id="cardholdername" className="form-control" placeholder="Ex. john Doe" value={this.state.cardholdername} onChange={(e) =>{ this.setState({cardholdername:e.target.value,error:false,errortext:""}); this.props.orderdetails.cardholdername=e.target.value; }}/>
                             </div>
                           </div>
                           <div  className="col-sm-5">
                             <div className="form-group">
                                 <label>Postal Code</label>
-                                <input id="postalcode" className="form-control" placeholder="postalcode" value={this.state.postalcode} onChange={(e) =>{ this.setState({postalcode:e.target.value,error:false,errortext:""}); this.props.orderdetails.postalcode=e.target.value; }}/>
+                                <input id="postalcode" className="form-control" placeholder="12345" value={this.state.postalcode} onChange={(e) =>{ this.setState({postalcode:e.target.value,error:false,errortext:""}); this.props.orderdetails.postalcode=e.target.value; }}/>
                             </div>
                           </div>
                         </div>

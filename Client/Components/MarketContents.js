@@ -47,11 +47,11 @@ class MarketContents extends Component{
       dots: false,
       infinite: true,
       speed: 500,
-      arrows:false,
-      slidesToShow: 3,
+      arrows:true,
+      slidesToShow: 5,
       slidesToScroll: 1,
       centerMode:true,
-      autoplay:true
+      autoplay:false,
     };
       return(
          <div className=" animated fadeIn seience-slide">
