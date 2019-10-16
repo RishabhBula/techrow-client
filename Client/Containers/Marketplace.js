@@ -104,9 +104,9 @@ class Marketplace extends Component{
   render(){
       return(
         <div className="full-page">
-             {this.state.loading==false ?  <div className="inner-wrap">
+             {this.state.loading==false ?  <div className="inner-wrap marketplace-page">
                 <div className="marketplace">
-                  <a href="#"><Icon type="caret-left" />Back to My Library</a>
+                  <a href="#" className="back"><Icon type="caret-left" />Back to My Library</a>
                   <div className="form-group">
                     <input type="text" placeholder="Content Search" className="form-control" value={this.state.search} onChange={(e) =>{ this.setState({search:e.target.value}); if(e.target.value==""){ this.props.setMarketsearchquery("",0); this.setState({searchshow:false}); let data=[];this.props.setMarketsearch(data); this.getMarketplace() } }} onKeyPress={(event) =>{ this.search2(event) }}/>
                     <button onClick={() =>{ if(this.state.search!=""){ this.search(this.state.search) } }}><img src="../images/search-icon.png" className="img-fluid"/></button>

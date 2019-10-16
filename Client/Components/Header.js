@@ -66,7 +66,7 @@ class Header extends Component{
             <div className="container-fluid">
               <div className="header-menu">
                 <a onClick={() =>{ window.location.href="#/" }} className="logo"><img src="../images/techrow-logo.png"/> </a>
-                <span > <Icon type="caret-right" />{this.header()}</span>
+                <a > <Icon type="caret-right" />{this.header()}</a>
               </div>
               <Dropdown overlay={menu}>
                 <a className="ant-dropdown-link" href="#">
