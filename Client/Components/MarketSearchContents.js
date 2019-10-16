@@ -22,6 +22,15 @@ class MarketSearchContents extends Component{
     window.location.href='#/marketplace/:'+item.id
   }
 
+  trimm(a){
+    var string = a;
+    var length = 90;
+    var trimmedString = string.length > length ? 
+                        string.substring(0, length - 3) + "..." : 
+                        string;
+    return trimmedString;
+  }
+
 
   render(){
       return(
@@ -42,7 +51,7 @@ class MarketSearchContents extends Component{
                           <img src={item.thumbnail} className="img-fluid class-banner" />
                         </div>
                         <h3>{item.name}</h3>
-                        <p>{item.description}</p>
+                        <p>{this.trimm(item.description)}</p>
                       </a>
                     </div>)
                 })}

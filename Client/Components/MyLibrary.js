@@ -89,6 +89,14 @@ class MyLibrary extends Component{
                     this.search(this.state.search);
                 }
   }
+  trimm(a){
+    var string = a;
+    var length = 80;
+    var trimmedString = string.length > length ? 
+                        string.substring(0, length - 3) + "..." : 
+                        string;
+    return trimmedString;
+  }
 
 
   render(){
@@ -115,7 +123,7 @@ class MyLibrary extends Component{
                           <img src={item.thumbnail} className="img-fluid class-banner" />
                         </div>
                         <h3>{item.name}</h3>
-                        <p>{item.description}</p>
+                        <p>{this.trimm(item.description)}</p>
                       </a>
                     </div>)
                 })}
