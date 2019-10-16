@@ -20,7 +20,8 @@ class SignupHeader extends Component{
       return(
          <header className="navbar fixed-top">
             <div className="container-fluid">
-              <a onClick={() =>{ this.props.getAuthentication(); window.location.href="#/" }} className="logo"><img src="../images/techrow-logo.png"/> </a>
+             {this.props.props.match.path=="/signup" &&(<a onClick={() =>{ this.props.getAuthentication(); window.location.href="#/" }} className="logo"><img src="../images/techrow-logo.png"/> </a>)}
+             {this.props.props.match.path=="/orderbundle" &&(<a className="logo"><img src="../images/techrow-logo.png"/> </a>)}
             </div>
         </header>
       );

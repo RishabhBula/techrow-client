@@ -28,7 +28,7 @@ class SignUp extends Component{
   render(){
       return(
         <div className="full-page">
-           <SignupHeader/>
+           <SignupHeader props={this.props}/>
            <div className="inner-wrap"> 
               <div className="inner-blue-menu">
                     <h1>Sign up your<br/> account</h1>
