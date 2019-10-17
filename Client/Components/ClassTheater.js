@@ -3,12 +3,6 @@ import {bindActionCreators} from 'redux';
 import { connect } from 'react-redux';
 import axios from 'axios';
 
-import firebase from 'firebase/app';
-import 'firebase/auth';
-import 'firebase/app';
-import 'firebase/firestore';
-import 'firebase/database';
-
 class ClassTheater extends Component{
 	constructor(props){
 		super(props);
@@ -18,32 +12,21 @@ class ClassTheater extends Component{
 	}
   
   componentDidMount(){
-      console.log("component 2",this.props.props)
-      this.getDetails()
-  }
-
-  async getDetails(){
-    try {
-      let details = await firebase.firestore().collection('contents').doc(this.props.props.match.params.id.split(":")[1]).get()
-      this.setState({data:details.data()})
-    }
-    catch (err) {
-      console.log("Error==>", err)
-    }
+      console.log("component 2",this.props)
   }
 
 
   render(){
-      console.log("data",this.state.data)
+      console.log("data",this.props.theaterData)
       return(
          <div className="dashboard animated fadeIn">
             <div className="row">
                 <div className="col-md-8">
                   <div>
-                    <iframe width="100%" height="400px" src={this.state.data.previewUrl} frameBorder="0" allow="fullscreen" allowFullScreen > </iframe>
+                    <iframe width="100%" height="400px" src={this.props.theaterData.previewUrl} frameBorder="0" allow="fullscreen" allowFullScreen > </iframe>
                   </div>
                   <div>
-                    <p>{this.state.data.description}</p>
+                    <p>{this.props.theaterData.description}</p>
                   </div>
                   <div>
                     <span>Play/Pause - Click anywhere on the player | Shortcut: K</span><br/>
@@ -64,7 +47,7 @@ class ClassTheater extends Component{
 
 function mapStateToProps(state){
   return{
-    
+    theaterData:state.theaterData.theaterdata
   };
 }
 function matchDispatchToProps(dispatch){
