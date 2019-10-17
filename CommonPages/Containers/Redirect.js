@@ -93,7 +93,7 @@ class Redirect extends Component{
   render(){
       return(
         <div className="full-page">
-           <SignupHeader/>
+           <SignupHeader props={this.props}/>
            <div className="inner-wrap">
               <div style={{marginRight: '300px'}} className="inner-right-wrap">
 
