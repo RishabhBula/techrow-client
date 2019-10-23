@@ -16,6 +16,7 @@ import marketSearchquery from './marketSearchquery';
 import myLibraryquery from './myLibraryquery';
 import theaterData from './theaterData';
 import individualData from './individualData';
+import selectedDevices from './selectedDevices';
 const allReducers = combineReducers({
 	app: app,
 	auth:authentication,
@@ -32,7 +33,8 @@ const allReducers = combineReducers({
 	marketSearchquery:marketSearchquery,
 	myLibraryquery:myLibraryquery,
 	theaterData:theaterData,
-	individualData:individualData
+	individualData:individualData,
+	selectedDevices:selectedDevices
 });
 
 export default allReducers

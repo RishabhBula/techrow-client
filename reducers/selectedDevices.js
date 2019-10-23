@@ -1,11 +1,11 @@
 const initialState = {
-	individualdata:[]
+	selecteddevices:[]
 }
 export default function(state=initialState, action){
 	switch(action.type){
-		case 'INDIVIDUALDATA':
+		case 'SELECTEDDEVICES':
 			return {
-				...state,individualdata:action.payload
+				...state,selecteddevices:action.payload
 			}
 		break;
 	}
