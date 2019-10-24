@@ -2,58 +2,111 @@ import React, { Component } from 'react';
 import {bindActionCreators} from 'redux';
 import { connect } from 'react-redux';
 import axios from 'axios';
+var moment = require('moment');
 
-import firebase from 'firebase/app';
-import 'firebase/auth';
-import 'firebase/app';
-import 'firebase/firestore';
-import 'firebase/database';
+import {Notification} from '../../CommonPages/Components/Notification';
 
 class ClassTheater extends Component{
 	constructor(props){
 		super(props);
     this.state = {
-      data:{}
+      message:""
     }
 	}
   
-  componentDidMount(){
-      console.log("component 2",this.props.props)
-      this.getDetails()
+  componentWillMount(){
+      // console.log("component 2",this.props)
+      if(sessionStorage.chats){
+        console.log("session msg exists")
+      }else{
+        console.log("no session msg")
+        sessionStorage.setItem("chats", JSON.stringify([]));
+      }
   }
 
-  async getDetails(){
-    try {
-      let details = await firebase.firestore().collection('contents').doc(this.props.props.match.params.id.split(":")[1]).get()
-      this.setState({data:details.data()})
-    }
-    catch (err) {
-      console.log("Error==>", err)
-    }
+  sendmessage(msgtext){
+      const socket = io('https://cinema.headjack.io/', {transports: ['polling'], upgrade: false});
+      socket.emit('sendAction', this.props.userData.headJackCredentials.appId, this.props.userData.headJackCredentials.authId, this.props.selectedDevices, 'message', [msgtext]);
+      let chat = JSON.parse(sessionStorage.getItem("chats"));
+      chat.push({msg:msgtext,name:this.props.userData.firstName,createedDate:new Date()});
+      sessionStorage.setItem("chats", JSON.stringify(chat));
+      this.setState({message:""})
   }
 
+  send(event){
+    if (event.keyCode == 13 || event.which == 13){
+                    if(this.state.message!=""){
+                      if(this.props.selectedDevices.length>0){
+                          this.sendmessage(this.state.message); 
+                      }else{
+                          Notification("error","No Devices Selected","Please select devices to send message.")
+                      }
+                    }
+                }
+  }
+
+  convertMS( milliseconds ) {
+    var day, hour, minute, seconds;
+    seconds = Math.floor(milliseconds / 1000);
+    minute = Math.floor(seconds / 60);
+    seconds = seconds % 60;
+    hour = Math.floor(minute / 60);
+    minute = minute % 60;
+    day = Math.floor(hour / 24);
+    hour = hour % 24;
+    return {
+        day: day,
+        hour: hour,
+        minute: minute,
+        seconds: seconds
+    };
+  }
 
   render(){
-      console.log("data",this.state.data)
+      console.log("this.props++++====++++++",this.props)
       return(
          <div className="dashboard animated fadeIn">
             <div className="row">
-                <div className="col-md-8">
+                <div className="col-md-9">
                   <div>
-                    <iframe width="100%" height="400px" src={this.state.data.previewUrl} frameBorder="0" allow="fullscreen" allowFullScreen > </iframe>
+                    <iframe id="player" width="100%" height="450px" src={this.props.theaterData.previewUrl} frameBorder="0" allow="fullscreen" allowFullScreen > </iframe>
                   </div>
                   <div>
-                    <p>{this.state.data.description}</p>
+                    <p>{this.props.theaterData.description}</p>
                   </div>
                   <div>
-                    <span>Play/Pause - Click anywhere on the player | Shortcut: K</span><br/>
+                   {/* <span>Play/Pause - Click anywhere on the player | Shortcut: K</span><br/>
                     <span>Fullscreen Mode - Double Click anywhere on the player | Shortcut: F</span><br/>
                     <span>Volume Up - Scrool Up anywhere on the player | Shortcut Up Arrow</span><br/>
-                    <span>Volume Down - Scrool Down anywhere on the player | Shortcut Down Arrow</span><br/>
+                    <span>Volume Down - Scrool Down anywhere on the player | Shortcut Down Arrow</span><br/>*/}
+                    <h1>Credits</h1>
+                      <ul>
+                        <li>Studio : <span>{this.props.theaterData.studioName}</span></li>
+                        <li>Director : <span>{this.props.theaterData.director}</span></li>
+                        <li>Time : <span>{this.convertMS(this.props.theaterData.duration).hour} hr {this.convertMS(this.props.theaterData.duration).minute} min</span></li>
+                      </ul>
                   </div>
                 </div>
-                <div className="col-md-4">
-                  
+                <div className="col-md-3" style={{backgroundColor: '#262161', borderRadius: 5, paddingTop: '5px'}}>
+                  <div style={{display: 'block', textAlign:'center', backgroundColor: '#ebebeb80', borderRadius: '5px', padding: '10px'}}>
+                   <span style={{color: 'white'}}>Broadcast Messages</span>
+                  </div>
+                  <div style={{ height: '500px', overflowY: 'scroll' }}>
+                    {JSON.parse(sessionStorage.chats).map((item,index) =>{ 
+                      return( 
+                        <div style={{padding: '20px', backgroundColor: 'white', borderRadius: 5, marginBottom: '10px', marginTop: '10px', fontSize: 12}}>
+                         <div className="row" style={{paddingBottom: '10px'}}>
+                          <span className="col-md-6" style={{color: '#9d9d9d'}}>{item.name}</span>
+                          <span className="col-md-6" style={{display: 'block', textAlign:'right', color: '#bababa'}}>{moment(item.createedDate).fromNow()}</span>
+                         </div>
+                         <span>{item.msg}</span>
+                        </div>
+                      )})}
+                  </div>
+                  <div style={{marginTop: '5px'}}>
+                    <input type="text" className="form-control" value={this.state.message} onChange={(e) =>{ this.setState({ message:e.target.value }) } } onKeyPress={(event) =>{ this.send(event) }}/>
+                    <span style={{color: '#bababa', display: 'block', textAlign:'center', padding: '10px', fontSize: 12}}>Hit Enter to send</span>
+                  </div>
                 </div>
             </div>
          </div>
@@ -64,7 +117,10 @@ class ClassTheater extends Component{
 
 function mapStateToProps(state){
   return{
-    
+    individualData:state.individualData.individualdata,
+    theaterData:state.theaterData.theaterdata,
+    userData:state.userData,
+    selectedDevices:state.selectedDevices.selecteddevices
   };
 }
 function matchDispatchToProps(dispatch){

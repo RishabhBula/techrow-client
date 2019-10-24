@@ -50,16 +50,16 @@ class Marketplace extends Component{
           // let library = await firebase.firestore().collection('users').doc(this.props.auth.authData.uid).collection('myLibrary').get()
           let feature = await firebase.firestore().collection('contents').where('featured','==',true).get()
           let market = await firebase.firestore().collection('contents').get()
-          console.log("library",feature.size)
-          console.log("library",market.size)
+          // console.log("library",feature.size)
+          // console.log("library",market.size)
                               feature.forEach((item) =>{
                                 marketFeature.push(item.data())
                               })
                               market.forEach((item) =>{
                                 marketContent.push(item.data())
                               })
-          console.log("marketArray",marketFeature)
-          console.log("marketArray",marketContent)
+          // console.log("marketArray",marketFeature)
+          // console.log("marketArray",marketContent)
           this.props.setMarketfeature(marketFeature)
           this.props.setMarketcontent(marketContent)
           this.setState({loading:false})
@@ -74,7 +74,7 @@ class Marketplace extends Component{
   }
 
   search(s){
-    console.log("this.state.search",this.state.search)
+    // console.log("this.state.search",this.state.search)
     this.props.setMarketsearchquery(s,0)
     // firebase.firestore().collection('users').doc(this.props.auth.authData.uid).collection('myLibrary').where('name', '>=', s).where('name', '<=', s+ '\uf8ff')
     firebase.firestore().collection('contents').where('searchQuery', '>=', s).where('searchQuery', '<=', s+ '\uf8ff')

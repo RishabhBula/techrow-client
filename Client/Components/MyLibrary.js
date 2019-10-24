@@ -43,11 +43,11 @@ class MyLibrary extends Component{
           let myLibrary =[];
           // let library = await firebase.firestore().collection('users').doc(this.props.auth.authData.uid).collection('myLibrary').get()
           let library = await firebase.firestore().collection('contents').get()
-          console.log("library",library.size)
+          // console.log("library",library.size)
                               library.forEach((item) =>{
                                 myLibrary.push(item.data())
                               })
-          console.log("myLibrary",myLibrary)
+          // console.log("myLibrary",myLibrary)
           this.props.getMylibrary(myLibrary)
           this.setState({searcharray:myLibrary,loading:false})
           return myLibrary
@@ -65,7 +65,7 @@ class MyLibrary extends Component{
   }
 
   search(s){
-    console.log("this.state.search",this.state.search)
+    // console.log("this.state.search",this.state.search)
     this.props.setMylibraryquery(s,0)
     // firebase.firestore().collection('users').doc(this.props.auth.authData.uid).collection('myLibrary').where('name', '>=', s).where('name', '<=', s+ '\uf8ff')
     firebase.firestore().collection('contents').where('searchQuery', '>=', s).where('searchQuery', '<=', s+ '\uf8ff')
@@ -117,7 +117,7 @@ class MyLibrary extends Component{
               {this.props.myLibrary.mylibrary.length>0 &&(<div className="row">
                 {this.props.myLibrary.mylibrary.map((item,index) =>{
                   return(
-                    <div className="col-lg-3 col-md-4">
+                    <div className="col-lg-3 col-md-4" key={item.id}>
                       <a onClick={() =>{ this.onItemClick(item.id) }} className="each-class">
                         <div className="class-banne-wrap">
                           <img src={item.thumbnail} className="img-fluid class-banner" />

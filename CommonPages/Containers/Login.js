@@ -32,13 +32,13 @@ class Login extends Component{
   }
 
   login(email,password){
-      console.log("====login",email,password)
+      // console.log("====login",email,password)
       if(this.state.email=="" || this.state.password==""){
         this.setState({error:true,errortext:"Please fill in all fields to continue"})
       }else{
         firebase.auth().signInWithEmailAndPassword(email.trim().toLocaleLowerCase(), password.trim())
                 .then((res) =>{
-                  console.log("====login",res)
+                  // console.log("====login",res)
                   this.props.getAuthentication();
                   window.location.href="#/";
                 })
