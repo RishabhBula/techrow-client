@@ -466,7 +466,7 @@ box-shadow: inset 0px -171px 122px -42px rgba(0,0,0,0.53);
 }
 
 
-.seience-slide{background-color: #fff;padding-top: 30px;
+.seience-slide{background-color: #fff;padding-top: 30px; margin-bottom: 20px;
 	h1{font-size: 1.5rem; color: #262261; margin-bottom: 10px; margin-left: 30px;}
 	.slick-list{padding: 20px 50px!important;}
 	.slick-slide{padding:5px; background-color: #fff;}
@@ -479,14 +479,15 @@ box-shadow: inset 0px -171px 122px -42px rgba(0,0,0,0.53);
 		}
 	}
 	.featured-slider .slick-current::after{display: none}
-	.slick-center{-webkit-transform: scale(1, 1.4); -moz-transform: scale(1, 1.4);  -ms-transform: scale(1, 1.4); -o-transform: scale(1, 1.4);
-	        transform: scale(1, 1.4); z-index: 10000; position: inherit;
+	.slick-slide{width: 300px;}
+	.slick-center{-webkit-transform: scale(1.4, 1); -moz-transform: scale(1.4, 1);  -ms-transform: scale(1.4, 1); -o-transform: scale(1.4, 1);
+	        transform: scale(1, 1.4); z-index: 10000; position: inherit; width: 400px;
 	        .featured-slider-cnt{padding-bottom: 20px!important}
 	        h2{font-size: 1.5rem!important; line-height: 20px!important; margin-bottom: 0!important; -webkit-transform: scale(1, .6); -moz-transform: scale(1, .6); -ms-transform: scale(1, .6); -o-transform: scale(1, .6); transform: scale(1, .6);}
 	        p{font-size: 1rem!important; line-height: 20px!important; margin-bottom: 0px!important; -webkit-transform: scale(1, .6); -moz-transform: scale(1, .6); -ms-transform: scale(1, .6);  -o-transform: scale(1, .6); transform: scale(1, .6);}
 	        h3{font-size: 1rem!important;-webkit-transform: scale(1, .7); -moz-transform: scale(1, .6); -ms-transform: scale(1, .6); -o-transform: scale(1, .6);  transform: scale(1, .6); }
 	    }
-	.slick-arrow{position: absolute; top:40%; z-index: 1000; width: 40px; height: 40px; cursor: pointer; background:none; font-size: 0; border-radius: 50%; background-size: contain; border:none}
+	.slick-arrow{position: absolute; top:24%; z-index: 1000; width: 40px; height: 40px; cursor: pointer; background:none; font-size: 0; border-radius: 50%; background-size: contain; border:none}
 	.slick-prev{left: 15px; background-image: url(/images/left-arrow.png);}
 	.slick-next{ right: 15px;background-image: url(/images/right-arrow.png);}
 	.slick-arrow:focus{outline: none; box-shadow: none}

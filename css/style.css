@@ -1125,7 +1125,8 @@ footer {
 
 .seience-slide {
   background-color: #fff;
-  padding-top: 30px; }
+  padding-top: 30px;
+  margin-bottom: 20px; }
   .seience-slide h1 {
     font-size: 1.5rem;
     color: #262261;
@@ -1168,14 +1169,17 @@ footer {
       float: left; }
   .seience-slide .featured-slider .slick-current::after {
     display: none; }
+  .seience-slide .slick-slide {
+    width: 300px; }
   .seience-slide .slick-center {
-    -webkit-transform: scale(1, 1.4);
-    -moz-transform: scale(1, 1.4);
-    -ms-transform: scale(1, 1.4);
-    -o-transform: scale(1, 1.4);
+    -webkit-transform: scale(1.4, 1);
+    -moz-transform: scale(1.4, 1);
+    -ms-transform: scale(1.4, 1);
+    -o-transform: scale(1.4, 1);
     transform: scale(1, 1.4);
     z-index: 10000;
-    position: inherit; }
+    position: inherit;
+    width: 400px; }
     .seience-slide .slick-center .featured-slider-cnt {
       padding-bottom: 20px !important; }
     .seience-slide .slick-center h2 {
@@ -1205,7 +1209,7 @@ footer {
       transform: scale(1, 0.6); }
   .seience-slide .slick-arrow {
     position: absolute;
-    top: 40%;
+    top: 24%;
     z-index: 1000;
     width: 40px;
     height: 40px;
