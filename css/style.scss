@@ -558,7 +558,10 @@ box-shadow: inset 0px -59px 22px -46px rgba(255,255,255,1);}
 
 .theaterMode{
 	.row{height: 100%;}
-	.theaterModeData{
+	.theaterModeData{height: calc( 100vh - 155px ); overflow-y:scroll; 
+		.theaterVideo{width: 100%; height: 500px; display: flex; align-items:center; justify-content:center;
+			iframe{width:800px; height: 450px;}
+		}
 		.discription{margin-bottom: 20px;
 			p{font-family: $opensan; font-size: .875rem; color: #A5A5A5; line-height: 20px}
 		}

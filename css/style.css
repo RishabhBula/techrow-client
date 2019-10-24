@@ -1373,26 +1373,42 @@ footer {
 .theaterMode .row {
   height: 100%; }
 
-.theaterMode .theaterModeData .discription {
-  margin-bottom: 20px; }
-  .theaterMode .theaterModeData .discription p {
+.theaterMode .theaterModeData {
+  height: calc( 100vh - 155px);
+  overflow-y: scroll; }
+  .theaterMode .theaterModeData .theaterVideo {
+    width: 100%;
+    height: 500px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center; }
+    .theaterMode .theaterModeData .theaterVideo iframe {
+      width: 800px;
+      height: 450px; }
+  .theaterMode .theaterModeData .discription {
+    margin-bottom: 20px; }
+    .theaterMode .theaterModeData .discription p {
+      font-family: "Open Sans", sans-serif;
+      font-size: .875rem;
+      color: #A5A5A5;
+      line-height: 20px; }
+  .theaterMode .theaterModeData h1 {
+    font-size: 1.5rem;
+    color: #000;
+    font-weight: 600;
+    margin-bottom: 15px; }
+  .theaterMode .theaterModeData ul li {
+    margin-bottom: 5px;
     font-family: "Open Sans", sans-serif;
     font-size: .875rem;
     color: #A5A5A5;
     line-height: 20px; }
-
-.theaterMode .theaterModeData h1 {
-  font-size: 1.5rem;
-  color: #000;
-  font-weight: 600;
-  margin-bottom: 15px; }
-
-.theaterMode .theaterModeData ul li {
-  margin-bottom: 5px;
-  font-family: "Open Sans", sans-serif;
-  font-size: .875rem;
-  color: #A5A5A5;
-  line-height: 20px; }
 
 .theaterMode .message-wrap {
   background-color: #262161;

@@ -69,8 +69,8 @@ class ClassTheater extends Component{
             <div className="row">
                 <div className="col-md-9">
                   <div className="theaterModeData">
-                    <div style={{height:'500px', marginBottom:'20px'}}>
-                      <iframe id="player" width="100%" height="100%" src={this.props.theaterData.previewUrl} frameBorder="0" allow="fullscreen" allowFullScreen > </iframe>
+                    <div className="theaterVideo">
+                      <iframe id="player" src={this.props.theaterData.previewUrl} frameBorder="0" allow="fullscreen" allowFullScreen > </iframe>
                     </div>
                     <div className="discription">
                       <p>{this.props.theaterData.description}</p>
