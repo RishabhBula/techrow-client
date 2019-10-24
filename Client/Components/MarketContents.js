@@ -70,7 +70,7 @@ class MarketContents extends Component{
 
               {this.props.marketContent.marketcontent.map((item,index) =>{
                   return(
-                      <div className="featured-slider-item">
+                      <div className="featured-slider-item" key={item.id}>
                         <img src={item.thumbnail} className="img-fluid" />
                         <div className="featured-slider-cnt pointer" onClick={() =>{ this.onItemClick(item) }}>
                           <h2>{item.name}</h2>
