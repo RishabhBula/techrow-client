@@ -25,8 +25,8 @@ class ClassTheater extends Component{
   }
 
   sendmessage(msgtext){
-      const socket = io('https://cinema.headjack.io/', {transports: ['polling'], upgrade: false});
-      socket.emit('sendAction', this.props.userData.headJackCredentials.appId, this.props.userData.headJackCredentials.authId, this.props.selectedDevices, 'message', [msgtext]);
+      // const socket = io('https://cinema.headjack.io/', {transports: ['polling'], upgrade: false});
+      this.props.socket.emit('sendAction', this.props.userData.headJackCredentials.appId, this.props.userData.headJackCredentials.authId, this.props.selectedDevices, 'message', [msgtext]);
       let chat = JSON.parse(sessionStorage.getItem("chats"));
       chat.push({msg:msgtext,name:this.props.userData.firstName,createedDate:new Date()});
       sessionStorage.setItem("chats", JSON.stringify(chat));
@@ -63,7 +63,7 @@ class ClassTheater extends Component{
   }
 
   render(){
-      console.log("this.props++++====++++++",this.props)
+      // console.log("this.props++++====++++++",this.props)
       return(
          <div className="dashboard animated fadeIn theaterMode">
             <div className="row">
