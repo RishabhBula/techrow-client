@@ -14,8 +14,9 @@ import Sidemenu from '../Components/Sidemenu';
 import {setClassMode} from '../../actions/setClassMode';
 import {setTheaterdata} from '../../actions/setTheaterdata';
 import {setIndividualdata} from '../../actions/setIndividualdata';
+import {setSelecteddevices} from '../../actions/setSelecteddevices';
 
-
+import {Notification} from '../../CommonPages/Components/Notification';
 import ClassTheater from '../Components/ClassTheater';
 import ClassIndividual from '../Components/ClassIndividual';
 
@@ -24,7 +25,8 @@ class Class extends Component{
 		super(props);
     this.state = {
       dalias:{},
-      dstate:{}
+      dstate:{},
+      socket:null
     }
 	}
 
@@ -34,7 +36,8 @@ class Class extends Component{
   }
   
   componentDidMount(){
-      const socket = io('https://cinema.headjack.io/', {transports: ['polling'], upgrade: false});
+      const socket = io('https://cinema.headjack.io/', {transports: ['polling'], upgrade: false, reconnection:true, });
+      this.setState({socket:socket})
       socket.on('connect', () => {
         console.log("socket connection established....socket id",socket.id); // 'G5p5...'
           if(socket.id){
@@ -42,24 +45,34 @@ class Class extends Component{
               setTimeout(() =>{ 
                 console.log("inside auth")
                 socket.emit('appAuth', this.props.userData.headJackCredentials.appId, this.props.userData.headJackCredentials.authId);
-              },3000);
+              },2000);
           }
       });
       
+      //------error-log------//
 
-      socket.on('connect_error', (error) =>{ console.log("connect_error******",error) });
-      socket.on('connect_timeout', (error) =>{ console.log("connect_timeout******",error) });
-      socket.on('disconnect', (error) =>{ console.log("disconnect******",error) });
-      socket.on('reconnecting', (error) =>{ console.log("reconnecting******",error) });
-      socket.on('reconnect_failed', (error) =>{ console.log("reconnect_failed******",error) });
+      socket.on('connect_error', (error) =>{ Notification("error","Reconnect","Reconnecting failed."); console.log("connect_error******// server connection failed",error) });
 
-      socket.on('exception', (error) =>{ console.log("exception******",error) });
+      socket.on('connect_timeout', (error) =>{ Notification("error","Reconnect","Reconnecting timed out"); console.log("connect_timeout******// server connection failed",error) });
+
+      socket.on('disconnect', (error) =>{ Notification("error","Disconnect","Disconnected from server"); console.log("disconnect******// server connection failed== disconnected from server!",error) });
+
+      socket.on('reconnecting', (error) =>{ Notification("error","Reconnect","Reconnecting to server..."); console.log("reconnecting******// server connection failed",error) });
+
+      socket.on('reconnect_failed', (error) =>{ Notification("error","Reconnect","Reconnecting failed"); console.log("reconnect_failed******// server connection failed",error) });
+
+      socket.on('error', (error) =>{ console.log("error******//received exception from server",error) });
+
+      //------error-log------//
+
+      socket.on('exception', (error) =>{ console.log("exception******//received exception from server",error) });
       socket.on('unauthorized', (error) =>{ console.log("unauthorized******",error) });
 
       socket.on('cinemaEnabled', (cinemaEnabled,status) =>{ console.log("cinemaEnabled",cinemaEnabled,status) })
 
         socket.on('appList', (appList) =>{ 
-          // console.log("appList",appList) 
+          // console.log("appList",appList)
+          Notification("success","Success","Connected to server successfully");
         })
         socket.on('deviceAliasList', (aliasList) =>{ 
           // console.log("deviceAliasList",aliasList)
@@ -84,37 +97,26 @@ class Class extends Component{
             })
           }
           this.props.setIndividualdata(arr1)
+
+
+          //------removing selected array from refreshed list----//
+
+          let arr2=this.props.selectedDevices;
+          if(this.props.selectedDevices.length>0){
+
+            this.props.selectedDevices.forEach((data,key) =>{
+              console.log("in array")
+                const a=arr1.filter(item =>{ item.id==data })
+                if(a.length==0){
+                  arr2.splice(key,1)
+                  this.props.setSelecteddevices(arr2)
+                }
+            })
+          }
+          //------removing selected array from refreshed list----//
+
         })
 
-
-      //========dummy setup=======//
-
-      // let deviceState={
-      //   11111:{status:"connected"},
-      //   22222:{status:"disconnected"},
-      //   33333:{status:"playing"},
-      //   44444:{status:"connected"}
-      // }
-
-      // let deviceAlias={11111:"device1",22222:"device2",33333:"device3",44444:"device4"}
-
-      // let arr1=[]
-
-      // Object.keys(deviceState).forEach(data =>{
-      //   arr1.push({id:data,status:Object(deviceState)[data].status})
-      // })
-
-      // Object.keys(deviceAlias).forEach(data =>{
-      //   arr1.forEach((item,key) =>{
-      //     if(item.id==data){
-      //       arr1[key].name=Object(deviceAlias)[data]
-      //     }
-      //     })
-      // })
-
-      // this.props.setIndividualdata(arr1)
-      
-      //========dummy setup=======//
 
   }
 
@@ -134,8 +136,8 @@ class Class extends Component{
           <div className="inner-wrap"> 
               <Sidemenu/>
               <div className="inner-right-wrap">
-                {this.props.classMode.mode=="theater" &&(<ClassTheater/>)}
-                {this.props.classMode.mode=="individual" &&(<ClassIndividual/>)}
+                {this.props.classMode.mode=="theater" &&(<ClassTheater socket={this.state.socket}/>)}
+                {this.props.classMode.mode=="individual" &&(<ClassIndividual socket={this.state.socket}/>)}
               </div>
           </div>
         </div>
@@ -150,9 +152,10 @@ function mapStateToProps(state){
     userData:state.userData,
     classMode:state.classMode,
     individualData:state.individualData.individualdata,
+    selectedDevices:state.selectedDevices.selecteddevices
   };
 }
 function matchDispatchToProps(dispatch){
-  return bindActionCreators({ setClassMode:setClassMode, setTheaterdata:setTheaterdata, setIndividualdata:setIndividualdata }, dispatch);
+  return bindActionCreators({ setClassMode:setClassMode, setTheaterdata:setTheaterdata, setIndividualdata:setIndividualdata, setSelecteddevices:setSelecteddevices }, dispatch);
 }
 export default connect(mapStateToProps, matchDispatchToProps)(Class);

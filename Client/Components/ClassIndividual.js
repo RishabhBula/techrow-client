@@ -25,37 +25,37 @@ class ClassIndividual extends Component{
   }
 
   actions(type){
-      const socket = io('https://cinema.headjack.io/', {transports: ['polling'], upgrade: false});
+      // const socket = io('https://cinema.headjack.io/', {transports: ['polling'], upgrade: false});
       switch(type) {
         case 'play':
           // code block
           console.log("play")
-          socket.emit('sendAction', this.props.userData.headJackCredentials.appId, this.props.userData.headJackCredentials.authId, this.props.selectedDevices, 'play', [this.props.theaterData.headjackProjectId]);
+          this.props.socket.emit('sendAction', this.props.userData.headJackCredentials.appId, this.props.userData.headJackCredentials.authId, this.props.selectedDevices, 'play', [this.props.theaterData.headjackProjectId]);
           break;
         case 'resume':
           // code block
           console.log("resume")
-          socket.emit('sendAction', this.props.userData.headJackCredentials.appId, this.props.userData.headJackCredentials.authId, this.props.selectedDevices, 'resume', []);
+          this.props.socket.emit('sendAction', this.props.userData.headJackCredentials.appId, this.props.userData.headJackCredentials.authId, this.props.selectedDevices, 'resume', []);
           break;
         case 'stop':
           // code block
           console.log("stop")
-          socket.emit('sendAction', this.props.userData.headJackCredentials.appId, this.props.userData.headJackCredentials.authId, this.props.selectedDevices, 'stop', []);
+          this.props.socket.emit('sendAction', this.props.userData.headJackCredentials.appId, this.props.userData.headJackCredentials.authId, this.props.selectedDevices, 'stop', []);
           break;
         case 'cancel':
           // code block
           console.log("cancel")
-          socket.emit('sendAction', this.props.userData.headJackCredentials.appId, this.props.userData.headJackCredentials.authId, this.props.selectedDevices, 'cancel', [this.props.theaterData.headjackProjectId]);
+          this.props.socket.emit('sendAction', this.props.userData.headJackCredentials.appId, this.props.userData.headJackCredentials.authId, this.props.selectedDevices, 'cancel', [this.props.theaterData.headjackProjectId]);
           break;
         case 'pause':
           // code block
           console.log("pause")
-          socket.emit('sendAction', this.props.userData.headJackCredentials.appId, this.props.userData.headJackCredentials.authId, this.props.selectedDevices, 'pause', []);
+          this.props.socket.emit('sendAction', this.props.userData.headJackCredentials.appId, this.props.userData.headJackCredentials.authId, this.props.selectedDevices, 'pause', []);
           break;
         case 'download':
           // code block
           console.log("download")
-          socket.emit('sendAction', this.props.userData.headJackCredentials.appId, this.props.userData.headJackCredentials.authId, this.props.selectedDevices, 'download', [this.props.theaterData.headjackProjectId]);
+          this.props.socket.emit('sendAction', this.props.userData.headJackCredentials.appId, this.props.userData.headJackCredentials.authId, this.props.selectedDevices, 'download', [this.props.theaterData.headjackProjectId]);
           break;
         default:
           // code block
