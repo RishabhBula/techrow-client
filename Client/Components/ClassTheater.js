@@ -3,6 +3,7 @@ import {bindActionCreators} from 'redux';
 import { connect } from 'react-redux';
 import axios from 'axios';
 var moment = require('moment');
+import ScrollView from 'react-inverted-scrollview';
 
 import {Notification} from '../../CommonPages/Components/Notification';
 
@@ -95,6 +96,11 @@ class ClassTheater extends Component{
                      <span style={{color: 'white'}}>Broadcast Messages</span>
                     </div>
                     <div className="message-list" style={{ overflowY: 'scroll' }}>
+                    <ScrollView
+                        width="100%"
+                        height="100%"
+                        ref={ref => (this.scrollView = ref)}
+                    >
                       {JSON.parse(sessionStorage.chats).map((item,index) =>{ 
                         return( 
                           <div style={{padding: '20px', backgroundColor: 'white', borderRadius: 5, marginBottom: '10px', marginTop: '10px', fontSize: 12}}>
@@ -105,6 +111,7 @@ class ClassTheater extends Component{
                            <span>{item.msg}</span>
                           </div>
                         )})}
+                      </ScrollView>
                     </div>
                     <div style={{margin: '10px', }}>
                       <input type="text" className="form-control" value={this.state.message} onChange={(e) =>{ this.setState({ message:e.target.value }) } } onKeyPress={(event) =>{ this.send(event) }}/>
