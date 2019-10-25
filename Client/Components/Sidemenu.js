@@ -30,10 +30,15 @@ class Sidemenu extends Component{
               <a className="ative">My Library</a>
               <a href="#/marketplace">Marketplace</a>
             </div>)}
-            {this.props.classMode.route=="class" && (<div className="sidemenu-group">
-              <a className={this.props.classMode.mode=="individual" ? "ative": "" } onClick={() => { this.togglemenu("individual") }}>Individual Mode</a>
-              <a className={this.props.classMode.mode=="theater" ? "ative": "" } onClick={() => { this.togglemenu("theater") }}>Theater</a>
-            </div>)}
+            {this.props.classMode.route=="class" && (
+              <div className="sidemenu-group">
+                <a className="backtomylibrary" href="#/"> <img src="/images/back-angle.png" className="img-fluid"/> My Library</a>
+                <div className="my-library-modes">
+                  <a className={this.props.classMode.mode=="individual" ? "ative": "" } onClick={() => { this.togglemenu("individual") }}><img src="/images/individual-icon.png" className="img-fluid" /><img src="/images/individual-icon-green.png" className="img-fluid" />Individual Mode</a>
+                  <a className={this.props.classMode.mode=="theater" ? "ative": "" } onClick={() => { this.togglemenu("theater") }}><img src="/images/classroom-wt.png" className="img-fluid" /><img src="/images/classroom-green.png" className="img-fluid" />Theater</a>
+                </div>
+              </div>
+            )}
             <div className="sidemenu-group">
               <a>Contact</a>
               <a>Settings</a>

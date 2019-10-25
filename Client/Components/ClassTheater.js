@@ -65,47 +65,51 @@ class ClassTheater extends Component{
   render(){
       // console.log("this.props++++====++++++",this.props)
       return(
-         <div className="dashboard animated fadeIn">
+         <div className="dashboard animated fadeIn theaterMode">
             <div className="row">
                 <div className="col-md-9">
-                  <div>
-                    <iframe id="player" width="100%" height="450px" src={this.props.theaterData.previewUrl} frameBorder="0" allow="fullscreen" allowFullScreen > </iframe>
-                  </div>
-                  <div>
-                    <p>{this.props.theaterData.description}</p>
-                  </div>
-                  <div>
-                   {/* <span>Play/Pause - Click anywhere on the player | Shortcut: K</span><br/>
-                    <span>Fullscreen Mode - Double Click anywhere on the player | Shortcut: F</span><br/>
-                    <span>Volume Up - Scrool Up anywhere on the player | Shortcut Up Arrow</span><br/>
-                    <span>Volume Down - Scrool Down anywhere on the player | Shortcut Down Arrow</span><br/>*/}
-                    <h1>Credits</h1>
-                      <ul>
-                        <li>Studio : <span>{this.props.theaterData.studioName}</span></li>
-                        <li>Director : <span>{this.props.theaterData.director}</span></li>
-                        <li>Time : <span>{this.convertMS(this.props.theaterData.duration).hour} hr {this.convertMS(this.props.theaterData.duration).minute} min</span></li>
-                      </ul>
+                  <div className="theaterModeData">
+                    <div className="theaterVideo">
+                      <iframe id="player" src={this.props.theaterData.previewUrl} frameBorder="0" allow="fullscreen" allowFullScreen > </iframe>
+                    </div>
+                    <div className="discription">
+                      <p>{this.props.theaterData.description}</p>
+                    </div>
+                    <div>
+                     {/* <span>Play/Pause - Click anywhere on the player | Shortcut: K</span><br/>
+                      <span>Fullscreen Mode - Double Click anywhere on the player | Shortcut: F</span><br/>
+                      <span>Volume Up - Scrool Up anywhere on the player | Shortcut Up Arrow</span><br/>
+                      <span>Volume Down - Scrool Down anywhere on the player | Shortcut Down Arrow</span><br/>*/}
+                      <h1>Credits</h1>
+                        <ul>
+                          <li>Studio : <span>{this.props.theaterData.studioName}</span></li>
+                          <li>Director : <span>{this.props.theaterData.director}</span></li>
+                          <li>Time : <span>{this.convertMS(this.props.theaterData.duration).hour} hr {this.convertMS(this.props.theaterData.duration).minute} min</span></li>
+                        </ul>
+                    </div>
                   </div>
                 </div>
-                <div className="col-md-3" style={{backgroundColor: '#262161', borderRadius: 5, paddingTop: '5px'}}>
-                  <div style={{display: 'block', textAlign:'center', backgroundColor: '#ebebeb80', borderRadius: '5px', padding: '10px'}}>
-                   <span style={{color: 'white'}}>Broadcast Messages</span>
-                  </div>
-                  <div style={{ height: '500px', overflowY: 'scroll' }}>
-                    {JSON.parse(sessionStorage.chats).map((item,index) =>{ 
-                      return( 
-                        <div style={{padding: '20px', backgroundColor: 'white', borderRadius: 5, marginBottom: '10px', marginTop: '10px', fontSize: 12}}>
-                         <div className="row" style={{paddingBottom: '10px'}}>
-                          <span className="col-md-6" style={{color: '#9d9d9d'}}>{item.name}</span>
-                          <span className="col-md-6" style={{display: 'block', textAlign:'right', color: '#bababa'}}>{moment(item.createedDate).fromNow()}</span>
-                         </div>
-                         <span>{item.msg}</span>
-                        </div>
-                      )})}
-                  </div>
-                  <div style={{marginTop: '5px'}}>
-                    <input type="text" className="form-control" value={this.state.message} onChange={(e) =>{ this.setState({ message:e.target.value }) } } onKeyPress={(event) =>{ this.send(event) }}/>
-                    <span style={{color: '#bababa', display: 'block', textAlign:'center', padding: '10px', fontSize: 12}}>Hit Enter to send</span>
+                <div className="col-md-3" >
+                  <div className="message-wrap">
+                    <div style={{display: 'block', textAlign:'center', backgroundColor: '#ebebeb80', borderRadius: '5px', padding: '10px'}}>
+                     <span style={{color: 'white'}}>Broadcast Messages</span>
+                    </div>
+                    <div className="message-list" style={{ overflowY: 'scroll' }}>
+                      {JSON.parse(sessionStorage.chats).map((item,index) =>{ 
+                        return( 
+                          <div style={{padding: '20px', backgroundColor: 'white', borderRadius: 5, marginBottom: '10px', marginTop: '10px', fontSize: 12}}>
+                           <div className="row" style={{paddingBottom: '10px'}}>
+                            <span className="col-md-6" style={{color: '#9d9d9d'}}>{item.name}</span>
+                            <span className="col-md-6" style={{display: 'block', textAlign:'right', color: '#bababa'}}>{moment(item.createedDate).fromNow()}</span>
+                           </div>
+                           <span>{item.msg}</span>
+                          </div>
+                        )})}
+                    </div>
+                    <div style={{margin: '10px', }}>
+                      <input type="text" className="form-control" value={this.state.message} onChange={(e) =>{ this.setState({ message:e.target.value }) } } onKeyPress={(event) =>{ this.send(event) }}/>
+                      <span style={{color: '#bababa', display: 'block', textAlign:'center', padding: '10px', fontSize: 12}}>Hit Enter to send</span>
+                    </div>
                   </div>
                 </div>
             </div>
