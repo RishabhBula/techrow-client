@@ -65,7 +65,7 @@ class Class extends Component{
 
       //------error-log------//
 
-      socket.on('exception', (error) =>{ console.log("exception******//received exception from server",error) });
+      socket.on('exception', (error) =>{ Notification("error","Error","Something wrong with connected to server. Please contact our support."); console.log("exception******//received exception from server",error) });
       socket.on('unauthorized', (error) =>{ console.log("unauthorized******",error) });
 
       socket.on('cinemaEnabled', (cinemaEnabled,status) =>{ console.log("cinemaEnabled",cinemaEnabled,status) })
