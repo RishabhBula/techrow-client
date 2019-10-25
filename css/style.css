@@ -1547,6 +1547,8 @@ footer {
       width: 100px; }
     header ul li {
       padding: 25px 5px; }
+    header .header-menu {
+      width: 260px; }
   .home-banner {
     height: 50vh; }
     .home-banner h1 {
@@ -1605,6 +1607,10 @@ footer {
     .inner-wrap .inner-blue-menu {
       top: 70px;
       width: 200px; }
+      .inner-wrap .inner-blue-menu .sidemenu-group a {
+        padding-left: 20px; }
+      .inner-wrap .inner-blue-menu .my-library-modes a img {
+        height: 30px; }
     .inner-wrap .inner-right-wrap {
       margin-left: 200px; }
       .inner-wrap .inner-right-wrap .form-wrap {
@@ -1618,13 +1624,32 @@ footer {
       padding: 15px 0; }
     .step-view li::after {
       top: 25px;
-      width: 10%; } }
+      width: 10%; }
+  .dashboard .classesList .each-class .class-banne-wrap {
+    height: 120px; }
+  .theaterMode .theaterModeData {
+    height: auto; }
+    .theaterMode .theaterModeData .theaterVideo {
+      height: 300px; }
+      .theaterMode .theaterModeData .theaterVideo iframe {
+        height: 250px; } }
 
 @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: landscape) {
   html, body {
     font-size: 16px; }
+  .inner-wrap .inner-blue-menu {
+    width: 225px; }
+    .inner-wrap .inner-blue-menu .sidemenu-group a {
+      font-size: 1.2rem;
+      padding-left: 30px; }
+    .inner-wrap .inner-blue-menu .sidemenu-group .my-library-modes a img {
+      max-height: 35px; }
+  .inner-wrap .inner-right-wrap {
+    margin-left: 225px; }
   header .logo img {
     width: 100px; }
+  header .header-menu {
+    width: 290px; }
   .home-banner {
     height: 70vh; }
     .home-banner h1 {
@@ -1677,7 +1702,13 @@ footer {
       padding: 10px 0;
       width: 100px; }
     footer .footer-content .social-links a img {
-      height: 20px; } }
+      height: 20px; }
+  .dashboard .classesList .each-class .class-banne-wrap {
+    height: 100px; }
+  .theaterMode .theaterModeData .theaterVideo {
+    height: 310px; }
+    .theaterMode .theaterModeData .theaterVideo iframe {
+      height: 280px; } }
 
 @media (min-width: 1441px) {
   .inner-wrap .inner-right-wrap h4 {

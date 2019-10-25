@@ -117,7 +117,7 @@ class MyLibrary extends Component{
               {this.props.myLibrary.mylibrary.length>0 &&(<div className="row">
                 {this.props.myLibrary.mylibrary.map((item,index) =>{
                   return(
-                    <div className="col-lg-3 col-md-4" key={item.id}>
+                    <div className="col-xl-3 col-lg-4 col-md-6" key={item.id}>
                       <a onClick={() =>{ this.onItemClick(item.id) }} className="each-class">
                         <div className="class-banne-wrap">
                           <img src={item.thumbnail} className="img-fluid class-banner" />
