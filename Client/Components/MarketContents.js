@@ -61,6 +61,22 @@ class MarketContents extends Component{
       slidesToScroll: 1,
       centerMode:true,
       autoplay:false,
+      responsive: [
+        {
+          breakpoint: 1025,
+          settings: {
+            slidesToShow: 3.1,
+            centerMode:true,
+          }
+        },
+        {
+          breakpoint: 769,
+          settings: {
+            slidesToShow:2.5,
+            centerMode:true,
+          }
+        }
+      ]
     };
       return(
          <div className=" animated fadeIn seience-slide">

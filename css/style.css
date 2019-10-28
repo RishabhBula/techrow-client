@@ -1632,7 +1632,9 @@ footer {
     .theaterMode .theaterModeData .theaterVideo {
       height: 300px; }
       .theaterMode .theaterModeData .theaterVideo iframe {
-        height: 250px; } }
+        height: 250px; }
+  .marketplace .form-group .form-control {
+    width: 500px; } }
 
 @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: landscape) {
   html, body {
@@ -1708,7 +1710,9 @@ footer {
   .theaterMode .theaterModeData .theaterVideo {
     height: 310px; }
     .theaterMode .theaterModeData .theaterVideo iframe {
-      height: 280px; } }
+      height: 280px; }
+  .marketplace .form-group .form-control {
+    width: 500px; } }
 
 @media (min-width: 1441px) {
   .inner-wrap .inner-right-wrap h4 {

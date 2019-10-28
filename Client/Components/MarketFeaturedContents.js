@@ -60,7 +60,23 @@ class MarketFeaturedContents extends Component{
       slidesToShow: 3,
       slidesToScroll: 1,
       centerMode:true,
-      autoplay:true
+      autoplay:true,
+      responsive: [
+        {
+          breakpoint: 1025,
+          settings: {
+            slidesToShow: 2.3,
+            centerMode:true,
+          }
+        },
+        {
+          breakpoint:769,
+          settings: {
+            slidesToShow:1,
+            centerMode:true,
+          }
+        }
+      ]
     };
       return(
          <div className="animated fadeIn">
