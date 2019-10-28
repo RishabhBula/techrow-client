@@ -71,6 +71,7 @@ class SignUp3 extends Component{
               authId:"",
               appId:""
             },
+            contactContent:[],
             myOrders:[],
             myRecentViews:[],
             deafultShippingInformation:{}
