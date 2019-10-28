@@ -6,6 +6,7 @@ const stripe = require("stripe")("sk_test_ZffCuayqkzcEjSZnDOY1rB7800ZYiGzkf3");
 const express = require('express');
 const cors = require('cors');
 const app = express();
+const nodemailer = require('nodemailer');
 app.use(cors({ origin: true }));
 
 app.post('/charge', (req, res) => {
@@ -33,6 +34,41 @@ app.post('/charge', (req, res) => {
 });
 
 exports.paynow = functions.https.onRequest(app);
+
+let transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+        user: 'harikrishnan@hubspire.com',
+        pass: 'hk@hubspire47Gmail'
+    }
+});
+
+app.post('/send', (req, res) => {
+
+		const mailOptions = {
+            from: req.body.userdata.email, // Something like: Jane Doe <janedoe@gmail.com>
+            to: 'harikrishnan@hubspire.com',
+            subject: 'Contact Access Content', // email subject
+            html: `<div>
+                    <span>Hi TechRow</span><br/>
+                    <p>The user ${req.body.userdata.firstName} (${req.body.userdata.email}) contacted to access the following content.</p><br/>
+                    <img style="width: 50%; height: 100px" src=${req.body.contentdetails.thumbnail}/><br/>
+                    <p>Name : ${req.body.contentdetails.name}</p>
+                    <p>Description : ${req.body.contentdetails.description}</p>
+                   </div>` // email content in HTML
+        };
+
+        return transporter.sendMail(mailOptions, (erro, info) => {
+            if(erro){
+                return res.send(erro.toString());
+            }
+            return res.send('Sended');
+        });
+      
+      // res.send(req.body)
+});
+
+exports.sendmail = functions.https.onRequest(app);
 
 // // Create and Deploy Your First Cloud Functions
 // // https://firebase.google.com/docs/functions/write-firebase-functions

@@ -2,10 +2,12 @@ import React, { Component } from 'react';
 import {bindActionCreators} from 'redux';
 import { connect } from 'react-redux';
 import axios from 'axios';
-import { Icon } from 'antd';
+import { Spin, Icon } from 'antd';
 
 import {setClassMode} from '../../actions/setClassMode';
 import {setMarketdetails} from '../../actions/setMarketdetails';
+import {Notification} from '../../CommonPages/Components/Notification';
+import {getUserdata} from '../../actions/getUserdata'
 
 import firebase from 'firebase/app';
 import 'firebase/auth';
@@ -13,11 +15,13 @@ import 'firebase/app';
 import 'firebase/firestore';
 import 'firebase/database';
 
+const antIcon = <Icon type="loading" style={{ fontSize: 24, color: '#262261' }} spin />;
+
 class MarketplaceDiscription extends Component{
 	constructor(props){
 		super(props);
     this.state = {
-      
+        buttonloader:false,
     }
 	}
   
@@ -53,6 +57,37 @@ class MarketplaceDiscription extends Component{
     };
   }
 
+  contactAccess(){
+    if(this.props.userData.contactContent.some( o => o==this.props.marketDetails.id)){
+      console.log("you are already contacted to this content")
+      Notification("error","Already Requested","You are already requested for this content");
+    }else{
+        this.setState({buttonloader:true})
+        axios({
+              method:"POST",
+              url:'https://us-central1-techrow-platform.cloudfunctions.net/sendmail/send',
+              data:{
+                contentdetails:this.props.marketDetails,
+                userdata:this.props.userData,
+              }
+            }).then((response) =>{
+                console.log("-----response from server--->",response)
+                const db=firebase.firestore();
+                let contactcontent=this.props.userData.contactContent ? this.props.userData.contactContent : [] 
+                contactcontent.push(this.props.marketDetails.id);
+                let update={contactContent:contactcontent}
+                db.collection("users").doc(this.props.userData.id).set(update, { merge: true })
+                this.props.getUserdata(this.props.userData.id)
+                Notification("success","Request sent","You are successfully requested for this content");
+                this.setState({buttonloader:false})
+            }).catch((err) =>{
+                console.log("err-----err-err--->",err.response)
+                Notification("error","Request failed","Something went wrong, request failed");
+                this.setState({buttonloader:false})
+            })
+    }
+  }
+
   render(){
       return(
         <div className="full-page marketplace-item">
@@ -69,7 +104,8 @@ class MarketplaceDiscription extends Component{
                     <div className="col-md-8">
                       <h1>{this.props.marketDetails.name}</h1>
                       <p>{this.props.marketDetails.description}</p>
-                      <a className="green-btn">Contact to Access</a>
+                      {this.state.buttonloader==false &&(<a className="green-btn" onClick={() =>{ this.contactAccess() }}>Contact to Access </a>)}
+                      {this.state.buttonloader==true &&(<a className="green-btn" >Contact to Access <Spin indicator={antIcon} /></a>)}
                     </div>
                     <div className="col-md-4">
                       <h1>Credits</h1>
@@ -100,6 +136,6 @@ function mapStateToProps(state){
   };
 }
 function matchDispatchToProps(dispatch){
-  return bindActionCreators({ setClassMode:setClassMode, setMarketdetails:setMarketdetails }, dispatch);
+  return bindActionCreators({ setClassMode:setClassMode, setMarketdetails:setMarketdetails, getUserdata:getUserdata }, dispatch);
 }
 export default connect(mapStateToProps, matchDispatchToProps)(MarketplaceDiscription);
