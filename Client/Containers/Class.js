@@ -55,7 +55,12 @@ class Class extends Component{
 
       socket.on('connect_timeout', (error) =>{ Notification("error","Reconnect","Reconnecting timed out"); console.log("connect_timeout******// server connection failed",error) });
 
-      socket.on('disconnect', (error) =>{ Notification("error","Disconnect","Disconnected from server"); console.log("disconnect******// server connection failed== disconnected from server!",error) });
+      socket.on('disconnect', (error) =>{  
+         console.log("disconnect******// server connection failed== disconnected from server!",error);
+         this.props.setIndividualdata([]);
+         this.props.setSelecteddevices([]);
+         Notification("error","Disconnect","Disconnected from server");
+      });
 
       socket.on('reconnecting', (error) =>{ Notification("error","Reconnect","Reconnecting to server..."); console.log("reconnecting******// server connection failed",error) });
 
@@ -72,7 +77,7 @@ class Class extends Component{
 
         socket.on('appList', (appList) =>{ 
           // console.log("appList",appList)
-          Notification("success","Success","Connected to server successfully");
+          // Notification("success","Success","Connected to server successfully");
         })
         socket.on('deviceAliasList', (aliasList) =>{ 
           // console.log("deviceAliasList",aliasList)

@@ -71,6 +71,7 @@ class SignUp3 extends Component{
               authId:"",
               appId:""
             },
+            contactContent:[],
             myOrders:[],
             myRecentViews:[],
             deafultShippingInformation:{}
@@ -150,9 +151,9 @@ class SignUp3 extends Component{
   //   console.log("captcha value",value)
   //   axios({
   //         method:"POST",
-  //         url:'https://us-central1-hk-project-0.cloudfunctions.net/recaptcha',
+  //         url:'http://localhost:4001/captchaverification',
   //         data:{
-  //           generatedKey:value,
+  //           captoken:value,
   //         }
   //       }).then((response) =>{
   //           console.log("-----response from server--->",response)
