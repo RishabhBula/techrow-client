@@ -68,7 +68,7 @@ class ClassTheater extends Component{
       return(
          <div className="dashboard animated fadeIn theaterMode">
             <div className="row">
-                <div className="col-md-9">
+                <div className="col-md-12 col-lg-8 col-xl-9">
                   <div className="theaterModeData">
                     <div className="theaterVideo">
                       <iframe id="player" src={this.props.theaterData.previewUrl} frameBorder="0" allow="fullscreen" allowFullScreen > </iframe>
@@ -90,7 +90,7 @@ class ClassTheater extends Component{
                     </div>
                   </div>
                 </div>
-                <div className="col-md-3" >
+                <div className="col-md-12 col-lg-4 col-xl-3" >
                   <div className="message-wrap">
                     <div style={{display: 'block', textAlign:'center', backgroundColor: '#ebebeb80', borderRadius: '5px', padding: '10px'}}>
                      <span style={{color: 'white'}}>Broadcast Messages</span>

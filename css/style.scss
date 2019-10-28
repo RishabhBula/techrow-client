@@ -670,6 +670,7 @@ box-shadow: inset 0px -59px 22px -46px rgba(255,255,255,1);}
 		ul{
 			li{padding: 25px 5px;}
 		}
+		.header-menu{width: 260px;}
 	}
 	.home-banner{height: 50vh;
 		h1{font-size: 2.5rem;}
@@ -715,9 +716,13 @@ box-shadow: inset 0px -59px 22px -46px rgba(255,255,255,1);}
 // ----------------Login----------------
 
 	.inner-wrap{padding-top: 70px;
-		.inner-blue-menu{top:70px;width: 200px}
+		.inner-blue-menu{top:70px;width: 200px;
+			.sidemenu-group a{padding-left: 20px}
+			.my-library-modes a img{height: 30px}
+		}
 		.inner-right-wrap{margin-left: 200px;
 			.form-wrap{width: 95%;}
+
 		}
 	}
 	.step-view li{margin: 0 5%;
@@ -729,11 +734,31 @@ box-shadow: inset 0px -59px 22px -46px rgba(255,255,255,1);}
 // ----------------Login----------------
 
 
+
+.dashboard .classesList .each-class .class-banne-wrap{height: 120px;}
+.theaterMode .theaterModeData{ height: auto;
+	.theaterVideo{height: 300px;
+		iframe{height: 250px}
+	}
+}
+
+
 }
 
 // Large devices (Ipad Landscape)
 @media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : landscape) {
 	html, body{font-size: 16px;}
+
+
+.inner-wrap{ 
+	.inner-blue-menu{width: 225px;
+		.sidemenu-group{ 
+			a{font-size: 1.2rem; padding-left: 30px;}
+			 .my-library-modes a img{max-height: 35px;}
+		}
+	}
+	.inner-right-wrap{margin-left: 225px;}
+}
 
 // ----------------HOME----------------
 
@@ -741,6 +766,7 @@ box-shadow: inset 0px -59px 22px -46px rgba(255,255,255,1);}
 		.logo{
 			img{width: 100px;}
 		}
+		.header-menu{width: 290px;}
 	}
 	.home-banner{height: 70vh;
 		h1{font-size: 2.5rem;}
@@ -783,6 +809,16 @@ box-shadow: inset 0px -59px 22px -46px rgba(255,255,255,1);}
 	}
 
 // ----------------HOME----------------
+// ----------------My Library----------------
+
+.dashboard .classesList .each-class .class-banne-wrap{height: 100px;}
+.theaterMode .theaterModeData{
+	.theaterVideo{height: 310px;
+		iframe{height: 280px}
+	}
+}
+// ----------------My Library----------------
+
 
 }
 @media (min-width: 1441px) {
