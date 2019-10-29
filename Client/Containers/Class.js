@@ -85,11 +85,13 @@ class Class extends Component{
 
         })
         socket.on('deviceStateList', (appId, state) =>{ 
-          // console.log("deviceStateList",appId, state)
+          console.log("deviceStateList",appId, state)
           this.setState({dstate:state})
-          let arr1=[]
+          let arr1=[];
+          let arr2=[];
           Object.keys(state).forEach(data =>{
             arr1.push({id:data,status:Object(state)[data].status,persistentData:Object(state)[data].persistentData})
+            arr2.push(data)
           })
           // console.log("arrayyyyyyyyyyy",arr1)
           if(this.state.dalias){
@@ -106,18 +108,37 @@ class Class extends Component{
 
           //------removing selected array from refreshed list----//
 
-          let arr2=this.props.selectedDevices;
+          // let arr3=this.props.selectedDevices;
           if(this.props.selectedDevices.length>0){
 
-            this.props.selectedDevices.forEach((data,key) =>{
-              console.log("in array")
-                const a=arr1.filter(item =>{ item.id==data })
-                if(a.length==0){
-                  arr2.splice(key,1)
-                  this.props.setSelecteddevices(arr2)
-                }
-            })
+            // this.props.selectedDevices.forEach((data,key) =>{
+            //   console.log("in array",data)
+            //     const a=arr1.some(item =>{ if(item.id==data){return true}else{return false} })
+            //     console.log("A",a)
+            //     if(a==false){
+            //       arr2.splice(key,1)
+            //       this.props.setSelecteddevices(arr2)
+            //     }
+            // })
+//------
+            // let tmpar = [];
+            // for(var i = 0; i < arr3.length; i++){
+            //   if(arr2.indexOf(arr3[i]) !== -1){
+            //     tmpar.push(arr3[i]);
+            //   }
+            // }
+            // this.props.setSelecteddevices(tmpar)
+//------
+            // const result = arr3.filter(word => arr2.indexOf(word)!=-1);
+            // console.log("result",result)
+            // this.props.setSelecteddevices(result)
+//------
+            const result = this.props.selectedDevices.filter(word => arr2.includes(word));
+            console.log("result",result)
+            this.props.setSelecteddevices(result)
+
           }
+
           //------removing selected array from refreshed list----//
 
         })

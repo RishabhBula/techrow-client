@@ -131,6 +131,7 @@ class ClassIndividual extends Component{
                       rowKey={(item) => { return item.id }} 
                       rowSelection={rowSelection}
                       columns={columns} 
+                      pagination={{ hideOnSinglePage: true,pageSize: 20 }}
                       dataSource={this.props.individualData} />
                 </div>
             </div>
