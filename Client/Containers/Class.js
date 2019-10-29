@@ -76,6 +76,7 @@ class Class extends Component{
       socket.on('cinemaEnabled', (cinemaEnabled,status) =>{ console.log("cinemaEnabled",cinemaEnabled,status) })
 
         socket.on('appList', (appList) =>{ 
+          console.log("logged")
           // console.log("appList",appList)
           // Notification("success","Success","Connected to server successfully");
         })
@@ -85,7 +86,7 @@ class Class extends Component{
 
         })
         socket.on('deviceStateList', (appId, state) =>{ 
-          console.log("deviceStateList",appId, state)
+          // console.log("deviceStateList",appId, state)
           this.setState({dstate:state})
           let arr1=[];
           let arr2=[];
