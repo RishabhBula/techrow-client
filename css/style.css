@@ -1233,7 +1233,9 @@ footer {
 .marketplace-item .marketplace-banner {
   position: relative;
   text-align: center;
-  height: 500px; }
+  height: 500px;
+  background-size: cover;
+  background-position: center; }
   .marketplace-item .marketplace-banner::after {
     content: "";
     position: absolute;

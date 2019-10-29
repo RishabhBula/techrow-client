@@ -497,7 +497,7 @@ box-shadow: inset 0px -171px 122px -42px rgba(0,0,0,0.53);
 
 .marketplace-item{
 
-	.marketplace-banner{position: relative; text-align: center; height: 500px;
+	.marketplace-banner{position: relative; text-align: center; height: 500px; background-size: cover; background-position: center;
 		&::after{content: ""; position: absolute;left: 0; top:0; right: 0; bottom: 2px; -webkit-box-shadow: inset 0px -59px 22px -46px rgba(255,255,255,1);
 -moz-box-shadow: inset 0px -59px 22px -46px rgba(255,255,255,1);
 box-shadow: inset 0px -59px 22px -46px rgba(255,255,255,1);}
