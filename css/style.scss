@@ -428,9 +428,9 @@ footer{padding: 40px 0;
 	.back{
 		i{float: left;}
 	}
-	a{color: $b;}
+	a{color: #262161;}
 	.form-group{margin-bottom: 0; position: relative;
-		.form-control{width: 650px; border-radius: 30px; padding-right: 40px;}
+		.form-control{width: 650px; border-radius: 30px; padding-right: 40px; background-color: #E8E8E8}
 		button{position: absolute;right:5px; top:5px; background:none; border:none; cursor: pointer;
 			img{width: 25px; opacity: .7}
 			&:hover{
@@ -445,9 +445,9 @@ footer{padding: 40px 0;
 	img{width: 100%;height: 350px; object-fit:cover}
 
 	.featured-slider-item{position: relative;
-		.featured-slider-cnt{position: absolute; bottom: 0;right: 0; left:0; padding: 20px;z-index: 2; opacity: 0;  @include transition(all 0.5s ease); 
-			h2{font-size: 1.5rem; color: $w; margin-bottom: 10px;}
-			p{font-size: 1rem; color: $w; margin-bottom: 20px; line-height: 20px;}
+		.featured-slider-cnt{position: absolute; bottom: 0;right: 0; left:0; padding: 20px;z-index: 2; opacity: 0;  @include transition(all 0.5s ease);  
+			h2{font-size: 1.5rem; color: $w; margin-bottom: 10px; font-family: $qfont; font-weight: 600;}
+			p{font-size: 1rem; color: $w; margin-bottom: 20px; line-height: 22px;}
 			h3{font-size: 1.5rem; color: $w; float: left; }
 			a{ padding: 5px 20px;margin-left: 20%; font-size: .875rem!important; font-weight: 300; color: $b!important}
 		}
@@ -468,10 +468,10 @@ box-shadow: inset 0px -171px 122px -42px rgba(0,0,0,0.53);
 
 .seience-slide{background-color: #fff;padding-top: 30px; margin-bottom: 20px;
 	h1{font-size: 1.5rem; color: #262261; margin-bottom: 10px; margin-left: 30px;}
-	.slick-list{padding: 20px 50px!important;}
+	.slick-list{padding: 20px 50px 0px!important;}
 	.slick-slide{padding:5px; background-color: #fff;}
 	.featured-slider-item{
-		img{width: 100%;height: 210px; object-fit:cover}
+		img{width: 100%;height: 180px; object-fit:cover}
 		.featured-slider-cnt{position: absolute; bottom: 0;right: 0; left:0; padding: 20px;z-index: 2;  @include transition(all 0.5s ease); 
 			h2{font-size: 1.2rem; color: $w; margin-bottom: 0px;}
 			p{font-size: .875rem; color: $w; margin-bottom: 20px; line-height: 20px;}
@@ -487,7 +487,7 @@ box-shadow: inset 0px -171px 122px -42px rgba(0,0,0,0.53);
 	        p{font-size: 1rem!important; line-height: 20px!important; margin-bottom: 0px!important; -webkit-transform: scale(1, .6); -moz-transform: scale(1, .6); -ms-transform: scale(1, .6);  -o-transform: scale(1, .6); transform: scale(1, .6);}
 	        h3{font-size: 1rem!important;-webkit-transform: scale(1, .7); -moz-transform: scale(1, .6); -ms-transform: scale(1, .6); -o-transform: scale(1, .6);  transform: scale(1, .6); }
 	    }
-	.slick-arrow{position: absolute; top:24%; z-index: 1000; width: 40px; height: 40px; cursor: pointer; background:none; font-size: 0; border-radius: 50%; background-size: contain; border:none}
+	.slick-arrow{position: absolute; top:20%; z-index: 1000; width: 55px; height: 55px; cursor: pointer; background:none; font-size: 0; border-radius: 50%; background-size: contain; border:none}
 	.slick-prev{left: 15px; background-image: url(/images/left-arrow.png);}
 	.slick-next{ right: 15px;background-image: url(/images/right-arrow.png);}
 	.slick-arrow:focus{outline: none; box-shadow: none}
@@ -498,7 +498,7 @@ box-shadow: inset 0px -171px 122px -42px rgba(0,0,0,0.53);
 .marketplace-item{
 
 	.marketplace-banner{position: relative; text-align: center; height: 500px; background-size: cover; background-position: center;
-		&::after{content: ""; position: absolute;left: 0; top:0; right: 0; bottom: 2px; -webkit-box-shadow: inset 0px -59px 22px -46px rgba(255,255,255,1);
+		&::after{content: ""; position: absolute;left: 0; top:0; right: 0; bottom: 0px; -webkit-box-shadow: inset 0px -59px 22px -46px rgba(255,255,255,1);
 -moz-box-shadow: inset 0px -59px 22px -46px rgba(255,255,255,1);
 box-shadow: inset 0px -59px 22px -46px rgba(255,255,255,1);}
 		.item-banner{z-index: -1; height: 100%;}
@@ -506,7 +506,7 @@ box-shadow: inset 0px -59px 22px -46px rgba(255,255,255,1);}
 			i{float: left;}
 		}
 		.play-icon{position: absolute; top:40%; display:block; margin: auto; z-index: 1000; text-align: center;left:0; right: 0;width: 100px; 
-			span{font-size:1rem; color: $w; font-family: $qfont;  @include transition(all 0.5s ease);}
+			span{font-size:1.125rem; color: $w; font-family: $qfont;  @include transition(all 0.5s ease);}
 
 			img{width: 100px; display: block; margin-bottom: 10px; @include transition(all 0.5s ease); }
 			&:hover{
@@ -524,10 +524,10 @@ box-shadow: inset 0px -59px 22px -46px rgba(255,255,255,1);}
 
 .marketplace-content{padding: 50px;
 	h1{font-size: 2rem; font-family: $qfont; color: #262261; margin-bottom: 20px; font-weight: 600}
-	p{font-family: $opensan; margin-bottom: 10px; line-height: 20px}
-	.green-btn{display: inline-block; float: none;}
+	p{font-family: $opensan; margin-bottom: 10px; line-height: 22px}
+	.green-btn{display: inline-block; float: none;padding: 15px 40px}
 	ul{
-		li{font-size: 1.5rem;margin-bottom: 15px;
+		li{font-size: 1.5rem;margin-bottom: 15px; font-family: $opensan;
 			span{display: block; border-top: 1px solid #878787; font-size: 1.125rem; padding: 10px 0; margin-top: 5px;}
 		}
 	}
