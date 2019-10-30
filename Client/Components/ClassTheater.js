@@ -27,7 +27,7 @@ class ClassTheater extends Component{
 
   sendmessage(msgtext){
       // const socket = io('https://cinema.headjack.io/', {transports: ['polling'], upgrade: false});
-      this.props.socket.emit('sendAction', this.props.userData.headJackCredentials.appId, this.props.userData.headJackCredentials.authId, this.props.selectedDevices, 'message', [msgtext]);
+      this.props.socket.emit('sendAction', this.props.userData.headJackCredentials.appId, this.props.userData.headJackCredentials.authId, this.props.cdevicesids, 'message', [msgtext]);
       let chat = JSON.parse(sessionStorage.getItem("chats"));
       chat.push({msg:msgtext,name:this.props.userData.firstName,createedDate:new Date()});
       sessionStorage.setItem("chats", JSON.stringify(chat));
@@ -40,7 +40,7 @@ class ClassTheater extends Component{
                       if(this.props.cdevicesids.length>0){
                           this.sendmessage(this.state.message); 
                       }else{
-                          Notification("error","No Devices Selected","Please select devices to send message.")
+                          Notification("error","No Devices are connected","No devices are connected to broadcast message.")
                       }
                     }
                 }
