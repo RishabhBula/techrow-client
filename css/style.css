@@ -1459,6 +1459,11 @@ footer {
     background-color: #fff;
     border-radius: 5px;
     font-family: "Open Sans", sans-serif; }
+  .individual-mode .headset-list .ant-checkbox-checked .ant-checkbox-inner {
+    border-color: #b1f543;
+    background-color: #b1f543; }
+  .individual-mode .headset-list .ant-checkbox-indeterminate .ant-checkbox-inner::after {
+    background-color: #b1f543; }
   .individual-mode .headset-list .ant-table-placeholder {
     background-color: #fff;
     border-radius: 5px;
