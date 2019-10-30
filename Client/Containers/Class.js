@@ -52,26 +52,41 @@ class Class extends Component{
       
       //------error-log------//
 
-      socket.on('connect_error', (error) =>{ Notification("error","Reconnect","Reconnecting failed."); console.log("connect_error******// server connection failed",error) });
+      socket.on('connect_error', (error) =>{ 
+        // Notification("error","Reconnect","Reconnecting failed."); 
+        console.log("connect_error******// server connection failed",error) 
+      });
 
-      socket.on('connect_timeout', (error) =>{ Notification("error","Reconnect","Reconnecting timed out"); console.log("connect_timeout******// server connection failed",error) });
+      socket.on('connect_timeout', (error) =>{ 
+        // Notification("error","Reconnect","Reconnecting timed out"); 
+        console.log("connect_timeout******// server connection failed",error) 
+      });
 
       socket.on('disconnect', (error) =>{  
          console.log("disconnect******// server connection failed== disconnected from server!",error);
          this.props.setIndividualdata([]);
          this.props.setSelecteddevices([]);
-         Notification("error","Disconnect","Disconnected from server");
+         // Notification("error","Disconnect","Disconnected from server");
       });
 
-      socket.on('reconnecting', (error) =>{ Notification("error","Reconnect","Reconnecting to server..."); console.log("reconnecting******// server connection failed",error) });
+      socket.on('reconnecting', (error) =>{ 
+        // Notification("error","Reconnect","Reconnecting to server..."); 
+        console.log("reconnecting******// server connection failed",error) 
+      });
 
-      socket.on('reconnect_failed', (error) =>{ Notification("error","Reconnect","Reconnecting failed"); console.log("reconnect_failed******// server connection failed",error) });
+      socket.on('reconnect_failed', (error) =>{ 
+        // Notification("error","Reconnect","Reconnecting failed"); 
+        console.log("reconnect_failed******// server connection failed",error) 
+      });
 
       socket.on('error', (error) =>{ console.log("error******//received exception from server",error) });
 
       //------error-log------//
 
-      socket.on('exception', (error) =>{ Notification("error","Error","Something wrong with connected to server. Please contact our support."); console.log("exception******//received exception from server",error) });
+      socket.on('exception', (error) =>{ 
+        // Notification("error","Error","Something wrong with connected to server. Please contact our support."); 
+        console.log("exception******//received exception from server",error) 
+      });
       socket.on('unauthorized', (error) =>{ console.log("unauthorized******",error) });
 
       socket.on('cinemaEnabled', (cinemaEnabled,status) =>{ console.log("cinemaEnabled",cinemaEnabled,status) })
