@@ -26,6 +26,7 @@ class Class extends Component{
     this.state = {
       dalias:{},
       dstate:{},
+      cdevicesids:[],
       socket:null
     }
 	}
@@ -51,31 +52,47 @@ class Class extends Component{
       
       //------error-log------//
 
-      socket.on('connect_error', (error) =>{ Notification("error","Reconnect","Reconnecting failed."); console.log("connect_error******// server connection failed",error) });
+      socket.on('connect_error', (error) =>{ 
+        // Notification("error","Reconnect","Reconnecting failed."); 
+        console.log("connect_error******// server connection failed",error) 
+      });
 
-      socket.on('connect_timeout', (error) =>{ Notification("error","Reconnect","Reconnecting timed out"); console.log("connect_timeout******// server connection failed",error) });
+      socket.on('connect_timeout', (error) =>{ 
+        // Notification("error","Reconnect","Reconnecting timed out"); 
+        console.log("connect_timeout******// server connection failed",error) 
+      });
 
       socket.on('disconnect', (error) =>{  
          console.log("disconnect******// server connection failed== disconnected from server!",error);
          this.props.setIndividualdata([]);
          this.props.setSelecteddevices([]);
-         Notification("error","Disconnect","Disconnected from server");
+         // Notification("error","Disconnect","Disconnected from server");
       });
 
-      socket.on('reconnecting', (error) =>{ Notification("error","Reconnect","Reconnecting to server..."); console.log("reconnecting******// server connection failed",error) });
+      socket.on('reconnecting', (error) =>{ 
+        // Notification("error","Reconnect","Reconnecting to server..."); 
+        console.log("reconnecting******// server connection failed",error) 
+      });
 
-      socket.on('reconnect_failed', (error) =>{ Notification("error","Reconnect","Reconnecting failed"); console.log("reconnect_failed******// server connection failed",error) });
+      socket.on('reconnect_failed', (error) =>{ 
+        // Notification("error","Reconnect","Reconnecting failed"); 
+        console.log("reconnect_failed******// server connection failed",error) 
+      });
 
       socket.on('error', (error) =>{ console.log("error******//received exception from server",error) });
 
       //------error-log------//
 
-      socket.on('exception', (error) =>{ Notification("error","Error","Something wrong with connected to server. Please contact our support."); console.log("exception******//received exception from server",error) });
+      socket.on('exception', (error) =>{ 
+        // Notification("error","Error","Something wrong with connected to server. Please contact our support."); 
+        console.log("exception******//received exception from server",error) 
+      });
       socket.on('unauthorized', (error) =>{ console.log("unauthorized******",error) });
 
       socket.on('cinemaEnabled', (cinemaEnabled,status) =>{ console.log("cinemaEnabled",cinemaEnabled,status) })
 
         socket.on('appList', (appList) =>{ 
+          console.log("logged")
           // console.log("appList",appList)
           // Notification("success","Success","Connected to server successfully");
         })
@@ -85,7 +102,7 @@ class Class extends Component{
 
         })
         socket.on('deviceStateList', (appId, state) =>{ 
-          console.log("deviceStateList",appId, state)
+          // console.log("deviceStateList",appId, state)
           this.setState({dstate:state})
           let arr1=[];
           let arr2=[];
@@ -93,6 +110,7 @@ class Class extends Component{
             arr1.push({id:data,status:Object(state)[data].status,persistentData:Object(state)[data].persistentData})
             arr2.push(data)
           })
+          this.setState({cdevicesids:arr2})
           // console.log("arrayyyyyyyyyyy",arr1)
           if(this.state.dalias){
             Object.keys(this.state.dalias).forEach(data =>{
@@ -162,7 +180,7 @@ class Class extends Component{
           <div className="inner-wrap"> 
               <Sidemenu/>
               <div className="inner-right-wrap">
-                {this.props.classMode.mode=="theater" &&(<ClassTheater socket={this.state.socket}/>)}
+                {this.props.classMode.mode=="theater" &&(<ClassTheater cdevicesids={this.state.cdevicesids} socket={this.state.socket}/>)}
                 {this.props.classMode.mode=="individual" &&(<ClassIndividual socket={this.state.socket}/>)}
               </div>
           </div>
