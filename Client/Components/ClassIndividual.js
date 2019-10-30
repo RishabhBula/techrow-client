@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import {bindActionCreators} from 'redux';
 import { connect } from 'react-redux';
 import axios from 'axios';
-import { Table, Menu, Dropdown, Icon } from 'antd';
+import { Table, Menu, Dropdown, Icon, Badge } from 'antd';
 
 import {setSelecteddevices} from '../../actions/setSelecteddevices';
 
@@ -72,6 +72,11 @@ class ClassIndividual extends Component{
               Play Project
             </a>
           </Menu.Item>
+          <Menu.Item key="pause" disabled={this.props.selectedDevices.length==0 ? true : false}>
+            <a rel="noopener noreferrer">
+              Pause Playback
+            </a>
+          </Menu.Item>
           <Menu.Item key="resume" disabled={this.props.selectedDevices.length==0 ? true : false}>
             <a rel="noopener noreferrer">
               Resume Playback
@@ -82,19 +87,14 @@ class ClassIndividual extends Component{
               Stop Playback
             </a>
           </Menu.Item>
-          <Menu.Item key="cancel" disabled={this.props.selectedDevices.length==0 ? true : false}>
-            <a rel="noopener noreferrer">
-              Stop Download
-            </a>
-          </Menu.Item>
-          <Menu.Item key="pause" disabled={this.props.selectedDevices.length==0 ? true : false}>
-            <a rel="noopener noreferrer">
-              Pause Playback
-            </a>
-          </Menu.Item>
           <Menu.Item key="download" disabled={this.props.selectedDevices.length==0 ? true : false}>
             <a rel="noopener noreferrer">
               Download Project
+            </a>
+          </Menu.Item>
+          <Menu.Item key="cancel" disabled={this.props.selectedDevices.length==0 ? true : false}>
+            <a rel="noopener noreferrer">
+              Stop Download
             </a>
           </Menu.Item>
         </Menu>
@@ -107,7 +107,7 @@ class ClassIndividual extends Component{
         },
         {
           title: 'Status',
-          render: (item) => { return <a>{item.status.name}</a> },
+          render: (item) => { return <a>{item.status.name=='idle'? <Badge color="#B1F543" text="Connected"/> : <Badge color="blue" text={item.status.name}/> }</a> },
         },
       ];
 

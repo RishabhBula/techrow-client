@@ -37,7 +37,7 @@ class ClassTheater extends Component{
   send(event){
     if (event.keyCode == 13 || event.which == 13){
                     if(this.state.message!=""){
-                      if(this.props.selectedDevices.length>0){
+                      if(this.props.cdevicesids.length>0){
                           this.sendmessage(this.state.message); 
                       }else{
                           Notification("error","No Devices Selected","Please select devices to send message.")

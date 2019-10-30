@@ -26,6 +26,7 @@ class Class extends Component{
     this.state = {
       dalias:{},
       dstate:{},
+      cdevicesids:[],
       socket:null
     }
 	}
@@ -94,6 +95,7 @@ class Class extends Component{
             arr1.push({id:data,status:Object(state)[data].status,persistentData:Object(state)[data].persistentData})
             arr2.push(data)
           })
+          this.setState({cdevicesids:arr2})
           // console.log("arrayyyyyyyyyyy",arr1)
           if(this.state.dalias){
             Object.keys(this.state.dalias).forEach(data =>{
@@ -163,7 +165,7 @@ class Class extends Component{
           <div className="inner-wrap"> 
               <Sidemenu/>
               <div className="inner-right-wrap">
-                {this.props.classMode.mode=="theater" &&(<ClassTheater socket={this.state.socket}/>)}
+                {this.props.classMode.mode=="theater" &&(<ClassTheater cdevicesids={this.state.cdevicesids} socket={this.state.socket}/>)}
                 {this.props.classMode.mode=="individual" &&(<ClassIndividual socket={this.state.socket}/>)}
               </div>
           </div>
