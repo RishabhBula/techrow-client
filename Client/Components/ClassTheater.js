@@ -92,8 +92,8 @@ class ClassTheater extends Component{
                 </div>
                 <div className="col-md-12 col-lg-4 col-xl-3" >
                   <div className="message-wrap">
-                    <div style={{display: 'block', textAlign:'center', backgroundColor: '#ebebeb80', borderRadius: '5px', padding: '10px'}}>
-                     <span style={{color: 'white'}}>Broadcast Messages</span>
+                    <div style={{display: 'block', textAlign:'center', backgroundColor: '#ebebeb80', borderRadius: '5px', padding: '15px'}}>
+                     <span style={{color: 'white', fontSize :'18px'}}>Broadcast Messages</span>
                     </div>
                     <div className="message-list" style={{ overflowY: 'scroll' }}>
                     <ScrollView
