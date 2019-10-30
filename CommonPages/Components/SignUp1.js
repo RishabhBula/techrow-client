@@ -40,11 +40,11 @@ class SignUp1 extends Component{
                    <div className="user-type-select">
                    <div className="row">
                       <div className="col-6">
-                        <div className="signin-opt" onClick={() =>{ this.setState({state1:"#B1F543",state2:"#fff",type:"teacher/educator",error:false,errortext:""}); this.props.signupdetails.type="teacher/educator" }}
+                        <div className="signin-opt" onClick={() =>{ this.setState({state1:"#B1F543",state2:"#fff",type:"educator",error:false,errortext:""}); this.props.signupdetails.type="educator" }}
                           style={{borderColor:this.state.state1}}
                         >
                           
-                          <img src={this.props.signupdetails.type=="teacher/educator"?"./images/man-and-tie.png":"./images/man-and-tie-grey.png"} className="img-fluid" alt="study"/>
+                          <img src={this.props.signupdetails.type=="educator"?"./images/man-and-tie.png":"./images/man-and-tie-grey.png"} className="img-fluid" alt="study"/>
                           <h5 >Teacher/Educator</h5>
                           <p>I want to bring Virtual Reality into my classroom/school. I want access to hours of learning contents and well-structured, standards-aligned lesson plan</p>
                         </div>
