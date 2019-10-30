@@ -98,11 +98,11 @@ class Login extends Component{
                             <div className="form">
                               <div className="form-group">
                                 <label>User Name</label>
-                                <input id="email" className="form-control" placeholder="Your username" value={this.state.email} onChange={(e) =>this.setState({email:e.target.value,error:false,errortext:""})}/><br/>
+                                <input id="email" className="form-control" placeholder="Your username" value={this.state.email} onChange={(e) =>this.setState({email:e.target.value,error:false,errortext:""})} onKeyPress={(event) =>{ if(event.keyCode == 13 || event.which == 13){ this.login(this.state.email,this.state.password) } }}/><br/>
                               </div>
                               <div className="form-group">
                                 <label>password</label>
-                                <input id="password" type="password" className="form-control" placeholder="Type your password" value={this.state.password} onChange={(e) =>this.setState({password:e.target.value,error:false,errortext:""})}/><br/>
+                                <input id="password" type="password" className="form-control" placeholder="Type your password" value={this.state.password} onChange={(e) =>this.setState({password:e.target.value,error:false,errortext:""})} onKeyPress={(event) =>{ if(event.keyCode == 13 || event.which == 13){ this.login(this.state.email,this.state.password) } }}/><br/>
                               </div>
                               {this.state.error==true && (<div className="form-group"><span style={{color: 'red'}}>{this.state.errortext}</span></div>)}
                               <div className="form-group">
@@ -121,7 +121,7 @@ class Login extends Component{
                             <div className="form">
                               <div className="form-group">
                                 <label>email</label>
-                                <input id="email" type="email" className="form-control" placeholder="email" value={this.state.email} onChange={(e) =>this.setState({email:e.target.value,error:false,errortext:""})}/><br/>
+                                <input id="email" type="email" className="form-control" placeholder="email" value={this.state.email} onChange={(e) =>this.setState({email:e.target.value,error:false,errortext:""})} onKeyPress={(event) =>{ if(event.keyCode == 13 || event.which == 13){ this.forgot(this.state.email) } }}/><br/>
                               </div>
                               {this.state.error==true && (<div className="form-group"><span style={{color: 'red'}}>{this.state.errortext}</span></div>)}
                               <div className="form-group">
