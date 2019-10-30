@@ -582,7 +582,10 @@ box-shadow: inset 0px -59px 22px -46px rgba(255,255,255,1);}
 	.headset-list{
 		th{background-color: #F1F1F1; border:none ; font-weight: 900; font-family: $opensan; }
 			.ant-table-tbody{background-color: $w; border-radius: 5px; font-family: $opensan; }
+			.ant-checkbox-checked .ant-checkbox-inner{border-color: #b1f543; background-color: #b1f543;}
+			.ant-checkbox-indeterminate .ant-checkbox-inner::after{background-color: #b1f543;}
 			.ant-table-placeholder{background-color: $w; border-radius: 5px; font-family: $opensan; }
+			.ant-checkbox:hover{}
 
 	}
 }
