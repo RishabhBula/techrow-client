@@ -60,7 +60,7 @@ class MarketplaceDiscription extends Component{
   contactAccess(){
     if(this.props.userData.contactContent.some( o => o==this.props.marketDetails.id)){
       console.log("you are already contacted to this content")
-      Notification("error","Already Requested","You are already requested for this content");
+      Notification("error","Already Requested","You are already requested this content");
     }else{
         this.setState({buttonloader:true})
         axios({
@@ -78,7 +78,7 @@ class MarketplaceDiscription extends Component{
                 let update={contactContent:contactcontent}
                 db.collection("users").doc(this.props.userData.id).set(update, { merge: true })
                 this.props.getUserdata(this.props.userData.id)
-                Notification("success","Request sent","You are successfully requested for this content");
+                Notification("success","Request sent","You have successfully requested for this content");
                 this.setState({buttonloader:false})
             }).catch((err) =>{
                 console.log("err-----err-err--->",err.response)
@@ -113,7 +113,7 @@ class MarketplaceDiscription extends Component{
                         <li>Studio<span>{this.props.marketDetails.studioName}</span></li>
                         <li>Producers<span>{this.props.marketDetails.producers.map((item,index,array) => { return ( <text>{item}{array.length!=index+1 && (<text>, </text>) }</text>) })}</span></li>
                         <li>Director<span>{this.props.marketDetails.director}</span></li>
-                        <li>Time<span>{this.convertMS(this.props.marketDetails.duration).hour} hr {this.convertMS(this.props.marketDetails.duration).minute} min</span></li>
+                        <li>Time<span>{this.convertMS(this.props.marketDetails.duration).hour>0 ? `${this.convertMS(this.props.marketDetails.duration).hour} hr` : null } {this.convertMS(this.props.marketDetails.duration).minute} min</span></li>
                       </ul>
                     </div>
                   </div>

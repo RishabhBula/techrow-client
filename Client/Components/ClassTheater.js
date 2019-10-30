@@ -85,7 +85,7 @@ class ClassTheater extends Component{
                         <ul>
                           <li>Studio : <span>{this.props.theaterData.studioName}</span></li>
                           <li>Director : <span>{this.props.theaterData.director}</span></li>
-                          <li>Time : <span>{this.convertMS(this.props.theaterData.duration).hour} hr {this.convertMS(this.props.theaterData.duration).minute} min</span></li>
+                          <li>Time : <span>{this.convertMS(this.props.theaterData.duration).hour>0 ? `${this.convertMS(this.props.theaterData.duration).hour} hr` : null } {this.convertMS(this.props.theaterData.duration).minute} min</span></li>
                         </ul>
                     </div>
                   </div>
