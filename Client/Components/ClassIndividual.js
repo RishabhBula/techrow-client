@@ -117,7 +117,7 @@ class ClassIndividual extends Component{
       };
 
       return(
-         <div className="dashboard animated fadeIn">
+         <div className="dashboard individual-mode animated fadeIn">
             <div className="row" style={{textAlign: 'right', padding: '30px', display: 'block' }}>
               <Dropdown overlay={menu} trigger={['click']}>
                 <a className="ant-dropdown-link" href="#">
@@ -125,15 +125,13 @@ class ClassIndividual extends Component{
                 </a>
               </Dropdown>
             </div>
-            <div className="row">
-                <div className="col-md-12">
-                    <Table locale={{ emptyText: ( <span>Waiting for first device to connect.</span> ) }}
-                      rowKey={(item) => { return item.id }} 
-                      rowSelection={rowSelection}
-                      columns={columns} 
-                      pagination={{ hideOnSinglePage: true,pageSize: 20 }}
-                      dataSource={this.props.individualData} />
-                </div>
+            <div className="headset-list">
+              <Table locale={{ emptyText: ( <span>Waiting for first device to connect.</span> ) }}
+                rowKey={(item) => { return item.id }} 
+                rowSelection={rowSelection}
+                columns={columns} 
+                pagination={{ hideOnSinglePage: true,pageSize: 20 }}
+                dataSource={this.props.individualData} />
             </div>
          </div>
       );
