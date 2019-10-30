@@ -60,8 +60,18 @@ app.post('/send', (req, res) => {
 
         return transporter.sendMail(mailOptions, (erro, info) => {
             if(erro){
-                return res.send(erro.toString());
+                console.log("erro",erro)
+                return res.status(400).send(erro.toString());
             }
+            console.log("info",info)
+            // let contactcontent=req.body.userData.contactContent;
+            // contactcontent.find((o,i) =>{
+            //   if(o.id==req.body.contentdetails.id){
+
+            //   }else{
+                
+            //   }
+            // })
             return res.send('Sended');
         });
       
