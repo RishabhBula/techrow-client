@@ -28,7 +28,8 @@ class Class extends Component{
       dalias:{},
       dstate:{},
       cdevicesids:[],
-      socket:null
+      socket:null,
+      playerState:0
     }
 	}
 
@@ -168,6 +169,10 @@ class Class extends Component{
 
 
   }
+  playerStatechange(count){
+    console.log("count",count)
+    this.setState({playerState:count})
+  }
 
   async getDetails(){
     try {
@@ -183,9 +188,9 @@ class Class extends Component{
       return(
         <div className="full-page">
           <div className="inner-wrap"> 
-              <Sidemenu/>
+              <Sidemenu playerState={this.state.playerState}/>
               <div className="inner-right-wrap">
-                {this.props.classMode.mode=="theater" &&(<ClassTheater cdevicesids={this.state.cdevicesids} socket={this.state.socket}/>)}
+                {this.props.classMode.mode=="theater" &&(<ClassTheater playerStatechange={this.playerStatechange.bind(this)} playerState={this.state.playerState} cdevicesids={this.state.cdevicesids} socket={this.state.socket}/>)}
                 {this.props.classMode.mode=="individual" &&(<ClassIndividual socket={this.state.socket}/>)}
               </div>
           </div>

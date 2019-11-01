@@ -56,21 +56,21 @@ class _SplitFieldsForm extends Component{
     // https://us-central1-techrow-platform.cloudfunctions.net/paynow/charge
     if(this.props.stripe){
         this.props.stripe.createToken()
-                         .then(async (response) =>{
+                         .then((response) =>{
                                 console.log("stripe======response",response,this.props)
                                 if(response.token!=undefined){
                                     this.setState({buttonstate:true})
 
-                                    // axios({
-                                    //   method:"POST",
-                                    //   url:'http://localhost:4001/charge',
-                                    //   data:{
-                                    //     cardToken:response.token.id,
-                                    //     email:this.props.userData.email,
-                                    //     additional:Number(this.props.orderdetails.ordercount)
-                                    //   }
-                                    // }).then(async (res) =>{
-                                    //     console.log("-----response from server--->",res.data)
+                                    axios({
+                                      method:"POST",
+                                      url:'http://localhost:5001/charge',
+                                      data:{
+                                        cardToken:response.token.id,
+                                        email:this.props.userData.email,
+                                        additional:Number(this.props.orderdetails.ordercount)
+                                      }
+                                    }).then(async (res) =>{
+                                        console.log("-----response from server--->",res.data)
                                           try{
                                                 let headSetBundleCount=1;
                                                 let headSetBundlePrice=850;
@@ -120,7 +120,7 @@ class _SplitFieldsForm extends Component{
                                                                        },
                                                     stripePaymentInfo:{
                                                                         cardToken:response.token.id,
-                                                                        // successDetails:res.data
+                                                                        successDetails:res.data
                                                                       }
                                                 }
 
@@ -144,10 +144,10 @@ class _SplitFieldsForm extends Component{
                                                 this.setState({buttonstate:false})
                                              }
 
-                                    // }).catch((err) =>{
-                                    //     console.log("err-----err-err--->",err)
-                                    //     this.setState({buttonstate:false})
-                                    // })
+                                    }).catch((err) =>{
+                                        console.log("err-----err-err--->",err)
+                                        this.setState({buttonstate:false})
+                                    })
 
                                 }
                                 if(response.error!=undefined){
@@ -260,7 +260,7 @@ const SplitFieldsForm = injectStripe(_SplitFieldsForm);
 class OrderBundle3 extends Component {
   render() {
     return (
-      <StripeProvider apiKey="pk_test_OabmVXdgp2Rb17rmMJXtBhHP007xwDqW5c">
+      <StripeProvider apiKey="pk_test_3cm5TpbHpNtHkYSLTxwwrZiN00z0pDqLFP">
         <Elements>
           <SplitFieldsForm userData={this.props.userData} orderdetails={this.props.orderdetails} pageRender={this.props.pageRender}/>
         </Elements>

@@ -34,9 +34,9 @@ class ClassTheater extends Component{
          console.log("controller===controller",controller)
          controller.receiveMessage(window, 'started', (type, data, iframe) =>{ 
           console.log("====type, data, iframe====",type, data, iframe) 
-          if(this.state.playerState==0){
+          if(this.props.playerState==0){
           this.props.socket.emit('sendAction', this.props.userData.headJackCredentials.appId, this.props.userData.headJackCredentials.authId, this.props.cdevicesids, 'play', [this.props.theaterData.headjackProjectId])
-          this.setState({playerState:this.state.playerState+1})
+          this.props.playerStatechange(this.props.playerState+1);
           }else{
             this.props.socket.emit('sendAction', this.props.userData.headJackCredentials.appId, this.props.userData.headJackCredentials.authId, this.props.cdevicesids, 'resume', []);
           }
@@ -50,6 +50,7 @@ class ClassTheater extends Component{
          controller.receiveMessage(window, 'ended', (type, data, iframe) =>{ 
           console.log("====type, data, iframe====",type, data, iframe) 
           this.props.socket.emit('sendAction', this.props.userData.headJackCredentials.appId, this.props.userData.headJackCredentials.authId, this.props.cdevicesids, 'stop', []);
+          this.props.playerStatechange(0);
         });
 
       
@@ -61,7 +62,7 @@ class ClassTheater extends Component{
     this.props.socket.emit('sendAction', this.props.userData.headJackCredentials.appId, this.props.userData.headJackCredentials.authId, this.props.cdevicesids, 'stop', []);
     controller.sendMessage('seek', 0.0, player);
     controller.sendMessage('pause', null, player);
-    this.setState({playerState:0})
+    this.props.playerStatechange(0);
   }
 
   // onSelectChange(selectedRowKeys, selectedRows){

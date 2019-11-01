@@ -34,7 +34,7 @@ class Sidemenu extends Component{
               <div className="sidemenu-group">
                 <a className="backtomylibrary" href="#/"> <img src="/images/back-angle.png" className="img-fluid"/> My Library</a>
                 <div className="my-library-modes">
-                  <a className={this.props.classMode.mode=="individual" ? "ative": "" } onClick={() => { this.togglemenu("individual") }}><img src="/images/individual-icon.png" className="img-fluid" /><img src="/images/individual-icon-green.png" className="img-fluid" />Individual Mode</a>
+                  <a className={this.props.classMode.mode=="individual" ? "ative": "" } onClick={() => { if(this.props.playerState==0){this.togglemenu("individual")}else{ if(window.confirm("video section not ended are you sure you to want to move?")){ this.togglemenu("individual") }else{  } } }}><img src="/images/individual-icon.png" className="img-fluid" /><img src="/images/individual-icon-green.png" className="img-fluid" />Individual Mode</a>
                   <a className={this.props.classMode.mode=="theater" ? "ative": "" } onClick={() => { this.togglemenu("theater") }}><img src="/images/classroom-wt.png" className="img-fluid" /><img src="/images/classroom-green.png" className="img-fluid" />Theater</a>
                 </div>
               </div>
