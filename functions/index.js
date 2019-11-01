@@ -2,7 +2,7 @@ const functions = require('firebase-functions');
 const admin = require('firebase-admin');
 admin.initializeApp();
 
-const stripe = require("stripe")("sk_test_ZffCuayqkzcEjSZnDOY1rB7800ZYiGzkf3");
+const stripe = require("stripe")("sk_test_M4SfuTn0km5hcWAZfdIl8ibc00Y2UZjKjr");
 const express = require('express');
 const cors = require('cors');
 const app = express();
@@ -12,24 +12,35 @@ app.use(cors({ origin: true }));
 app.post('/charge', (req, res) => {
       console.log("req.method",req.method)
       console.log("req.body",req.body)
-      let amount = 1;
+      // let amount = 1;
+      let headSetBundleCount=1;
+      let headSetBundlePrice=850;
+      let totalBundleCost=headSetBundleCount*headSetBundlePrice;
+      let additionalHeadSetCount=req.body.additional;
+      let additionalHeadSetPrice=150;
+      let totalAdditionalHeadSetCost=additionalHeadSetCount*additionalHeadSetPrice;
+      let orderTotalAmount=(totalBundleCost+totalAdditionalHeadSetCost)*100;
 
-		  stripe.customers.create({
-		    email: "harikrishnan@hubspire.com",
-		    card: req.body.cardToken
-		  })
-		  .then(customer =>
-		    stripe.charges.create({
-		      amount,
-		      description: "Sample Charge",
-		      currency: "usd",
-		      customer: customer.id
-		    }))
-		  .then(charge => res.send(charge))
-		  .catch(err => {
-		    console.log("Error:", err);
-		    res.status(500).send({error: "Purchase Failed"});
-		  });
+	  console.log("amount",orderTotalAmount)
+
+      stripe.customers.create({
+        email: req.body.email,
+        card: req.body.cardToken
+      })
+      .then((customer) =>{
+          stripe.charges.create({
+            amount:orderTotalAmount,
+            description: "Sample Charge",
+            currency: "usd",
+            customer: customer.id
+          })
+          .then((charge) => {res.send(charge) })
+          .catch((err) =>{ console.log("Error2:", err); res.status(500).send({error: "Purchase charge Failed"}); })
+      })
+      .catch((err) => {
+        console.log("Error:", err);
+        res.status(500).send({error: "customer creation Failed"});
+      });
       // res.send(req.body)
 });
 

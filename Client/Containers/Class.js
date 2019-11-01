@@ -15,6 +15,7 @@ import {setClassMode} from '../../actions/setClassMode';
 import {setTheaterdata} from '../../actions/setTheaterdata';
 import {setIndividualdata} from '../../actions/setIndividualdata';
 import {setSelecteddevices} from '../../actions/setSelecteddevices';
+import {setSelecteddevicestheater} from '../../actions/setSelecteddevicestheater';
 
 import {Notification} from '../../CommonPages/Components/Notification';
 import ClassTheater from '../Components/ClassTheater';
@@ -155,6 +156,10 @@ class Class extends Component{
             console.log("result",result)
             this.props.setSelecteddevices(result)
 
+            const result2 = this.props.selectedDevicestheater.filter(word => arr2.includes(word));
+            console.log("result",result)
+            this.props.setSelecteddevicestheater(result2)
+
           }
 
           //------removing selected array from refreshed list----//
@@ -196,10 +201,11 @@ function mapStateToProps(state){
     userData:state.userData,
     classMode:state.classMode,
     individualData:state.individualData.individualdata,
-    selectedDevices:state.selectedDevices.selecteddevices
+    selectedDevices:state.selectedDevices.selecteddevices,
+    selectedDevicestheater:state.selectedDevicestheater.selecteddevicestheater
   };
 }
 function matchDispatchToProps(dispatch){
-  return bindActionCreators({ setClassMode:setClassMode, setTheaterdata:setTheaterdata, setIndividualdata:setIndividualdata, setSelecteddevices:setSelecteddevices }, dispatch);
+  return bindActionCreators({ setClassMode:setClassMode, setTheaterdata:setTheaterdata, setIndividualdata:setIndividualdata, setSelecteddevices:setSelecteddevices, setSelecteddevicestheater:setSelecteddevicestheater }, dispatch);
 }
 export default connect(mapStateToProps, matchDispatchToProps)(Class);

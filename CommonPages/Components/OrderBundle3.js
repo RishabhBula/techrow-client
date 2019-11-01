@@ -260,7 +260,7 @@ const SplitFieldsForm = injectStripe(_SplitFieldsForm);
 class OrderBundle3 extends Component {
   render() {
     return (
-      <StripeProvider apiKey="pk_test_3cm5TpbHpNtHkYSLTxwwrZiN00z0pDqLFP">
+      <StripeProvider apiKey="pk_test_OabmVXdgp2Rb17rmMJXtBhHP007xwDqW5c">
         <Elements>
           <SplitFieldsForm userData={this.props.userData} orderdetails={this.props.orderdetails} pageRender={this.props.pageRender}/>
         </Elements>
