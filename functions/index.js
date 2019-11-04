@@ -25,14 +25,17 @@ app.post('/charge', (req, res) => {
 
       stripe.customers.create({
         email: req.body.email,
-        card: req.body.cardToken
+        card: req.body.cardToken,
+        name: req.body.name,
+        shipping: req.body.shipping,
       })
       .then((customer) =>{
           stripe.charges.create({
             amount:orderTotalAmount,
-            description: "Sample Charge",
+            description: "Bundle Charge",
             currency: "usd",
-            customer: customer.id
+            customer: customer.id,
+            receipt_email: req.body.email,
           })
           .then((charge) => {res.send(charge) })
           .catch((err) =>{ console.log("Error2:", err); res.status(500).send({error: "Purchase charge Failed"}); })

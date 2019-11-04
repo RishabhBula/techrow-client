@@ -56,17 +56,26 @@ class _SplitFieldsForm extends Component{
     // https://us-central1-techrow-platform.cloudfunctions.net/paynow/charge
     if(this.props.stripe){
         this.props.stripe.createToken()
-                         .then((response) =>{
+                         .then( async(response) =>{
                                 console.log("stripe======response",response,this.props)
                                 if(response.token!=undefined){
                                     this.setState({buttonstate:true})
 
                                     axios({
                                       method:"POST",
-                                      url:'http://localhost:5001/charge',
+                                      url:'https://us-central1-techrow-platform.cloudfunctions.net/paynow/charge',
                                       data:{
                                         cardToken:response.token.id,
                                         email:this.props.userData.email,
+                                        name:this.props.userData.firstName+' '+this.props.userData.lastName,
+                                        shipping:{address:{
+                                                    line1:this.props.orderdetails.saddress,
+                                                    city:this.props.orderdetails.scity,
+                                                    state:this.props.orderdetails.sstate,
+                                                    postal_code:this.props.orderdetails.szipcode
+                                                  },
+                                                  name:this.props.orderdetails.sname,
+                                                 },
                                         additional:Number(this.props.orderdetails.ordercount)
                                       }
                                     }).then(async (res) =>{
@@ -135,7 +144,7 @@ class _SplitFieldsForm extends Component{
                                                 let update={myOrders:orderArray,deafultShippingInformation:orderObj.shippingInformation}
                                                 await db.collection("users").doc(userId).set(update, { merge: true })
 
-                                                Notification("success","cardToken generated",response.token.id)
+                                                Notification("success","Successfull","Payment successfully completed")
                                                 this.props.pageRender(4)
                                                 this.setState({buttonstate:false})
                                              }
@@ -147,6 +156,7 @@ class _SplitFieldsForm extends Component{
                                     }).catch((err) =>{
                                         console.log("err-----err-err--->",err)
                                         this.setState({buttonstate:false})
+                                        Notification("error","Failed","Payment Failed")
                                     })
 
                                 }
@@ -260,7 +270,7 @@ const SplitFieldsForm = injectStripe(_SplitFieldsForm);
 class OrderBundle3 extends Component {
   render() {
     return (
-      <StripeProvider apiKey="pk_test_3cm5TpbHpNtHkYSLTxwwrZiN00z0pDqLFP">
+      <StripeProvider apiKey="pk_test_OabmVXdgp2Rb17rmMJXtBhHP007xwDqW5c">
         <Elements>
           <SplitFieldsForm userData={this.props.userData} orderdetails={this.props.orderdetails} pageRender={this.props.pageRender}/>
         </Elements>
