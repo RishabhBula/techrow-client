@@ -15,6 +15,7 @@ import {setClassMode} from '../../actions/setClassMode';
 import {setTheaterdata} from '../../actions/setTheaterdata';
 import {setIndividualdata} from '../../actions/setIndividualdata';
 import {setSelecteddevices} from '../../actions/setSelecteddevices';
+import {setSelecteddevicestheater} from '../../actions/setSelecteddevicestheater';
 
 import {Notification} from '../../CommonPages/Components/Notification';
 import ClassTheater from '../Components/ClassTheater';
@@ -27,7 +28,8 @@ class Class extends Component{
       dalias:{},
       dstate:{},
       cdevicesids:[],
-      socket:null
+      socket:null,
+      playerState:0
     }
 	}
 
@@ -155,6 +157,10 @@ class Class extends Component{
             console.log("result",result)
             this.props.setSelecteddevices(result)
 
+            const result2 = this.props.selectedDevicestheater.filter(word => arr2.includes(word));
+            console.log("result",result)
+            this.props.setSelecteddevicestheater(result2)
+
           }
 
           //------removing selected array from refreshed list----//
@@ -162,6 +168,10 @@ class Class extends Component{
         })
 
 
+  }
+  playerStatechange(count){
+    console.log("count",count)
+    this.setState({playerState:count})
   }
 
   async getDetails(){
@@ -178,9 +188,9 @@ class Class extends Component{
       return(
         <div className="full-page">
           <div className="inner-wrap"> 
-              <Sidemenu/>
+              <Sidemenu playerState={this.state.playerState}/>
               <div className="inner-right-wrap">
-                {this.props.classMode.mode=="theater" &&(<ClassTheater cdevicesids={this.state.cdevicesids} socket={this.state.socket}/>)}
+                {this.props.classMode.mode=="theater" &&(<ClassTheater playerStatechange={this.playerStatechange.bind(this)} playerState={this.state.playerState} cdevicesids={this.state.cdevicesids} socket={this.state.socket}/>)}
                 {this.props.classMode.mode=="individual" &&(<ClassIndividual socket={this.state.socket}/>)}
               </div>
           </div>
@@ -196,10 +206,11 @@ function mapStateToProps(state){
     userData:state.userData,
     classMode:state.classMode,
     individualData:state.individualData.individualdata,
-    selectedDevices:state.selectedDevices.selecteddevices
+    selectedDevices:state.selectedDevices.selecteddevices,
+    selectedDevicestheater:state.selectedDevicestheater.selecteddevicestheater
   };
 }
 function matchDispatchToProps(dispatch){
-  return bindActionCreators({ setClassMode:setClassMode, setTheaterdata:setTheaterdata, setIndividualdata:setIndividualdata, setSelecteddevices:setSelecteddevices }, dispatch);
+  return bindActionCreators({ setClassMode:setClassMode, setTheaterdata:setTheaterdata, setIndividualdata:setIndividualdata, setSelecteddevices:setSelecteddevices, setSelecteddevicestheater:setSelecteddevicestheater }, dispatch);
 }
 export default connect(mapStateToProps, matchDispatchToProps)(Class);

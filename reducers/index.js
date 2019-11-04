@@ -17,6 +17,7 @@ import myLibraryquery from './myLibraryquery';
 import theaterData from './theaterData';
 import individualData from './individualData';
 import selectedDevices from './selectedDevices';
+import selectedDevicestheater from './selectedDevicestheater';
 const allReducers = combineReducers({
 	app: app,
 	auth:authentication,
@@ -34,7 +35,8 @@ const allReducers = combineReducers({
 	myLibraryquery:myLibraryquery,
 	theaterData:theaterData,
 	individualData:individualData,
-	selectedDevices:selectedDevices
+	selectedDevices:selectedDevices,
+	selectedDevicestheater:selectedDevicestheater
 });
 
 export default allReducers

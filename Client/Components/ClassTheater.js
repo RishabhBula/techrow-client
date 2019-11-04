@@ -2,16 +2,20 @@ import React, { Component } from 'react';
 import {bindActionCreators} from 'redux';
 import { connect } from 'react-redux';
 import axios from 'axios';
+import { Table, Menu, Dropdown, Icon, Badge } from 'antd';
 var moment = require('moment');
 import ScrollView from 'react-inverted-scrollview';
 
 import {Notification} from '../../CommonPages/Components/Notification';
+import {setSelecteddevicestheater} from '../../actions/setSelecteddevicestheater';
 
 class ClassTheater extends Component{
 	constructor(props){
 		super(props);
     this.state = {
-      message:""
+      message:"",
+      playerState:0,
+      selecteddevices:[],
     }
 	}
   
@@ -24,6 +28,48 @@ class ClassTheater extends Component{
         sessionStorage.setItem("chats", JSON.stringify([]));
       }
   }
+
+  componentDidMount(){
+         const controller = OmniVirt.api;
+         console.log("controller===controller",controller)
+         controller.receiveMessage(window, 'started', (type, data, iframe) =>{ 
+          console.log("====type, data, iframe====",type, data, iframe) 
+          if(this.props.playerState==0){
+          this.props.socket.emit('sendAction', this.props.userData.headJackCredentials.appId, this.props.userData.headJackCredentials.authId, this.props.cdevicesids, 'play', [this.props.theaterData.headjackProjectId])
+          this.props.playerStatechange(this.props.playerState+1);
+          }else{
+            this.props.socket.emit('sendAction', this.props.userData.headJackCredentials.appId, this.props.userData.headJackCredentials.authId, this.props.cdevicesids, 'resume', []);
+          }
+        });
+
+         controller.receiveMessage(window, 'paused', (type, data, iframe) =>{ 
+          console.log("====type, data, iframe====",type, data, iframe) 
+          this.props.socket.emit('sendAction', this.props.userData.headJackCredentials.appId, this.props.userData.headJackCredentials.authId, this.props.cdevicesids, 'pause', []);
+        });
+
+         controller.receiveMessage(window, 'ended', (type, data, iframe) =>{ 
+          console.log("====type, data, iframe====",type, data, iframe) 
+          this.props.socket.emit('sendAction', this.props.userData.headJackCredentials.appId, this.props.userData.headJackCredentials.authId, this.props.cdevicesids, 'stop', []);
+          this.props.playerStatechange(0);
+        });
+
+      
+  }
+
+  stop(){
+    const controller = OmniVirt.api;
+    const player = document.getElementById(this.props.theaterData.previewUrlID);
+    this.props.socket.emit('sendAction', this.props.userData.headJackCredentials.appId, this.props.userData.headJackCredentials.authId, this.props.cdevicesids, 'stop', []);
+    controller.sendMessage('seek', 0.0, player);
+    controller.sendMessage('pause', null, player);
+    this.props.playerStatechange(0);
+  }
+
+  // onSelectChange(selectedRowKeys, selectedRows){
+  //    console.log("selectedRowKeys, selectedRows",selectedRowKeys, selectedRows)
+  //    this.setState({selecteddevices:selectedRowKeys});
+  //    this.props.setSelecteddevicestheater(selectedRowKeys)
+  // }
 
   sendmessage(msgtext){
       // const socket = io('https://cinema.headjack.io/', {transports: ['polling'], upgrade: false});
@@ -65,14 +111,33 @@ class ClassTheater extends Component{
 
   render(){
       // console.log("this.props++++====++++++",this.props)
+      const columns = [
+        {
+          title: 'Name',
+          render: (item) => { return <a>{item.persistentData.deviceModel}</a> },
+        },
+        {
+          title: 'Status',
+          render: (item) => { return <a>{item.status.name=='idle'? <Badge color="#B1F543" text="Connected"/> : <Badge color="blue" text={item.status.name}/> }</a> },
+        },
+      ];
+
+      // const rowSelection = {
+      //       selectedRowKeys:this.props.selectedDevicestheater,
+      //       onChange: this.onSelectChange.bind(this),
+      // };
       return(
          <div className="dashboard animated fadeIn theaterMode">
             <div className="row">
                 <div className="col-md-12 col-lg-8 col-xl-9">
                   <div className="theaterModeData">
                     <div className="theaterVideo">
-                      <iframe id="player" src={this.props.theaterData.previewUrl} frameBorder="0" allow="fullscreen" allowFullScreen > </iframe>
+
+                      <iframe id={this.props.theaterData.previewUrlID} src={this.props.theaterData.previewUrl+"?player=true&autoplay=false"} frameBorder="0" width="1280" height="720" webkitallowfullscreen="1" mozallowfullscreen="1" allowFullScreen="1"></iframe>
+
+                      {/*<iframe id="player" src={this.props.theaterData.previewUrl} frameBorder="0" allow="fullscreen" allowFullScreen > </iframe>*/}
                     </div>
+                    <button onClick={() =>{ this.stop() }}>stop</button>
                     <div className="discription">
                       <p>{this.props.theaterData.description}</p>
                     </div>
@@ -85,7 +150,7 @@ class ClassTheater extends Component{
                         <ul>
                           <li>Studio : <span>{this.props.theaterData.studioName}</span></li>
                           <li>Director : <span>{this.props.theaterData.director}</span></li>
-                          <li>Time : <span>{this.convertMS(this.props.theaterData.duration).hour} hr {this.convertMS(this.props.theaterData.duration).minute} min</span></li>
+                          <li>Time : <span>{this.convertMS(this.props.theaterData.duration).hour>0 ? `${this.convertMS(this.props.theaterData.duration).hour} hr` : null } {this.convertMS(this.props.theaterData.duration).minute} min</span></li>
                         </ul>
                     </div>
                   </div>
@@ -120,6 +185,13 @@ class ClassTheater extends Component{
                   </div>
                 </div>
             </div>
+            <div className="headset-list" style={{paddingTop: '20px'}}>
+              <Table locale={{ emptyText: ( <span>Waiting for first device to connect.</span> ) }}
+                rowKey={(item) => { return item.id }} 
+                columns={columns} 
+                pagination={{ hideOnSinglePage: true,pageSize: 20 }}
+                dataSource={this.props.individualData} />
+            </div>
          </div>
       );
    }
@@ -131,10 +203,11 @@ function mapStateToProps(state){
     individualData:state.individualData.individualdata,
     theaterData:state.theaterData.theaterdata,
     userData:state.userData,
-    selectedDevices:state.selectedDevices.selecteddevices
+    selectedDevices:state.selectedDevices.selecteddevices,
+    selectedDevicestheater:state.selectedDevicestheater.selecteddevicestheater
   };
 }
 function matchDispatchToProps(dispatch){
-  return bindActionCreators({  }, dispatch);
+  return bindActionCreators({ setSelecteddevicestheater:setSelecteddevicestheater }, dispatch);
 }
 export default connect(mapStateToProps, matchDispatchToProps)(ClassTheater);
