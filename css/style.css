@@ -1579,6 +1579,12 @@ footer {
         width: 100px; }
       footer .footer-content .social-links a img {
         height: 20px; }
+  .features-page {
+    padding-top: 50px; }
+  .cnt-area-lft h2 {
+    text-align: center;
+    display: block;
+    width: 100%; }
   .inner-wrap {
     padding-top: 50px; }
     .inner-wrap .inner-blue-menu {
