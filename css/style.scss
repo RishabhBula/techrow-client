@@ -231,7 +231,15 @@ footer{padding: 40px 0;
 	}
 }
 // ----------------HOME----------------
+// ---------------- features ----------------
 
+.features-page{padding-top: 85px;
+	.about-this{background-color: #EFEFF1;margin-bottom: 10px;
+		&.banner{background-color: #E2E0E4;}
+		.cnt-area{background:none}
+	}
+}
+// ---------------- features ----------------
 
 .inner-wrap{padding-top: 85px; min-height: 100vh;background-color: $grey;
 	.inner-blue-menu{background-color: $blue; width: 300px; position: fixed;left: 0; bottom: 0; top:85px;padding: 60px 0; text-align: center; display: flex;    justify-content: space-between; flex-direction: column; align-items: center;
@@ -726,6 +734,9 @@ box-shadow: inset 0px -59px 22px -46px rgba(255,255,255,1);}
 		}
 	}
 // ----------------HOME----------------
+
+
+.features-page{padding-top: 65px;}
 
 // ----------------Login----------------
 

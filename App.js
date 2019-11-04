@@ -15,6 +15,8 @@ const antIcon = <Icon type="loading" style={{ fontSize: 24 }} spin />;
 
 import {getAuthentication} from './actions/authentication'
 import Home from './CommonPages/Containers/Home';
+import Features from './CommonPages/Containers/Features';
+
 import Login from './CommonPages/Containers/Login';
 import SignUp from './CommonPages/Containers/SignUp';
 import OrderBundle from './CommonPages/Containers/OrderBundle';
@@ -86,6 +88,7 @@ class App extends Component{
               <div>
                  <Header/>
                  <Route exact path="/" component={Dashboard} />
+                 <Route exact path="/features" component={Features} />
            			 <Route exact path="/class/:id/:mode" component={Class} />
                  <Route exact path="/marketplace" component={Marketplace} />
                  <Route exact path="/marketplace/:id" component={MarketplaceDiscription} />
@@ -96,6 +99,7 @@ class App extends Component{
    		route=(
    				<div>
    					<Route exact path="/" component={Home} />
+            <Route exact path="/features" component={Features} />
             <Route exact path="/login" component={Login} />
             <Route exact path="/signup" component={SignUp} />
             <Route exact path="/redirect" component={Redirect} />

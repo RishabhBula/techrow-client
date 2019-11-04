@@ -23,13 +23,13 @@ class Home extends Component{
            <HomeHeader/>
             <section className="home-banner">
               <div className="container">
-                <h1>The Power of Immersive Technology</h1>
+                <h1>Unleashing the Immersive Learning Movement</h1>
               </div>
             </section>
             <section className="banner-bottom">
               <div className="container">
                 <h2>We are a movement...</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer eu efficitur est. Suspendisse eget est rutrum, venenatis velit quis, dignissim ex. Mauris elementum nibh semper elit volutpat, et</p>
+                <p>Virtual Reality transforms the learning experience by bringing anything you can imagine into the classroom. From exploring solar systems to standing in the middle of the Amazon Rainforest, students can now engage in learning like never before within minutes.</p>
               </div>
             </section>
             <section className="about-this">
@@ -37,7 +37,7 @@ class Home extends Component{
                 <div className="row">
                   <div className="col-md-6 cnt-area-lft">
                     <h2><span>Unlock</span>the Power of Immersive Technology</h2>
-                    <p>Experience the ultimate Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor. incididunt ut labore et dolore magna aliqua. Ut enim</p>
+                    <p>Our unique education solution enables teachers to empower the student with award winning immersive content coupled with the right tools</p>
                     <a href="#">View TECHROW Features →</a>
                     
                   </div>
@@ -49,7 +49,8 @@ class Home extends Component{
             </section>
             <section className="techrow-platform">
               <div className="container">
-                <h4><img src="../images/logo-grey.png" className="img-fluid logo"/>Platform</h4>
+                <h4>
+                Renaissance Platform</h4>
                 <div className="techrow-works">
                   <img src="../images/techrow-platform.png" className="img-fluid"/>
                 </div>
@@ -61,10 +62,10 @@ class Home extends Component{
                 <img src="../images/how-it-works.png" className="img-fluid how-it-works"/>
                 <div className="row">
                   <div className="col-md-6">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magnaaliqua. Ut enim adaes aminim veniam, quis </p>
+                    <p>School subscribes to a world of immersive educational content and educator tools</p>
                   </div>
                   <div className="col-md-6">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magnaaliqua. Ut enim adaes aminim veniam, quis </p>
+                    <p>Educational content and tools are delivered on a high-powered virtual reality headset</p>
                   </div>
                 </div>
                 <h2>What You Get</h2>
@@ -72,19 +73,19 @@ class Home extends Component{
                   <div className="col-md-4">
                     <div className="works-types">
                       <h3 style={{color:'#F58221'}}>Marketplace</h3>
-                      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim adaes aminim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat </p>
+                      <p>Teachers can explore an entire marketplace of immersive content right at their fingertips categorized by subject to compliment curriculum</p>
                     </div>
                   </div>
                   <div className="col-md-4">
                     <div className="works-types">
                       <h3 style={{color:'#B0F542'}}>Experiences</h3>
-                      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim adaes aminim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat </p>
+                      <p>Students discover the world through immersive technology experiences improving the overall learning experience</p>
                     </div>
                   </div>
                   <div className="col-md-4">
                     <div className="works-types">
                       <h3 style={{color:'#FFF200'}}>Headset</h3>
-                      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim adaes aminim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat </p>
+                      <p>Cutting-edge, yet simple to use VR headset built for the needs of today’s classrooms and teachers.</p>
                     </div>
                   </div>
                 </div>
@@ -94,7 +95,7 @@ class Home extends Component{
                 </div>
               </div>
             </section>
-            <section className="testimonials">
+            <section className="testimonials d-none">
               <div className="container">
               <h2>Testimonials</h2>
                 <div className="row">

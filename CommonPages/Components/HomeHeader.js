@@ -29,8 +29,9 @@ class HomeHeader extends Component{
                   <div className={this.state.menuClass?'openMenu head-right':'head-right'}>
                     <ul>
                       <li><a  href="#">About</a></li>
-                      <li><a  href="#">Features</a></li>
+                      <li><a  href="/features">Features</a></li>
                       <li><a  href="#">Contact</a></li>
+                      <li><a  href="http://www.techrowfund.org" target="_blank">TechRow Fund</a></li>
                     </ul>
                     <ul>
                       <li className="login"> <a href="#/login">Login</a></li>
