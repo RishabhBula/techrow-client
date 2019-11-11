@@ -36,24 +36,41 @@ class Login extends Component{
       if(this.state.email=="" || this.state.password==""){
         this.setState({error:true,errortext:"Please fill in all fields to continue"})
       }else{
-        firebase.auth().signInWithEmailAndPassword(email.trim().toLocaleLowerCase(), password.trim())
-                .then((res) =>{
-                  // console.log("====login",res)
-                  this.props.getAuthentication();
-                  window.location.href="#/";
+                
+                const db=firebase.firestore()
+                db.collection('users').where("email","==",this.state.email).get()
+                .then((querySnapshot) => {
+                    if (querySnapshot.size>0) {
+                          if(querySnapshot.docs[0].data().status){
+                              firebase.auth().signInWithEmailAndPassword(email.trim().toLocaleLowerCase(), password.trim())
+                              .then((res) =>{
+                                // console.log("====login",res)
+                                this.props.getAuthentication();
+                                window.location.href="#/";
+                              })
+                              .catch((error) =>{
+                                // Handle Errors here.
+                                console.log("====error",error)
+                                var errorCode = error.code;
+                                var errorMessage = error.message;
+                                if(error.code=="auth/wrong-password"){
+                                  Notification("error","Login Failed","Email and password do not match.")
+                                }else{
+                                  Notification("error",error.code.split("/")[1],error.message)
+                                }
+                                // ...
+                              })
+                          }else{
+                              Notification("error","Deactivated","Your account has been deactivated by admin")
+                          }
+                    }else{
+                        Notification("error","User Not Found","There is no user record corresponding to this identifier")
+                    }
                 })
-                .catch((error) =>{
-                  // Handle Errors here.
-                  console.log("====error",error)
-                  var errorCode = error.code;
-                  var errorMessage = error.message;
-                  if(error.code=="auth/wrong-password"){
-                    Notification("error","Login Failed","Email and password do not match.")
-                  }else{
-                    Notification("error",error.code.split("/")[1],error.message)
-                  }
-                  // ...
-                })
+                .catch((error) => {
+                    console.log("Error getting documents: ", error);
+                });
+
       }
       
   }
