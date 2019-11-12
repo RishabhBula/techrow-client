@@ -41,8 +41,8 @@ class MyLibrary extends Component{
       try {
           if(this.props.myLibrary.mylibrary.length==0){ this.setState({loading:true}) }
           let myLibrary =[];
-          // let library = await firebase.firestore().collection('users').doc(this.props.auth.authData.uid).collection('myLibrary').get()
-          let library = await firebase.firestore().collection('contents').get()
+          let library = await firebase.firestore().collection('users').doc(this.props.auth.authData.uid).collection('myLibrary').get()
+          // let library = await firebase.firestore().collection('contents').get()
           // console.log("library",library.size)
                               library.forEach((item) =>{
                                 myLibrary.push(item.data())
@@ -67,8 +67,8 @@ class MyLibrary extends Component{
   search(s){
     // console.log("this.state.search",this.state.search)
     this.props.setMylibraryquery(s,0)
-    // firebase.firestore().collection('users').doc(this.props.auth.authData.uid).collection('myLibrary').where('name', '>=', s).where('name', '<=', s+ '\uf8ff')
-    firebase.firestore().collection('contents').where('searchQuery', '>=', s).where('searchQuery', '<=', s+ '\uf8ff')
+    firebase.firestore().collection('users').doc(this.props.auth.authData.uid).collection('myLibrary').where('searchQuery', '>=', s).where('searchQuery', '<=', s+ '\uf8ff')
+    // firebase.firestore().collection('contents').where('searchQuery', '>=', s).where('searchQuery', '<=', s+ '\uf8ff')
     .get()
     .then((querySnapshot) => {
         let myLibrary =[];

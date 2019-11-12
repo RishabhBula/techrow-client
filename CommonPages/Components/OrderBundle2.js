@@ -119,6 +119,11 @@ class OrderBundle2 extends Component{
       orderArray.push(order.id);
       let update={myOrders:orderArray,deafultShippingInformation:orderObj.shippingInformation}
       await db.collection("users").doc(userId).set(update, { merge: true })
+
+      let transObj=orderObj;
+      transObj.purchaseDate=firebase.firestore.FieldValue.serverTimestamp();
+      await db.collection("users").doc(userId).collection("transactions").doc(transObj.id).set(transObj)
+
       this.props.pageRender(5)
     }
     catch(err){
