@@ -117,7 +117,7 @@ class OrderBundle2 extends Component{
       let orderArray=[]
       orderArray=this.props.userData.myOrders;
       orderArray.push(order.id);
-      let update={myOrders:orderArray,deafultShippingInformation:orderObj.shippingInformation}
+      let update={myOrders:orderArray,deafultShippingInformation:orderObj.shippingInformation,lastTransaction:orderObj}
       await db.collection("users").doc(userId).set(update, { merge: true })
 
       let transObj=orderObj;
