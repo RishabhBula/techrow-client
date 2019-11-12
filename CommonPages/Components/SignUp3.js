@@ -54,7 +54,7 @@ class SignUp3 extends Component{
             lastName:this.props.signupdetails.lastname,
             email:this.props.signupdetails.email.trim().toLocaleLowerCase(),
             username:this.props.signupdetails.email.trim().toLocaleLowerCase(),
-            phoneNumber:this.props.signupdetails.countrycode+this.props.signupdetails.phonenumber,
+            phoneNumber:this.props.signupdetails.countrycode+" "+this.props.signupdetails.phonenumber,
             organization:{
               orgName:this.props.signupdetails.schoolname,
               orgAddress:this.props.signupdetails.address,

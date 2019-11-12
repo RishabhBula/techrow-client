@@ -54,6 +54,19 @@ class SignUp2 extends Component{
     return phonecode.countries.map((data) =><Option key={data.code}>{data.code}</Option>)
   }
 
+  OrderNumber(num){
+     let newNum=num.replace(/[-]+/g, '');
+     let x;
+     if(newNum.length<=3){
+       x=newNum;
+     }else if(newNum.length>3 && newNum.length<=6){
+       x=newNum.slice(0,3)+"-"+newNum.slice(3,6)
+     }else{
+       x=newNum.slice(0,3)+"-"+newNum.slice(3,6)+"-"+newNum.slice(6,10)
+     }
+   return x;
+  }
+
   render(){
       return(
         <div>
@@ -99,7 +112,7 @@ class SignUp2 extends Component{
                                  {/* {this.getcountryphonecode()}*/}
                                  <Option key="+1">+1</Option>
                              </Select>
-                             <input id="phonenumber" className="form-control" placeholder="Your phone number" value={this.props.signupdetails.phonenumber} onChange={(e) => {this.setState({phonenumber:e.target.value,error:false,errortext:""}); this.props.signupdetails.phonenumber=e.target.value }}/>
+                             <input id="phonenumber" className="form-control" placeholder="Your phone number" value={this.props.signupdetails.phonenumber} onChange={(e) => {this.setState({phonenumber:this.OrderNumber(e.target.value),error:false,errortext:""}); this.props.signupdetails.phonenumber=this.OrderNumber(e.target.value) }}/>
                           </InputGroup>
                       </div>
                       <div className="form-group">
