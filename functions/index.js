@@ -94,6 +94,26 @@ app.post('/send', (req, res) => {
 
 exports.sendmail = functions.https.onRequest(app);
 
+app.post('/user', (req, res) => {
+      console.log("req.method",req.method)
+      console.log("req.body",req.body)
+      admin.auth().updateUser(req.body.uid, {
+          disabled: req.body.status
+        })
+          .then((userRecord) => {
+            // See the UserRecord reference doc for the contents of userRecord.
+            console.log('Successfully updated user', userRecord.toJSON());
+            res.send("Successfully updated user")
+          })
+          .catch((error) => {
+            console.log('Error updating user:', error);
+            res.status(500).send({error: "Error updating user"});
+          });
+      // res.send(req.body)
+});
+
+exports.enabledisable = functions.https.onRequest(app);
+
 // // Create and Deploy Your First Cloud Functions
 // // https://firebase.google.com/docs/functions/write-firebase-functions
 //
