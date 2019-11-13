@@ -233,6 +233,21 @@ class ClassTheater extends Component{
                           <li>Time : <span>{this.convertMS(this.props.theaterData.duration).hour>0 ? `${this.convertMS(this.props.theaterData.duration).hour} hr` : null } {this.convertMS(this.props.theaterData.duration).minute} min</span></li>
                         </ul>
                     </div>
+                    <div className="" style={{textAlign: 'right', padding: '30px', display: 'block' }}>
+                      <Dropdown overlay={menu} trigger={['click']}>
+                        <a className="ant-dropdown-link" href="#">
+                          Select Action <Icon type="down" />
+                        </a>
+                      </Dropdown>
+                    </div>
+                    <div className="headset-list" style={{paddingTop: '10px'}}>
+                      <Table locale={{ emptyText: ( <span>Waiting for first device to connect.</span> ) }}
+                        rowKey={(item) => { return item.id }} 
+                        rowSelection={rowSelection}
+                        columns={columns} 
+                        pagination={{ hideOnSinglePage: true,pageSize: 20 }}
+                        dataSource={this.props.individualData} />
+                    </div>
                   </div>
                 </div>
                 <div className="col-md-12 col-lg-4 col-xl-3" >
@@ -264,21 +279,6 @@ class ClassTheater extends Component{
                     </div>
                   </div>
                 </div>
-            </div>
-            <div className="row" style={{textAlign: 'right', padding: '30px', display: 'block' }}>
-              <Dropdown overlay={menu} trigger={['click']}>
-                <a className="ant-dropdown-link" href="#">
-                  Select Action <Icon type="down" />
-                </a>
-              </Dropdown>
-            </div>
-            <div className="headset-list" style={{paddingTop: '10px'}}>
-              <Table locale={{ emptyText: ( <span>Waiting for first device to connect.</span> ) }}
-                rowKey={(item) => { return item.id }} 
-                rowSelection={rowSelection}
-                columns={columns} 
-                pagination={{ hideOnSinglePage: true,pageSize: 20 }}
-                dataSource={this.props.individualData} />
             </div>
          </div>
       );
