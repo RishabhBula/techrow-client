@@ -562,7 +562,7 @@ box-shadow: inset 0px -59px 22px -46px rgba(255,255,255,1);}
 			}
 	}
 }
-
+.blue-btn:focus{box-shadow: none; outline: none}
 
 .theaterMode{
 	.row{height: 100%;}

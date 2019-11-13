@@ -1387,6 +1387,11 @@ footer {
     .inner-wrap .inner-blue-menu .sidemenu-group .my-library-modes .ative img:nth-child(2) {
       display: block; }
 
+.blue-btn:focus {
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  outline: none; }
+
 .theaterMode .row {
   height: 100%; }
 

@@ -217,7 +217,7 @@ class ClassTheater extends Component{
 
                       {/*<iframe id="player" src={this.props.theaterData.previewUrl} frameBorder="0" allow="fullscreen" allowFullScreen > </iframe>*/}
                     </div>
-                    <button onClick={() =>{ this.stop() }}>stop</button>
+                    <button className="blue-btn" onClick={() =>{ this.stop() }}>stop</button>
                     <div className="discription">
                       <p>{this.props.theaterData.description}</p>
                     </div>
