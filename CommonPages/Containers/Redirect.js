@@ -130,7 +130,7 @@ class Redirect extends Component{
                                     <h4>Password Reset Successfully</h4>
                                   </div>
                                   <div style={{textAlign:'center', marginTop: '50px'}} className="form-group">
-                                    <span className="green-btn" onClick={() =>{ window.location.href="#/login" }}>Continue to Login</span>
+                                    <span className="green-btn" onClick={() =>{ window.location.replace(this.state.continueUrl) }}>Continue to Login</span>
                                   </div>
                                 </div>
                             </div>}

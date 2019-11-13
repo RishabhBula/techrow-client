@@ -34,22 +34,26 @@ class ClassTheater extends Component{
          console.log("controller===controller",controller)
          controller.receiveMessage(window, 'started', (type, data, iframe) =>{ 
           console.log("====type, data, iframe====",type, data, iframe) 
-          if(this.props.playerState==0){
-          this.props.socket.emit('sendAction', this.props.userData.headJackCredentials.appId, this.props.userData.headJackCredentials.authId, this.props.cdevicesids, 'play', [this.props.theaterData.headjackProjectId])
-          this.props.playerStatechange(this.props.playerState+1);
-          }else{
-            this.props.socket.emit('sendAction', this.props.userData.headJackCredentials.appId, this.props.userData.headJackCredentials.authId, this.props.cdevicesids, 'resume', []);
+          if(this.props.selectedDevicestheater.length>0){
+            if(this.props.playerState==0){
+            this.props.socket.emit('sendAction', this.props.userData.headJackCredentials.appId, this.props.userData.headJackCredentials.authId, this.props.selectedDevicestheater, 'play', [this.props.theaterData.headjackProjectId])
+            this.props.playerStatechange(this.props.playerState+1);
+            }else{
+              this.props.socket.emit('sendAction', this.props.userData.headJackCredentials.appId, this.props.userData.headJackCredentials.authId, this.props.selectedDevicestheater, 'resume', []);
+            }
           }
         });
 
          controller.receiveMessage(window, 'paused', (type, data, iframe) =>{ 
           console.log("====type, data, iframe====",type, data, iframe) 
-          this.props.socket.emit('sendAction', this.props.userData.headJackCredentials.appId, this.props.userData.headJackCredentials.authId, this.props.cdevicesids, 'pause', []);
+          if(this.props.selectedDevicestheater.length>0){
+           this.props.socket.emit('sendAction', this.props.userData.headJackCredentials.appId, this.props.userData.headJackCredentials.authId, this.props.selectedDevicestheater, 'pause', []);
+          }
         });
 
          controller.receiveMessage(window, 'ended', (type, data, iframe) =>{ 
           console.log("====type, data, iframe====",type, data, iframe) 
-          this.props.socket.emit('sendAction', this.props.userData.headJackCredentials.appId, this.props.userData.headJackCredentials.authId, this.props.cdevicesids, 'stop', []);
+          // this.props.socket.emit('sendAction', this.props.userData.headJackCredentials.appId, this.props.userData.headJackCredentials.authId, this.props.selectedDevicestheater, 'stop', []);
           this.props.playerStatechange(0);
         });
 
@@ -59,21 +63,24 @@ class ClassTheater extends Component{
   stop(){
     const controller = OmniVirt.api;
     const player = document.getElementById(this.props.theaterData.previewUrlID);
-    this.props.socket.emit('sendAction', this.props.userData.headJackCredentials.appId, this.props.userData.headJackCredentials.authId, this.props.cdevicesids, 'stop', []);
+    if(this.props.selectedDevicestheater.length>0){
+      this.props.socket.emit('sendAction', this.props.userData.headJackCredentials.appId, this.props.userData.headJackCredentials.authId, this.props.selectedDevicestheater, 'stop', []);
+      this.props.playerStatechange(0);
+    }
     controller.sendMessage('seek', 0.0, player);
     controller.sendMessage('pause', null, player);
     this.props.playerStatechange(0);
   }
 
-  // onSelectChange(selectedRowKeys, selectedRows){
-  //    console.log("selectedRowKeys, selectedRows",selectedRowKeys, selectedRows)
-  //    this.setState({selecteddevices:selectedRowKeys});
-  //    this.props.setSelecteddevicestheater(selectedRowKeys)
-  // }
+  onSelectChange(selectedRowKeys, selectedRows){
+     console.log("selectedRowKeys, selectedRows",selectedRowKeys, selectedRows)
+     this.setState({selecteddevices:selectedRowKeys});
+     this.props.setSelecteddevicestheater(selectedRowKeys)
+  }
 
   sendmessage(msgtext){
       // const socket = io('https://cinema.headjack.io/', {transports: ['polling'], upgrade: false});
-      this.props.socket.emit('sendAction', this.props.userData.headJackCredentials.appId, this.props.userData.headJackCredentials.authId, this.props.cdevicesids, 'message', [msgtext]);
+      this.props.socket.emit('sendAction', this.props.userData.headJackCredentials.appId, this.props.userData.headJackCredentials.authId, this.props.selectedDevicestheater, 'message', [msgtext]);
       let chat = JSON.parse(sessionStorage.getItem("chats"));
       chat.push({msg:msgtext,name:this.props.userData.firstName,createedDate:new Date()});
       sessionStorage.setItem("chats", JSON.stringify(chat));
@@ -83,10 +90,10 @@ class ClassTheater extends Component{
   send(event){
     if (event.keyCode == 13 || event.which == 13){
                     if(this.state.message!=""){
-                      if(this.props.cdevicesids.length>0){
+                      if(this.props.selectedDevicestheater.length>0){
                           this.sendmessage(this.state.message); 
                       }else{
-                          Notification("error","No Devices are connected","No devices are connected to broadcast message.")
+                          Notification("error","No Devices are selected","No devices are selected to broadcast message.")
                       }
                     }
                 }
@@ -109,8 +116,81 @@ class ClassTheater extends Component{
     };
   }
 
+  actions(type){
+      // const socket = io('https://cinema.headjack.io/', {transports: ['polling'], upgrade: false});
+      switch(type) {
+        case 'play':
+          // code block
+          console.log("play")
+          this.props.socket.emit('sendAction', this.props.userData.headJackCredentials.appId, this.props.userData.headJackCredentials.authId, this.props.selectedDevicestheater, 'play', [this.props.theaterData.headjackProjectId]);
+          break;
+        case 'resume':
+          // code block
+          console.log("resume")
+          this.props.socket.emit('sendAction', this.props.userData.headJackCredentials.appId, this.props.userData.headJackCredentials.authId, this.props.selectedDevicestheater, 'resume', []);
+          break;
+        case 'stop':
+          // code block
+          console.log("stop")
+          this.props.socket.emit('sendAction', this.props.userData.headJackCredentials.appId, this.props.userData.headJackCredentials.authId, this.props.selectedDevicestheater, 'stop', []);
+          break;
+        case 'cancel':
+          // code block
+          console.log("cancel")
+          this.props.socket.emit('sendAction', this.props.userData.headJackCredentials.appId, this.props.userData.headJackCredentials.authId, this.props.selectedDevicestheater, 'cancel', [this.props.theaterData.headjackProjectId]);
+          break;
+        case 'pause':
+          // code block
+          console.log("pause")
+          this.props.socket.emit('sendAction', this.props.userData.headJackCredentials.appId, this.props.userData.headJackCredentials.authId, this.props.selectedDevicestheater, 'pause', []);
+          break;
+        case 'download':
+          // code block
+          console.log("download")
+          this.props.socket.emit('sendAction', this.props.userData.headJackCredentials.appId, this.props.userData.headJackCredentials.authId, this.props.selectedDevicestheater, 'download', [this.props.theaterData.headjackProjectId]);
+          break;
+        default:
+          // code block
+      }
+  }
+
   render(){
       // console.log("this.props++++====++++++",this.props)
+      const menu = (
+        <Menu onClick={(e) =>{ this.actions(e.key) }}>
+          <Menu.Item key="play" disabled={this.props.selectedDevicestheater.length==0 ? true : false}>
+            <a rel="noopener noreferrer">
+              Play Project
+            </a>
+          </Menu.Item>
+          <Menu.Item key="pause" disabled={this.props.selectedDevicestheater.length==0 ? true : false}>
+            <a rel="noopener noreferrer">
+              Pause Playback
+            </a>
+          </Menu.Item>
+          <Menu.Item key="resume" disabled={this.props.selectedDevicestheater.length==0 ? true : false}>
+            <a rel="noopener noreferrer">
+              Resume Playback
+            </a>
+          </Menu.Item>
+          <Menu.Item key="stop" disabled={this.props.selectedDevicestheater.length==0 ? true : false}>
+            <a rel="noopener noreferrer">
+              Stop Playback
+            </a>
+          </Menu.Item>
+          <Menu.Item key="download" disabled={this.props.selectedDevicestheater.length==0 ? true : false}>
+            <a rel="noopener noreferrer">
+              Download Project
+            </a>
+          </Menu.Item>
+          <Menu.Item key="cancel" disabled={this.props.selectedDevicestheater.length==0 ? true : false}>
+            <a rel="noopener noreferrer">
+              Stop Download
+            </a>
+          </Menu.Item>
+        </Menu>
+      );
+
       const columns = [
         {
           title: 'Name',
@@ -122,10 +202,10 @@ class ClassTheater extends Component{
         },
       ];
 
-      // const rowSelection = {
-      //       selectedRowKeys:this.props.selectedDevicestheater,
-      //       onChange: this.onSelectChange.bind(this),
-      // };
+      const rowSelection = {
+            selectedRowKeys:this.props.selectedDevicestheater,
+            onChange: this.onSelectChange.bind(this),
+      };
       return(
          <div className="dashboard animated fadeIn theaterMode">
             <div className="row">
@@ -185,9 +265,17 @@ class ClassTheater extends Component{
                   </div>
                 </div>
             </div>
-            <div className="headset-list" style={{paddingTop: '20px'}}>
+            <div className="row" style={{textAlign: 'right', padding: '30px', display: 'block' }}>
+              <Dropdown overlay={menu} trigger={['click']}>
+                <a className="ant-dropdown-link" href="#">
+                  Select Action <Icon type="down" />
+                </a>
+              </Dropdown>
+            </div>
+            <div className="headset-list" style={{paddingTop: '10px'}}>
               <Table locale={{ emptyText: ( <span>Waiting for first device to connect.</span> ) }}
                 rowKey={(item) => { return item.id }} 
+                rowSelection={rowSelection}
                 columns={columns} 
                 pagination={{ hideOnSinglePage: true,pageSize: 20 }}
                 dataSource={this.props.individualData} />
