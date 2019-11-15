@@ -48,8 +48,8 @@ class Marketplace extends Component{
           let marketFeature =[];
           let marketContent =[];
           // let library = await firebase.firestore().collection('users').doc(this.props.auth.authData.uid).collection('myLibrary').get()
-          let feature = await firebase.firestore().collection('contents').where('featured','==',true).get()
-          let market = await firebase.firestore().collection('contents').get()
+          let feature = await firebase.firestore().collection('contents').where("status","==",true).get()
+          let market = await firebase.firestore().collection('contents').where("status","==",true).get()
           // console.log("library",feature.size)
           // console.log("library",market.size)
                               feature.forEach((item) =>{
@@ -77,7 +77,7 @@ class Marketplace extends Component{
     // console.log("this.state.search",this.state.search)
     this.props.setMarketsearchquery(s,0)
     // firebase.firestore().collection('users').doc(this.props.auth.authData.uid).collection('myLibrary').where('name', '>=', s).where('name', '<=', s+ '\uf8ff')
-    firebase.firestore().collection('contents').where('searchQuery', '>=', s).where('searchQuery', '<=', s+ '\uf8ff')
+    firebase.firestore().collection('contents').where("status","==",true).where('searchQuery', '>=', s).where('searchQuery', '<=', s+ '\uf8ff')
     .get()
     .then((querySnapshot) => {
         let marketContent =[];
