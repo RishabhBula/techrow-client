@@ -1395,6 +1395,12 @@ footer {
 .theaterMode .row {
   height: 100%; }
 
+.theaterMode .stop-btn {
+  display: block;
+  margin: 0 auto 20px;
+  line-height: 13px;
+  border-radius: 0; }
+
 .theaterMode .theaterModeData {
   height: calc( 100vh - 155px);
   overflow-y: scroll; }

@@ -38,7 +38,7 @@ class Home extends Component{
                   <div className="col-md-6 cnt-area-lft">
                     <h2><span>Unlock</span>the Power of Immersive Technology</h2>
                     <p>Our unique education solution enables teachers to empower the student with award winning immersive content coupled with the right tools</p>
-                    <a href="#">View TECHROW Features →</a>
+                    <a href="#/features">View TECHROW Features →</a>
                     
                   </div>
                   <div className="col-md-6 about-cnt-rt">
@@ -89,7 +89,7 @@ class Home extends Component{
                     </div>
                   </div>
                 </div>
-                <div className="btn-area">
+                <div className="btn-area  d-none">
                   <a href="#" className="blue-btn">Learn more</a>
                   <a href="#/signup" className="wt-btn">Sign up</a>
                 </div>
