@@ -38,7 +38,7 @@ class Login extends Component{
       }else{
                 
                 const db=firebase.firestore()
-                db.collection('users').where("email","==",this.state.email).get()
+                db.collection('users').where("email","==",this.state.email.toLocaleLowerCase()).get()
                 .then((querySnapshot) => {
                     if (querySnapshot.size>0) {
                           if(querySnapshot.docs[0].data().status){
