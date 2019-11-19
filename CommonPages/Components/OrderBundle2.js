@@ -5,6 +5,7 @@ import axios from 'axios';
 import {Checkbox} from 'antd';
 
 import {setOrderDetails} from '../../actions/setOrderDetails';
+import {getUserdata} from '../../actions/getUserdata';
 
 import firebase from 'firebase/app';
 import 'firebase/auth';
@@ -117,13 +118,16 @@ class OrderBundle2 extends Component{
       let orderArray=[]
       orderArray=this.props.userData.myOrders;
       orderArray.push(order.id);
-      let update={myOrders:orderArray,deafultShippingInformation:orderObj.shippingInformation,lastTransaction:orderObj}
+      let totalAmount=0
+      totalAmount=this.props.userData.totalAmount+orderTotalAmount;
+      let update={myOrders:orderArray,deafultShippingInformation:orderObj.shippingInformation,lastTransaction:orderObj,totalAmount:totalAmount}
       await db.collection("users").doc(userId).set(update, { merge: true })
 
       let transObj=orderObj;
       transObj.purchaseDate=firebase.firestore.FieldValue.serverTimestamp();
       await db.collection("users").doc(userId).collection("transactions").doc(transObj.id).set(transObj)
 
+      this.props.getUserdata(this.props.userData.id)
       this.props.pageRender(5)
     }
     catch(err){
@@ -234,6 +238,6 @@ function mapStateToProps(state){
   };
 }
 function matchDispatchToProps(dispatch){
-  return bindActionCreators({ setOrderDetails:setOrderDetails }, dispatch);
+  return bindActionCreators({ setOrderDetails:setOrderDetails, getUserdata:getUserdata }, dispatch);
 }
 export default connect(mapStateToProps, matchDispatchToProps)(OrderBundle2);

@@ -20,6 +20,7 @@ import 'firebase/database';
 
 import {setOrderDetails} from '../../actions/setOrderDetails';
 import {Notification} from '../Components/Notification';
+import {getUserdata} from '../../actions/getUserdata';
 
 class _SplitFieldsForm extends Component{
 	constructor(props){
@@ -141,7 +142,11 @@ class _SplitFieldsForm extends Component{
                                                 let orderArray=[]
                                                 orderArray=this.props.userData.myOrders;
                                                 orderArray.push(order.id);
-                                                let update={myOrders:orderArray,deafultShippingInformation:orderObj.shippingInformation,lastTransaction:orderObj}
+                                                let totalAmount=0
+                                                totalAmount=this.props.userData.totalAmount+orderTotalAmount;
+                                                let totalPaidAmount=0
+                                                totalPaidAmount=this.props.userData.totalPaidAmount+orderTotalAmount;
+                                                let update={myOrders:orderArray,deafultShippingInformation:orderObj.shippingInformation,lastTransaction:orderObj,totalAmount:totalAmount,totalPaidAmount:totalPaidAmount}
                                                 await db.collection("users").doc(userId).set(update, { merge: true })
 
                                                 let transObj=orderObj;
@@ -149,6 +154,7 @@ class _SplitFieldsForm extends Component{
                                                 await db.collection("users").doc(userId).collection("transactions").doc(transObj.id).set(transObj)
 
                                                 Notification("success","Successfull","Payment successfully completed")
+                                                this.props.getUserdata(this.props.userData.id)
                                                 this.props.pageRender(4)
                                                 this.setState({buttonstate:false})
                                              }
@@ -276,7 +282,7 @@ class OrderBundle3 extends Component {
     return (
       <StripeProvider apiKey="pk_test_OabmVXdgp2Rb17rmMJXtBhHP007xwDqW5c">
         <Elements>
-          <SplitFieldsForm userData={this.props.userData} orderdetails={this.props.orderdetails} pageRender={this.props.pageRender}/>
+          <SplitFieldsForm getUserdata={this.props.getUserdata} userData={this.props.userData} orderdetails={this.props.orderdetails} pageRender={this.props.pageRender}/>
         </Elements>
       </StripeProvider>
     );
@@ -291,6 +297,6 @@ function mapStateToProps(state){
   };
 }
 function matchDispatchToProps(dispatch){
-  return bindActionCreators({ setOrderDetails:setOrderDetails }, dispatch);
+  return bindActionCreators({ setOrderDetails:setOrderDetails, getUserdata:getUserdata }, dispatch);
 }
 export default connect(mapStateToProps, matchDispatchToProps)(OrderBundle3);

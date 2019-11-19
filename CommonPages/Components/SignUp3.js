@@ -75,7 +75,10 @@ class SignUp3 extends Component{
             myOrders:[],
             myRecentViews:[],
             deafultShippingInformation:{},
-            lastTransaction:{}
+            lastTransaction:{},
+            totalDevices:0,
+            totalAmount:0,
+            totalPaidAmount:0
           }
       console.log("prooooopspspspsppspspsps======",this.props.signupdetails)
       firebase.auth().createUserWithEmailAndPassword(this.props.signupdetails.email.trim().toLocaleLowerCase(), this.props.signupdetails.password.trim())
