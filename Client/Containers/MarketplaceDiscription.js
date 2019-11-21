@@ -58,10 +58,10 @@ class MarketplaceDiscription extends Component{
   }
 
   contactAccess(){
-    if(this.props.userData.contactContent.some( o => o==this.props.marketDetails.id)){
-      console.log("you are already contacted to this content")
-      Notification("error","Already Requested","You are already requested this content");
-    }else{
+    // if(this.props.userData.contactContent.some( o => o==this.props.marketDetails.id)){
+    //   console.log("you are already contacted to this content")
+    //   Notification("error","Already Requested","You are already requested this content");
+    // }else{
         this.setState({buttonloader:true})
         axios({
               method:"POST",
@@ -85,7 +85,7 @@ class MarketplaceDiscription extends Component{
                 Notification("error","Request failed","Something went wrong, request failed");
                 this.setState({buttonloader:false})
             })
-    }
+    // }
   }
 
   render(){
@@ -104,8 +104,8 @@ class MarketplaceDiscription extends Component{
                     <div className="col-md-8">
                       <h1>{this.props.marketDetails.name}</h1>
                       <p>{this.props.marketDetails.description}</p>
-                      {this.state.buttonloader==false &&(<a className="green-btn" onClick={() =>{ this.contactAccess() }}>Contact to Access </a>)}
-                      {this.state.buttonloader==true &&(<a className="green-btn" >Contact to Access <Spin indicator={antIcon} /></a>)}
+                      {this.state.buttonloader==false &&(<a className="green-btn" onClick={() =>{ this.contactAccess() }}>{this.props.userData.contactContent.includes(this.props.marketDetails.id) ? "Request Again" : "Contact to Access" }</a>)}
+                      {this.state.buttonloader==true &&(<a className="green-btn" >{this.props.userData.contactContent.includes(this.props.marketDetails.id) ? "Request Again" : "Contact to Access" }<Spin indicator={antIcon} /></a>)}
                     </div>
                     <div className="col-md-4">
                       <h1>Credits</h1>

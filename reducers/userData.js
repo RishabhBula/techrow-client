@@ -1,4 +1,5 @@
 const initialState = {
+	contactContent:[],
 	createdDate:"",
 	email:"",
 	emailVerified:false,
