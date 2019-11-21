@@ -65,7 +65,7 @@ class MarketplaceDiscription extends Component{
         this.setState({buttonloader:true})
         axios({
               method:"POST",
-              url:'https://us-central1-techrow-platform.cloudfunctions.net/sendmail/send',
+              url:'https://us-central1-techrow-platform.cloudfunctions.net/sendmail/contactcontent',
               data:{
                 contentdetails:this.props.marketDetails,
                 userdata:this.props.userData,
