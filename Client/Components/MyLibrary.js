@@ -86,7 +86,7 @@ class MyLibrary extends Component{
 
   search2(event){
       if (event.keyCode == 13 || event.which == 13){
-                    this.search(this.state.search);
+                    this.search(this.state.search.toLowerCase());
                 }
   }
   trimm(a){
@@ -106,7 +106,7 @@ class MyLibrary extends Component{
             {this.state.searchheader==false?<h2>My Library</h2>:<h2>Search Results</h2>}
             <div className="search form-group">
               <input type="text" className="form-control" placeholder="Search Classes" value={this.state.search} onChange={(e) =>{ this.setState({search:e.target.value}); if(e.target.value==""){ this.props.setMylibraryquery("",0);this.search(e.target.value) } }} onKeyPress={(event) =>{ this.search2(event) }} />
-              <button onClick={() =>{ this.search(this.state.search) }}><img src="../images/search-icon.png" className="img-fluid"/></button>
+              <button onClick={() =>{ this.search(this.state.search.toLowerCase()) }}><img src="../images/search-icon.png" className="img-fluid"/></button>
             </div>
             {this.state.loading==false ? <div className="classesList">
               {this.props.myLibrary.mylibrary.length==0 &&(<div style={{textAlign:'center',display: 'block'}} className="row">
