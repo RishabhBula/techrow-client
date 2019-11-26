@@ -49,7 +49,7 @@ class Header extends Component{
   render(){
     const menu = (
         <Menu>
-         
+
           <Menu.Item>
             <a onClick={() =>{ this.signout() }} className="logo">
               Sign Out

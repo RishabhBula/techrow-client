@@ -109,9 +109,14 @@ class MyLibrary extends Component{
               <button onClick={() =>{ this.search(this.state.search.toLowerCase()) }}><img src="../images/search-icon.png" className="img-fluid"/></button>
             </div>
             {this.state.loading==false ? <div className="classesList">
-              {this.props.myLibrary.mylibrary.length==0 &&(<div style={{textAlign:'center',display: 'block'}} className="row">
+              {this.props.myLibrary.mylibrary.length==0 && this.state.searchheader==true &&(<div style={{textAlign:'center',display: 'block'}} className="row">
                
                 <span>No results found.!</span>
+
+              </div>)}
+              {this.props.myLibrary.mylibrary.length==0 && this.state.searchheader==false &&(<div style={{textAlign:'center',display: 'block'}} className="row">
+               
+                <span>Thank you for signing up with us. We have received your details and will be following up with you shortly to activate your account.</span>
 
               </div>)}
               {this.props.myLibrary.mylibrary.length>0 &&(<div className="row">
