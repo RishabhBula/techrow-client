@@ -49,6 +49,16 @@ class MarketContents extends Component{
     return trimmedString;
   }
 
+  checkCategorylength(cat){
+    const items=[]
+    this.props.marketContent.marketcontent.forEach((item,index) =>{
+      if(item.category==cat){
+        items.push(item)
+      }
+    })
+    return items.length
+  }
+
 
   render(){
 
@@ -80,6 +90,7 @@ class MarketContents extends Component{
     };
       return(
          <div className=" animated fadeIn seience-slide">
+
             <h1>All Contents</h1>
             <div className="featured-slider">
               <Slider {...settings}>
@@ -99,6 +110,127 @@ class MarketContents extends Component{
 
               </Slider>
             </div>
+
+            {this.checkCategorylength("Science")>5 &&(<div>
+            <h1>Science</h1>
+            <div className="featured-slider">
+              <Slider {...settings}>
+
+              {this.props.marketContent.marketcontent.map((item,index) =>{
+                  return(
+                    <div>
+                      {item.category=="Science" && (<div className="featured-slider-item" key={item.id}>
+                        <img src={item.thumbnail} className="img-fluid" />
+                        <div className="featured-slider-cnt pointer" onClick={() =>{ this.onItemClick(item) }}>
+                          <h2>{item.name}</h2>
+                          <p>{this.trimm(item.description)}</p>
+                          <h3>{this.convertMS(item.duration).hour} hr {this.convertMS(item.duration).minute} min</h3>
+                        </div>
+                      </div>)}
+                    </div>
+                  )}
+              )}   
+
+              </Slider>
+            </div>
+            </div>)}
+
+            {this.checkCategorylength("History")>5 &&(<div>
+            <h1>History</h1>
+            <div className="featured-slider">
+              <Slider {...settings}>
+
+              {this.props.marketContent.marketcontent.map((item,index) =>{
+                  return(
+                    <div>
+                      {item.category=="History" && (<div className="featured-slider-item" key={item.id}>
+                        <img src={item.thumbnail} className="img-fluid" />
+                        <div className="featured-slider-cnt pointer" onClick={() =>{ this.onItemClick(item) }}>
+                          <h2>{item.name}</h2>
+                          <p>{this.trimm(item.description)}</p>
+                          <h3>{this.convertMS(item.duration).hour} hr {this.convertMS(item.duration).minute} min</h3>
+                        </div>
+                      </div>)}
+                    </div>
+                  )}
+              )}   
+
+              </Slider>
+            </div>
+            </div>)}
+
+            {this.checkCategorylength("World Affairs")>5 &&(<div>
+            <h1>World Affairs</h1>
+            <div className="featured-slider">
+              <Slider {...settings}>
+
+              {this.props.marketContent.marketcontent.map((item,index) =>{
+                  return(
+                    <div>
+                      {item.category=="World Affairs" && (<div className="featured-slider-item" key={item.id}>
+                        <img src={item.thumbnail} className="img-fluid" />
+                        <div className="featured-slider-cnt pointer" onClick={() =>{ this.onItemClick(item) }}>
+                          <h2>{item.name}</h2>
+                          <p>{this.trimm(item.description)}</p>
+                          <h3>{this.convertMS(item.duration).hour} hr {this.convertMS(item.duration).minute} min</h3>
+                        </div>
+                      </div>)}
+                    </div>
+                  )}
+              )}   
+
+              </Slider>
+            </div>
+            </div>)}
+
+            {this.checkCategorylength("Documentaries")>5 &&(<div>
+            <h1>Documentaries</h1>
+            <div className="featured-slider">
+              <Slider {...settings}>
+
+              {this.props.marketContent.marketcontent.map((item,index) =>{
+                  return(
+                    <div>
+                      {item.category=="Documentaries" && (<div className="featured-slider-item" key={item.id}>
+                        <img src={item.thumbnail} className="img-fluid" />
+                        <div className="featured-slider-cnt pointer" onClick={() =>{ this.onItemClick(item) }}>
+                          <h2>{item.name}</h2>
+                          <p>{this.trimm(item.description)}</p>
+                          <h3>{this.convertMS(item.duration).hour} hr {this.convertMS(item.duration).minute} min</h3>
+                        </div>
+                      </div>)}
+                    </div>
+                  )}
+              )}   
+
+              </Slider>
+            </div>
+            </div>)}
+
+            {this.checkCategorylength("Technology")>5 &&(<div>
+            <h1>Technology</h1>
+            <div className="featured-slider">
+              <Slider {...settings}>
+
+              {this.props.marketContent.marketcontent.map((item,index) =>{
+                  return(
+                    <div>
+                      {item.category=="Technology" && (<div className="featured-slider-item" key={item.id}>
+                        <img src={item.thumbnail} className="img-fluid" />
+                        <div className="featured-slider-cnt pointer" onClick={() =>{ this.onItemClick(item) }}>
+                          <h2>{item.name}</h2>
+                          <p>{this.trimm(item.description)}</p>
+                          <h3>{this.convertMS(item.duration).hour} hr {this.convertMS(item.duration).minute} min</h3>
+                        </div>
+                      </div>)}
+                    </div>
+                  )}
+              )}   
+
+              </Slider>
+            </div>
+            </div>)}
+
          </div>
       );
    }
