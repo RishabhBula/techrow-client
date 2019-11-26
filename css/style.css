@@ -1090,6 +1090,10 @@ footer {
         opacity: .7; }
       .marketplace .form-group button:hover img {
         opacity: 1; }
+      .marketplace .form-group button:focus {
+        -webkit-box-shadow: none;
+        box-shadow: none;
+        outline: none; }
 
 .featured-slider {
   background-color: #fff; }

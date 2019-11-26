@@ -449,6 +449,7 @@ footer{padding: 40px 0;
 			&:hover{
 				img{opacity: 1}
 			}
+			&:focus{box-shadow: none; outline: none}
 		}
 
 	}

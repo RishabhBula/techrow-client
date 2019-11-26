@@ -45,7 +45,7 @@ class MarketSearchContents extends Component{
               {this.props.marketSearch.marketsearch.length>0 &&(<div className="row">
                 {this.props.marketSearch.marketsearch.map((item,index) =>{
                   return(
-                    <div className="col-lg-3 col-md-4" key={item.id}>
+                    <div className="col-lg-12" key={item.id}>
                       <a onClick={() =>{ this.onItemClick(item) }} className="each-class">
                         <div className="class-banne-wrap">
                           <img src={item.thumbnail} className="img-fluid class-banner" />
