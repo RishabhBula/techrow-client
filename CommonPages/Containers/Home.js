@@ -26,7 +26,7 @@ class Home extends Component{
                 <h1>Unleashing the Immersive Learning Movement</h1>
               </div>
             </section>
-            <section className="banner-bottom">
+            <section className="banner-bottom" id="about_us">
               <div className="container">
                 <h2>We are a movement...</h2>
                 <p>Virtual Reality transforms the learning experience by bringing anything you can imagine into the classroom. From exploring solar systems to standing in the middle of the Amazon Rainforest, students can now engage in learning like never before within minutes.</p>
@@ -131,7 +131,7 @@ class Home extends Component{
                 </div>
               </div>
             </section>
-            <section className="contact-us">
+            <section className="contact-us" id="contact_us">
               <div className="container">
                 <div className="row">
                   <div className="col-md-7">

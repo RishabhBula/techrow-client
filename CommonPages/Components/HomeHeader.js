@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import {bindActionCreators} from 'redux';
 import { connect } from 'react-redux';
 import axios from 'axios';
+import AnchorLink from 'react-anchor-link-smooth-scroll';
 
 class HomeHeader extends Component{
 	constructor(props){
@@ -28,9 +29,9 @@ class HomeHeader extends Component{
                   <a href="#" className="logo"><img src="../images/techrow-logo.png"/> </a>
                   <div className={this.state.menuClass?'openMenu head-right':'head-right'}>
                     <ul>
-                      <li><a  href="#">About</a></li>
+                      <li><AnchorLink href='#about_us'>About</AnchorLink></li>
                       <li><a  href="#/features">Features</a></li>
-                      <li><a  href="#">Contact</a></li>
+                      <li><AnchorLink href='#contact_us'>Contact</AnchorLink></li>
                       <li><a  href="http://www.techrowfund.org" target="_blank">TechRow Fund</a></li>
                     </ul>
                     <ul>

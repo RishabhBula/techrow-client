@@ -627,6 +627,13 @@ footer {
         .inner-wrap .inner-blue-menu .sidemenu-group a.ative {
           background-color: #57547D;
           color: #B1F543; }
+      .inner-wrap .inner-blue-menu .sidemenu-group:last-child a::before {
+        content: "";
+        position: absolute;
+        left: 20px;
+        right: 20px;
+        top: 0;
+        border: 1px solid #5F5B8D50; }
   .inner-wrap .inner-right-wrap {
     margin-left: 300px; }
     .inner-wrap .inner-right-wrap h4 {
@@ -999,14 +1006,17 @@ footer {
       display: block; }
       .dashboard .classesList .each-class .class-banne-wrap {
         overflow: hidden !important;
-        height: 140px; }
+        height: 190px; }
         .dashboard .classesList .each-class .class-banne-wrap .class-banner {
           width: 100%;
           -webkit-transition: all 1s ease;
           -moz-transition: all 1s ease;
           -ms-transition: all 1s ease;
           -o-transition: all 1s ease;
-          transition: all 1s ease; }
+          transition: all 1s ease;
+          height: 100%;
+          -o-object-fit: cover;
+          object-fit: cover; }
       .dashboard .classesList .each-class h3 {
         font-family: "Quicksand", sans-serif;
         font-size: 1rem;
@@ -1064,6 +1074,10 @@ footer {
       border-radius: 30px;
       padding-right: 40px;
       background-color: #E8E8E8; }
+      .marketplace .form-group .form-control:focus {
+        -webkit-box-shadow: none;
+        box-shadow: none;
+        outline: none; }
     .marketplace .form-group button {
       position: absolute;
       right: 5px;

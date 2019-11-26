@@ -24,6 +24,7 @@
     "image-webpack-loader": "^4.6.0",
     "moment": "^2.24.0",
     "react": "^16.7.0",
+    "react-anchor-link-smooth-scroll": "^1.0.12",
     "react-app-polyfill": "^1.0.1",
     "react-dom": "^16.7.0",
     "react-google-recaptcha": "^2.0.1",

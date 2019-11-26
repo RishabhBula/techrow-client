@@ -255,6 +255,9 @@ footer{padding: 40px 0;
 	    		&:hover{background-color: #57547D; color: $w;}
 	    		&.ative{background-color: #57547D; color: #B1F543}
 	    	}
+	    	&:last-child{
+	    		a::before{content: ""; position: absolute; left:20px; right: 20px;top: 0; border:1px solid #5F5B8D50;}
+	    	}
 	    }
 	}
 	.inner-right-wrap{margin-left: 300px;
@@ -408,8 +411,8 @@ footer{padding: 40px 0;
 	}
 	.classesList{margin-top: 50px;
 		.each-class{margin-bottom: 30px;display: block;
-			.class-banne-wrap{overflow: hidden!important; height: 140px;
-				.class-banner{width: 100%; @include transition(all 1s ease);}
+			.class-banne-wrap{overflow: hidden!important; height: 190px;
+				.class-banner{width: 100%; @include transition(all 1s ease); height: 100%;     object-fit: cover;}
 			}
 			h3{font-family: $qfont; font-size: 1rem; font-weight: 300; line-height: 20px; color: #2e2e2e; margin: 10px 0 10px; text-decoration: none}
 			p{font-family: $opensan;  color: #ABABAB; font-size: .75rem; line-height: 16px; text-decoration: none}
@@ -438,7 +441,9 @@ footer{padding: 40px 0;
 	}
 	a{color: #262161;}
 	.form-group{margin-bottom: 0; position: relative;
-		.form-control{width: 650px; border-radius: 30px; padding-right: 40px; background-color: #E8E8E8}
+		.form-control{width: 650px; border-radius: 30px; padding-right: 40px; background-color: #E8E8E8;
+			&:focus{box-shadow: none; outline: none}
+		}
 		button{position: absolute;right:5px; top:5px; background:none; border:none; cursor: pointer;
 			img{width: 25px; opacity: .7}
 			&:hover{

@@ -64,7 +64,7 @@ class Features extends Component{
             </section>
         
    
-            <section className="contact-us">
+            <section className="contact-us" id="contact_us">
               <div className="container">
                 <div className="row">
                   <div className="col-md-7">
