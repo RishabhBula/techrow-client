@@ -49,11 +49,11 @@ class Header extends Component{
   render(){
     const menu = (
         <Menu>
-          <Menu.Item>
+          {/*<Menu.Item>
             <a href="#/">
               Settings
             </a>
-          </Menu.Item>
+          </Menu.Item>*/}
           <Menu.Item>
             <a onClick={() =>{ this.signout() }} className="logo">
               Sign Out

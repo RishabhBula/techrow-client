@@ -178,8 +178,8 @@ class Home extends Component{
                   <a href="#"><img src="../images/techrow-logo.png" className="img-fluid logo"  alt="techrow-logo" /></a>
                   <div className="social-links">
                     <a href="#"><img src="../images/instagram-icon.png" className="img-fluid"/></a>
-                    <a href="#"><img src="../images/facebook-icon.png" className="img-fluid"/></a>
-                    <a href="#"><img src="../images/twitter-icon.png" className="img-fluid"/></a>
+                    <a href="https://www.facebook.com/TechRow-514597378749347" target="_blank"><img src="../images/facebook-icon.png" className="img-fluid"/></a>
+                    <a href="https://twitter.com/techrownyc" target="_blank"><img src="../images/twitter-icon.png" className="img-fluid"/></a>
                   </div>
                 </div>
               </div>

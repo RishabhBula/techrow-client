@@ -206,7 +206,7 @@ class ClassTheater extends Component{
                   <div className="theaterModeData">
                     <div className="theaterVideo">
 
-                      <iframe id={this.props.theaterData.previewUrlID} src={this.props.theaterData.previewUrl+"?player=true&autoplay=false"} frameBorder="0" width="1280" height="720" webkitallowfullscreen="1" mozallowfullscreen="1" allowFullScreen="1"></iframe>
+                      <iframe id={this.props.theaterData.omnivirtID} src={this.props.theaterData.omnivirtUrl+"?player=true&autoplay=false"} frameBorder="0" width="1280" height="720" webkitallowfullscreen="1" mozallowfullscreen="1" allowFullScreen="1"></iframe>
 
                       {/*<iframe id="player" src={this.props.theaterData.previewUrl} frameBorder="0" allow="fullscreen" allowFullScreen > </iframe>*/}
                     </div>
