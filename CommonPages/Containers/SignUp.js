@@ -34,7 +34,7 @@ class SignUp extends Component{
                     <h1>Sign up your<br/> account</h1>
                     <div>
                       <h3>Questions?</h3>
-                      <a>Contact Us</a>
+                      <a href="#/">Contact Us</a>
                     </div>
                 </div>
               <div className="inner-right-wrap">
