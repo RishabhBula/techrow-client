@@ -88,6 +88,32 @@ class MarketContents extends Component{
         }
       ]
     };
+
+    var cat_slider_settings = {
+      dots: false, 
+      speed: 500,
+      arrows:true,
+      slidesToShow: 4,
+      slidesToScroll: 1, 
+      centerMode:true,
+      autoplay:false,
+      responsive: [
+        {
+          breakpoint: 1025,
+          settings: {
+            slidesToShow: 3.1,
+            centerMode:true,
+          }
+        },
+        {
+          breakpoint: 769,
+          settings: {
+            slidesToShow:2.5,
+            centerMode:true,
+          }
+        }
+      ]
+    };
       return(
          <div className=" animated fadeIn seience-slide">
 
@@ -113,8 +139,8 @@ class MarketContents extends Component{
 
             {this.checkCategorylength("Science")>5 &&(<div>
             <h1>Science</h1>
-            <div className="featured-slider">
-              <Slider {...settings}>
+            <div className="featured-slider cat_slider">
+              <Slider {...cat_slider_settings}>
 
               {this.props.marketContent.marketcontent.map((item,index) =>{
                   return(
@@ -137,8 +163,8 @@ class MarketContents extends Component{
 
             {this.checkCategorylength("History")>5 &&(<div>
             <h1>History</h1>
-            <div className="featured-slider">
-              <Slider {...settings}>
+            <div className="featured-slider cat_slider">
+              <Slider {...cat_slider_settings}>
 
               {this.props.marketContent.marketcontent.map((item,index) =>{
                   return(
@@ -161,8 +187,8 @@ class MarketContents extends Component{
 
             {this.checkCategorylength("World Affairs")>5 &&(<div>
             <h1>World Affairs</h1>
-            <div className="featured-slider">
-              <Slider {...settings}>
+            <div className="featured-slider cat_slider">
+              <Slider {...cat_slider_settings}>
 
               {this.props.marketContent.marketcontent.map((item,index) =>{
                   return(
@@ -185,8 +211,8 @@ class MarketContents extends Component{
 
             {this.checkCategorylength("Documentaries")>5 &&(<div>
             <h1>Documentaries</h1>
-            <div className="featured-slider">
-              <Slider {...settings}>
+            <div className="featured-slider cat_slider">
+              <Slider {...cat_slider_settings}>
 
               {this.props.marketContent.marketcontent.map((item,index) =>{
                   return(
@@ -209,8 +235,8 @@ class MarketContents extends Component{
 
             {this.checkCategorylength("Technology")>5 &&(<div>
             <h1>Technology</h1>
-            <div className="featured-slider">
-              <Slider {...settings}>
+            <div className="featured-slider cat_slider">
+              <Slider {...cat_slider_settings}>
 
               {this.props.marketContent.marketcontent.map((item,index) =>{
                   return(

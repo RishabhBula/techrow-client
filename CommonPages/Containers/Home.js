@@ -161,7 +161,7 @@ class Home extends Component{
                   <div className="col-md-5">
                     <h3>Quick Links</h3>
                     <ul>
-                      <li><a href="#">Features</a></li>
+                      <li><a href="#/features" >Features</a></li>
                       <li><a href="#/signup">Sign Up</a></li>
                       <li><a href="#/login">Sign In</a></li>
                     </ul>
