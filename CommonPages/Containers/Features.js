@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import axios from 'axios';
 
 import HomeHeader from '../Components/HomeHeader';
+import {setActiveHeader} from '../../actions/setActiveHeader';
 
 class Features extends Component{
 	constructor(props){
@@ -14,7 +15,7 @@ class Features extends Component{
 	}
   
   componentDidMount(){
-      
+      this.props.setActiveHeader("feature")
   }
 
   render(){
@@ -129,6 +130,6 @@ function mapStateToProps(state){
   };
 }
 function matchDispatchToProps(dispatch){
-  return bindActionCreators({ }, dispatch);
+  return bindActionCreators({ setActiveHeader:setActiveHeader }, dispatch);
 }
 export default connect(mapStateToProps, matchDispatchToProps)(Features);
