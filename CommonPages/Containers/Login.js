@@ -104,7 +104,7 @@ class Login extends Component{
                     {this.state.forgotstate==true && (<h1>Forgot password</h1>)}
                     <div>
                       <h3>Questions?</h3>
-                      <a>< img src="../images/contact-icon.png" className="img-fluid"/>Contact Us</a>
+                      <a href="#/"><img src="../images/contact-icon.png" className="img-fluid"/>Contact Us</a>
                     </div>
                 </div>
                 <div className="inner-right-wrap">

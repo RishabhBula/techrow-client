@@ -4,17 +4,53 @@ import { connect } from 'react-redux';
 import axios from 'axios';
 
 import HomeHeader from '../Components/HomeHeader';
+import {setActiveHeader} from '../../actions/setActiveHeader';
+import {Notification} from '../../CommonPages/Components/Notification';
 
 class Features extends Component{
 	constructor(props){
 		super(props);
     this.state = {
-      
+      name:"",
+      email:"",
+      subject:"",
+      message:"",
+      error:false,
+      errortext:"",
+      buttonloader:false,
     }
 	}
   
   componentDidMount(){
-      
+      this.props.setActiveHeader("feature")
+  }
+
+  submit(){
+    if( this.state.name=="" || this.state.email=="" || this.state.subject=="" || this.state.message==""){
+        this.setState({error:true,errortext:"Please fill all the fields to continue"})
+    }else{
+        
+        this.setState({buttonloader:true})
+        axios({
+              method:"POST",
+              url:'https://us-central1-techrow-platform.cloudfunctions.net/sendmail/contactus',
+              data:{
+                name:this.state.name,
+                email:this.state.email,
+                subject:this.state.subject,
+                message:this.state.message,
+              }
+            }).then((response) =>{
+                console.log("-----response from server--->",response)
+                Notification("success","Sent successfully","Thanks for contacting us!");
+                this.setState({buttonloader:false,name:"",email:"",subject:"",message:""})
+            }).catch((err) =>{
+                console.log("err-----err-err--->",err.response)
+                Notification("error","Sent failed","Something went wrong, request failed");
+                this.setState({buttonloader:false})
+            })
+
+    }
   }
 
   render(){
@@ -71,22 +107,24 @@ class Features extends Component{
                     <h2>Have a question? Contact us!</h2>
                     <div className="form">
                       <div className="form-group">
-                        <input type="text" className="form-control" placeholder="Name"/>
+                        <input type="text" className="form-control" placeholder="Name" value={this.state.name} onChange={(e) =>{ this.setState({ name:e.target.value,error:false,errortext:"" }) }}/>
                       </div>
                       <div className="form-group">
-                        <input type="email" className="form-control" placeholder="Email"/>
+                        <input type="email" className="form-control" placeholder="Email" value={this.state.email} onChange={(e) =>{ this.setState({ email:e.target.value,error:false,errortext:"" }) }}/>
                       </div>
                       <div className="form-group">
-                        <input type="text" className="form-control" placeholder="Subject"/>
+                        <input type="text" className="form-control" placeholder="Subject" value={this.state.subject} onChange={(e) =>{ this.setState({ subject:e.target.value,error:false,errortext:"" }) }}/>
                       </div>
                       <div className="form-group">
-                        <textarea type="text" className="form-control" placeholder="Message...."></textarea>
+                        <textarea type="text" className="form-control" placeholder="Message...." value={this.state.message} onChange={(e) =>{ this.setState({ message:e.target.value,error:false,errortext:"" }) }}></textarea>
                       </div>
                       <div className="form-group checkbox">
                         <label><input type="checkbox" value=""/>Receive our TechRow newsletter</label>
                       </div>
+                      {this.state.error==true && (<div><span style={{color: 'red'}}>{this.state.errortext}</span></div>)}
                       <div className="form-group">
-                        <button>Submit</button>
+                        {this.state.buttonloader==false &&(<button onClick={() =>{ this.submit() }}>Submit</button>)}
+                        {this.state.buttonloader==true &&(<button>Sending</button>)}
                       </div>
                       
                     </div>
@@ -94,7 +132,7 @@ class Features extends Component{
                   <div className="col-md-5">
                     <h3>Quick Links</h3>
                     <ul>
-                      <li><a href="#">Features</a></li>
+                      <li><a href="#/features">Features</a></li>
                       <li><a href="#/signup">Sign Up</a></li>
                       <li><a href="#/login">Sign In</a></li>
                     </ul>
@@ -129,6 +167,6 @@ function mapStateToProps(state){
   };
 }
 function matchDispatchToProps(dispatch){
-  return bindActionCreators({ }, dispatch);
+  return bindActionCreators({ setActiveHeader:setActiveHeader }, dispatch);
 }
 export default connect(mapStateToProps, matchDispatchToProps)(Features);
