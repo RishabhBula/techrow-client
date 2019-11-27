@@ -41,10 +41,7 @@ class Sidemenu extends Component{
             )}
             <div className="sidemenu-group">
               <a>Contact</a>
-<<<<<<< HEAD
-=======
               {/*<a>Settings</a>*/}
->>>>>>> 5d7763dd46e0f0501af235b752bd642ead0033dc
             </div>
         </div>
       );
