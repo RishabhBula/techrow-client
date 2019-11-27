@@ -5,6 +5,7 @@ import axios from 'axios';
 
 import HomeHeader from '../Components/HomeHeader';
 import {setActiveHeader} from '../../actions/setActiveHeader';
+import {Notification} from '../../CommonPages/Components/Notification';
 
 class Features extends Component{
 	constructor(props){
