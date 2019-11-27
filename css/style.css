@@ -196,6 +196,18 @@ header {
       header ul li a:hover {
         color: #262161;
         text-decoration: none; }
+    header ul li.active {
+      position: relative; }
+      header ul li.active::after {
+        content: " ";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        border-bottom: 2px solid #262161; }
+      header ul li.active a {
+        color: #262161;
+        text-decoration: none; }
   header ul:last-child {
     float: right; }
     header ul:last-child li a {
@@ -1090,6 +1102,10 @@ footer {
         opacity: .7; }
       .marketplace .form-group button:hover img {
         opacity: 1; }
+      .marketplace .form-group button:focus {
+        -webkit-box-shadow: none;
+        box-shadow: none;
+        outline: none; }
 
 .featured-slider {
   background-color: #fff; }
@@ -1256,6 +1272,30 @@ footer {
     outline: none;
     -webkit-box-shadow: none;
     box-shadow: none; }
+
+.search-page {
+  max-width: 1170px;
+  margin: auto; }
+  .search-page .classesList {
+    margin-top: 20px; }
+  .search-page .each-class {
+    display: -webkit-box !important;
+    display: -ms-flexbox !important;
+    display: flex !important; }
+    .search-page .each-class .class-banne-wrap {
+      width: 200px;
+      height: 100px !important;
+      margin-right: 20px; }
+    .search-page .each-class .class-banne-wrap-cnt h3 {
+      margin-top: 5px; }
+    .search-page .each-class .class-banne-wrap-cnt tag {
+      display: inline-block;
+      color: #37373750;
+      font-size: .7rem;
+      border: 1px solid #37373750;
+      padding: 5px;
+      border-radius: 5px;
+      margin-top: 15px; }
 
 .marketplace-item .marketplace-banner {
   position: relative;

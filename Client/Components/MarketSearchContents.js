@@ -24,7 +24,7 @@ class MarketSearchContents extends Component{
 
   trimm(a){
     var string = a;
-    var length = 90;
+    var length = 200;
     var trimmedString = string.length > length ? 
                         string.substring(0, length - 3) + "..." : 
                         string;
@@ -34,7 +34,7 @@ class MarketSearchContents extends Component{
 
   render(){
       return(
-         <div className="dashboard animated fadeIn">
+         <div className="dashboard animated fadeIn search-page">
           <div>
             <div className="classesList">
               {this.props.marketSearch.marketsearch.length==0 &&(<div style={{textAlign:'center',display: 'block'}} className="row">
@@ -45,13 +45,16 @@ class MarketSearchContents extends Component{
               {this.props.marketSearch.marketsearch.length>0 &&(<div className="row">
                 {this.props.marketSearch.marketsearch.map((item,index) =>{
                   return(
-                    <div className="col-lg-3 col-md-4" key={item.id}>
+                    <div className="col-lg-12" key={item.id}>
                       <a onClick={() =>{ this.onItemClick(item) }} className="each-class">
                         <div className="class-banne-wrap">
                           <img src={item.thumbnail} className="img-fluid class-banner" />
                         </div>
+                        <div className="class-banne-wrap-cnt">
                         <h3>{item.name}</h3>
                         <p>{this.trimm(item.description)}</p>
+                        <tag>{item.category}</tag>
+                        </div>
                       </a>
                     </div>)
                 })}
