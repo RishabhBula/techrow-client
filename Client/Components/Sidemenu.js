@@ -40,7 +40,7 @@ class Sidemenu extends Component{
               </div>
             )}
             <div className="sidemenu-group">
-              <a>Contact</a>
+              <a href = "mailto: contact@techrow.org" target="_blank">Contact</a>
               {/*<a>Settings</a>*/}
             </div>
         </div>
