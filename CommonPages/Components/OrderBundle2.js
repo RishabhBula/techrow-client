@@ -110,6 +110,19 @@ class OrderBundle2 extends Component{
           stripePaymentInfo:{}
       }
 
+                        axios({
+                                method:"POST",
+                                url:'https://us-central1-techrow-platform.cloudfunctions.net/sendmail/invoice',
+                                data:{
+                                  email:this.props.userData.email,
+                                  bundledata:orderObj,
+                                }
+                              }).then((response) =>{
+                                  console.log("-----response from server--->",response)
+                              }).catch((err) =>{
+                                  console.log("err-----err-err--->",err.response)
+                              })
+
       let userId = this.props.userData.id
       var order = db.collection("orders").doc();
       orderObj.id = order.id;
