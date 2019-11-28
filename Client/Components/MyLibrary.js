@@ -64,24 +64,58 @@ class MyLibrary extends Component{
     window.location.href='#/class/:'+id+'/:theater'
   }
 
-  search(s){
+  // search123(s){
+  //   // console.log("this.state.search",this.state.search)
+  //   this.props.setMylibraryquery(s,0)
+  //   firebase.firestore().collection('users').doc(this.props.auth.authData.uid).collection('myLibrary').where('status', '==', true).where('searchQuery', '>=', s).where('searchQuery', '<=', s+ '\uf8ff')
+  //   // firebase.firestore().collection('contents').where('searchQuery', '>=', s).where('searchQuery', '<=', s+ '\uf8ff')
+  //   .get()
+  //   .then((querySnapshot) => {
+  //       let myLibrary =[];
+  //       querySnapshot.forEach((doc) => {
+  //           // doc.data() is never undefined for query doc snapshots
+  //           myLibrary.push(doc.data())
+  //       });
+  //       this.props.getMylibrary(myLibrary)
+  //       if(this.state.search==""){ this.setState({searchheader:false}) }else{ this.setState({searchheader:true}) }
+  //   })
+  //   .catch(function(error) {
+  //       console.log("Error getting documents: ", error);
+  //   });
+  // }
+
+  async search(s){
     // console.log("this.state.search",this.state.search)
+    try {
     this.props.setMylibraryquery(s,0)
-    firebase.firestore().collection('users').doc(this.props.auth.authData.uid).collection('myLibrary').where('status', '==', true).where('searchQuery', '>=', s).where('searchQuery', '<=', s+ '\uf8ff')
+    let one = firebase.firestore().collection('users').doc(this.props.auth.authData.uid).collection('myLibrary').where('status', '==', true).where('searchQuery', '>=', s).where('searchQuery', '<=', s+ '\uf8ff').get()
+    let two = firebase.firestore().collection('users').doc(this.props.auth.authData.uid).collection('myLibrary').where('status', '==', true).where('searchQuery2', '>=', s).where('searchQuery2', '<=', s+ '\uf8ff').get()
     // firebase.firestore().collection('contents').where('searchQuery', '>=', s).where('searchQuery', '<=', s+ '\uf8ff')
-    .get()
-    .then((querySnapshot) => {
-        let myLibrary =[];
-        querySnapshot.forEach((doc) => {
-            // doc.data() is never undefined for query doc snapshots
-            myLibrary.push(doc.data())
-        });
-        this.props.getMylibrary(myLibrary)
-        if(this.state.search==""){ this.setState({searchheader:false}) }else{ this.setState({searchheader:true}) }
-    })
-    .catch(function(error) {
-        console.log("Error getting documents: ", error);
-    });
+    let [three,four] = await Promise.all([one,two])
+    console.log("three",three.size)
+    console.log("four",four.size)
+          let myLibrary =[];
+          three.forEach((item) =>{
+            myLibrary.push(item.data())
+          })
+          four.forEach((item) =>{
+            myLibrary.push(item.data())
+          })
+
+          function removeDuplicates(myArr, prop) {
+                        return myArr.filter((obj, pos, arr) => {
+                            return arr.map(mapObj => mapObj[prop]).indexOf(obj[prop]) === pos;
+                        });
+                    }
+                    let unique = removeDuplicates(myLibrary, "id")
+          console.log("unique",unique)
+          this.props.getMylibrary(unique)
+    }
+    catch (err) {
+        console.log("Error", err)
+        this.setState({loading:false})
+        return err
+    }
   }
 
   search2(event){
@@ -105,7 +139,7 @@ class MyLibrary extends Component{
           <div>
             {this.state.searchheader==false?<h2>My Library</h2>:<h2>Search Results</h2>}
             <div className="search form-group">
-              <input type="text" className="form-control" placeholder="Search Classes" value={this.state.search} onChange={(e) =>{ this.setState({search:e.target.value}); if(e.target.value==""){ this.props.setMylibraryquery("",0);this.search(e.target.value) } }} onKeyPress={(event) =>{ this.search2(event) }} />
+              <input type="text" className="form-control" placeholder="Search Classes" value={this.state.search} onChange={(e) =>{ this.setState({search:e.target.value}); if(e.target.value==""){ this.props.setMylibraryquery("",0);this.mylibrary() } }} onKeyPress={(event) =>{ this.search2(event) }} />
               <button onClick={() =>{ this.search(this.state.search.toLowerCase()) }}><img src="../images/search-icon.png" className="img-fluid"/></button>
             </div>
             {this.state.loading==false ? <div className="classesList">

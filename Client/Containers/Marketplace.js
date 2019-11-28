@@ -73,26 +73,61 @@ class Marketplace extends Component{
         }
   }
 
-  search(s){
+  // search123(s){
+  //   // console.log("this.state.search",this.state.search)
+  //   this.props.setMarketsearchquery(s,0)
+  //   // firebase.firestore().collection('users').doc(this.props.auth.authData.uid).collection('myLibrary').where('name', '>=', s).where('name', '<=', s+ '\uf8ff')
+  //   firebase.firestore().collection('contents').where("status","==",true).where('searchQuery', '>=', s).where('searchQuery', '<=', s+ '\uf8ff')
+  //   .get()
+  //   .then((querySnapshot) => {
+  //       let marketContent =[];
+  //       querySnapshot.forEach((doc) => {
+  //           // doc.data() is never undefined for query doc snapshots
+  //           marketContent.push(doc.data())
+  //       });
+  //       this.props.setMarketsearch(marketContent)
+  //       // if(this.state.search==""){ this.setState({searchheader:false}) }else{ this.setState({searchheader:true}) }
+  //       this.setState({searchshow:true})
+  //   })
+  //   .catch(function(error) {
+  //       console.log("Error getting documents: ", error);
+  //       this.setState({searchshow:false})
+  //   });
+  // }
+
+  async search(s){
     // console.log("this.state.search",this.state.search)
+    try {
     this.props.setMarketsearchquery(s,0)
-    // firebase.firestore().collection('users').doc(this.props.auth.authData.uid).collection('myLibrary').where('name', '>=', s).where('name', '<=', s+ '\uf8ff')
-    firebase.firestore().collection('contents').where("status","==",true).where('searchQuery', '>=', s).where('searchQuery', '<=', s+ '\uf8ff')
-    .get()
-    .then((querySnapshot) => {
-        let marketContent =[];
-        querySnapshot.forEach((doc) => {
-            // doc.data() is never undefined for query doc snapshots
-            marketContent.push(doc.data())
-        });
-        this.props.setMarketsearch(marketContent)
-        // if(this.state.search==""){ this.setState({searchheader:false}) }else{ this.setState({searchheader:true}) }
-        this.setState({searchshow:true})
-    })
-    .catch(function(error) {
-        console.log("Error getting documents: ", error);
+    let one = firebase.firestore().collection('contents').where("status","==",true).where('searchQuery', '>=', s).where('searchQuery', '<=', s+ '\uf8ff').get()
+    let two = firebase.firestore().collection('contents').where("status","==",true).where('searchQuery2', '>=', s).where('searchQuery2', '<=', s+ '\uf8ff').get()
+    // firebase.firestore().collection('contents').where('searchQuery', '>=', s).where('searchQuery', '<=', s+ '\uf8ff')
+    let [three,four] = await Promise.all([one,two])
+    console.log("three",three.size)
+    console.log("four",four.size)
+          let marketContent =[];
+          three.forEach((item) =>{
+            marketContent.push(item.data())
+          })
+          four.forEach((item) =>{
+            marketContent.push(item.data())
+          })
+
+          function removeDuplicates(myArr, prop) {
+                        return myArr.filter((obj, pos, arr) => {
+                            return arr.map(mapObj => mapObj[prop]).indexOf(obj[prop]) === pos;
+                        });
+                    }
+                    let unique = removeDuplicates(marketContent, "id")
+          console.log("unique",unique)
+          this.props.setMarketsearch(unique)
+          this.setState({searchshow:true})
+    }
+    catch (err) {
+        console.log("Error", err)
         this.setState({searchshow:false})
-    });
+        return err
+    }
   }
 
   search2(event){
