@@ -117,7 +117,7 @@ class MarketContents extends Component{
       return(
          <div className=" animated fadeIn seience-slide">
 
-            <h1>All Contents</h1>
+            <h1>All Content</h1>
             <div className="featured-slider">
               <Slider {...settings}>
 
