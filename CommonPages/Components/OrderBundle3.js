@@ -44,10 +44,10 @@ class _SplitFieldsForm extends Component{
 
   calculateprice(){
       let headSetBundleCount=1;
-      let headSetBundlePrice=850;
+      let headSetBundlePrice=4000;
       let totalBundleCost=headSetBundleCount*headSetBundlePrice;
       let additionalHeadSetCount=Number(this.props.orderdetails.ordercount);
-      let additionalHeadSetPrice=150;
+      let additionalHeadSetPrice=500;
       let totalAdditionalHeadSetCost=additionalHeadSetCount*additionalHeadSetPrice;
       let orderTotalAmount=totalBundleCost+totalAdditionalHeadSetCost;
       return orderTotalAmount;
@@ -83,10 +83,10 @@ class _SplitFieldsForm extends Component{
                                         console.log("-----response from server--->",res.data)
                                           try{
                                                 let headSetBundleCount=1;
-                                                let headSetBundlePrice=850;
+                                                let headSetBundlePrice=4000;
                                                 let totalBundleCost=headSetBundleCount*headSetBundlePrice;
                                                 let additionalHeadSetCount=Number(this.props.orderdetails.ordercount);
-                                                let additionalHeadSetPrice=150;
+                                                let additionalHeadSetPrice=500;
                                                 let totalAdditionalHeadSetCost=additionalHeadSetCount*additionalHeadSetPrice;
                                                 let orderTotalAmount=totalBundleCost+totalAdditionalHeadSetCost;
 
