@@ -94,7 +94,7 @@ class MarketplaceDiscription extends Component{
               <div className="inner-wrap">
                 <div className="marketplace-banner" style={{backgroundColor:'#ff0000', backgroundImage:`url(${this.props.marketDetails.thumbnail})`}}>
                   <img src={this.props.marketDetails.thumbnail} className="img-fluid item-banner" alt="item-banner" />
-                  <a href="#marketplace" className="back-btn"><Icon type="left" /> Back to Search Result</a>
+                  <a href="#marketplace" className="back-btn"><Icon type="left" /> Back to marketplace</a>
                   <a className="play-icon"><img src="../images/play-icon.png" className="img-fluid" alt="play-icon"/><span>Watch Trailer</span></a>
                   <div>
                   </div>
