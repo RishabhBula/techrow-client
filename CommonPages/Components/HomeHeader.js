@@ -30,7 +30,7 @@ class HomeHeader extends Component{
                   <div className={this.state.menuClass?'openMenu head-right':'head-right'}>
                     <ul>
                       <li className={this.props.activeHeader=="home" ?"active":""}><a href="#/">Home</a></li>
-                      <li><AnchorLink href='#about_us'>About</AnchorLink></li>
+                      {this.props.activeHeader!="feature" &&(<li><AnchorLink href='#about_us'>About</AnchorLink></li>)}
                       <li className={this.props.activeHeader=="feature" ?"active":""} onClick={() =>{ window.location.href='#/features'; }}><a>Features</a></li>
                       <li><AnchorLink href='#contact_us'>Contact</AnchorLink></li>
                       <li><a href="http://www.techrowfund.org" target="_blank">TechRow Fund</a></li>

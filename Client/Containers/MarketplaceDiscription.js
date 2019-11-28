@@ -113,7 +113,7 @@ class MarketplaceDiscription extends Component{
                         <li>Category<span>{this.props.marketDetails.category}</span></li>
                         <li>Studio<span>{this.props.marketDetails.studioName}</span></li>
                         <li>Producers<span>{this.props.marketDetails.producers.map((item,index,array) => { return ( <text>{item}{array.length!=index+1 && (<text>, </text>) }</text>) })}</span></li>
-                        <li>Director<span>{this.props.marketDetails.director}</span></li>
+                        <li>Directors<span>{this.props.marketDetails.director}</span></li>
                         <li>Time<span>{this.convertMS(this.props.marketDetails.duration).hour>0 ? `${this.convertMS(this.props.marketDetails.duration).hour} hr` : null } {this.convertMS(this.props.marketDetails.duration).minute} min</span></li>
                       </ul>
                     </div>

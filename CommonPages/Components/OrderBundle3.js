@@ -44,10 +44,10 @@ class _SplitFieldsForm extends Component{
 
   calculateprice(){
       let headSetBundleCount=1;
-      let headSetBundlePrice=850;
+      let headSetBundlePrice=4000;
       let totalBundleCost=headSetBundleCount*headSetBundlePrice;
       let additionalHeadSetCount=Number(this.props.orderdetails.ordercount);
-      let additionalHeadSetPrice=150;
+      let additionalHeadSetPrice=500;
       let totalAdditionalHeadSetCost=additionalHeadSetCount*additionalHeadSetPrice;
       let orderTotalAmount=totalBundleCost+totalAdditionalHeadSetCost;
       return orderTotalAmount;
@@ -83,10 +83,10 @@ class _SplitFieldsForm extends Component{
                                         console.log("-----response from server--->",res.data)
                                           try{
                                                 let headSetBundleCount=1;
-                                                let headSetBundlePrice=850;
+                                                let headSetBundlePrice=4000;
                                                 let totalBundleCost=headSetBundleCount*headSetBundlePrice;
                                                 let additionalHeadSetCount=Number(this.props.orderdetails.ordercount);
-                                                let additionalHeadSetPrice=150;
+                                                let additionalHeadSetPrice=500;
                                                 let totalAdditionalHeadSetCost=additionalHeadSetCount*additionalHeadSetPrice;
                                                 let orderTotalAmount=totalBundleCost+totalAdditionalHeadSetCost;
 
@@ -280,7 +280,7 @@ const SplitFieldsForm = injectStripe(_SplitFieldsForm);
 class OrderBundle3 extends Component {
   render() {
     return (
-      <StripeProvider apiKey="pk_test_OabmVXdgp2Rb17rmMJXtBhHP007xwDqW5c">
+      <StripeProvider apiKey="pk_live_4FfS8kisKlv2eAyqkKyTIeBB00DNQRBulO">
         <Elements>
           <SplitFieldsForm getUserdata={this.props.getUserdata} userData={this.props.userData} orderdetails={this.props.orderdetails} pageRender={this.props.pageRender}/>
         </Elements>
