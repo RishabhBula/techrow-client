@@ -29,10 +29,11 @@ class HomeHeader extends Component{
                   <a onClick={() =>{ window.location.href='#/'; }} className="logo"><img src="../images/techrow-logo.png"/> </a>
                   <div className={this.state.menuClass?'openMenu head-right':'head-right'}>
                     <ul>
-                      <li className={this.props.activeHeader=="home" ?"active":""}><AnchorLink href='#about_us'>About</AnchorLink></li>
+                      <li className={this.props.activeHeader=="home" ?"active":""}><a href="#/">Home</a></li>
+                      <li><AnchorLink href='#about_us'>About</AnchorLink></li>
                       <li className={this.props.activeHeader=="feature" ?"active":""} onClick={() =>{ window.location.href='#/features'; }}><a>Features</a></li>
                       <li><AnchorLink href='#contact_us'>Contact</AnchorLink></li>
-                      <li><a  href="http://www.techrowfund.org" target="_blank">TechRow Fund</a></li>
+                      <li><a href="http://www.techrowfund.org" target="_blank">TechRow Fund</a></li>
                     </ul>
                     <ul>
                       <li className="login"> <a href="#/login">Login</a></li>

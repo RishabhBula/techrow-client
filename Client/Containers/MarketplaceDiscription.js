@@ -95,7 +95,7 @@ class MarketplaceDiscription extends Component{
                 <div className="marketplace-banner" style={{backgroundColor:'#ff0000', backgroundImage:`url(${this.props.marketDetails.thumbnail})`}}>
                   <img src={this.props.marketDetails.thumbnail} className="img-fluid item-banner" alt="item-banner" />
                   <a href="#marketplace" className="back-btn"><Icon type="left" /> Back to marketplace</a>
-                  <a className="play-icon"><img src="../images/play-icon.png" className="img-fluid" alt="play-icon"/><span>Watch Trailer</span></a>
+                  { /* <a className="play-icon"><img src="../images/play-icon.png" className="img-fluid" alt="play-icon"/><span>Watch Trailer</span></a> */}
                   <div>
                   </div>
                 </div>
@@ -110,6 +110,7 @@ class MarketplaceDiscription extends Component{
                     <div className="col-md-4">
                       <h1>Credits</h1>
                       <ul>
+                        <li>Category<span>{this.props.marketDetails.category}</span></li>
                         <li>Studio<span>{this.props.marketDetails.studioName}</span></li>
                         <li>Producers<span>{this.props.marketDetails.producers.map((item,index,array) => { return ( <text>{item}{array.length!=index+1 && (<text>, </text>) }</text>) })}</span></li>
                         <li>Director<span>{this.props.marketDetails.director}</span></li>
