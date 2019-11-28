@@ -62,7 +62,7 @@ class OrderBundle2 extends Component{
       console.log("===userData====",this.props.userData)
 
       let headSetBundleCount=1;
-      let headSetBundlePrice=1400;
+      let headSetBundlePrice=14000;
       let totalBundleCost=headSetBundleCount*headSetBundlePrice;
       let additionalHeadSetCount=Number(this.props.orderdetails.ordercount);
       let additionalHeadSetPrice=500;

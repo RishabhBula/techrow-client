@@ -37,7 +37,7 @@ class SignUp4 extends Component{
 
   calculateprice(){
       let headSetBundleCount=1;
-      let headSetBundlePrice=1400;
+      let headSetBundlePrice=14000;
       let totalBundleCost=headSetBundleCount*headSetBundlePrice;
       let additionalHeadSetCount=Number(this.props.orderdetails.ordercount);
       let additionalHeadSetPrice=500;
