@@ -16,6 +16,7 @@ class Home extends Component{
   
   componentDidMount(){
       this.props.setActiveHeader("home")
+      window.scrollTo(0,0);
   }
 
   render(){
