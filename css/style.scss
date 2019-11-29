@@ -500,8 +500,7 @@ box-shadow: inset 0px -171px 122px -42px rgba(0,0,0,0.53);
 	}
 	.featured-slider .slick-current::after{display: none}
 	.slick-slide{width: 300px;}
-	.slick-center{-webkit-transform: scale(1.4, 1); -moz-transform: scale(1.4, 1);  -ms-transform: scale(1.4, 1); -o-transform: scale(1.4, 1);
-	        transform: scale(1, 1.4); z-index: 10000; position: inherit; width: 400px!important;
+	.slick-center{-webkit-transform: scale(1.4, 1); -moz-transform: scale(1.4, 1);  -ms-transform: scale(1.4, 1); -o-transform: scale(1.4, 1);transform: scale(1, 1.4); z-index: 10000; position: inherit; width: 400px!important;
 	        .featured-slider-cnt{padding-bottom: 20px!important}
 	        h2{font-size: 1.5rem!important; line-height: 20px!important; margin-bottom: 0!important; -webkit-transform: scale(1, .6); -moz-transform: scale(1, .6); -ms-transform: scale(1, .6); -o-transform: scale(1, .6); transform: scale(1, .6);}
 	        p{font-size: 1rem!important; line-height: 20px!important; margin-bottom: 0px!important; -webkit-transform: scale(1, .6); -moz-transform: scale(1, .6); -ms-transform: scale(1, .6);  -o-transform: scale(1, .6); transform: scale(1, .6);}
@@ -515,7 +514,7 @@ box-shadow: inset 0px -171px 122px -42px rgba(0,0,0,0.53);
 		.featured-slider-item img{height: 250px;}
 		.slick-arrow{top:22%;}
 		.slick-center{-webkit-transform: scale(1, 1); -moz-transform: scale(1, 1);  -ms-transform: scale(1, 1); -o-transform: scale(1, 1);
-	        transform: scale(1, 1);
+	        transform: scale(1, 1);width: 300px!important;
 	         h2{font-size: 1.5rem!important; line-height: 20px!important; margin-bottom: 0!important; -webkit-transform: scale(1, 1); -moz-transform: scale(1, 1); -ms-transform: scale(1, 1); -o-transform: scale(1, 1); transform: scale(1, 1);}
 	        p{font-size: 1rem!important; line-height: 20px!important; margin-bottom: 0px!important; -webkit-transform: scale(1, 1); -moz-transform: scale(1, 1); -ms-transform: scale(1, 1); -o-transform: scale(1, 1); transform: scale(1, 1);}
 	        h3{font-size: 1rem!important;-webkit-transform: scale(1, 1); -moz-transform: scale(1, 1); -ms-transform: scale(1, 1); -o-transform: scale(1, 1); transform: scale(1, 1);}
@@ -527,10 +526,10 @@ box-shadow: inset 0px -171px 122px -42px rgba(0,0,0,0.53);
 
 // ----------------content search page----------------
 
-.search-page{max-width: 1170px; margin: auto;
+.search-page{max-width: 1110px; margin: auto;
 	.classesList{margin-top: 20px;}
-	.each-class{display: flex!important; 
-		.class-banne-wrap{width: 200px; height: 100px!important; margin-right: 20px;}
+	.each-class{
+		.class-banne-wrap{width: 200px; height: 100px!important; margin-right: 20px; float: left;}
 		.class-banne-wrap-cnt{
 			h3{margin-top: 5px;}
 			tag{display: inline-block; color: #37373750; font-size: .7rem; border:1px solid #37373750;padding: 5px; border-radius: 5px; margin-top: 15px}

@@ -38,7 +38,8 @@ class Home extends Component{
                 <div className="row">
                   <div className="col-md-6 cnt-area-lft">
                     <h2><span>Unlock</span>the Power of Immersive Technology</h2>
-                    <p>Our unique education solution enables teachers to empower the student with award winning immersive content coupled with the right tools</p>
+                    <p>Our unique education solution enables teachers to empower the student with award winning immersive content coupled with the right tools to
+drive focus and engagement in the classroom.</p>
                     <a href="#/features">View TECHROW Features →</a>
                     
                   </div>
