@@ -79,7 +79,7 @@ class Login extends Component{
       if(this.state.email==""){
         this.setState({error:true,errortext:"Please enter email to continue"})
       }else{
-        firebase.auth().sendPasswordResetEmail(email.trim().toLocaleLowerCase(),{url:'https://techrow-platform.firebaseapp.com/#/login'})
+        firebase.auth().sendPasswordResetEmail(email.trim().toLocaleLowerCase(),{url:window.location.href})
         .then((res) =>{
           console.log("forgot success response",res)
           Notification("success","Email sent","Reset password link sent to your email")
