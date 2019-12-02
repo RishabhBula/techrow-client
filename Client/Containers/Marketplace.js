@@ -141,7 +141,8 @@ class Marketplace extends Component{
         <div className="full-page">
              {this.state.loading==false ?  <div className="inner-wrap marketplace-page">
                 <div className="marketplace">
-                  <a href="#" className="back"><Icon type="caret-left" />Back to My Library</a>
+                  {this.state.searchshow==false &&(<a href="#" className="back"><Icon type="caret-left" />Back to My Library</a>)}
+                  {this.state.searchshow==true &&(<a href="#/marketplace" className="back" onClick={() =>{ this.props.setMarketsearchquery("",0); this.setState({searchshow:false,search:""}); let data=[];this.props.setMarketsearch(data); this.getMarketplace() }}><Icon type="caret-left" />Back to Marketplace</a>)}
                   <div className="form-group">
                     <input type="text" placeholder="Content Search" className="form-control" value={this.state.search} onChange={(e) =>{ this.setState({search:e.target.value}); if(e.target.value==""){ this.props.setMarketsearchquery("",0); this.setState({searchshow:false}); let data=[];this.props.setMarketsearch(data); this.getMarketplace() } }} onKeyPress={(event) =>{ this.search2(event) }}/>
                     <button onClick={() =>{ if(this.state.search!=""){ this.search(this.state.search.toLowerCase()) } }}><img src="../images/search-icon.png" className="img-fluid"/></button>
