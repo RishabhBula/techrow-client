@@ -58,19 +58,19 @@ class MarketContents extends Component{
     })
     return items.length
   }
-  getSlickData(itemData){
+  getSlickData(itemData,category){
     let returnItem=[]
     itemData.forEach((item) =>{
-      if(item.category=="Technology"){
+      if(item.category==category){
         returnItem.push(
           <div className="featured-slider-item" key={item.id}>
-            <img src={item.thumbnail} className="img-fluid" />
-            <div className="featured-slider-cnt pointer" onClick={() =>{ this.onItemClick(item) }}>
-              <h2>{item.name}</h2>
-              <p>{this.trimm(item.description)}</p>
-              <h3>{this.convertMS(item.duration).hour} hr {this.convertMS(item.duration).minute} min</h3>
-            </div>
-          </div>
+                        <img src={item.thumbnail} className="img-fluid" />
+                        <div className="featured-slider-cnt pointer" onClick={() =>{ this.onItemClick(item) }}>
+                          <h2>{item.name}</h2>
+                          <p>{this.trimm(item.description)}</p>
+                          <h3>{this.convertMS(item.duration).hour} hr {this.convertMS(item.duration).minute} min</h3>
+                        </div>
+                      </div>
                      
           )
       }
@@ -161,20 +161,7 @@ class MarketContents extends Component{
             <div className="featured-slider cat_slider">
               <Slider {...cat_slider_settings}>
 
-              {this.props.marketContent.marketcontent.map((item,index) =>{
-                  return(
-                    <div>
-                      {item.category=="Science" && (<div className="featured-slider-item" key={item.id}>
-                        <img src={item.thumbnail} className="img-fluid" />
-                        <div className="featured-slider-cnt pointer" onClick={() =>{ this.onItemClick(item) }}>
-                          <h2>{item.name}</h2>
-                          <p>{this.trimm(item.description)}</p>
-                          <h3>{this.convertMS(item.duration).hour} hr {this.convertMS(item.duration).minute} min</h3>
-                        </div>
-                      </div>)}
-                    </div>
-                  )}
-              )}   
+              {this.props.marketContent.marketcontent.length && this.getSlickData(this.props.marketContent.marketcontent,"Science")}   
 
               </Slider>
             </div>
@@ -185,20 +172,7 @@ class MarketContents extends Component{
             <div className="featured-slider cat_slider">
               <Slider {...cat_slider_settings}>
 
-              {this.props.marketContent.marketcontent.map((item,index) =>{
-                  return(
-                    <div>
-                      {item.category=="History" && (<div className="featured-slider-item" key={item.id}>
-                        <img src={item.thumbnail} className="img-fluid" />
-                        <div className="featured-slider-cnt pointer" onClick={() =>{ this.onItemClick(item) }}>
-                          <h2>{item.name}</h2>
-                          <p>{this.trimm(item.description)}</p>
-                          <h3>{this.convertMS(item.duration).hour} hr {this.convertMS(item.duration).minute} min</h3>
-                        </div>
-                      </div>)}
-                    </div>
-                  )}
-              )}   
+              {this.props.marketContent.marketcontent.length && this.getSlickData(this.props.marketContent.marketcontent,"History")}   
 
               </Slider>
             </div>
@@ -209,20 +183,7 @@ class MarketContents extends Component{
             <div className="featured-slider cat_slider">
               <Slider {...cat_slider_settings}>
 
-              {this.props.marketContent.marketcontent.map((item,index) =>{
-                  return(
-                    <div>
-                      {item.category=="World Affairs" && (<div className="featured-slider-item" key={item.id}>
-                        <img src={item.thumbnail} className="img-fluid" />
-                        <div className="featured-slider-cnt pointer" onClick={() =>{ this.onItemClick(item) }}>
-                          <h2>{item.name}</h2>
-                          <p>{this.trimm(item.description)}</p>
-                          <h3>{this.convertMS(item.duration).hour} hr {this.convertMS(item.duration).minute} min</h3>
-                        </div>
-                      </div>)}
-                    </div>
-                  )}
-              )}   
+              {this.props.marketContent.marketcontent.length && this.getSlickData(this.props.marketContent.marketcontent,"World Affairs")}   
 
               </Slider>
             </div>
@@ -233,20 +194,7 @@ class MarketContents extends Component{
             <div className="featured-slider cat_slider">
               <Slider {...cat_slider_settings}>
 
-              {this.props.marketContent.marketcontent.map((item,index) =>{
-                  return(
-                    <div>
-                      {item.category=="Documentaries" && (<div className="featured-slider-item" key={item.id}>
-                        <img src={item.thumbnail} className="img-fluid" />
-                        <div className="featured-slider-cnt pointer" onClick={() =>{ this.onItemClick(item) }}>
-                          <h2>{item.name}</h2>
-                          <p>{this.trimm(item.description)}</p>
-                          <h3>{this.convertMS(item.duration).hour} hr {this.convertMS(item.duration).minute} min</h3>
-                        </div>
-                      </div>)}
-                    </div>
-                  )}
-              )}   
+              {this.props.marketContent.marketcontent.length && this.getSlickData(this.props.marketContent.marketcontent,"Documentaries")}   
 
               </Slider>
             </div>
@@ -257,31 +205,18 @@ class MarketContents extends Component{
             <div className="featured-slider cat_slider">
               <Slider {...cat_slider_settings}>
 
-              {this.props.marketContent.marketcontent.map((item,index) =>{
-                  return(
-                    <div>
-                      {item.category=="Technology" && (<div className="featured-slider-item" key={item.id}>
-                        <img src={item.thumbnail} className="img-fluid" />
-                        <div className="featured-slider-cnt pointer" onClick={() =>{ this.onItemClick(item) }}>
-                          <h2>{item.name}</h2>
-                          <p>{this.trimm(item.description)}</p>
-                          <h3>{this.convertMS(item.duration).hour} hr {this.convertMS(item.duration).minute} min</h3>
-                        </div>
-                      </div>)}
-                    </div>
-                  )}
-              )}   
+              {this.props.marketContent.marketcontent.length && this.getSlickData(this.props.marketContent.marketcontent,"Technology")}   
 
               </Slider>
             </div>
             </div>)}
 
-            {this.checkCategorylength("Technology")>0 &&(<div>
+           {/* {this.checkCategorylength("Technology")>0 &&(<div>
             <h1>Technology</h1>
             <div className="featured-slider cat_slider row">
               {this.props.marketContent.marketcontent.length && this.getSlickData(this.props.marketContent.marketcontent)}
             </div>
-            </div>)}
+            </div>)} */}
 
          </div>
       );
