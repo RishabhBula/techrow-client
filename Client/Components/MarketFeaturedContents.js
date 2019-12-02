@@ -52,7 +52,7 @@ class MarketFeaturedContents extends Component{
 
   render(){
 
-    var settings = {
+    var settingss = {
       dots: false,
       infinite: true,
       speed: 1000,
@@ -81,7 +81,7 @@ class MarketFeaturedContents extends Component{
       return(
          <div className="animated fadeIn">
             <div className="featured-slider">
-              <Slider {...settings}>
+              <Slider {...settingss}>
 
                 {this.props.marketFeature.marketfeature.map((item,index) =>{
                   return(

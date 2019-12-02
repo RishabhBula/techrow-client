@@ -7,12 +7,12 @@ import Slider from "react-slick";
 import {setMarketdetails} from '../../actions/setMarketdetails';
 
 class MarketContents extends Component{
-	constructor(props){
-		super(props);
+  constructor(props){
+    super(props);
     this.state = {
       
     }
-	}
+  }
   
   componentDidMount(){
       
@@ -57,6 +57,25 @@ class MarketContents extends Component{
       }
     })
     return items.length
+  }
+  getSlickData(itemData){
+    let returnItem=[]
+    itemData.forEach((item) =>{
+      if(item.category=="Technology"){
+        returnItem.push(
+          <div className="featured-slider-item" key={item.id}>
+            <img src={item.thumbnail} className="img-fluid" />
+            <div className="featured-slider-cnt pointer" onClick={() =>{ this.onItemClick(item) }}>
+              <h2>{item.name}</h2>
+              <p>{this.trimm(item.description)}</p>
+              <h3>{this.convertMS(item.duration).hour} hr {this.convertMS(item.duration).minute} min</h3>
+            </div>
+          </div>
+                     
+          )
+      }
+    })
+    return returnItem;
   }
 
 
@@ -254,6 +273,13 @@ class MarketContents extends Component{
               )}   
 
               </Slider>
+            </div>
+            </div>)}
+
+            {this.checkCategorylength("Technology")>0 &&(<div>
+            <h1>Technology</h1>
+            <div className="featured-slider cat_slider row">
+              {this.props.marketContent.marketcontent.length && this.getSlickData(this.props.marketContent.marketcontent)}
             </div>
             </div>)}
 

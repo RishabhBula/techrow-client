@@ -510,7 +510,7 @@ box-shadow: inset 0px -171px 122px -42px rgba(0,0,0,0.53);
 	.slick-prev{left: 15px; background-image: url(/images/left-arrow.png);}
 	.slick-next{ right: 15px;background-image: url(/images/right-arrow.png);}
 	.slick-arrow:focus{outline: none; box-shadow: none}
-	.cat_slider{ 
+	.cat_slider{ margin-bottom: 30px;
 		.featured-slider-item img{height: 250px;}
 		.slick-arrow{top:22%;}
 		.slick-center{-webkit-transform: scale(1, 1); -moz-transform: scale(1, 1);  -ms-transform: scale(1, 1); -o-transform: scale(1, 1);
