@@ -1280,6 +1280,8 @@ footer {
       top: 45%; }
     .seience-slide .cat_slider .slick-slider .slick-track, .seience-slide .cat_slider .slick-slider .slick-list {
       margin-left: 0; }
+    .seience-slide .cat_slider .featured-slider-cnt {
+      opacity: 1 !important; }
     .seience-slide .cat_slider .slick-center {
       -webkit-transform: scale(1, 1);
       -moz-transform: scale(1, 1);
