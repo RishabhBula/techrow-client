@@ -23,6 +23,7 @@ class Features extends Component{
   
   componentDidMount(){
       this.props.setActiveHeader("feature")
+      window.scrollTo(0,0);
   }
 
   submit(){
