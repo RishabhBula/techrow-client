@@ -58,7 +58,7 @@ class ClassTheater extends Component{
 
   stop(){
     const controller = OmniVirt.api;
-    const player = document.getElementById(this.props.theaterData.previewUrlID);
+    const player = document.getElementById(this.props.theaterData.omnivirtID);
       this.props.socket.emit('sendAction', this.props.userData.headJackCredentials.appId, this.props.userData.headJackCredentials.authId, this.props.cdevicesids, 'stop', []);
     controller.sendMessage('seek', 0.0, player);
     controller.sendMessage('pause', null, player);

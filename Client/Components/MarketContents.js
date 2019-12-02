@@ -137,7 +137,7 @@ class MarketContents extends Component{
               </Slider>
             </div>
 
-            {this.checkCategorylength("Science")>5 &&(<div>
+            {this.checkCategorylength("Science")>0 &&(<div>
             <h1>Science</h1>
             <div className="featured-slider cat_slider">
               <Slider {...cat_slider_settings}>
@@ -161,7 +161,7 @@ class MarketContents extends Component{
             </div>
             </div>)}
 
-            {this.checkCategorylength("History")>5 &&(<div>
+            {this.checkCategorylength("History")>0 &&(<div>
             <h1>History</h1>
             <div className="featured-slider cat_slider">
               <Slider {...cat_slider_settings}>
@@ -185,7 +185,7 @@ class MarketContents extends Component{
             </div>
             </div>)}
 
-            {this.checkCategorylength("World Affairs")>5 &&(<div>
+            {this.checkCategorylength("World Affairs")>0 &&(<div>
             <h1>World Affairs</h1>
             <div className="featured-slider cat_slider">
               <Slider {...cat_slider_settings}>
@@ -209,7 +209,7 @@ class MarketContents extends Component{
             </div>
             </div>)}
 
-            {this.checkCategorylength("Documentaries")>5 &&(<div>
+            {this.checkCategorylength("Documentaries")>0 &&(<div>
             <h1>Documentaries</h1>
             <div className="featured-slider cat_slider">
               <Slider {...cat_slider_settings}>
@@ -233,7 +233,7 @@ class MarketContents extends Component{
             </div>
             </div>)}
 
-            {this.checkCategorylength("Technology")>5 &&(<div>
+            {this.checkCategorylength("Technology")>0 &&(<div>
             <h1>Technology</h1>
             <div className="featured-slider cat_slider">
               <Slider {...cat_slider_settings}>
