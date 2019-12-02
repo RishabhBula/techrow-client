@@ -114,21 +114,22 @@ class MarketContents extends Component{
       arrows:true,
       slidesToShow: 4,
       slidesToScroll: 1, 
-      centerMode:true,
+      centerMode:false,
       autoplay:false,
+      infinite:false,
       responsive: [
         {
           breakpoint: 1025,
           settings: {
             slidesToShow: 3.1,
-            centerMode:true,
+            centerMode:false,
           }
         },
         {
           breakpoint: 769,
           settings: {
             slidesToShow:2.5,
-            centerMode:true,
+            centerMode:false,
           }
         }
       ]
