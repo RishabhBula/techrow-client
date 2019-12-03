@@ -19,6 +19,7 @@ import individualData from './individualData';
 import selectedDevices from './selectedDevices';
 import selectedDevicestheater from './selectedDevicestheater';
 import activeHeader from './activeHeader';
+import scrollHeader from './scrollHeader';
 const allReducers = combineReducers({
 	app: app,
 	auth:authentication,
@@ -38,7 +39,8 @@ const allReducers = combineReducers({
 	individualData:individualData,
 	selectedDevices:selectedDevices,
 	selectedDevicestheater:selectedDevicestheater,
-	activeHeader:activeHeader
+	activeHeader:activeHeader,
+	scrollHeader:scrollHeader
 });
 
 export default allReducers
