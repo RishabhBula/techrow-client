@@ -28,6 +28,7 @@ class MarketplaceDiscription extends Component{
   componentDidMount(){
     this.props.setClassMode(this.props.match.url.split("/")[1],"","theater")
     this.getDetails()
+     window.scrollTo(0,0);
   }
 
   async getDetails(){

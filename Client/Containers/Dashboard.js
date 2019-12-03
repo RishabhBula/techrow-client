@@ -18,6 +18,7 @@ class Dashboard extends Component{
   
   componentDidMount(){
     this.props.setClassMode(this.props.match.url.split("/")[1],"","theater")
+     window.scrollTo(0,0);
   }
 
   render(){

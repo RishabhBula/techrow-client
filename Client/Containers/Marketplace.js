@@ -40,6 +40,7 @@ class Marketplace extends Component{
       this.setState({search:this.props.marketSearchquery.query,searchshow:true})
       this.search(this.props.marketSearchquery.query)
     }
+     window.scrollTo(0,0);
   }
 
   async getMarketplace(){

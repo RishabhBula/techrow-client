@@ -36,6 +36,7 @@ class Class extends Component{
   componentWillMount(){
     this.props.setClassMode(this.props.match.url.split("/")[1],this.props.match.params.id.split(":")[1],this.props.match.params.mode.split(":")[1])
     this.getDetails()
+     window.scrollTo(0,0);
   }
   
   componentDidMount(){
