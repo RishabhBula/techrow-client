@@ -3,6 +3,7 @@ import {bindActionCreators} from 'redux';
 import { connect } from 'react-redux';
 import axios from 'axios';
 import {notification} from 'antd';
+import ReactGA from 'react-ga';
 
 import firebase from 'firebase/app';
 import 'firebase/auth';
@@ -26,6 +27,11 @@ class Login extends Component{
       errortext:""
     }
 	}
+
+  componentWillMount(){
+      ReactGA.initialize('UA-83014470-1');
+      ReactGA.pageview(window.location.href)
+  }
   
   componentDidMount(){
       

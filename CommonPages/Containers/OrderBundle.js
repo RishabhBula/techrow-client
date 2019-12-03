@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import {bindActionCreators} from 'redux';
 import { connect } from 'react-redux';
 import axios from 'axios';
+import ReactGA from 'react-ga';
 
 import SignupHeader from '../Components/SignupHeader';
 import OrderBundle1 from '../Components/OrderBundle1';
@@ -17,6 +18,11 @@ class OrderBundle extends Component{
       page:2,
     }
 	}
+
+  componentWillMount(){
+      ReactGA.initialize('UA-83014470-1');
+      ReactGA.pageview(window.location.href)
+  }
   
   componentDidMount(){
       console.log("props",this.props)
