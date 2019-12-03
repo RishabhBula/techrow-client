@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import {bindActionCreators} from 'redux';
 import { connect } from 'react-redux';
 import axios from 'axios';
+import ReactGA from 'react-ga';
 
 import HomeHeader from '../Components/HomeHeader';
 import {setActiveHeader} from '../../actions/setActiveHeader';
@@ -15,11 +16,17 @@ class Home extends Component{
       email:"",
       subject:"",
       message:"",
+      newsletter:false,
       error:false,
       errortext:"",
       buttonloader:false,
     }
 	}
+
+  componentWillMount(){
+      ReactGA.initialize('UA-83014470-1');
+      ReactGA.pageview(window.location.href)
+  }
   
   componentDidMount(){
       this.props.setActiveHeader("home")
@@ -36,6 +43,12 @@ class Home extends Component{
     }else{
         
         this.setState({buttonloader:true})
+        let newsletter
+        if(this.state.newsletter)
+           newsletter='Yes'
+        else
+           newsletter='No'
+
         axios({
               method:"POST",
               url:'https://us-central1-techrow-platform.cloudfunctions.net/sendmail/contactus',
@@ -44,11 +57,12 @@ class Home extends Component{
                 email:this.state.email,
                 subject:this.state.subject,
                 message:this.state.message,
+                newsletter:newsletter,
               }
             }).then((response) =>{
                 console.log("-----response from server--->",response)
                 Notification("success","Sent successfully","Thanks for contacting us!");
-                this.setState({buttonloader:false,name:"",email:"",subject:"",message:""})
+                this.setState({buttonloader:false,name:"",email:"",subject:"",message:"",newsletter:false})
             }).catch((err) =>{
                 console.log("err-----err-err--->",err)
                 Notification("error","Sent failed","Something went wrong, request failed");
@@ -193,7 +207,7 @@ drive focus and engagement in the classroom.</p>
                         <textarea type="text" className="form-control" placeholder="Message...." value={this.state.message} onChange={(e) =>{ this.setState({ message:e.target.value,error:false,errortext:"" }) }}></textarea>
                       </div>
                       <div className="form-group checkbox">
-                        <label><input type="checkbox" value=""/>Receive our TechRow newsletter</label>
+                        <label><input type="checkbox" checked={this.state.newsletter} onChange={(e) =>{ this.setState({newsletter:e.target.checked}) }}/>Receive our TechRow newsletter</label>
                       </div>
                       {this.state.error==true && (<div><span style={{color: 'red'}}>{this.state.errortext}</span></div>)}
                       <div className="form-group">

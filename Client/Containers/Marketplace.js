@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import {bindActionCreators} from 'redux';
 import { connect } from 'react-redux';
 import axios from 'axios';
+import ReactGA from 'react-ga';
 import { Spin, Icon } from 'antd';
 const antIcon = <Icon type="loading" style={{ fontSize: 24 }} spin />
 
@@ -30,6 +31,11 @@ class Marketplace extends Component{
        searchshow:false
     }
 	}
+
+  componentWillMount(){
+      ReactGA.initialize('UA-83014470-1');
+      ReactGA.pageview(window.location.href)
+  }
   
   componentDidMount(){
     this.props.setClassMode(this.props.match.url.split("/")[1],"","theater")

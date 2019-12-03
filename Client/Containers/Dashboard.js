@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import {bindActionCreators} from 'redux';
 import { connect } from 'react-redux';
 import axios from 'axios';
+import ReactGA from 'react-ga';
 
 import Sidemenu from '../Components/Sidemenu';
 import MyLibrary from '../Components/MyLibrary.js';
@@ -15,6 +16,11 @@ class Dashboard extends Component{
       
     }
 	}
+
+  componentWillMount(){
+      ReactGA.initialize('UA-83014470-1');
+      ReactGA.pageview(window.location.href)
+  }
   
   componentDidMount(){
     this.props.setClassMode(this.props.match.url.split("/")[1],"","theater")

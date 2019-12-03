@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import {bindActionCreators} from 'redux';
 import { connect } from 'react-redux';
 import axios from 'axios';
+import ReactGA from 'react-ga';
 
 import SignupHeader from '../Components/SignupHeader';
 import SignUp1 from '../Components/SignUp1';
@@ -16,6 +17,11 @@ class SignUp extends Component{
       page:1,
     }
 	}
+
+  componentWillMount(){
+      ReactGA.initialize('UA-83014470-1');
+      ReactGA.pageview(window.location.href)
+  }
   
   componentDidMount(){
       

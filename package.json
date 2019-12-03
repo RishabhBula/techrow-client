@@ -27,6 +27,7 @@
     "react-anchor-link-smooth-scroll": "^1.0.12",
     "react-app-polyfill": "^1.0.1",
     "react-dom": "^16.7.0",
+    "react-ga": "^2.7.0",
     "react-google-recaptcha": "^2.0.1",
     "react-inverted-scrollview": "^1.0.7",
     "react-recaptcha": "^2.3.10",
