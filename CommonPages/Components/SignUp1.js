@@ -46,7 +46,7 @@ class SignUp1 extends Component{
                           
                           <img src={this.props.signupdetails.type=="educator"?"./images/man-and-tie.png":"./images/man-and-tie-grey.png"} className="img-fluid" alt="study"/>
                           <h5 >Teacher/Educator</h5>
-                          <p>I want to bring Virtual Reality into my classroom/school. I want access to hours of learning contents and well-structured, standards-aligned lesson plan</p>
+                          <p>I want to bring immersive learning experiences to my school or education program.</p>
                         </div>
                       </div>
                       <div className="col-6 ">
