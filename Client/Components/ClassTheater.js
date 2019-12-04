@@ -20,6 +20,7 @@ class ClassTheater extends Component{
 	}
   
   componentWillMount(){
+      this.props.playerStatechange(0);
       // console.log("component 2",this.props)
       if(sessionStorage.chats){
         console.log("session msg exists")
@@ -35,9 +36,11 @@ class ClassTheater extends Component{
          controller.receiveMessage(window, 'started', (type, data, iframe) =>{ 
           console.log("====type, data, iframe====",type, data, iframe) 
             if(this.props.playerState==0){
+              console.log("this.props.playerState000",this.props.playerState)
             this.props.socket.emit('sendAction', this.props.userData.headJackCredentials.appId, this.props.userData.headJackCredentials.authId, this.props.cdevicesids, 'play', [this.props.theaterData.headjackProjectId])
             this.props.playerStatechange(this.props.playerState+1);
             }else{
+              console.log("this.props.playerState1111",this.props.playerState)
               this.props.socket.emit('sendAction', this.props.userData.headJackCredentials.appId, this.props.userData.headJackCredentials.authId, this.props.cdevicesids, 'resume', []);
             }
         });
