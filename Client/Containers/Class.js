@@ -40,7 +40,7 @@ class Class extends Component{
   }
   
   componentDidMount(){
-      const socket = io('https://cinema.headjack.io/', {transports: ['polling'], upgrade: false, reconnection:true, });
+      const socket = io('https://cinema.headjack.io/', {transports: ['polling'], upgrade: false});
       this.setState({socket:socket})
       socket.on('connect', () => {
         console.log("socket connection established....socket id",socket.id); // 'G5p5...'
@@ -183,6 +183,10 @@ class Class extends Component{
     catch (err) {
       console.log("Error==>", err)
     }
+  }
+
+  componentWillUnmount(){
+    this.state.socket.disconnect();
   }
 
   render(){
