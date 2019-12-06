@@ -207,12 +207,12 @@ class ClassTheater extends Component{
             <div className="row">
                 <div className="col-md-12 col-lg-8 col-xl-9">
                   <div className="theaterModeData">
-                    <div className="theaterVideo">
+                    {this.props.theaterData.omnivirtUrl!=undefined ? <div className="theaterVideo">
 
-                      <iframe id={this.props.theaterData.omnivirtID} src={this.props.theaterData.omnivirtUrl+"?player=true&autoplay=false"} frameBorder="0" width="1280" height="720" webkitallowfullscreen="1" mozallowfullscreen="1" allowFullScreen="1"></iframe>
+                      {this.props.theaterData.omnivirtUrl.includes("//cdn") ? <iframe id={this.props.theaterData.omnivirtID} src={this.props.theaterData.omnivirtUrl+"?player=true&autoplay=false"} frameBorder="0" width="1280" height="720" webkitallowfullscreen="1" mozallowfullscreen="1" allowFullScreen="1"></iframe> : <span>preview url not valid</span> }
 
                       {/*<iframe id="player" src={this.props.theaterData.previewUrl} frameBorder="0" allow="fullscreen" allowFullScreen > </iframe>*/}
-                    </div>
+                    </div>:<div className="theaterVideo"> </div>}
                     <button className="blue-btn stop-btn" onClick={() =>{ this.stop() }}>Stop</button>
                     <div className="discription">
                       <p>{this.props.theaterData.description}</p>
