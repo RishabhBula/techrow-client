@@ -187,6 +187,7 @@ class Class extends Component{
 
   componentWillUnmount(){
     this.state.socket.disconnect();
+    this.props.setTheaterdata({})
   }
 
   render(){
