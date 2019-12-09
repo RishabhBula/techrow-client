@@ -185,7 +185,8 @@ class Class extends Component{
 
   async getDetails(){
     try {
-      let details = await firebase.firestore().collection('contents').doc(this.props.match.params.id.split(":")[1]).get()
+      // let details = await firebase.firestore().collection('contents').doc(this.props.match.params.id.split(":")[1]).get()
+      let details = await firebase.firestore().collection('users').doc(this.props.auth.authData.uid).collection('myLibrary').doc(this.props.match.params.id.split(":")[1]).get()
       this.props.setTheaterdata(details.data())
     }
     catch (err) {
@@ -216,6 +217,7 @@ class Class extends Component{
 
 function mapStateToProps(state){
   return{
+    auth:state.auth,
     headjackreducer:state.headjackreducer,
     userData:state.userData,
     classMode:state.classMode,
