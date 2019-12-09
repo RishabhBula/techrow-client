@@ -50,6 +50,7 @@ class Class extends Component{
                 console.log("inside auth")
                 socket.emit('appAuth', this.props.userData.headJackCredentials.appId, this.props.userData.headJackCredentials.authId);
                 socket.emit('enableAppCinema', this.props.userData.headJackCredentials.appId, this.props.userData.headJackCredentials.authId, true);
+                socket.emit('resetAppCountDown', this.props.userData.headJackCredentials.appId, this.props.userData.headJackCredentials.authId);
               },2000);
           }
       });
@@ -93,7 +94,13 @@ class Class extends Component{
       });
       socket.on('unauthorized', (error) =>{ console.log("unauthorized******",error) });
 
-      socket.on('cinemaEnabled', (cinemaEnabled,status) =>{ console.log("cinemaEnabled",cinemaEnabled,status) })
+      socket.on('cinemaEnabled', (cinemaEnabled,status) =>{ 
+         console.log("cinemaEnabled",cinemaEnabled,status); 
+         if(status==false){ 
+          this.state.socket.emit('enableAppCinema', this.props.userData.headJackCredentials.appId, this.props.userData.headJackCredentials.authId, true);
+          this.state.socket.emit('resetAppCountDown', this.props.userData.headJackCredentials.appId, this.props.userData.headJackCredentials.authId);
+        } 
+      })
 
         socket.on('appList', (appList) =>{ 
           console.log("logged")
