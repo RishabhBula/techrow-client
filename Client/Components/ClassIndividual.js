@@ -87,7 +87,7 @@ class ClassIndividual extends Component{
               Stop Playback
             </a>
           </Menu.Item>
-          <Menu.Item key="download" disabled={this.props.selectedDevices.length==0 ? true : false}>
+        {/*<Menu.Item key="download" disabled={this.props.selectedDevices.length==0 ? true : false}>
             <a rel="noopener noreferrer">
               Download Project
             </a>
@@ -96,7 +96,7 @@ class ClassIndividual extends Component{
             <a rel="noopener noreferrer">
               Stop Download
             </a>
-          </Menu.Item>
+          </Menu.Item>*/}  
         </Menu>
       );
 

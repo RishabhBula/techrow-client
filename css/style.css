@@ -1698,6 +1698,8 @@ footer {
       margin-bottom: 30px; }
     .contact-us .form {
       margin-bottom: 30px; }
+      .contact-us .form button {
+        padding: 10px; }
   footer {
     padding: 20px 0; }
     footer .footer-content {

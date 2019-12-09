@@ -139,7 +139,7 @@ class MyLibrary extends Component{
           <div>
             {this.state.searchheader==false?<h2>My Library</h2>:<h2>Search Results</h2>}
             <div className="search form-group">
-              <input type="text" className="form-control" placeholder="Search Classes" value={this.state.search} onChange={(e) =>{ this.setState({search:e.target.value}); if(e.target.value==""){ this.props.setMylibraryquery("",0);this.mylibrary() } }} onKeyPress={(event) =>{ this.search2(event) }} />
+              <input type="text" className="form-control" placeholder="Search Content" value={this.state.search} onChange={(e) =>{ this.setState({search:e.target.value}); if(e.target.value==""){ this.props.setMylibraryquery("",0);this.mylibrary() } }} onKeyPress={(event) =>{ this.search2(event) }} />
               <button onClick={() =>{ this.search(this.state.search.toLowerCase()) }}><img src="../images/search-icon.png" className="img-fluid"/></button>
             </div>
             {this.state.loading==false ? <div className="classesList">

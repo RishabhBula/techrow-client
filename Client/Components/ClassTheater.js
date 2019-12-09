@@ -174,7 +174,7 @@ class ClassTheater extends Component{
               Stop Playback
             </a>
           </Menu.Item>
-          <Menu.Item key="download" disabled={this.props.selectedDevicestheater.length==0 ? true : false}>
+        {/*  <Menu.Item key="download" disabled={this.props.selectedDevicestheater.length==0 ? true : false}>
             <a rel="noopener noreferrer">
               Download Project
             </a>
@@ -183,7 +183,7 @@ class ClassTheater extends Component{
             <a rel="noopener noreferrer">
               Stop Download
             </a>
-          </Menu.Item>
+          </Menu.Item>*/}
         </Menu>
       );
 
@@ -249,7 +249,7 @@ class ClassTheater extends Component{
                 <div className="col-md-12 col-lg-4 col-xl-3" >
                   <div className="message-wrap">
                     <div style={{display: 'block', textAlign:'center', backgroundColor: '#ebebeb80', borderRadius: '5px', padding: '15px'}}>
-                     <span style={{color: 'white', fontSize :'18px'}}>Broadcast Messages</span>
+                     <span style={{color: 'white', fontSize :'18px'}}>Renaissance Platform</span>
                     </div>
                     <div className="message-list" style={{ overflowY: 'scroll' }}>
                     <ScrollView
@@ -269,10 +269,10 @@ class ClassTheater extends Component{
                         )})}
                       </ScrollView>
                     </div>
-                    <div style={{margin: '10px', }}>
+               {/*    <div style={{margin: '10px', }}>
                       <input type="text" className="form-control" value={this.state.message} onChange={(e) =>{ this.setState({ message:e.target.value }) } } onKeyPress={(event) =>{ this.send(event) }}/>
                       <span style={{color: '#bababa', display: 'block', textAlign:'center', padding: '10px', fontSize: 12}}>Hit Enter to send</span>
-                    </div>
+                    </div>*/} 
                   </div>
                 </div>
             </div>
