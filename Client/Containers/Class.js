@@ -49,6 +49,7 @@ class Class extends Component{
               setTimeout(() =>{ 
                 console.log("inside auth")
                 socket.emit('appAuth', this.props.userData.headJackCredentials.appId, this.props.userData.headJackCredentials.authId);
+                socket.emit('enableAppCinema', this.props.userData.headJackCredentials.appId, this.props.userData.headJackCredentials.authId, true);
               },2000);
           }
       });
