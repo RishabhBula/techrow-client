@@ -43,11 +43,11 @@ class Class extends Component{
       const socket = io('https://cinema.headjack.io/', {transports: ['polling'], upgrade: false});
       this.setState({socket:socket})
       socket.on('connect', () => {
-        console.log("socket connection established....socket id",socket.id); // 'G5p5...'
+       // console.log("socket connection established....socket id",socket.id); // 'G5p5...'
           if(socket.id){
-              console.log("inside if")
+              // console.log("inside if")
               setTimeout(() =>{ 
-                console.log("inside auth")
+                // console.log("inside auth")
                 socket.emit('appAuth', this.props.userData.headJackCredentials.appId, this.props.userData.headJackCredentials.authId);
                 socket.emit('enableAppCinema', this.props.userData.headJackCredentials.appId, this.props.userData.headJackCredentials.authId, true);
                 socket.emit('resetAppCountDown', this.props.userData.headJackCredentials.appId, this.props.userData.headJackCredentials.authId);
@@ -68,7 +68,7 @@ class Class extends Component{
       });
 
       socket.on('disconnect', (error) =>{  
-         console.log("disconnect******// server connection failed== disconnected from server!",error);
+         // console.log("disconnect******// server connection failed== disconnected from server!",error);
          this.props.setIndividualdata([]);
          this.props.setSelecteddevices([]);
          // Notification("error","Disconnect","Disconnected from server");
@@ -95,7 +95,7 @@ class Class extends Component{
       socket.on('unauthorized', (error) =>{ console.log("unauthorized******",error) });
 
       socket.on('cinemaEnabled', (cinemaEnabled,status) =>{ 
-         console.log("cinemaEnabled",cinemaEnabled,status); 
+         // console.log("cinemaEnabled",cinemaEnabled,status); 
          if(status==false){ 
           this.state.socket.emit('enableAppCinema', this.props.userData.headJackCredentials.appId, this.props.userData.headJackCredentials.authId, true);
           this.state.socket.emit('resetAppCountDown', this.props.userData.headJackCredentials.appId, this.props.userData.headJackCredentials.authId);
@@ -103,7 +103,7 @@ class Class extends Component{
       })
 
         socket.on('appList', (appList) =>{ 
-          console.log("logged")
+          // console.log("logged")
           // console.log("appList",appList)
           // Notification("success","Success","Connected to server successfully");
         })
@@ -179,7 +179,7 @@ class Class extends Component{
 
   }
   playerStatechange(count){
-    console.log("count",count)
+    // console.log("count",count)
     this.setState({playerState:count})
   }
 

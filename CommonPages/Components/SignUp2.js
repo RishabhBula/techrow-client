@@ -109,8 +109,8 @@ class SignUp2 extends Component{
                                 value={this.props.signupdetails.countrycode}
                                 onChange={(e) =>{this.setState({countrycode:e}); this.props.signupdetails.countrycode=e }}
                                 >
-                                 {/* {this.getcountryphonecode()}*/}
-                                 <Option key="+1">+1</Option>
+                                 {this.getcountryphonecode()}
+                                 {/* <Option key="+1">+1</Option>*/}
                              </Select>
                              <input id="phonenumber" className="form-control" placeholder="Your phone number" value={this.props.signupdetails.phonenumber} onChange={(e) => {this.setState({phonenumber:this.OrderNumber(e.target.value),error:false,errortext:""}); this.props.signupdetails.phonenumber=this.OrderNumber(e.target.value) }}/>
                           </InputGroup>

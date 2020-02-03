@@ -73,7 +73,6 @@ class Home extends Component{
   }
 
   render(){
-      console.log("scrollHeader-->",this.props.scrollHeader)
       return(
         <div className="full-page animated fadeIn">
            <HomeHeader/>
@@ -130,7 +129,7 @@ drive focus and engagement in the classroom.</p>
                   <div className="col-md-4">
                     <div className="works-types">
                       <h3 style={{color:'#F58221'}}>Marketplace</h3>
-                      <p>Teachers can explore an entire marketplace of immersive content right at their fingertips categorized by subject to compliment curriculum</p>
+                      <p>Teachers can explore an entire marketplace of immersive content right at their fingertips categorized by subject to complement curriculum</p>
                     </div>
                   </div>
                   <div className="col-md-4">

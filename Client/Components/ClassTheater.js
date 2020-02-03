@@ -23,35 +23,35 @@ class ClassTheater extends Component{
       this.props.playerStatechange(0);
       // console.log("component 2",this.props)
       if(sessionStorage.chats){
-        console.log("session msg exists")
+        // console.log("session msg exists")
       }else{
-        console.log("no session msg")
+        // console.log("no session msg")
         sessionStorage.setItem("chats", JSON.stringify([]));
       }
   }
 
   componentDidMount(){
          const controller = OmniVirt.api;
-         console.log("controller===controller",controller)
+         // console.log("controller===controller",controller)
          controller.receiveMessage(window, 'started', (type, data, iframe) =>{ 
-          console.log("====type, data, iframe====",type, data, iframe) 
+          // console.log("====type, data, iframe====",type, data, iframe) 
             if(this.props.playerState==0){
-              console.log("this.props.playerState000",this.props.playerState)
+              // console.log("this.props.playerState000",this.props.playerState)
             this.props.socket.emit('sendAction', this.props.userData.headJackCredentials.appId, this.props.userData.headJackCredentials.authId, this.props.cdevicesids, 'play', [this.props.theaterData.headjackProjectId])
             this.props.playerStatechange(this.props.playerState+1);
             }else{
-              console.log("this.props.playerState1111",this.props.playerState)
+              // console.log("this.props.playerState1111",this.props.playerState)
               this.props.socket.emit('sendAction', this.props.userData.headJackCredentials.appId, this.props.userData.headJackCredentials.authId, this.props.cdevicesids, 'resume', []);
             }
         });
 
          controller.receiveMessage(window, 'paused', (type, data, iframe) =>{ 
-          console.log("====type, data, iframe====",type, data, iframe) 
+          // console.log("====type, data, iframe====",type, data, iframe) 
            this.props.socket.emit('sendAction', this.props.userData.headJackCredentials.appId, this.props.userData.headJackCredentials.authId, this.props.cdevicesids, 'pause', []);
         });
 
          controller.receiveMessage(window, 'ended', (type, data, iframe) =>{ 
-          console.log("====type, data, iframe====",type, data, iframe) 
+          // console.log("====type, data, iframe====",type, data, iframe) 
           // this.props.socket.emit('sendAction', this.props.userData.headJackCredentials.appId, this.props.userData.headJackCredentials.authId, this.props.cdevicesids, 'stop', []);
           this.props.playerStatechange(0);
         });
@@ -69,7 +69,7 @@ class ClassTheater extends Component{
   }
 
   onSelectChange(selectedRowKeys, selectedRows){
-     console.log("selectedRowKeys, selectedRows",selectedRowKeys, selectedRows)
+     // console.log("selectedRowKeys, selectedRows",selectedRowKeys, selectedRows)
      this.setState({selecteddevices:selectedRowKeys});
      this.props.setSelecteddevicestheater(selectedRowKeys)
   }
@@ -117,32 +117,32 @@ class ClassTheater extends Component{
       switch(type) {
         case 'play':
           // code block
-          console.log("play")
+          // console.log("play")
           this.props.socket.emit('sendAction', this.props.userData.headJackCredentials.appId, this.props.userData.headJackCredentials.authId, this.props.selectedDevicestheater, 'play', [this.props.theaterData.headjackProjectId]);
           break;
         case 'resume':
           // code block
-          console.log("resume")
+          // console.log("resume")
           this.props.socket.emit('sendAction', this.props.userData.headJackCredentials.appId, this.props.userData.headJackCredentials.authId, this.props.selectedDevicestheater, 'resume', []);
           break;
         case 'stop':
           // code block
-          console.log("stop")
+          // console.log("stop")
           this.props.socket.emit('sendAction', this.props.userData.headJackCredentials.appId, this.props.userData.headJackCredentials.authId, this.props.selectedDevicestheater, 'stop', []);
           break;
         case 'cancel':
           // code block
-          console.log("cancel")
+          // console.log("cancel")
           this.props.socket.emit('sendAction', this.props.userData.headJackCredentials.appId, this.props.userData.headJackCredentials.authId, this.props.selectedDevicestheater, 'cancel', [this.props.theaterData.headjackProjectId]);
           break;
         case 'pause':
           // code block
-          console.log("pause")
+          // console.log("pause")
           this.props.socket.emit('sendAction', this.props.userData.headJackCredentials.appId, this.props.userData.headJackCredentials.authId, this.props.selectedDevicestheater, 'pause', []);
           break;
         case 'download':
           // code block
-          console.log("download")
+          // console.log("download")
           this.props.socket.emit('sendAction', this.props.userData.headJackCredentials.appId, this.props.userData.headJackCredentials.authId, this.props.selectedDevicestheater, 'download', [this.props.theaterData.headjackProjectId]);
           break;
         default:
