@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import * as contentful from 'contentful'
 import { HashRouter as Router, Route, Switch } from 'react-router-dom';
 import axios from 'axios';
 import {bindActionCreators} from 'redux';
