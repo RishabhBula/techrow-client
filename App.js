@@ -16,6 +16,7 @@ const antIcon = <Icon type="loading" style={{ fontSize: 24 }} spin />;
 import {getAuthentication} from './actions/authentication'
 import Home from './CommonPages/Containers/Home';
 import Features from './CommonPages/Containers/Features';
+import Blog from './CommonPages/Containers/Blog';
 
 import Login from './CommonPages/Containers/Login';
 import SignUp from './CommonPages/Containers/SignUp';
@@ -83,7 +84,7 @@ class App extends Component{
    render(){
    	let route=""
    	if(this.props.auth.loaded==true && this.props.auth.auth==true){
-   		
+
    			route=(
               <div>
                  <Header/>
@@ -100,6 +101,7 @@ class App extends Component{
    				<div>
    					<Route exact path="/" component={Home} />
             <Route exact path="/features" component={Features} />
+            <Route exact path="/blog" component={Blog} />
             <Route exact path="/login" component={Login} />
             <Route exact path="/signup" component={SignUp} />
             <Route exact path="/redirect" component={Redirect} />
@@ -108,15 +110,15 @@ class App extends Component{
    			)
    	}else{
    		route=<div className="loader"><Spin indicator={antIcon} /></div>
-   	} 
-      return( 
+   	}
+      return(
          <Router>
 	         <div>
-	         	
+
 	         	{route}
 
 	         </div>
-         </Router> 
+         </Router>
       );
    }
 }

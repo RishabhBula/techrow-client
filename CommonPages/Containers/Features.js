@@ -27,7 +27,7 @@ class Features extends Component{
       ReactGA.initialize('UA-83014470-1');
       ReactGA.pageview(window.location.href)
   }
-  
+
   componentDidMount(){
       this.props.setActiveHeader("feature")
       window.scrollTo(0,0);
@@ -37,7 +37,7 @@ class Features extends Component{
     if( this.state.name=="" || this.state.email=="" || this.state.subject=="" || this.state.message==""){
         this.setState({error:true,errortext:"Please fill all the fields to continue"})
     }else{
-        
+
         this.setState({buttonloader:true})
         let newsletter
         if(this.state.newsletter)
@@ -72,7 +72,7 @@ class Features extends Component{
       return(
         <div className="full-page animated fadeIn features-page">
            <HomeHeader/>
-            
+
             <section className="about-this banner">
               <div className="container cnt-area">
                 <div className="row">
@@ -92,7 +92,7 @@ class Features extends Component{
                   <div className="col-md-6 cnt-area-lft">
                     <h2><span>Unlock</span>Marketplace</h2>
                     <p>An entire eco-system of world class educational immersive content to enrich your classrooms with 21st century learning solutions. Content on the platform has been carefully curated to meet the needs of today's educators.</p>
-                    
+
                   </div>
                   <div className="col-md-6 about-cnt-rt">
                     <img src="./images/marketplace.png" className="img-fluid" alt="vr"/>
@@ -105,7 +105,7 @@ class Features extends Component{
                 <div className="row">
                   <div className="col-md-6 about-cnt-rt">
                     <img src="./images/class-room-mode.png" className="img-fluid" alt="vr"/>
-                  </div>                  
+                  </div>
                   <div className="col-md-6 cnt-area-lft">
                     <h2><span>Experience</span>Classroom mode</h2>
                     <p>Teachers have full control of the entire learning experience from end to end. By triggering classroom mode, students will view only what the teacher requires driving maximum focus, while maximizing teaching time.</p>
@@ -113,8 +113,8 @@ class Features extends Component{
                 </div>
               </div>
             </section>
-        
-   
+
+
             <section className="contact-us" id="contact_us">
               <div className="container">
                 <div className="row">
@@ -141,7 +141,7 @@ class Features extends Component{
                         {this.state.buttonloader==false &&(<button onClick={() =>{ this.submit() }}>Submit</button>)}
                         {this.state.buttonloader==true &&(<button>Sending</button>)}
                       </div>
-                      
+
                     </div>
                   </div>
                   <div className="col-md-5">
@@ -151,7 +151,7 @@ class Features extends Component{
                       <li><a href="#/signup">Sign Up</a></li>
                       <li><a href="#/login">Sign In</a></li>
                     </ul>
-                    
+
                   </div>
                 </div>
 
@@ -178,7 +178,7 @@ class Features extends Component{
 
 function mapStateToProps(state){
   return{
-    
+
   };
 }
 function matchDispatchToProps(dispatch){
