@@ -9,7 +9,7 @@ import { setActiveHeader } from "../../actions/setActiveHeader";
 import { Notification } from "../../CommonPages/Components/Notification";
 import * as contentful from "contentful";
 
-class Blog extends React.Component {
+class ItemPage extends React.Component {
   state = {
     posts: []
   };
@@ -27,7 +27,14 @@ class Blog extends React.Component {
     this.fetchPosts().then(this.setPosts);
   }
 
-  fetchPosts = () => this.client.getEntries();
+  fetchPosts = slug =>
+  this.client
+    .getEntries({
+      'fields.slug': this.props.match.params.slug,
+      content_type: 'blogPost'
+    })
+
+
   setPosts = response => {
     this.setState({
       posts: response.items
@@ -40,33 +47,28 @@ class Blog extends React.Component {
   }
   render() {
     return (
-      <div className="full-page animated fadeIn blog-page">
+      <div className="full-page animated fadeIn ItemPage-page">
         <HomeHeader />
-        <section className="about-this banner">
           <div className="container cnt-area">
             <div className="row">
               {this.state.posts && this.state.posts.length ? (
                 this.state.posts.map((post, index) => (
-                  <div className="col-lg-4 post" key={post.sys.id}>
+                  <div className="col-lg-12 post" key={post.sys.id}>
                     <div className="post-image">
-                      <a href={"#/" + post.fields.slug}>
-                        { this.fetchImage(post.fields) != "" ? (
+                      { this.fetchImage(post.fields) != "" ? (
                           <img src={this.fetchImage(post.fields)}  className="img-fluid" />
-                        ) : (
-                          <img src="./images/techrow-logo.png" className="img-fluid" />
-                        )}
-                      </a>
+                        ) : (''
+                      )}
                     </div>
                     <h2 className="post-title">{post.fields.title}</h2>
                     <div className="entry-content">{post.fields.summary}</div>
                   </div>
                 ))
               ) : (
-                <h3>Loading Blog Posts...</h3>
+                <h3>Loading Post....</h3>
               )}
             </div>
           </div>
-        </section>
       </div>
     );
   }
@@ -78,4 +80,4 @@ function mapStateToProps(state) {
 function matchDispatchToProps(dispatch) {
   return bindActionCreators({ setActiveHeader: setActiveHeader }, dispatch);
 }
-export default connect(mapStateToProps, matchDispatchToProps)(Blog);
+export default connect(mapStateToProps, matchDispatchToProps)(ItemPage);

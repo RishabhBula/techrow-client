@@ -747,23 +747,6 @@ footer .footer-content .social-links a:hover img {
   background: none;
 }
 
-.blog-page {
-  padding-top: 85px;
-}
-
-.blog-page .about-this {
-  background-color: #EFEFF1;
-  margin-bottom: 10px;
-}
-
-.blog-page .about-this.banner {
-  background-color: #E2E0E4;
-}
-
-.blog-page .about-this .cnt-area {
-  background: none;
-}
-
 .inner-wrap {
   padding-top: 85px;
   min-height: 100vh;
@@ -2783,4 +2766,26 @@ footer .footer-content .social-links a:hover img {
   .inner-wrap .inner-right-wrap h4 {
     margin-top: 100px;
   }
+}
+
+/* BLOG CSS */
+
+.blog-page {
+  padding-top: 110px;
+}
+
+.post-image{
+  min-height: 170px;
+}
+
+.post {
+  border: 1px solid lightgray;
+  padding: 10px;
+  margin: 10px;
+}
+
+.post-title{
+  font-size: large;
+font-weight: 600;
+margin: 10px 0px;
 }
