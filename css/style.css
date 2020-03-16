@@ -2769,23 +2769,48 @@ footer .footer-content .social-links a:hover img {
 }
 
 /* BLOG CSS */
-
 .blog-page {
-  padding-top: 110px;
+  padding-top: 100px;
 }
 
-.post-image{
-  min-height: 170px;
+.blog_cards {
+  margin-top: 20px;
 }
 
-.post {
-  border: 1px solid lightgray;
-  padding: 10px;
-  margin: 10px;
+.card {
+  border-radius: 10px;
+  overflow: hidden;
+  height: 300px;
 }
 
-.post-title{
+.card-img-top {
+  max-height: 190px;
+}
+
+.card-title {
+  font-weight: 700;
+  text-align: left;
+  margin-bottom: 5px;
+}
+
+.card-text {
+  text-align: left;
+}
+
+.post-detail-title {
+  font-weight: 600;
+  text-align: center;
+  font-size: xx-large;
+  margin: 20px 0px;
+}
+
+.post-title {
   font-size: large;
-font-weight: 600;
-margin: 10px 0px;
+  font-weight: 600;
+  margin: 10px 0px;
+}
+
+.summary-content {
+  margin: 20px;
+  font-size: x-large;
 }

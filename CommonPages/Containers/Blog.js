@@ -7,66 +7,51 @@ import ReactGA from "react-ga";
 import HomeHeader from "../Components/HomeHeader";
 import { setActiveHeader } from "../../actions/setActiveHeader";
 import { Notification } from "../../CommonPages/Components/Notification";
-import * as contentful from "contentful";
+import { getBlogPosts } from '../../actions/contentful'
 
 class Blog extends React.Component {
   state = {
-    posts: []
-  };
-  client = contentful.createClient({
-    space: "6u5tx5bx5r35",
-    accessToken: "VfySsVoNol4Uhtj480qSbOfOyxpmKQzvXxiueS2ovTU"
-  });
-
-  componentWillMount() {
-    ReactGA.initialize("UA-83014470-1");
-    ReactGA.pageview(window.location.href);
+    posts: null
   }
 
-  componentDidMount() {
-    this.fetchPosts().then(this.setPosts);
+  componentDidMount(){
+      console.log('Blog Page')
+      this.props.setActiveHeader("blog")
+      getBlogPosts().then(posts => this.setState({ posts }));
   }
-
-  fetchPosts = () => this.client.getEntries();
-  setPosts = response => {
-    this.setState({
-      posts: response.items
-    });
-  };
 
   fetchImage(postImage) {
-    console.log(postImage)
     return postImage.postImage ? postImage.postImage.fields.file.url : "";
   }
   render() {
     return (
       <div className="full-page animated fadeIn blog-page">
         <HomeHeader />
-        <section className="about-this banner">
-          <div className="container cnt-area">
-            <div className="row">
-              {this.state.posts && this.state.posts.length ? (
+        <div className="container">
+          <div className="row">
+            {this.state.posts && this.state.posts.length ? (
                 this.state.posts.map((post, index) => (
-                  <div className="col-lg-4 post" key={post.sys.id}>
-                    <div className="post-image">
-                      <a href={"#/" + post.fields.slug}>
+                  <div className="col-lg-4 blog_cards" key={post.sys.id}>
+                  <div className="card" >
+                    <a href={"#/blog/" + post.fields.slug}>
                         { this.fetchImage(post.fields) != "" ? (
-                          <img src={this.fetchImage(post.fields)}  className="img-fluid" />
+                          <img src={this.fetchImage(post.fields)}  className="card-img-top" />
                         ) : (
-                          <img src="./images/techrow-logo.png" className="img-fluid" />
+                          <img src="./images/techrow-logo.png" className="card-img-top" />
                         )}
                       </a>
+                      <div class="card-body">
+                        <h4 class="card-title">{post.fields.title.substring(0, 40)}</h4>
+                        <p class="card-text">{post.fields.summary.substring(0, 50)}..</p>
+                      </div>
                     </div>
-                    <h2 className="post-title">{post.fields.title}</h2>
-                    <div className="entry-content">{post.fields.summary}</div>
                   </div>
                 ))
               ) : (
                 <h3>Loading Blog Posts...</h3>
               )}
-            </div>
           </div>
-        </section>
+      </div>
       </div>
     );
   }
@@ -76,6 +61,6 @@ function mapStateToProps(state) {
   return {};
 }
 function matchDispatchToProps(dispatch) {
-  return bindActionCreators({ setActiveHeader: setActiveHeader }, dispatch);
+  return bindActionCreators({ setActiveHeader:setActiveHeader }, dispatch);
 }
 export default connect(mapStateToProps, matchDispatchToProps)(Blog);

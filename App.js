@@ -18,7 +18,7 @@ import {getAuthentication} from './actions/authentication'
 import Home from './CommonPages/Containers/Home';
 import Features from './CommonPages/Containers/Features';
 import Blog from './CommonPages/Containers/Blog';
-import ItemPage from './CommonPages/Containers/ItemPage';
+import BlogDetail from './CommonPages/Containers/BlogDetail';
 
 import Login from './CommonPages/Containers/Login';
 import SignUp from './CommonPages/Containers/SignUp';
@@ -104,7 +104,7 @@ class App extends Component{
    					<Route exact path="/" component={Home} />
             <Route exact path="/features" component={Features} />
             <Route exact path="/blog" component={Blog} />
-            <Route path="/:slug" component={ItemPage} />
+            <Route  path="/blog/:slug" component={BlogDetail}  />
             <Route exact path="/login" component={Login} />
             <Route exact path="/signup" component={SignUp} />
             <Route exact path="/redirect" component={Redirect} />
