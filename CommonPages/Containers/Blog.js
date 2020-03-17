@@ -1,3 +1,5 @@
+// @author Pranav
+// Contentfull + React Blog
 import React, { Component } from "react";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
@@ -7,6 +9,7 @@ import ReactGA from "react-ga";
 import HomeHeader from "../Components/HomeHeader";
 import { setActiveHeader } from "../../actions/setActiveHeader";
 import { Notification } from "../../CommonPages/Components/Notification";
+// Include the connection class from Action folder
 import { getBlogPosts } from '../../actions/contentful'
 
 class Blog extends React.Component {
@@ -14,15 +17,18 @@ class Blog extends React.Component {
     posts: null
   }
 
+  // get Blog Posts
   componentDidMount(){
-      console.log('Blog Page')
       this.props.setActiveHeader("blog")
       getBlogPosts().then(posts => this.setState({ posts }));
   }
 
+  // Check if Images Exist & return path
   fetchImage(postImage) {
     return postImage.postImage ? postImage.postImage.fields.file.url : "";
   }
+
+  // Render Blog
   render() {
     return (
       <div className="full-page animated fadeIn blog-page">

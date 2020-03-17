@@ -17,6 +17,7 @@ const antIcon = <Icon type="loading" style={{ fontSize: 24 }} spin />;
 import {getAuthentication} from './actions/authentication'
 import Home from './CommonPages/Containers/Home';
 import Features from './CommonPages/Containers/Features';
+// Include Blog Class, contentful
 import Blog from './CommonPages/Containers/Blog';
 import BlogDetail from './CommonPages/Containers/BlogDetail';
 
@@ -103,6 +104,7 @@ class App extends Component{
    				<div>
    					<Route exact path="/" component={Home} />
             <Route exact path="/features" component={Features} />
+            // Include Blog Pages in Header, contentful
             <Route exact path="/blog" component={Blog} />
             <Route  path="/blog/:slug" component={BlogDetail}  />
             <Route exact path="/login" component={Login} />
