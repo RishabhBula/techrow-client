@@ -100,11 +100,11 @@ class App extends Component{
               </div>
    				)
    	}else if(this.props.auth.loaded==true && this.props.auth.auth==false){
+       // Include Blog Pages in Header, contentful
    		route=(
    				<div>
    					<Route exact path="/" component={Home} />
             <Route exact path="/features" component={Features} />
-            // Include Blog Pages in Header, contentful
             <Route exact path="/blog" component={Blog} />
             <Route  path="/blog/:slug" component={BlogDetail}  />
             <Route exact path="/login" component={Login} />
