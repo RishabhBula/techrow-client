@@ -10,7 +10,7 @@ class HomeHeader extends Component{
 		super(props);
     this.state = {
       menuClass :false
-      
+
     }
 	}
   menuOpen(){
@@ -18,9 +18,9 @@ class HomeHeader extends Component{
       menuClass:!this.state.menuClass
     });
   }
-  
+
   componentDidMount(){
-      
+
   }
 
   // scrollTo(scroll){
@@ -44,7 +44,7 @@ class HomeHeader extends Component{
                       <li className={this.props.activeHeader=="feature" ?"active":""}><a href="#/features">Features</a></li>
                       <li><a href="http://www.techrowfund.org" target="_blank">TechRow Fund</a></li>
                       <li onClick={() =>{ this.props.setScrollHeader("contact") }}><a href="#/">Contact</a></li>
-                      
+                      <li className={this.props.activeHeader=="blog" ?"active":""}><a href="#/blog">Blog</a></li>
                     </ul>
                     <ul>
                       <li className="login"> <a href="#/login">Login</a></li>

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import * as contentful from 'contentful'
 import { HashRouter as Router, Route, Switch } from 'react-router-dom';
 import axios from 'axios';
 import {bindActionCreators} from 'redux';
@@ -16,6 +17,9 @@ const antIcon = <Icon type="loading" style={{ fontSize: 24 }} spin />;
 import {getAuthentication} from './actions/authentication'
 import Home from './CommonPages/Containers/Home';
 import Features from './CommonPages/Containers/Features';
+// Include Blog Class, contentful
+import Blog from './CommonPages/Containers/Blog';
+import BlogDetail from './CommonPages/Containers/BlogDetail';
 
 import Login from './CommonPages/Containers/Login';
 import SignUp from './CommonPages/Containers/SignUp';
@@ -83,7 +87,7 @@ class App extends Component{
    render(){
    	let route=""
    	if(this.props.auth.loaded==true && this.props.auth.auth==true){
-   		
+
    			route=(
               <div>
                  <Header/>
@@ -96,10 +100,13 @@ class App extends Component{
               </div>
    				)
    	}else if(this.props.auth.loaded==true && this.props.auth.auth==false){
+       // Include Blog Pages in Header, contentful
    		route=(
    				<div>
    					<Route exact path="/" component={Home} />
             <Route exact path="/features" component={Features} />
+            <Route exact path="/blog" component={Blog} />
+            <Route  path="/blog/:slug" component={BlogDetail}  />
             <Route exact path="/login" component={Login} />
             <Route exact path="/signup" component={SignUp} />
             <Route exact path="/redirect" component={Redirect} />
@@ -108,15 +115,15 @@ class App extends Component{
    			)
    	}else{
    		route=<div className="loader"><Spin indicator={antIcon} /></div>
-   	} 
-      return( 
+   	}
+      return(
          <Router>
 	         <div>
-	         	
+
 	         	{route}
 
 	         </div>
-         </Router> 
+         </Router>
       );
    }
 }
