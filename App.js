@@ -38,6 +38,7 @@ import firebase from 'firebase/app';
 import 'firebase/app';
 import 'firebase/firestore';
 import 'firebase/database';
+import Academy from './Client/Components/Academy';
 
 const firebaseConfig = {
   apiKey: "AIzaSyAB1yWXPpiOvXHO4w6SUjhvnAejF-bQ5cs",
@@ -94,6 +95,7 @@ class App extends Component{
                  <Route exact path="/" component={Dashboard} />
                  <Route exact path="/features" component={Features} />
            			 <Route exact path="/class/:id/:mode" component={Class} />
+                 <Route exact path="/academy" component={Academy} />
                  <Route exact path="/marketplace" component={Marketplace} />
                  <Route exact path="/marketplace/:id" component={MarketplaceDiscription} />
                  <Route exact path="/orderbundle" component={OrderBundle} />
