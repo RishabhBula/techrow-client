@@ -204,8 +204,6 @@ class ClassTheater extends Component{
       };
       return(
          <div className="dashboard animated fadeIn theaterMode">
-            <div className="row">
-                <div className="col-md-12 col-lg-8 col-xl-9">
                   <div className="theaterModeData">
                     {this.props.theaterData.omnivirtUrl!=undefined ? <div className="theaterVideo">
 
@@ -246,37 +244,6 @@ class ClassTheater extends Component{
                     </div>
                   </div>
                 </div>
-                <div className="col-md-12 col-lg-4 col-xl-3" >
-                  <div className="message-wrap">
-                    <div style={{display: 'block', textAlign:'center', backgroundColor: '#ebebeb80', borderRadius: '5px', padding: '15px'}}>
-                     <span style={{color: 'white', fontSize :'18px'}}>Renaissance Platform</span>
-                    </div>
-                    <div className="message-list" style={{ overflowY: 'scroll' }}>
-                    <ScrollView
-                        width="100%"
-                        height="100%"
-                        ref={ref => (this.scrollView = ref)}
-                    >
-                      {JSON.parse(sessionStorage.chats).map((item,index) =>{ 
-                        return( 
-                          <div style={{padding: '20px', backgroundColor: 'white', borderRadius: 5, marginBottom: '10px', marginTop: '10px', fontSize: 12}}>
-                           <div className="row" style={{paddingBottom: '10px'}}>
-                            <span className="col-md-6" style={{color: '#9d9d9d'}}>{item.name}</span>
-                            <span className="col-md-6" style={{display: 'block', textAlign:'right', color: '#bababa'}}>{moment(item.createedDate).fromNow()}</span>
-                           </div>
-                           <span>{item.msg}</span>
-                          </div>
-                        )})}
-                      </ScrollView>
-                    </div>
-               {/*    <div style={{margin: '10px', }}>
-                      <input type="text" className="form-control" value={this.state.message} onChange={(e) =>{ this.setState({ message:e.target.value }) } } onKeyPress={(event) =>{ this.send(event) }}/>
-                      <span style={{color: '#bababa', display: 'block', textAlign:'center', padding: '10px', fontSize: 12}}>Hit Enter to send</span>
-                    </div>*/} 
-                  </div>
-                </div>
-            </div>
-         </div>
       );
    }
 }

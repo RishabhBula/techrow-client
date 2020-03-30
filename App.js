@@ -92,7 +92,6 @@ class App extends Component{
               <div>
                  <Header/>
                  <Route exact path="/" component={Dashboard} />
-                 <Route exact path="/features" component={Features} />
            			 <Route exact path="/class/:id/:mode" component={Class} />
                  <Route exact path="/marketplace" component={Marketplace} />
                  <Route exact path="/marketplace/:id" component={MarketplaceDiscription} />
