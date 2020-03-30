@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import axios from 'axios';
 import ReactGA from 'react-ga';
 
-import Sidemenu from '../Components/Sidemenu';
 import MyLibrary from '../Components/MyLibrary.js';
 
 import {setClassMode} from '../../actions/setClassMode';
@@ -29,14 +28,7 @@ class Dashboard extends Component{
 
   render(){
       return(
-        <div className="full-page">
-          <div className="inner-wrap"> 
-              <Sidemenu/>
-              <div className="inner-right-wrap">
-                <MyLibrary/>
-              </div>
-          </div>
-        </div>
+        <MyLibrary/>
       );
    }
 }
@@ -46,8 +38,7 @@ function mapStateToProps(state){
   return{
     userData:state.userData,
     classMode:state.classMode
-
-  };
+    };
 }
 function matchDispatchToProps(dispatch){
   return bindActionCreators({ setClassMode:setClassMode }, dispatch);

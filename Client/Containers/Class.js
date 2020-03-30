@@ -201,14 +201,12 @@ class Class extends Component{
 
   render(){
       return(
-        <div className="full-page">
-          <div className="inner-wrap"> 
+            <div> 
               <Sidemenu playerState={this.state.playerState} cdevicesids={this.state.cdevicesids} socket={this.state.socket}/>
-              <div className="inner-right-wrap">
+              <div>
                 {this.props.classMode.mode=="theater" &&(<ClassTheater playerStatechange={this.playerStatechange.bind(this)} playerState={this.state.playerState} cdevicesids={this.state.cdevicesids} socket={this.state.socket}/>)}
                 {this.props.classMode.mode=="individual" &&(<ClassIndividual socket={this.state.socket}/>)}
               </div>
-          </div>
         </div>
       );
    }
