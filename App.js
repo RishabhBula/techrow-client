@@ -1,7 +1,5 @@
 import React, { Component, Fragment } from 'react';
-import * as contentful from 'contentful'
 import { HashRouter as Router, Route, Switch } from 'react-router-dom';
-import axios from 'axios';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import 'antd/dist/antd.css'
@@ -11,12 +9,13 @@ import './css/bootstrap.min.css';
 import './css/temp.css';
 import './css/style.css';
 
-import { Spin, Icon, notification } from 'antd';
+import { Spin, Icon } from 'antd';
 const antIcon = <Icon type="loading" style={{ fontSize: 24 }} spin />;
 
 import { getAuthentication } from './actions/authentication'
 import Home from './CommonPages/Containers/Home';
 import Features from './CommonPages/Containers/Features';
+
 // Include Blog Class, contentful
 import Blog from './CommonPages/Containers/Blog';
 import BlogDetail from './CommonPages/Containers/BlogDetail';
@@ -27,10 +26,6 @@ import OrderBundle from './CommonPages/Containers/OrderBundle';
 import Redirect from './CommonPages/Containers/Redirect';
 
 import Dashboard from './Client/Containers/Dashboard';
-import Header from './Client/Components/Header';
-import Class from './Client/Containers/Class';
-import Marketplace from './Client/Containers/Marketplace';
-import MarketplaceDiscription from './Client/Containers/MarketplaceDiscription'
 
 //==============firebase connection==============//
 
@@ -38,8 +33,7 @@ import firebase from 'firebase/app';
 import 'firebase/app';
 import 'firebase/firestore';
 import 'firebase/database';
-import Sidemenu from './Client/Components/Sidemenu';
-import TheaterSidemenu from './Client/Components/TheaterSidemenu';
+
 
 const firebaseConfig = {
   apiKey: "AIzaSyAB1yWXPpiOvXHO4w6SUjhvnAejF-bQ5cs",
@@ -89,33 +83,7 @@ class App extends Component {
   render() {
     let route;
     if (this.props.auth.loaded == true && this.props.auth.auth == true) {
-      route = (
-        <Fragment>
-          <Header />
-          <Switch>
-            {/* Pages here will hide the sidemenu when selected */}
-            <Route exact path="/marketplace" component={Marketplace} />
-            <Route exact path="/marketplace/:id" component={MarketplaceDiscription} />
-
-            <Fragment>
-              <div className="full-page">
-                <div className="inner-wrap">
-                  <Switch>
-                    <Route exact path="/class/:id/:mode" render={TheaterSidemenu} />
-                    <Route path="/" render={Sidemenu} />
-                  </Switch>
-                  <div className="inner-right-wrap">
-                    {/* Pages here will have the side menu visible when selected */}
-                    <Route exact path="/class/:id/:mode" component={Class} />
-                    <Route exact path="/" component={Dashboard} />
-                  </div>
-                </div>
-              </div>
-            </Fragment>
-          </Switch>
-        </Fragment>
-
-      )
+      route = <Dashboard />;
     } else if (this.props.auth.loaded == true && this.props.auth.auth == false) {
       // Include Blog Pages in Header, contentful
       route = (
