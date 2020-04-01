@@ -97,21 +97,21 @@ class App extends Component {
             <Route exact path="/marketplace" component={Marketplace} />
             <Route exact path="/marketplace/:id" component={MarketplaceDiscription} />
 
-            <div className="full-page">
-              <div className="inner-wrap">
-
-                <Switch>
-                  <Route exact path="/class/:id/:mode" component={TheaterSidemenu} />
-                  <Route path="/" component={Sidemenu} />
-                </Switch>
-
-                <div className="inner-right-wrap">
-                  {/* Pages here will have the side menu visible when selected */}
-                  <Route exact path="/class/:id/:mode" component={Class} />
-                  <Route exact path="/" component={Dashboard} />
+            <Fragment>
+              <div className="full-page">
+                <div className="inner-wrap">
+                  <Switch>
+                    <Route exact path="/class/:id/:mode" component={TheaterSidemenu} />
+                    <Route path="/" component={Sidemenu} />
+                  </Switch>
+                  <div className="inner-right-wrap">
+                    {/* Pages here will have the side menu visible when selected */}
+                    <Route exact path="/class/:id/:mode" component={Class} />
+                    <Route exact path="/" component={Dashboard} />
+                  </div>
                 </div>
               </div>
-            </div>
+            </Fragment>
           </Switch>
         </Fragment>
 
