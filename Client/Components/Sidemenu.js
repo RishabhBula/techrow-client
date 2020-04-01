@@ -7,11 +7,15 @@ const Sidemenu = () => {
       <div className="sidemenu-group">
         <NavLink exact to="/" activeClassName="ative">
           My Library
-           </NavLink>
+        </NavLink>
+
+        <NavLink exact to="/academy" activeClassName="ative">
+          Academy
+        </NavLink>
 
         <NavLink to="/marketplace">
           Marketplace
-          </NavLink>
+        </NavLink>
       </div>
 
       <div className="sidemenu-group">

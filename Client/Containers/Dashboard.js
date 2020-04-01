@@ -5,6 +5,7 @@ import { Route, Switch } from 'react-router-dom';
 
 import Header from '../Components/Header';
 import MyLibrary from '../Components/MyLibrary.js';
+import Academy from '../Components/Academy.js';
 import Sidemenu from '../Components/Sidemenu';
 import TheaterSidemenu from '../Components/TheaterSidemenu';
 
@@ -42,6 +43,7 @@ export default class Dashboard extends Component {
                 <div className="inner-right-wrap">
                   {/* Pages here will have the side menu visible when selected */}
                   <Route exact path="/class/:id/:mode" component={Class} />
+                  <Route path="/academy" component={Academy} />
                   <Route exact path="/" component={MyLibrary} />
                 </div>
               </div>
