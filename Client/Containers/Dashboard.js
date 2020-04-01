@@ -1,6 +1,5 @@
 import React, { Component, Fragment } from 'react';
 import ReactGA from 'react-ga';
-
 import { Route, Switch } from 'react-router-dom';
 
 import Header from '../Components/Header';

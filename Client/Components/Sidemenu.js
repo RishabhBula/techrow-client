@@ -5,6 +5,11 @@ const Sidemenu = () => {
   return (
     <div className="inner-blue-menu">
       <div className="sidemenu-group">
+        
+        <NavLink to="/marketplace">
+          Marketplace
+        </NavLink>
+
         <NavLink exact to="/" activeClassName="ative">
           My Library
         </NavLink>
@@ -13,9 +18,6 @@ const Sidemenu = () => {
           Academy
         </NavLink>
 
-        <NavLink to="/marketplace">
-          Marketplace
-        </NavLink>
       </div>
 
       <div className="sidemenu-group">
