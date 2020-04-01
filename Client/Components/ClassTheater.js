@@ -61,6 +61,13 @@ class ClassTheater extends Component{
       
   }
 
+  componentWillUnmount() {
+    // If a video is playing on devices, stop the video playing on page exit
+    if (this.props.playerState != 0) {
+      this.props.socket.emit('sendAction', this.props.userData.headJackCredentials.appId, this.props.userData.headJackCredentials.authId, this.props.cdevicesids, 'stop', []);
+    }
+  }
+
   stop(){
     const controller = OmniVirt.api;
     const player = document.getElementById(this.props.theaterData.omnivirtID);
@@ -210,13 +217,17 @@ class ClassTheater extends Component{
                     {this.props.theaterData.omnivirtUrl!=undefined ? <div className="theaterVideo">
 
                       {this.props.theaterData.omnivirtUrl.includes("//cdn") ?
-                        <React.Fragment>
-                          <iframe id={this.props.theaterData.omnivirtID} src={this.props.theaterData.omnivirtUrl + "?player=true&autoplay=false"} frameBorder="0" width="1280" height="720" webkitallowfullscreen="1" mozallowfullscreen="1" allowFullScreen="1"></iframe>
-                          <Prompt
-                            when={this.props.playerState != 0}
-                            message="The video is not finished playing, are you sure you want to enter individual mode?"
-                          />
-                        </React.Fragment>
+                      <React.Fragment>
+                        <iframe id={this.props.theaterData.omnivirtID} src={this.props.theaterData.omnivirtUrl + "?player=true&autoplay=false"} frameBorder="0" width="1280" height="720" webkitallowfullscreen="1" mozallowfullscreen="1" allowFullScreen="1"></iframe>
+                        <Prompt
+                          when={this.props.playerState != 0}
+                          message={location =>
+                            location.pathname.endsWith("individual")
+                              ? "The video is not finished playing, are you sure you want to enter individual mode? This will stop the video on all devices."
+                              : true
+                          }
+                        />
+                      </React.Fragment>
                         : <span>preview url not valid</span>}
 
                       {/*<iframe id="player" src={this.props.theaterData.previewUrl} frameBorder="0" allow="fullscreen" allowFullScreen > </iframe>*/}

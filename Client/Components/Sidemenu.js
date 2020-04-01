@@ -23,10 +23,6 @@ class Sidemenu extends Component {
             My Library
            </NavLink>
 
-          {/* <NavLink exact to="/test" activeClassName="ative">
-            testing
-          </NavLink> */}
-
           <NavLink to="/marketplace">
             Marketplace
           </NavLink>

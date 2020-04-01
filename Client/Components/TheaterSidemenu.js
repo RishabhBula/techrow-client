@@ -6,8 +6,6 @@ import { setClassMode } from '../../actions/setClassMode';
 import { NavLink } from 'react-router-dom';
 
 
-//  playerState={this.props.playerState} cdevicesids={this.props.cdevicesids} togglemenu={this.togglemenu} 
-
 export class TheaterSidemenu extends Component {
     constructor(props) {
         super(props);
@@ -16,20 +14,6 @@ export class TheaterSidemenu extends Component {
     togglemenu(mode) {
         this.props.setClassMode("class", this.props.classMode.id, mode);
         window.location.href = '#/class/:' + this.props.classMode.id + '/:' + mode;
-    }
-
-    // TODO: implement this in class using redux based state
-    confirmSwitchToIndividiual() {
-
-        if (this.props.playerState != 0) {
-            if (window.confirm("video section not ended are you sure you to want to move?")) {
-                this.props.socket.emit('sendAction', this.props.userData.headJackCredentials.appId, this.props.userData.headJackCredentials.authId, this.props.cdevicesids, 'stop', []);
-                return "/class/" + this.props.match.params.id + "/individual";
-            }
-            //else { }
-        }
-        return "/class/" + this.props.match.params.id + "/theater";
-
     }
 
     render() {
