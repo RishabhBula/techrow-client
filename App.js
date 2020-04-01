@@ -39,7 +39,7 @@ import 'firebase/app';
 import 'firebase/firestore';
 import 'firebase/database';
 import Sidemenu from './Client/Components/Sidemenu';
-import { TheaterSidemenu } from './Client/Components/TheaterSidemenu';
+import TheaterSidemenu from './Client/Components/TheaterSidemenu';
 
 const firebaseConfig = {
   apiKey: "AIzaSyAB1yWXPpiOvXHO4w6SUjhvnAejF-bQ5cs",
@@ -101,8 +101,8 @@ class App extends Component {
               <div className="full-page">
                 <div className="inner-wrap">
                   <Switch>
-                    <Route exact path="/class/:id/:mode" component={TheaterSidemenu} />
-                    <Route path="/" component={Sidemenu} />
+                    <Route exact path="/class/:id/:mode" render={TheaterSidemenu} />
+                    <Route path="/" render={Sidemenu} />
                   </Switch>
                   <div className="inner-right-wrap">
                     {/* Pages here will have the side menu visible when selected */}
