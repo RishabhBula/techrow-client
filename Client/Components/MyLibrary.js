@@ -61,7 +61,7 @@ class MyLibrary extends Component{
   }
 
   onItemClick(id){
-    window.location.href='#/class/:'+id+'/:theater'
+    window.location.href='#/class/'+id+'/theater'
   }
 
   // search123(s){

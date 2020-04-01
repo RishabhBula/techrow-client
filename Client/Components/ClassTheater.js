@@ -8,6 +8,8 @@ import ScrollView from 'react-inverted-scrollview';
 
 import {Notification} from '../../CommonPages/Components/Notification';
 import {setSelecteddevicestheater} from '../../actions/setSelecteddevicestheater';
+import { Prompt } from 'react-router-dom';
+
 
 class ClassTheater extends Component{
 	constructor(props){
@@ -207,7 +209,15 @@ class ClassTheater extends Component{
                   <div className="theaterModeData">
                     {this.props.theaterData.omnivirtUrl!=undefined ? <div className="theaterVideo">
 
-                      {this.props.theaterData.omnivirtUrl.includes("//cdn") ? <iframe id={this.props.theaterData.omnivirtID} src={this.props.theaterData.omnivirtUrl+"?player=true&autoplay=false"} frameBorder="0" width="1280" height="720" webkitallowfullscreen="1" mozallowfullscreen="1" allowFullScreen="1"></iframe> : <span>preview url not valid</span> }
+                      {this.props.theaterData.omnivirtUrl.includes("//cdn") ?
+                        <React.Fragment>
+                          <iframe id={this.props.theaterData.omnivirtID} src={this.props.theaterData.omnivirtUrl + "?player=true&autoplay=false"} frameBorder="0" width="1280" height="720" webkitallowfullscreen="1" mozallowfullscreen="1" allowFullScreen="1"></iframe>
+                          <Prompt
+                            when={this.props.playerState != 0}
+                            message="The video is not finished playing, are you sure you want to enter individual mode?"
+                          />
+                        </React.Fragment>
+                        : <span>preview url not valid</span>}
 
                       {/*<iframe id="player" src={this.props.theaterData.previewUrl} frameBorder="0" allow="fullscreen" allowFullScreen > </iframe>*/}
                     </div>:<div className="theaterVideo"> </div>}

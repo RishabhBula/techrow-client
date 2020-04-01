@@ -39,6 +39,7 @@ import 'firebase/app';
 import 'firebase/firestore';
 import 'firebase/database';
 import Sidemenu from './Client/Components/Sidemenu';
+import { TheaterSidemenu } from './Client/Components/TheaterSidemenu';
 
 const firebaseConfig = {
   apiKey: "AIzaSyAB1yWXPpiOvXHO4w6SUjhvnAejF-bQ5cs",
@@ -92,22 +93,25 @@ class App extends Component {
         <Fragment>
           <Header />
           <Switch>
+            {/* Pages here will hide the sidemenu when selected */}
             <Route exact path="/marketplace" component={Marketplace} />
             <Route exact path="/marketplace/:id" component={MarketplaceDiscription} />
 
             <div className="full-page">
               <div className="inner-wrap">
-                <Sidemenu />
+
+                <Switch>
+                  <Route exact path="/class/:id/:mode" component={TheaterSidemenu} />
+                  <Route path="/" component={Sidemenu} />
+                </Switch>
+
                 <div className="inner-right-wrap">
-                  {/* To add items to the sidemenu put the compenents in Routes Here */}
+                  {/* Pages here will have the side menu visible when selected */}
                   <Route exact path="/class/:id/:mode" component={Class} />
                   <Route exact path="/" component={Dashboard} />
                 </div>
               </div>
             </div>
-
-
-            <Route path="/" component={Dashboard} />
           </Switch>
         </Fragment>
 

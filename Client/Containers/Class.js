@@ -20,6 +20,7 @@ import {setSelecteddevicestheater} from '../../actions/setSelecteddevicestheater
 import {Notification} from '../../CommonPages/Components/Notification';
 import ClassTheater from '../Components/ClassTheater';
 import ClassIndividual from '../Components/ClassIndividual';
+import { Switch, Route } from 'react-router-dom';
 
 class Class extends Component{
 	constructor(props){
@@ -34,7 +35,7 @@ class Class extends Component{
 	}
 
   componentWillMount(){
-    this.props.setClassMode(this.props.match.url.split("/")[1],this.props.match.params.id.split(":")[1],this.props.match.params.mode.split(":")[1])
+    this.props.setClassMode(this.props.match.url.split("/")[1],this.props.match.params.id,this.props.match.params.mode)
     this.getDetails()
      window.scrollTo(0,0);
   }
@@ -186,7 +187,7 @@ class Class extends Component{
   async getDetails(){
     try {
       // let details = await firebase.firestore().collection('contents').doc(this.props.match.params.id.split(":")[1]).get()
-      let details = await firebase.firestore().collection('users').doc(this.props.auth.authData.uid).collection('myLibrary').doc(this.props.match.params.id.split(":")[1]).get()
+      let details = await firebase.firestore().collection('users').doc(this.props.auth.authData.uid).collection('myLibrary').doc(this.props.match.params.id).get()
       this.props.setTheaterdata(details.data())
     }
     catch (err) {
@@ -201,13 +202,21 @@ class Class extends Component{
 
   render(){
       return(
-            <div> 
-              <Sidemenu playerState={this.state.playerState} cdevicesids={this.state.cdevicesids} socket={this.state.socket}/>
+            <div>
+              {/* <Sidemenu playerState={this.state.playerState} cdevicesids={this.state.cdevicesids} socket={this.state.socket}/> */}
               <div>
-                {this.props.classMode.mode=="theater" &&(<ClassTheater playerStatechange={this.playerStatechange.bind(this)} playerState={this.state.playerState} cdevicesids={this.state.cdevicesids} socket={this.state.socket}/>)}
-                {this.props.classMode.mode=="individual" &&(<ClassIndividual socket={this.state.socket}/>)}
+                <Switch>
+                  <Route exact path="/class/:id/theater">
+                    <ClassTheater playerStatechange={this.playerStatechange.bind(this)} playerState={this.state.playerState} cdevicesids={this.state.cdevicesids} socket={this.state.socket} />
+                  </Route>
+                  <Route exact path="/class/:id/individual">
+                    <ClassIndividual socket={this.state.socket} />
+                  </Route>
+                </Switch>
+                {/* {this.props.classMode.mode=="theater" &&(<ClassTheater playerStatechange={this.playerStatechange.bind(this)} playerState={this.state.playerState} cdevicesids={this.state.cdevicesids} socket={this.state.socket}/>)}
+                    {this.props.classMode.mode=="individual" &&(<ClassIndividual socket={this.state.socket}/>)} */}
               </div>
-        </div>
+            </div>
       );
    }
 }
