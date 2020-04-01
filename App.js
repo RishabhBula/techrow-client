@@ -1,8 +1,6 @@
-import React, { Component } from 'react';
-import * as contentful from 'contentful'
+import React, { Component, Fragment } from 'react';
 import { HashRouter as Router, Route, Switch } from 'react-router-dom';
-import axios from 'axios';
-import {bindActionCreators} from 'redux';
+import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import 'antd/dist/antd.css'
 import './css/slick.css';
@@ -11,12 +9,13 @@ import './css/bootstrap.min.css';
 import './css/temp.css';
 import './css/style.css';
 
-import { Spin, Icon, notification } from 'antd';
+import { Spin, Icon } from 'antd';
 const antIcon = <Icon type="loading" style={{ fontSize: 24 }} spin />;
 
-import {getAuthentication} from './actions/authentication'
+import { getAuthentication } from './actions/authentication'
 import Home from './CommonPages/Containers/Home';
 import Features from './CommonPages/Containers/Features';
+
 // Include Blog Class, contentful
 import Blog from './CommonPages/Containers/Blog';
 import BlogDetail from './CommonPages/Containers/BlogDetail';
@@ -27,10 +26,6 @@ import OrderBundle from './CommonPages/Containers/OrderBundle';
 import Redirect from './CommonPages/Containers/Redirect';
 
 import Dashboard from './Client/Containers/Dashboard';
-import Header from './Client/Components/Header';
-import Class from './Client/Containers/Class';
-import Marketplace from './Client/Containers/Marketplace';
-import MarketplaceDiscription from './Client/Containers/MarketplaceDiscription'
 
 //==============firebase connection==============//
 
@@ -39,6 +34,7 @@ import 'firebase/app';
 import 'firebase/firestore';
 import 'firebase/database';
 import Academy from './Client/Components/Academy';
+
 
 const firebaseConfig = {
   apiKey: "AIzaSyAB1yWXPpiOvXHO4w6SUjhvnAejF-bQ5cs",
@@ -54,17 +50,17 @@ firebase.initializeApp(firebaseConfig);
 
 //==============firebase connection==============//
 
-class App extends Component{
-	constructor(props){
-		super(props)
-		this.state={
+class App extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
 
-		}
-	}
-	componentWillMount(){
-		this.props.getAuthentication()
-	}
-  componentDidMount(){
+    }
+  }
+  componentWillMount() {
+    this.props.getAuthentication()
+  }
+  componentDidMount() {
     // window.addEventListener("offline",(e) => {
     //   console.log("offline")
     // notification.error({
@@ -85,57 +81,41 @@ class App extends Component{
     // });
     // });
   }
-   render(){
-   	let route=""
-   	if(this.props.auth.loaded==true && this.props.auth.auth==true){
+  render() {
+    let route;
+    if (this.props.auth.loaded == true && this.props.auth.auth == true) {
+      route = <Dashboard />;
+    } else if (this.props.auth.loaded == true && this.props.auth.auth == false) {
+      // Include Blog Pages in Header, contentful
+      route = (
+        <Switch>
+          <Route exact path="/features" component={Features} />
+          <Route exact path="/blog" component={Blog} />
+          <Route path="/blog/:slug" component={BlogDetail} />
+          <Route exact path="/login" component={Login} />
+          <Route exact path="/signup" component={SignUp} />
+          <Route exact path="/redirect" component={Redirect} />
+          <Route exact path="/" component={Home} />
+        </Switch>
+      )
+    } else {
+      route = <div className="loader"><Spin indicator={antIcon} /></div>
+    }
 
-   			route=(
-              <div>
-                 <Header/>
-                 <Route exact path="/" component={Dashboard} />
-                 <Route exact path="/features" component={Features} />
-           			 <Route exact path="/class/:id/:mode" component={Class} />
-                 <Route exact path="/academy" component={Academy} />
-                 <Route exact path="/marketplace" component={Marketplace} />
-                 <Route exact path="/marketplace/:id" component={MarketplaceDiscription} />
-                 <Route exact path="/orderbundle" component={OrderBundle} />
-              </div>
-   				)
-   	}else if(this.props.auth.loaded==true && this.props.auth.auth==false){
-       // Include Blog Pages in Header, contentful
-   		route=(
-   				<div>
-   					<Route exact path="/" component={Home} />
-            <Route exact path="/features" component={Features} />
-            <Route exact path="/blog" component={Blog} />
-            <Route  path="/blog/:slug" component={BlogDetail}  />
-            <Route exact path="/login" component={Login} />
-            <Route exact path="/signup" component={SignUp} />
-            <Route exact path="/redirect" component={Redirect} />
-   				</div>
-
-   			)
-   	}else{
-   		route=<div className="loader"><Spin indicator={antIcon} /></div>
-   	}
-      return(
-         <Router>
-	         <div>
-
-	         	{route}
-
-	         </div>
-         </Router>
-      );
-   }
+    return (
+      <Router>
+        {route}
+      </Router>
+    );
+  }
 }
 
-function mapStateToProps(state){
-  return{
-    auth:state.auth
+function mapStateToProps(state) {
+  return {
+    auth: state.auth
   };
 }
-function matchDispatchToProps(dispatch){
-  return bindActionCreators({getAuthentication:getAuthentication}, dispatch);
+function matchDispatchToProps(dispatch) {
+  return bindActionCreators({ getAuthentication: getAuthentication }, dispatch);
 }
 export default connect(mapStateToProps, matchDispatchToProps)(App);
