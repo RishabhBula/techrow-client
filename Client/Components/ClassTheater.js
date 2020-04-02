@@ -8,6 +8,8 @@ import ScrollView from 'react-inverted-scrollview';
 
 import {Notification} from '../../CommonPages/Components/Notification';
 import {setSelecteddevicestheater} from '../../actions/setSelecteddevicestheater';
+import { Prompt } from 'react-router-dom';
+
 
 class ClassTheater extends Component{
 	constructor(props){
@@ -57,6 +59,13 @@ class ClassTheater extends Component{
         });
 
       
+  }
+
+  componentWillUnmount() {
+    // If a video is playing on devices, stop the video playing on page exit
+    if (this.props.playerState != 0) {
+      this.props.socket.emit('sendAction', this.props.userData.headJackCredentials.appId, this.props.userData.headJackCredentials.authId, this.props.cdevicesids, 'stop', []);
+    }
   }
 
   stop(){
@@ -204,12 +213,22 @@ class ClassTheater extends Component{
       };
       return(
          <div className="dashboard animated fadeIn theaterMode">
-            <div className="row">
-                <div className="col-md-12 col-lg-8 col-xl-9">
                   <div className="theaterModeData">
                     {this.props.theaterData.omnivirtUrl!=undefined ? <div className="theaterVideo">
 
-                      {this.props.theaterData.omnivirtUrl.includes("//cdn") ? <iframe id={this.props.theaterData.omnivirtID} src={this.props.theaterData.omnivirtUrl+"?player=true&autoplay=false"} frameBorder="0" width="1280" height="720" webkitallowfullscreen="1" mozallowfullscreen="1" allowFullScreen="1"></iframe> : <span>preview url not valid</span> }
+                      {this.props.theaterData.omnivirtUrl.includes("//cdn") ?
+                      <React.Fragment>
+                        <iframe id={this.props.theaterData.omnivirtID} src={this.props.theaterData.omnivirtUrl + "?player=true&autoplay=false"} frameBorder="0" width="1280" height="720" webkitallowfullscreen="1" mozallowfullscreen="1" allowFullScreen="1"></iframe>
+                        <Prompt
+                          when={this.props.playerState != 0}
+                          message={location =>
+                            location.pathname.endsWith("individual")
+                              ? "The video is not finished playing, are you sure you want to enter individual mode? This will stop the video on all devices."
+                              : true
+                          }
+                        />
+                      </React.Fragment>
+                        : <span>preview url not valid</span>}
 
                       {/*<iframe id="player" src={this.props.theaterData.previewUrl} frameBorder="0" allow="fullscreen" allowFullScreen > </iframe>*/}
                     </div>:<div className="theaterVideo"> </div>}
@@ -246,37 +265,6 @@ class ClassTheater extends Component{
                     </div>
                   </div>
                 </div>
-                <div className="col-md-12 col-lg-4 col-xl-3" >
-                  <div className="message-wrap">
-                    <div style={{display: 'block', textAlign:'center', backgroundColor: '#ebebeb80', borderRadius: '5px', padding: '15px'}}>
-                     <span style={{color: 'white', fontSize :'18px'}}>Renaissance Platform</span>
-                    </div>
-                    <div className="message-list" style={{ overflowY: 'scroll' }}>
-                    <ScrollView
-                        width="100%"
-                        height="100%"
-                        ref={ref => (this.scrollView = ref)}
-                    >
-                      {JSON.parse(sessionStorage.chats).map((item,index) =>{ 
-                        return( 
-                          <div style={{padding: '20px', backgroundColor: 'white', borderRadius: 5, marginBottom: '10px', marginTop: '10px', fontSize: 12}}>
-                           <div className="row" style={{paddingBottom: '10px'}}>
-                            <span className="col-md-6" style={{color: '#9d9d9d'}}>{item.name}</span>
-                            <span className="col-md-6" style={{display: 'block', textAlign:'right', color: '#bababa'}}>{moment(item.createedDate).fromNow()}</span>
-                           </div>
-                           <span>{item.msg}</span>
-                          </div>
-                        )})}
-                      </ScrollView>
-                    </div>
-               {/*    <div style={{margin: '10px', }}>
-                      <input type="text" className="form-control" value={this.state.message} onChange={(e) =>{ this.setState({ message:e.target.value }) } } onKeyPress={(event) =>{ this.send(event) }}/>
-                      <span style={{color: '#bababa', display: 'block', textAlign:'center', padding: '10px', fontSize: 12}}>Hit Enter to send</span>
-                    </div>*/} 
-                  </div>
-                </div>
-            </div>
-         </div>
       );
    }
 }

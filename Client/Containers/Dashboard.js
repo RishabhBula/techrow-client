@@ -1,21 +1,18 @@
-import React, { Component } from 'react';
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
-import axios from 'axios';
+import React, { Component, Fragment } from 'react';
 import ReactGA from 'react-ga';
+import { Route, Switch } from 'react-router-dom';
 
-import Sidemenu from '../Components/Sidemenu';
+import Header from '../Components/Header';
 import MyLibrary from '../Components/MyLibrary.js';
+import Academy from '../Components/Academy.js';
+import Sidemenu from '../Components/Sidemenu';
+import TheaterSidemenu from '../Components/TheaterSidemenu';
 
-import { setClassMode } from '../../actions/setClassMode';
+import Class from '../Containers/Class';
+import Marketplace from '../Containers/Marketplace';
+import MarketplaceDiscription from '../Containers/MarketplaceDiscription';
 
-class Dashboard extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-
-    }
-  }
+export default class Dashboard extends Component {
 
   componentWillMount() {
     ReactGA.initialize('UA-83014470-1');
@@ -23,33 +20,36 @@ class Dashboard extends Component {
   }
 
   componentDidMount() {
-    this.props.setClassMode(this.props.match.url.split("/")[1], "", "theater")
     window.scrollTo(0, 0);
   }
 
   render() {
     return (
-      <div className="full-page">
-        <div className="inner-wrap">
-          <Sidemenu />
-          <div className="inner-right-wrap">
-            <MyLibrary />
-          </div>
-        </div>
-      </div>
+      <Fragment>
+        <Header />
+        <Switch>
+          {/* Pages here will hide the sidemenu when selected */}
+          <Route exact path="/marketplace" component={Marketplace} />
+          <Route exact path="/marketplace/:id" component={MarketplaceDiscription} />
+
+          <Fragment>
+            <div className="full-page">
+              <div className="inner-wrap">
+                <Switch>
+                  <Route exact path="/class/:id/:mode" render={TheaterSidemenu} />
+                  <Route path="/" render={Sidemenu} />
+                </Switch>
+                <div className="inner-right-wrap">
+                  {/* Pages here will have the side menu visible when selected */}
+                  <Route exact path="/class/:id/:mode" component={Class} />
+                  <Route path="/academy" component={Academy} />
+                  <Route exact path="/" component={MyLibrary} />
+                </div>
+              </div>
+            </div>
+          </Fragment>
+        </Switch>
+      </Fragment>
     );
   }
 }
-
-
-function mapStateToProps(state) {
-  return {
-    userData: state.userData,
-    classMode: state.classMode
-
-  };
-}
-function matchDispatchToProps(dispatch) {
-  return bindActionCreators({ setClassMode: setClassMode }, dispatch);
-}
-export default connect(mapStateToProps, matchDispatchToProps)(Dashboard);
