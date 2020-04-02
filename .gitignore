@@ -4,8 +4,7 @@ package-lock.json
 .eslintrc
 .nsprc
 .reactserverrc
-README.md
-components/
-pages/
 routes.json
-test.js
+public/
+.firebase
+.firebaserc
