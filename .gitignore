@@ -5,3 +5,6 @@ package-lock.json
 .nsprc
 .reactserverrc
 routes.json
+public/
+.firebase
+.firebaserc
